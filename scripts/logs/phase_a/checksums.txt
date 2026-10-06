@@ -1,0 +1,10 @@
+=== Checksums (SHA-256) ===
+Date: 2026-10-06T05:53:27Z
+
+MISSING src/opus_encoder.c
+4fe8ac2d18886b91ebb470b1f5218dbf39507f3502b030619dba3c4c3ee47b10  encode_raw.c
+e6a7a0ff4a1dd893df040facd24e5af8f9d9e80b79f542316ef31c203eb80d97  decode_raw.c
+6a6ec52272f310e45d902c94db1607dcdbf55f7b0b1098ecb49e90d8514ec786  parse_packets.py
+498ad74e8a6c7e968efb93304bd35417bc783bbba1dce4129636433c13bbf71b  automate.py
+cb73f81b7a7bb3a66777b5c434e1b35e5977a9240c76060179101cb4f4cb2202  modify_packet.py
+MISSING patches/opus_encoder_instrumentation.patch

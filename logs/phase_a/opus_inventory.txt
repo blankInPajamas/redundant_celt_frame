@@ -1,0 +1,25 @@
+=== libopus source inventory ===
+
+--- Candidate directories ---
+./opus
+
+--- Version markers ---
+>> ./opus/configure.ac
+                           printf "$PACKAGE_VERSION"
+AC_INIT([opus],[CURRENT_VERSION],[opus@xiph.org])
+  $PACKAGE_NAME $PACKAGE_VERSION:  Automatic configuration OK.
+
+--- Git status (if repo) ---
+4264f0fbe8b6f71d0b76467282584661890d8ef3
+?? logs/
+?? scripts/00_env/
+?? scripts/01_inventory/
+?? scripts/02_build/
+?? scripts/03_reproduce/
+?? scripts/04_tools/
+?? scripts/05_freeze/
+?? scripts/logs/
+?? scripts/run_phase_a.sh
+4264f0f feat: add fix-frame patch and modified setup script
+
+--- Instrumented file presence ---
