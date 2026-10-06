@@ -1,0 +1,42 @@
+diff --git a/src/opus_encoder.c b/src/opus_encoder.c
+index e716c743..f1a2b3c4 100644
+--- a/src/opus_encoder.c
++++ b/src/opus_encoder.c
+@@ -1868,6 +1868,8 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pc
+     CELTEncoder *celt_enc=NULL;
+     const CELTMode *celt_mode=NULL;
+     static int dbg_frame_counter = 0;
++    static int dbg_global_frame_id = 0;
++    int this_frame_id;
+     int i;
+     int ret=0;
+     int max_data_bytes;
+@@ -1875,6 +1877,10 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pc
+     opus_int32 max_data_bytes;
+ #endif
+ 
++    /* Unique ID for this call, independent of whether redundancy fires.
++     * Logged on both REDUNDANCY and FINAL lines so they can be joined
++     * unambiguously, instead of relying on positional / count-based matching. */
++    this_frame_id = dbg_global_frame_id++;
++
+ @@ -2356,8 +2362,8 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
+         if (redundancy)
+         {
+             int max_redundancy;
+             dbg_frame_counter++;
+-            fprintf(stderr, "REDUNDANCY: frame=%d mode=%d celt_to_silk=%d bytes=%d\n",
+-                  dbg_frame_counter, st->mode, celt_to_silk, redundancy_bytes);
++            fprintf(stderr, "REDUNDANCY: event=%d frame_id=%d mode=%d celt_to_silk=%d bytes=%d\n",
++                  dbg_frame_counter, this_frame_id, st->mode, celt_to_silk, redundancy_bytes);
+             ec_enc_bit_logp(&enc, celt_to_silk, 1);
+             if (st->mode == MODE_HYBRID)
+             {
+@@ -2660,7 +2666,7 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
+        ret = orig_max_data_bytes;
+     }
+     RESTORE_STACK;
+-    fprintf(stderr, "  -> FINAL packet: ret=%d, mode=%d\n", ret, st->mode);
++    fprintf(stderr, "  -> FINAL packet: frame_id=%d ret=%d, mode=%d\n", this_frame_id, ret, st->mode);
+     return ret;
+ }

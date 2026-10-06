@@ -11,7 +11,7 @@ set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OPUS_DIR="$PROJECT_ROOT/opus"
-PATCH_FILE="$PROJECT_ROOT/patches/0001-redundancy-instrumentation.patch"
+PATCH_DIR="$PROJECT_ROOT/patches"
 # Pin the exact commit this project was built and validated against.
 # Update this if you intentionally move to a newer libopus revision —
 # but note the paper's results are tied to this exact commit.
@@ -49,19 +49,36 @@ if [[ "$CURRENT_COMMIT" != "$OPUS_COMMIT"* ]]; then
     echo "  Results may not match the paper's reported figures." >&2
 fi
 
-echo "== 3. Applying instrumentation patch =="
+echo "== 3. Applying instrumentation patches =="
 cd "$OPUS_DIR"
-if git apply --check "$PATCH_FILE" 2>/dev/null; then
-    git apply "$PATCH_FILE"
-    echo "  patch applied cleanly."
-else
-    echo "  ERROR: patch did not apply cleanly against this libopus commit." >&2
-    echo "  This usually means upstream opus_encoder.c has diverged from" >&2
-    echo "  the line numbers the patch expects. Re-generate the patch against" >&2
-    echo "  commit $OPUS_COMMIT, or manually re-apply the instrumentation" >&2
-    echo "  described in README.md Section 5." >&2
+shopt -s nullglob
+PATCHES=("$PATCH_DIR"/*.patch)
+shopt -u nullglob
+if [[ ${#PATCHES[@]} -eq 0 ]]; then
+    echo "  ERROR: no .patch files found in $PATCH_DIR" >&2
     exit 1
 fi
+# Sort so 0001-*, 0002-*, etc. apply in the right order regardless of
+# how the shell glob returned them.
+IFS=$'\n' PATCHES=($(sort <<<"${PATCHES[*]}")); unset IFS
+
+for p in "${PATCHES[@]}"; do
+    pname="$(basename "$p")"
+    if git apply --check "$p" 2>/dev/null; then
+        git apply "$p"
+        echo "  applied: $pname"
+    elif git apply --reverse --check "$p" 2>/dev/null; then
+        echo "  skipped: $pname (already applied)"
+    else
+        echo "  ERROR: $pname did not apply cleanly against this libopus commit." >&2
+        echo "  This usually means upstream opus_encoder.c has diverged from" >&2
+        echo "  the line numbers the patch expects, or an earlier patch in the" >&2
+        echo "  sequence failed to apply first. Check patches apply in order," >&2
+        echo "  re-generate against commit $OPUS_COMMIT, or apply the edits" >&2
+        echo "  manually (see README.md Section 5 and the patch's own comments)." >&2
+        exit 1
+    fi
+done
 
 echo "== 4. Building libopus =="
 ./autogen.sh
