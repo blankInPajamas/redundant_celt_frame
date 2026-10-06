@@ -1,5 +1,5 @@
 diff --git a/src/opus_encoder.c b/src/opus_encoder.c
-index a74631fc..e716c743 100644
+index a74631fc..f87bdff3 100644
 --- a/src/opus_encoder.c
 +++ b/src/opus_encoder.c
 @@ -29,6 +29,7 @@
@@ -10,25 +10,31 @@ index a74631fc..e716c743 100644
  #include <stdarg.h>
  #include "celt.h"
  #include "entenc.h"
-@@ -1867,6 +1868,7 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
+@@ -1867,9 +1868,13 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
      void *silk_enc=NULL;
      CELTEncoder *celt_enc=NULL;
      const CELTMode *celt_mode=NULL;
 +    static int dbg_frame_counter = 0;
++    static int dbg_global_frame_id = 0;
++    int this_frame_id;
      int i;
      int ret=0;
      int max_data_bytes;
-@@ -2356,6 +2358,9 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
++    this_frame_id = dbg_global_frame_id++;
+     opus_int32 nBytes;
+     ec_enc enc;
+     int bits_target;
+@@ -2356,6 +2361,9 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
          if (redundancy)
          {
              int max_redundancy;
 +            dbg_frame_counter++;
-+            fprintf(stderr, "REDUNDANCY: frame=%d mode=%d celt_to_silk=%d bytes=%d\n",
-+                  dbg_frame_counter, st->mode, celt_to_silk, redundancy_bytes);
++            fprintf(stderr, "REDUNDANCY: event=%d frame_id=%d mode=%d celt_to_silk=%d bytes=%d\n",
++            dbg_frame_counter, this_frame_id, st->mode, celt_to_silk, redundancy_bytes);
              ec_enc_bit_logp(&enc, celt_to_silk, 1);
              if (st->mode == MODE_HYBRID)
              {
-@@ -2432,6 +2437,7 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
+@@ -2432,6 +2440,7 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
          celt_encoder_ctl(celt_enc, OPUS_SET_VBR(0));
          celt_encoder_ctl(celt_enc, OPUS_SET_BITRATE(OPUS_BITRATE_MAX));
          err = celt_encode_with_ec(celt_enc, pcm_buf, st->Fs/200, data+nb_compr_bytes, redundancy_bytes, NULL);
@@ -36,7 +42,7 @@ index a74631fc..e716c743 100644
          if (err < 0)
          {
             RESTORE_STACK;
-@@ -2536,6 +2542,7 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
+@@ -2536,6 +2545,7 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
          celt_encode_with_ec(celt_enc, pcm_buf+st->channels*(frame_size-N2-N4), N4, dummy, 2, NULL);
  
          err = celt_encode_with_ec(celt_enc, pcm_buf+st->channels*(frame_size-N2), N2, data+nb_compr_bytes, redundancy_bytes, NULL);
@@ -44,11 +50,11 @@ index a74631fc..e716c743 100644
          if (err < 0)
          {
             RESTORE_STACK;
-@@ -2653,6 +2660,7 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
+@@ -2653,6 +2663,7 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
         ret = orig_max_data_bytes;
      }
      RESTORE_STACK;
-+    fprintf(stderr, "  -> FINAL packet: ret=%d, mode=%d\n", ret, st->mode);
++    fprintf(stderr, "  -> FINAL packet: frame_id=%d ret=%d, mode=%d\n", this_frame_id, ret, st->mode);
      return ret;
  }
  

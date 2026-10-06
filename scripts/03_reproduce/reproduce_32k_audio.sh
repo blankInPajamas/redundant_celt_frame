@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 cd "$ROOT"
@@ -11,7 +10,6 @@ OPUS_LIB="$ROOT/opus/.libs"
 OUTDIR="$ROOT/logs/phase_a/repro_32k_audio"
 mkdir -p "$OUTDIR"
 
-# --- CRITICAL: use the instrumented libopus, not the system one ---
 export LD_LIBRARY_PATH="$OPUS_LIB:${LD_LIBRARY_PATH:-}"
 
 ENCODE="$TOOLS/encode_raw"
@@ -23,50 +21,52 @@ INPUT_PCM="${INPUT_PCM:-$DATA/pcm/spontaneous-speech-en-1.pcm}"
 ENCODED="$OUTDIR/encoded.bin"
 ENC_LOG="$OUTDIR/encoder.log"
 DEC_LOG="$OUTDIR/decoder.log"
+PKT_TXT="$OUTDIR/packets.txt"
+CORR_TXT="$OUTDIR/correlation.txt"
 
 echo "=== Using input: $INPUT_PCM ==="
 ls -la "$INPUT_PCM"
 
 echo
-echo "=== Verifying which libopus encode_raw is using ==="
-ldd "$ENCODE" | grep libopus || true
-echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
+echo "=== encode_raw CLI ==="
+"$ENCODE" 2>&1 | head -n 3 || true
 
 echo
 echo "=== Encoding: audio mode, 32 kbps ==="
-set +e
 "$ENCODE" "$INPUT_PCM" "$ENCODED" audio 32000 2> "$ENC_LOG"
-RC=$?
-set -e
-echo "encode_raw exit code: $RC"
-
-if [ $RC -ne 0 ]; then
-  echo "encode_raw FAILED. Last 30 lines:"
-  tail -n 30 "$ENC_LOG"
-  exit 1
-fi
+echo "encode_raw exit code: $?"
 
 echo
 echo "=== Decoding ==="
-"$DECODE" "$ENCODED" "$OUTDIR/decoded.pcm" 2> "$DEC_LOG" || true
+"$DECODE" "$ENCODED" "$OUTDIR/decoded.pcm" 2> "$DEC_LOG"
+echo "decode_raw exit code: $?"
 
 echo
-echo "=== REDUNDANCY lines in encoder log ==="
+echo "=== REDUNDANCY lines ==="
 grep -n 'REDUNDANCY' "$ENC_LOG" || echo "(none)"
 
 echo
-echo "=== First 15 packet lines ==="
+echo "=== First 15 FRAME/FINAL lines ==="
 grep -n 'FRAME\|FINAL' "$ENC_LOG" | head -n 20
 
 echo
-echo "=== Parsing ==="
-python3 "$PARSE" "$ENCODED" > "$OUTDIR/packets.txt" 2>&1 || true
-head -n 15 "$OUTDIR/packets.txt" || true
+echo "=== Parsing packets ==="
+if ! python3 "$PARSE" "$ENCODED" > "$PKT_TXT" 2> "$OUTDIR/parse.err"; then
+  echo "PARSE FAILED. See $OUTDIR/parse.err"
+  cat "$OUTDIR/parse.err"
+  exit 1
+fi
+echo "Wrote $PKT_TXT ($(wc -l < "$PKT_TXT") lines)"
+head -n 10 "$PKT_TXT"
 
 echo
 echo "=== Correlation ==="
-python3 "$AUTOMATE" "$ENC_LOG" "$ENCODED" > "$OUTDIR/correlation.txt" 2>&1 || true
-cat "$OUTDIR/correlation.txt" 2>/dev/null || true
+if ! python3 "$AUTOMATE" "$ENC_LOG" > "$CORR_TXT" 2> "$OUTDIR/correlation.err"; then
+  echo "CORRELATE FAILED. See $OUTDIR/correlation.err"
+  cat "$OUTDIR/correlation.err"
+  exit 1
+fi
+cat "$CORR_TXT"
 
 echo
 echo "Artifacts in: $OUTDIR"

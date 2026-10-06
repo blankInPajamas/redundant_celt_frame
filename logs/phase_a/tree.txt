@@ -839,6 +839,7 @@
 ./scripts/00_env
 ./scripts/00_env/check_env.sh
 ./scripts/00_env/env_report.txt
+./scripts/00_repair.sh
 ./scripts/01_inventory
 ./scripts/01_inventory/inventory_inputs.sh
 ./scripts/01_inventory/inventory_logs.sh
@@ -877,6 +878,7 @@
 ./scripts/run_phase_a.sh
 ./scripts/setup.sh
 ./snapshots
+./snapshots/phase_a_snapshot_20261006T073931Z.tar.gz
 ./.venv
 ./.venv/bin
 ./.venv/bin/activate

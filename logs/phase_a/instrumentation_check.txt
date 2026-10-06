@@ -2,8 +2,8 @@
 
 --- REDUNDANCY markers in opus/src/opus_encoder.c ---
 678:   dred_chunks = IMIN((duration+5)/4, DRED_NUM_REDUNDANCY_FRAMES/2);
-2362:            fprintf(stderr, "REDUNDANCY: frame=%d mode=%d celt_to_silk=%d bytes=%d\n",
-2616:       dred_chunks = IMIN((st->dred_duration+5)/4, DRED_NUM_REDUNDANCY_FRAMES/2);
+2365:            fprintf(stderr, "REDUNDANCY: event=%d frame_id=%d mode=%d celt_to_silk=%d bytes=%d\n",
+2619:       dred_chunks = IMIN((st->dred_duration+5)/4, DRED_NUM_REDUNDANCY_FRAMES/2);
 
 --- Final packet logging markers ---
 143:    int          nonfinal_frame; /* current frame is not the final in a packet */
@@ -27,7 +27,7 @@
 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.a
 
 --- Git diff of opus repo ---
- src/opus_encoder.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ src/opus_encoder.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
 503d81b1 Add generic PFA FFT/MDCT C implementation

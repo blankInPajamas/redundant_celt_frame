@@ -1,9 +1,9 @@
 ########## PHASE A: CONSOLIDATION ##########
-Tue Oct  6 07:39:29 AM UTC 2026
+Tue Oct  6 05:37:40 PM UTC 2026
 
 >>> 00_env/check_env.sh
 === Phase A Environment Report ===
-Date: 2026-10-06T07:39:29Z
+Date: 2026-10-06T17:37:40Z
 Host: Linux archlinux 7.0.12-arch1-1 #1 SMP PREEMPT_DYNAMIC Wed, 10 Jun 2026 08:58:02 +0000 x86_64 GNU/Linux
 
 --- Working directory ---
@@ -18,22 +18,21 @@ automake     automake (GNU automake) 1.18.1
 libtool      libtool (GNU libtool) 2.6.1
 pkg-config   2.5.1
 python3      Python 3.14.5
-pip3         pip 26.1.1 from /home/ishu/research/redundant_celt_frame_steganography/.venv/lib/python3.14/site-packages/pip (python 3.14)
+pip3         NOT FOUND
 git          git version 2.54.0
 --- Python (system) ---
 Python 3.14.5
 --- Python (venv if active) ---
-VIRTUAL_ENV=/home/ishu/research/redundant_celt_frame_steganography/.venv
-Python 3.14.5
+(no venv active)
 --- Python packages (in current python) ---
-numpy        2.5.3
-scipy        1.18.1
-soundfile    0.14.0
-matplotlib   3.11.2
+numpy        NOT INSTALLED (No module named 'numpy')
+scipy        NOT INSTALLED (No module named 'scipy')
+soundfile    NOT INSTALLED (No module named 'soundfile')
+matplotlib   NOT INSTALLED (No module named 'matplotlib')
 
 --- Disk usage ---
 Filesystem      Size  Used Avail Use% Mounted on
-/dev/nvme0n1p2  468G  275G  169G  62% /
+/dev/nvme0n1p2  468G  276G  169G  63% /
 
 --- CPU ---
 Architecture:                            x86_64
@@ -51,7 +50,7 @@ Core(s) per socket:                      4
 Socket(s):                               1
 Stepping:                                12
 Microcode version:                       0x100
-CPU(s) scaling MHz:                      59%
+CPU(s) scaling MHz:                      89%
 CPU max MHz:                             4600.0000
 CPU min MHz:                             400.0000
 BogoMIPS:                                3999.93
@@ -927,6 +926,7 @@ Wrote scripts/00_env/env_report.txt
 ./scripts/00_env
 ./scripts/00_env/check_env.sh
 ./scripts/00_env/env_report.txt
+./scripts/00_repair.sh
 ./scripts/01_inventory
 ./scripts/01_inventory/inventory_inputs.sh
 ./scripts/01_inventory/inventory_logs.sh
@@ -965,6 +965,7 @@ Wrote scripts/00_env/env_report.txt
 ./scripts/run_phase_a.sh
 ./scripts/setup.sh
 ./snapshots
+./snapshots/phase_a_snapshot_20261006T073931Z.tar.gz
 ./.venv
 ./.venv/bin
 ./.venv/bin/activate
@@ -1011,29 +1012,17 @@ AC_INIT([opus],[CURRENT_VERSION],[opus@xiph.org])
   $PACKAGE_NAME $PACKAGE_VERSION:  Automatic configuration OK.
 
 --- Git status (if repo) ---
-5ac6b3689c230f58e5ac5f601ccc48b4d78ce9dc
- M .gitignore
- M logs/phase_a/build_check.txt
- M logs/phase_a/inputs_inventory.txt
- M logs/phase_a/logs_inventory.txt
+79a0552d2e755a57f8f7d58e53a235b3d2d59b6b
  M logs/phase_a/opus_inventory.txt
+ M logs/phase_a/phase_a_run.log
  M logs/phase_a/repro_32k_audio/encoder.log
  M logs/phase_a/tree.txt
- M scripts/00_env/check_env.sh
  M scripts/00_env/env_report.txt
- M scripts/04_tools/check_python_tools.sh
- M scripts/04_tools/smoke_test_pipeline.sh
- M scripts/05_freeze/snapshot_tree.sh
- M scripts/run_phase_a.sh
-?? logs/phase_a/checksums.txt
-?? logs/phase_a/phase_a_run.log
-?? logs/phase_a/python_tools_check.txt
-?? logs/phase_a/repro_32k_audio/decoded.pcm
-?? logs/phase_a/repro_32k_audio/decoder.log
-?? logs/phase_a/repro_32k_audio/encoded.bin
-?? logs/phase_a/smoke_test/
-?? patches/opus_encoder_instrumentation_from_worktree.patch
-5ac6b36 chore: add phase_a scripts
+ M scripts/03_reproduce/reproduce_32k_audio.sh
+ M scripts/03_reproduce/verify_32k_audio.sh
+?? logs/phase_a/repro_32k_audio/packets.txt
+?? scripts/00_repair.sh
+79a0552 feat: finish phase a
 
 --- Instrumented file presence ---
 Wrote logs/phase_a/opus_inventory.txt
@@ -1193,18 +1182,18 @@ Wrote logs/phase_a/logs_inventory.txt
 
 --- Custom tools ---
 FOUND: /home/ishu/research/redundant_celt_frame_steganography/scripts/encode_raw
-/home/ishu/research/redundant_celt_frame_steganography/scripts/encode_raw: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=f0635be02599622962dc6b818a0013eb0347dab9, for GNU/Linux 4.4.0, with debug_info, not stripped
-	linux-vdso.so.1 (0x00007fd66f996000)
-	libm.so.6 => /usr/lib/libm.so.6 (0x00007fd66f7cd000)
-	libc.so.6 => /usr/lib/libc.so.6 (0x00007fd66f400000)
-	/lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007fd66f998000)
+/home/ishu/research/redundant_celt_frame_steganography/scripts/encode_raw: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=ef44729f606af4c026a78bbea791264c31a8ff0a, for GNU/Linux 4.4.0, with debug_info, not stripped
+	linux-vdso.so.1 (0x00007f0c1ba2c000)
+	libm.so.6 => /usr/lib/libm.so.6 (0x00007f0c1b863000)
+	libc.so.6 => /usr/lib/libc.so.6 (0x00007f0c1b600000)
+	/lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f0c1ba2e000)
 
 FOUND: /home/ishu/research/redundant_celt_frame_steganography/scripts/decode_raw
 /home/ishu/research/redundant_celt_frame_steganography/scripts/decode_raw: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=8bf79ab66348dd5956669165432d19cd9d843392, for GNU/Linux 4.4.0, with debug_info, not stripped
-	linux-vdso.so.1 (0x00007f52acfa2000)
-	libm.so.6 => /usr/lib/libm.so.6 (0x00007f52ace0e000)
-	libc.so.6 => /usr/lib/libc.so.6 (0x00007f52aca00000)
-	/lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f52acfa4000)
+	linux-vdso.so.1 (0x00007f8b440ff000)
+	libm.so.6 => /usr/lib/libm.so.6 (0x00007f8b43f6b000)
+	libc.so.6 => /usr/lib/libc.so.6 (0x00007f8b43c00000)
+	/lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f8b44101000)
 
 --- Which libopus does encode_raw link against? ---
 Expected: /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.so.0
@@ -1216,12 +1205,12 @@ FOUND: /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/opus_de
 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/opus_demo: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=a43c8c4635b1a0f76453789514acab823bce5d3f, for GNU/Linux 4.4.0, with debug_info, not stripped
 
 --- libopus artifacts ---
--rw-r--r-- 1 ishu ishu 2914898 Sep 29 17:36 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.a
-lrwxrwxrwx 1 ishu ishu      13 Sep 29 17:36 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.la -> ../libopus.la
--rw-r--r-- 1 ishu ishu     923 Sep 29 17:36 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.lai
-lrwxrwxrwx 1 ishu ishu      17 Sep 29 17:36 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.so -> libopus.so.0.11.1
-lrwxrwxrwx 1 ishu ishu      17 Sep 29 17:36 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.so.0 -> libopus.so.0.11.1
--rwxr-xr-x 1 ishu ishu 2020528 Sep 29 17:36 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.so.0.11.1
+-rw-r--r-- 1 ishu ishu 2915370 Oct  6 23:35 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.a
+lrwxrwxrwx 1 ishu ishu      13 Oct  6 23:35 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.la -> ../libopus.la
+-rw-r--r-- 1 ishu ishu     923 Oct  6 23:35 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.lai
+lrwxrwxrwx 1 ishu ishu      17 Oct  6 23:35 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.so -> libopus.so.0.11.1
+lrwxrwxrwx 1 ishu ishu      17 Oct  6 23:35 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.so.0 -> libopus.so.0.11.1
+-rwxr-xr-x 1 ishu ishu 2020816 Oct  6 23:35 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.so.0.11.1
 
 --- Object files ---
 /home/ishu/research/redundant_celt_frame_steganography/opus/src/.libs/opus_decoder.o
@@ -1258,8 +1247,8 @@ Wrote /home/ishu/research/redundant_celt_frame_steganography/logs/phase_a/build_
 
 --- REDUNDANCY markers in opus/src/opus_encoder.c ---
 678:   dred_chunks = IMIN((duration+5)/4, DRED_NUM_REDUNDANCY_FRAMES/2);
-2362:            fprintf(stderr, "REDUNDANCY: frame=%d mode=%d celt_to_silk=%d bytes=%d\n",
-2616:       dred_chunks = IMIN((st->dred_duration+5)/4, DRED_NUM_REDUNDANCY_FRAMES/2);
+2365:            fprintf(stderr, "REDUNDANCY: event=%d frame_id=%d mode=%d celt_to_silk=%d bytes=%d\n",
+2619:       dred_chunks = IMIN((st->dred_duration+5)/4, DRED_NUM_REDUNDANCY_FRAMES/2);
 
 --- Final packet logging markers ---
 143:    int          nonfinal_frame; /* current frame is not the final in a packet */
@@ -1283,8 +1272,8 @@ Wrote /home/ishu/research/redundant_celt_frame_steganography/logs/phase_a/build_
 /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.a
 
 --- Git diff of opus repo ---
- src/opus_encoder.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ src/opus_encoder.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
 503d81b1 Add generic PFA FFT/MDCT C implementation
 Wrote /home/ishu/research/redundant_celt_frame_steganography/logs/phase_a/instrumentation_check.txt
@@ -1306,37 +1295,40 @@ OK: instrumentation is live
 === Using input: /home/ishu/research/redundant_celt_frame_steganography/data/pcm/spontaneous-speech-en-1.pcm ===
 -rw-r--r-- 1 ishu ishu 964224 Sep 29 16:50 /home/ishu/research/redundant_celt_frame_steganography/data/pcm/spontaneous-speech-en-1.pcm
 
-=== Verifying which libopus encode_raw is using ===
-LD_LIBRARY_PATH=/home/ishu/research/redundant_celt_frame_steganography/opus/.libs:
+=== encode_raw CLI ===
+Usage: /home/ishu/research/redundant_celt_frame_steganography/scripts/encode_raw <input.pcm> <output.bin> <mode> <bitrate> [complexity=10] [fec=0] [loss_pct=0]
+  mode: voip | audio | lowdelay
+  fec: 0 or 1 (default 0 — previously was hardcoded to 1 for every run; set explicitly per-experiment now)
 
 === Encoding: audio mode, 32 kbps ===
 encode_raw exit code: 0
 
 === Decoding ===
+decode_raw exit code: 0
 
-=== REDUNDANCY lines in encoder log ===
-8:REDUNDANCY: frame=1 mode=1001 celt_to_silk=1 bytes=38
+=== REDUNDANCY lines ===
+8:REDUNDANCY: event=1 frame_id=3 mode=1001 celt_to_silk=1 bytes=38
 
-=== First 15 packet lines ===
-2:  -> FINAL packet: ret=3, mode=1002
+=== First 15 FRAME/FINAL lines ===
+2:  -> FINAL packet: frame_id=0 ret=3, mode=1002
 3:FRAME 0: len=3
-4:  -> FINAL packet: ret=3, mode=1002
+4:  -> FINAL packet: frame_id=1 ret=3, mode=1002
 5:FRAME 1: len=3
-6:  -> FINAL packet: ret=3, mode=1002
+6:  -> FINAL packet: frame_id=2 ret=3, mode=1002
 7:FRAME 2: len=3
-10:  -> FINAL packet: ret=84, mode=1001
+10:  -> FINAL packet: frame_id=3 ret=84, mode=1001
 11:FRAME 3: len=84
-12:  -> FINAL packet: ret=72, mode=1001
+12:  -> FINAL packet: frame_id=4 ret=72, mode=1001
 13:FRAME 4: len=72
-14:  -> FINAL packet: ret=82, mode=1001
+14:  -> FINAL packet: frame_id=5 ret=82, mode=1001
 15:FRAME 5: len=82
-16:  -> FINAL packet: ret=67, mode=1001
+16:  -> FINAL packet: frame_id=6 ret=67, mode=1001
 17:FRAME 6: len=67
-18:  -> FINAL packet: ret=54, mode=1001
+18:  -> FINAL packet: frame_id=7 ret=54, mode=1001
 19:FRAME 7: len=54
-20:  -> FINAL packet: ret=64, mode=1001
+20:  -> FINAL packet: frame_id=8 ret=64, mode=1001
 21:FRAME 8: len=64
-22:  -> FINAL packet: ret=69, mode=1001
+22:  -> FINAL packet: frame_id=9 ret=69, mode=1001
 23:FRAME 9: len=69
   [FAILED: exit 141]
 
@@ -1349,14 +1341,26 @@ encode_raw exit code: 0
 --- Proposed sizes ---
 bytes=38
 
+--- packets.txt ---
+packets.txt present (507 lines)
+
 --- First 10 packets ---
-(no packet dump)
+File: /home/ishu/research/redundant_celt_frame_steganography/logs/phase_a/repro_32k_audio/encoded.bin
+Total size: 40746 bytes
+
+Frame 0: pkt_len=3, pkt_offset=4, first_bytes=f8fffe
+Frame 1: pkt_len=3, pkt_offset=11, first_bytes=f8fffe
+Frame 2: pkt_len=3, pkt_offset=18, first_bytes=f8fffe
+Frame 3: pkt_len=84, pkt_offset=25, first_bytes=780be4c136ecc74f
+Frame 4: pkt_len=72, pkt_offset=113, first_bytes=78800bc99ef15696
+Frame 5: pkt_len=82, pkt_offset=189, first_bytes=78870a3c14bb4c58
+Frame 6: pkt_len=67, pkt_offset=275, first_bytes=78876432474256dc
 
 --- Check for 38-byte proposal ---
 REPRODUCED: 38-byte proposal present
 
 --- Check for 3-byte first packets ---
-NOT REPRODUCED: no 3-byte initial packets
+REPRODUCED: 3-byte initial packets present
   [ok]
 
 >>> 04_tools/check_python_tools.sh
@@ -1496,25 +1500,25 @@ encode_raw exit code: 0
 
 === Encoder log (first 20 lines) ===
 CONFIG: mode=voip bitrate=24000 complexity=10 fec=0 loss_pct=0
-  -> FINAL packet: ret=22, mode=1001
+  -> FINAL packet: frame_id=0 ret=22, mode=1001
 FRAME 0: len=22
-  -> FINAL packet: ret=24, mode=1001
+  -> FINAL packet: frame_id=1 ret=24, mode=1001
 FRAME 1: len=24
-  -> FINAL packet: ret=25, mode=1001
+  -> FINAL packet: frame_id=2 ret=25, mode=1001
 FRAME 2: len=25
-  -> FINAL packet: ret=25, mode=1001
+  -> FINAL packet: frame_id=3 ret=25, mode=1001
 FRAME 3: len=25
-  -> FINAL packet: ret=25, mode=1001
+  -> FINAL packet: frame_id=4 ret=25, mode=1001
 FRAME 4: len=25
-  -> FINAL packet: ret=25, mode=1001
+  -> FINAL packet: frame_id=5 ret=25, mode=1001
 FRAME 5: len=25
-  -> FINAL packet: ret=25, mode=1001
+  -> FINAL packet: frame_id=6 ret=25, mode=1001
 FRAME 6: len=25
-  -> FINAL packet: ret=25, mode=1001
+  -> FINAL packet: frame_id=7 ret=25, mode=1001
 FRAME 7: len=25
-  -> FINAL packet: ret=25, mode=1001
+  -> FINAL packet: frame_id=8 ret=25, mode=1001
 FRAME 8: len=25
-  -> FINAL packet: ret=25, mode=1001
+  -> FINAL packet: frame_id=9 ret=25, mode=1001
 
 === Parse with parse_packets.py ===
 
@@ -1535,26 +1539,26 @@ decode_raw exit code: 0
 total 216
 drwxr-xr-x 2 ishu ishu  4096 Oct  6 13:34 .
 drwxr-xr-x 4 ishu ishu  4096 Oct  6 13:32 ..
--rw-r--r-- 1 ishu ishu 96000 Oct  6 13:39 decoded.pcm
--rw-r--r-- 1 ishu ishu    18 Oct  6 13:39 decoder.log
--rw-r--r-- 1 ishu ishu  1446 Oct  6 13:39 encoded.bin
--rw-r--r-- 1 ishu ishu  2772 Oct  6 13:39 encoder.log
--rw-r--r-- 1 ishu ishu  3490 Oct  6 13:39 packets.txt
--rw-r--r-- 1 ishu ishu 96000 Oct  6 13:39 silence_1s.pcm
+-rw-r--r-- 1 ishu ishu 96000 Oct  6 23:37 decoded.pcm
+-rw-r--r-- 1 ishu ishu    18 Oct  6 23:37 decoder.log
+-rw-r--r-- 1 ishu ishu  1446 Oct  6 23:37 encoded.bin
+-rw-r--r-- 1 ishu ishu  3362 Oct  6 23:37 encoder.log
+-rw-r--r-- 1 ishu ishu  3490 Oct  6 23:37 packets.txt
+-rw-r--r-- 1 ishu ishu 96000 Oct  6 23:37 silence_1s.pcm
 
 Smoke test complete.
   [ok]
 
 >>> 05_freeze/make_patch.sh
 Wrote /home/ishu/research/redundant_celt_frame_steganography/patches/opus_encoder_instrumentation_from_worktree.patch
-54 /home/ishu/research/redundant_celt_frame_steganography/patches/opus_encoder_instrumentation_from_worktree.patch
+60 /home/ishu/research/redundant_celt_frame_steganography/patches/opus_encoder_instrumentation_from_worktree.patch
   [ok]
 
 >>> 05_freeze/checksums.sh
 === Checksums (SHA-256) ===
-Date: 2026-10-06T07:39:31Z
+Date: 2026-10-06T17:37:42Z
 
-82cf5a8c50c3f01817b533a336a7e66f7da07140201b20df8604e1cf64759118  /home/ishu/research/redundant_celt_frame_steganography/opus/src/opus_encoder.c
+3f6642c5c5d9af93cf694c717fc2992d644b49fb2b9e9b7145e80e329d051235  /home/ishu/research/redundant_celt_frame_steganography/opus/src/opus_encoder.c
 f38360928f9f7c9841e9d80bb86d3fa84972e992e76d92832c10f3c593865947  /home/ishu/research/redundant_celt_frame_steganography/opus/src/opus_decoder.c
 4fe8ac2d18886b91ebb470b1f5218dbf39507f3502b030619dba3c4c3ee47b10  /home/ishu/research/redundant_celt_frame_steganography/scripts/encode_raw.c
 e6a7a0ff4a1dd893df040facd24e5af8f9d9e80b79f542316ef31c203eb80d97  /home/ishu/research/redundant_celt_frame_steganography/scripts/decode_raw.c
@@ -1568,8 +1572,8 @@ Wrote /home/ishu/research/redundant_celt_frame_steganography/logs/phase_a/checks
   [ok]
 
 >>> 05_freeze/snapshot_tree.sh
-Wrote /home/ishu/research/redundant_celt_frame_steganography/snapshots/phase_a_snapshot_20261006T073931Z.tar.gz
--rw-r--r-- 1 ishu ishu 35M Oct  6 13:39 /home/ishu/research/redundant_celt_frame_steganography/snapshots/phase_a_snapshot_20261006T073931Z.tar.gz
+Wrote /home/ishu/research/redundant_celt_frame_steganography/snapshots/phase_a_snapshot_20261006T173743Z.tar.gz
+-rw-r--r-- 1 ishu ishu 35M Oct  6 23:37 /home/ishu/research/redundant_celt_frame_steganography/snapshots/phase_a_snapshot_20261006T173743Z.tar.gz
   [ok]
 
 ########## PHASE A COMPLETE ##########

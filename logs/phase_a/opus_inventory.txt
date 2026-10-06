@@ -10,28 +10,16 @@ AC_INIT([opus],[CURRENT_VERSION],[opus@xiph.org])
   $PACKAGE_NAME $PACKAGE_VERSION:  Automatic configuration OK.
 
 --- Git status (if repo) ---
-5ac6b3689c230f58e5ac5f601ccc48b4d78ce9dc
- M .gitignore
- M logs/phase_a/build_check.txt
- M logs/phase_a/inputs_inventory.txt
- M logs/phase_a/logs_inventory.txt
+79a0552d2e755a57f8f7d58e53a235b3d2d59b6b
  M logs/phase_a/opus_inventory.txt
+ M logs/phase_a/phase_a_run.log
  M logs/phase_a/repro_32k_audio/encoder.log
  M logs/phase_a/tree.txt
- M scripts/00_env/check_env.sh
  M scripts/00_env/env_report.txt
- M scripts/04_tools/check_python_tools.sh
- M scripts/04_tools/smoke_test_pipeline.sh
- M scripts/05_freeze/snapshot_tree.sh
- M scripts/run_phase_a.sh
-?? logs/phase_a/checksums.txt
-?? logs/phase_a/phase_a_run.log
-?? logs/phase_a/python_tools_check.txt
-?? logs/phase_a/repro_32k_audio/decoded.pcm
-?? logs/phase_a/repro_32k_audio/decoder.log
-?? logs/phase_a/repro_32k_audio/encoded.bin
-?? logs/phase_a/smoke_test/
-?? patches/opus_encoder_instrumentation_from_worktree.patch
-5ac6b36 chore: add phase_a scripts
+ M scripts/03_reproduce/reproduce_32k_audio.sh
+ M scripts/03_reproduce/verify_32k_audio.sh
+?? logs/phase_a/repro_32k_audio/packets.txt
+?? scripts/00_repair.sh
+79a0552 feat: finish phase a
 
 --- Instrumented file presence ---
