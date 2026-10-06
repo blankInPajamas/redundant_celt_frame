@@ -1,0 +1,120 @@
+=== Python tools check ===
+ROOT=/home/ishu/research/redundant_celt_frame_steganography
+TOOLS=/home/ishu/research/redundant_celt_frame_steganography/scripts
+
+FOUND: /home/ishu/research/redundant_celt_frame_steganography/scripts/parse_packets.py
+--- head ---
+#!/usr/bin/env python3
+import struct
+import sys
+
+def parse_packets(filename):
+    with open(filename, "rb") as f:
+        data = f.read()
+
+    print(f"File: {filename}")
+    print(f"Total size: {len(data)} bytes\n")
+
+    offset = 0
+    frame_idx = 0
+    packets = []
+
+    while offset + 4 <= len(data):
+        pkt_len = struct.unpack("<I", data[offset:offset+4])[0]
+        offset += 4
+        if offset + pkt_len > len(data):
+            print(f"Frame {frame_idx}: truncated (need {pkt_len}, have {len(data)-offset})")
+            break
+        packet = data[offset:offset+pkt_len]
+        packets.append((frame_idx, offset, packet))
+        print(f"Frame {frame_idx}: pkt_len={pkt_len}, pkt_offset={offset}, "
+              f"first_bytes={packet[:8].hex()}")
+--- syntax check ---
+OK
+--- imports check ---
+imports: ['struct', 'sys']
+
+FOUND: /home/ishu/research/redundant_celt_frame_steganography/scripts/automate.py
+--- head ---
+import re
+import sys
+
+logfile = sys.argv[1] if len(sys.argv) > 1 else "logs/encode_test01_audio32k.log"
+with open(logfile) as f:
+    lines = f.readlines()
+
+final_by_id = {}
+redundancy = []
+
+# NOTE: requires patch 0002-fix-frame-correlation.patch to be applied —
+# it adds a `frame_id` shared between the REDUNDANCY and FINAL packet log
+# lines. Without that patch, REDUNDANCY's `frame=` field is a count of
+# redundancy EVENTS, not a real frame index, and cannot be safely joined
+# against FINAL packet lines by position (see README changelog / commit
+# notes for why the old version of this script was unreliable beyond a
+# single redundancy event per file).
+
+for line in lines:
+    m = re.search(r"FINAL packet: frame_id=(\d+) ret=(\d+), mode=(\d+)", line)
+    if m:
+        frame_id = int(m.group(1))
+        final_by_id[frame_id] = (int(m.group(2)), int(m.group(3)))
+        continue
+    m = re.search(
+--- syntax check ---
+OK
+--- imports check ---
+imports: ['re', 'sys']
+
+FOUND: /home/ishu/research/redundant_celt_frame_steganography/scripts/modify_packet.py
+--- head ---
+#!/usr/bin/env python3
+import struct
+import sys
+
+def modify_packet(infile, outfile, frame_idx, byte_offset, new_value=None):
+    with open(infile, "rb") as f:
+        data = f.read()
+
+    offset = 0
+    current_frame = 0
+    out = bytearray()
+
+    while offset + 4 <= len(data):
+        pkt_len = struct.unpack("<I", data[offset:offset+4])[0]
+        header = data[offset:offset+4]
+        offset += 4
+        packet = bytearray(data[offset:offset+pkt_len])
+
+        if current_frame == frame_idx:
+            if byte_offset < len(packet):
+                old = packet[byte_offset]
+                if new_value is None:
+                    new_value = old ^ 0xFF
+                packet[byte_offset] = new_value
+                print(f"Frame {frame_idx}: modified byte {byte_offset}: "
+--- syntax check ---
+OK
+--- imports check ---
+imports: ['struct', 'sys']
+
+FOUND: /home/ishu/research/redundant_celt_frame_steganography/scripts/parse_bitstream.py
+--- head ---
+import struct
+
+with open("data/bitstreams/hybrid_try.bit", "rb") as f:
+    data = f.read()
+
+print(f"Total file size: {len(data)} bytes")
+offset = 0
+frame_idx = 0
+while offset + 4 <= len(data):
+    pkt_len = struct.unpack(">I", data[offset:offset+4])[0]
+    print(f"Frame {frame_idx}: pkt_len={pkt_len}, pkt_offset={offset+4}")
+    offset += 4 + pkt_len + 8
+    frame_idx += 1
+--- syntax check ---
+OK
+--- imports check ---
+imports: ['struct']
+

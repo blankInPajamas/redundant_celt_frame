@@ -1,18 +1,17 @@
 #!/usr/bin/env bash
-# smoke_test_pipeline.sh — end-to-end smoke test of the pipeline
 set -euo pipefail
-
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 cd "$ROOT"
 
-LOG_DIR="$ROOT/logs/phase_a"
-mkdir -p "$LOG_DIR"
-
-OUT="logs/phase_a/smoke_test"
+TOOLS="$ROOT/scripts"
+OPUS_LIB="$ROOT/opus/.libs"
+OUT="$ROOT/logs/phase_a/smoke_test"
 mkdir -p "$OUT"
 
-# Create a tiny 1-second silence input if none exists
+export LD_LIBRARY_PATH="$OPUS_LIB:${LD_LIBRARY_PATH:-}"
+
+# Create a 1-second silence PCM if none exists
 TMP_PCM="$OUT/silence_1s.pcm"
 python3 - <<PY
 import struct
@@ -21,18 +20,34 @@ with open("$TMP_PCM", "wb") as f:
 print("wrote $TMP_PCM")
 PY
 
-echo "=== Encode ==="
-./encode_raw --application voip --bitrate 24000 --samplerate 48000 --channels 1 \
-  "$TMP_PCM" "$OUT/encoded.bin" 2> "$OUT/encoder.log" || {
-    echo "encode_raw failed"; exit 1;
-  }
+echo
+echo "=== encode_raw usage (for reference) ==="
+"$TOOLS/encode_raw" 2>&1 | head -n 5 || true
+echo
 
-echo "=== Parse ==="
-python3 parse_packets.py "$OUT/encoded.bin" > "$OUT/packets.txt"
-head -n 5 "$OUT/packets.txt"
+echo "=== Encode: voip mode, 24 kbps ==="
+"$TOOLS/encode_raw" "$TMP_PCM" "$OUT/encoded.bin" voip 24000 \
+  2> "$OUT/encoder.log"
+echo "encode_raw exit code: $?"
 
+echo
+echo "=== Encoder log (first 20 lines) ==="
+head -n 20 "$OUT/encoder.log"
+
+echo
+echo "=== Parse with parse_packets.py ==="
+python3 "$TOOLS/parse_packets.py" "$OUT/encoded.bin" > "$OUT/packets.txt" 2>&1 || {
+  echo "parse_packets.py failed:"; cat "$OUT/packets.txt"; }
+
+echo
+echo "=== First 10 parsed packets ==="
+head -n 10 "$OUT/packets.txt" || true
+
+echo
 echo "=== Decode ==="
-./decode_raw "$OUT/encoded.bin" "$OUT/decoded.pcm" 2> "$OUT/decoder.log"
+"$TOOLS/decode_raw" "$OUT/encoded.bin" "$OUT/decoded.pcm" 2> "$OUT/decoder.log"
+echo "decode_raw exit code: $?"
 ls -la "$OUT"
 
+echo
 echo "Smoke test complete."

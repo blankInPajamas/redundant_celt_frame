@@ -8,21 +8,17 @@ DATE=$(date -u +%Y%m%dT%H%M%SZ)
 OUT="$ROOT/snapshots/phase_a_snapshot_${DATE}.tar.gz"
 mkdir -p "$ROOT/snapshots"
 
-tar \
-  --exclude='.git' \
-  --exclude='*/opus/.git' \
-  --exclude='*.o' \
-  --exclude='*.lo' \
-  --exclude='*.la' \
-  --exclude='.libs' \
-  --exclude='snapshots' \
-  -czf "$OUT" \
-  -C "$ROOT" \
-  data logs scripts patches opus/src opus/celt opus/silk \
-  README.md DRAFT.md drafts 2>/dev/null || \
-tar -czf "$OUT" \
-  --exclude='.git' --exclude='snapshots' \
-  -C "$ROOT" .
+tar --exclude='.venv' \
+    --exclude='.git' \
+    --exclude='.vscode' \
+    --exclude='snapshots' \
+    --exclude='*.o' --exclude='*.lo' --exclude='*.la' \
+    --exclude='.libs' --exclude='.deps' \
+    --exclude='opus/autom4te.cache' \
+    -czf "$OUT" \
+    -C "$ROOT" \
+    data logs scripts patches drafts papers opus/src opus/celt opus/silk opus/include \
+    README.md DRAFT.md 2>/dev/null
 
 echo "Wrote $OUT"
 ls -lh "$OUT"

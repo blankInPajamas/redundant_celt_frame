@@ -32,8 +32,19 @@ mkdir -p "$(dirname "$OUT")"
       printf "%-12s NOT FOUND\n" "$t"
     fi
   done
-  echo
-  echo "--- Python packages ---"
+  
+  echo "--- Python (system) ---"
+  python3 --version
+
+  echo "--- Python (venv if active) ---"
+  if [ -n "${VIRTUAL_ENV:-}" ]; then
+    echo "VIRTUAL_ENV=$VIRTUAL_ENV"
+    python --version
+  else
+    echo "(no venv active)"
+  fi
+
+  echo "--- Python packages (in current python) ---"
   python3 - <<'PY'
 import importlib
 for m in ("numpy", "scipy", "soundfile", "matplotlib"):

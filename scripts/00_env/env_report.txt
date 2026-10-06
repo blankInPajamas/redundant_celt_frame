@@ -1,5 +1,5 @@
 === Phase A Environment Report ===
-Date: 2026-10-06T07:20:33Z
+Date: 2026-10-06T07:39:29Z
 Host: Linux archlinux 7.0.12-arch1-1 #1 SMP PREEMPT_DYNAMIC Wed, 10 Jun 2026 08:58:02 +0000 x86_64 GNU/Linux
 
 --- Working directory ---
@@ -14,14 +14,18 @@ automake     automake (GNU automake) 1.18.1
 libtool      libtool (GNU libtool) 2.6.1
 pkg-config   2.5.1
 python3      Python 3.14.5
-pip3         NOT FOUND
+pip3         pip 26.1.1 from /home/ishu/research/redundant_celt_frame_steganography/.venv/lib/python3.14/site-packages/pip (python 3.14)
 git          git version 2.54.0
-
---- Python packages ---
-numpy        NOT INSTALLED (No module named 'numpy')
-scipy        NOT INSTALLED (No module named 'scipy')
-soundfile    NOT INSTALLED (No module named 'soundfile')
-matplotlib   NOT INSTALLED (No module named 'matplotlib')
+--- Python (system) ---
+Python 3.14.5
+--- Python (venv if active) ---
+VIRTUAL_ENV=/home/ishu/research/redundant_celt_frame_steganography/.venv
+Python 3.14.5
+--- Python packages (in current python) ---
+numpy        2.5.3
+scipy        1.18.1
+soundfile    0.14.0
+matplotlib   3.11.2
 
 --- Disk usage ---
 Filesystem      Size  Used Avail Use% Mounted on
@@ -43,7 +47,7 @@ Core(s) per socket:                      4
 Socket(s):                               1
 Stepping:                                12
 Microcode version:                       0x100
-CPU(s) scaling MHz:                      89%
+CPU(s) scaling MHz:                      59%
 CPU max MHz:                             4600.0000
 CPU min MHz:                             400.0000
 BogoMIPS:                                3999.93

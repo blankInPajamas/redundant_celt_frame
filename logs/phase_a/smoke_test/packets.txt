@@ -1,0 +1,55 @@
+File: /home/ishu/research/redundant_celt_frame_steganography/logs/phase_a/smoke_test/encoded.bin
+Total size: 1446 bytes
+
+Frame 0: pkt_len=22, pkt_offset=4, first_bytes=780be4c136ecc58d
+Frame 1: pkt_len=24, pkt_offset=30, first_bytes=7807c97227e144ea
+Frame 2: pkt_len=25, pkt_offset=58, first_bytes=7807c979c8c957c0
+Frame 3: pkt_len=25, pkt_offset=87, first_bytes=7807c979c8c957c0
+Frame 4: pkt_len=25, pkt_offset=116, first_bytes=7807c979c8c957c0
+Frame 5: pkt_len=25, pkt_offset=145, first_bytes=7807c979c8c957c0
+Frame 6: pkt_len=25, pkt_offset=174, first_bytes=7807c979c8c957c0
+Frame 7: pkt_len=25, pkt_offset=203, first_bytes=7807c979c8c957c0
+Frame 8: pkt_len=25, pkt_offset=232, first_bytes=7807c979c8c957c0
+Frame 9: pkt_len=25, pkt_offset=261, first_bytes=7807c979c8c957c0
+Frame 10: pkt_len=25, pkt_offset=290, first_bytes=7807c979c8c957c0
+Frame 11: pkt_len=25, pkt_offset=319, first_bytes=7807c979c8c957c0
+Frame 12: pkt_len=25, pkt_offset=348, first_bytes=7807c979c8c957c0
+Frame 13: pkt_len=25, pkt_offset=377, first_bytes=7807c979c8c957c0
+Frame 14: pkt_len=25, pkt_offset=406, first_bytes=7807c979c8c957c0
+Frame 15: pkt_len=25, pkt_offset=435, first_bytes=7807c979c8c957c0
+Frame 16: pkt_len=25, pkt_offset=464, first_bytes=7807c979c8c957c0
+Frame 17: pkt_len=25, pkt_offset=493, first_bytes=7807c979c8c957c0
+Frame 18: pkt_len=25, pkt_offset=522, first_bytes=7807c979c8c957c0
+Frame 19: pkt_len=25, pkt_offset=551, first_bytes=7807c979c8c957c0
+Frame 20: pkt_len=25, pkt_offset=580, first_bytes=7807c979c8c957c0
+Frame 21: pkt_len=25, pkt_offset=609, first_bytes=7807c979c8c957c0
+Frame 22: pkt_len=25, pkt_offset=638, first_bytes=7807c979c8c957c0
+Frame 23: pkt_len=25, pkt_offset=667, first_bytes=7807c979c8c957c0
+Frame 24: pkt_len=25, pkt_offset=696, first_bytes=7807c979c8c957c0
+Frame 25: pkt_len=25, pkt_offset=725, first_bytes=7807c979c8c957c0
+Frame 26: pkt_len=25, pkt_offset=754, first_bytes=7807c979c8c957c0
+Frame 27: pkt_len=25, pkt_offset=783, first_bytes=7807c979c8c957c0
+Frame 28: pkt_len=25, pkt_offset=812, first_bytes=7807c979c8c957c0
+Frame 29: pkt_len=25, pkt_offset=841, first_bytes=7807c979c8c957c0
+Frame 30: pkt_len=25, pkt_offset=870, first_bytes=7807c979c8c957c0
+Frame 31: pkt_len=25, pkt_offset=899, first_bytes=7807c979c8c957c0
+Frame 32: pkt_len=25, pkt_offset=928, first_bytes=7807c979c8c957c0
+Frame 33: pkt_len=25, pkt_offset=957, first_bytes=7807c979c8c957c0
+Frame 34: pkt_len=25, pkt_offset=986, first_bytes=7807c979c8c957c0
+Frame 35: pkt_len=25, pkt_offset=1015, first_bytes=7807c979c8c957c0
+Frame 36: pkt_len=25, pkt_offset=1044, first_bytes=7807c979c8c957c0
+Frame 37: pkt_len=25, pkt_offset=1073, first_bytes=7807c979c8c957c0
+Frame 38: pkt_len=25, pkt_offset=1102, first_bytes=7807c979c8c957c0
+Frame 39: pkt_len=25, pkt_offset=1131, first_bytes=7807c979c8c957c0
+Frame 40: pkt_len=25, pkt_offset=1160, first_bytes=7807c979c8c957c0
+Frame 41: pkt_len=25, pkt_offset=1189, first_bytes=7807c979c8c957c0
+Frame 42: pkt_len=25, pkt_offset=1218, first_bytes=7807c979c8c957c0
+Frame 43: pkt_len=25, pkt_offset=1247, first_bytes=7807c979c8c957c0
+Frame 44: pkt_len=25, pkt_offset=1276, first_bytes=7807c979c8c957c0
+Frame 45: pkt_len=25, pkt_offset=1305, first_bytes=7807c979c8c957c0
+Frame 46: pkt_len=25, pkt_offset=1334, first_bytes=7807c979c8c957c0
+Frame 47: pkt_len=25, pkt_offset=1363, first_bytes=7807c979c8c957c0
+Frame 48: pkt_len=25, pkt_offset=1392, first_bytes=7807c979c8c957c0
+Frame 49: pkt_len=25, pkt_offset=1421, first_bytes=7807c979c8c957c0
+
+Total packets: 50

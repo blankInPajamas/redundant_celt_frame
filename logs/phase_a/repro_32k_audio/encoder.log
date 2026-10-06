@@ -1,1 +1,1008 @@
-Unknown mode: --bitrate
+CONFIG: mode=audio bitrate=32000 complexity=10 fec=0 loss_pct=0
+  -> FINAL packet: ret=3, mode=1002
+FRAME 0: len=3
+  -> FINAL packet: ret=3, mode=1002
+FRAME 1: len=3
+  -> FINAL packet: ret=3, mode=1002
+FRAME 2: len=3
+REDUNDANCY: frame=1 mode=1001 celt_to_silk=1 bytes=38
+  -> redundant frame written at offset 1237, size 38
+  -> FINAL packet: ret=84, mode=1001
+FRAME 3: len=84
+  -> FINAL packet: ret=72, mode=1001
+FRAME 4: len=72
+  -> FINAL packet: ret=82, mode=1001
+FRAME 5: len=82
+  -> FINAL packet: ret=67, mode=1001
+FRAME 6: len=67
+  -> FINAL packet: ret=54, mode=1001
+FRAME 7: len=54
+  -> FINAL packet: ret=64, mode=1001
+FRAME 8: len=64
+  -> FINAL packet: ret=69, mode=1001
+FRAME 9: len=69
+  -> FINAL packet: ret=64, mode=1001
+FRAME 10: len=64
+  -> FINAL packet: ret=67, mode=1001
+FRAME 11: len=67
+  -> FINAL packet: ret=61, mode=1001
+FRAME 12: len=61
+  -> FINAL packet: ret=62, mode=1001
+FRAME 13: len=62
+  -> FINAL packet: ret=68, mode=1001
+FRAME 14: len=68
+  -> FINAL packet: ret=63, mode=1001
+FRAME 15: len=63
+  -> FINAL packet: ret=64, mode=1001
+FRAME 16: len=64
+  -> FINAL packet: ret=61, mode=1001
+FRAME 17: len=61
+  -> FINAL packet: ret=61, mode=1001
+FRAME 18: len=61
+  -> FINAL packet: ret=85, mode=1001
+FRAME 19: len=85
+  -> FINAL packet: ret=87, mode=1001
+FRAME 20: len=87
+  -> FINAL packet: ret=72, mode=1001
+FRAME 21: len=72
+  -> FINAL packet: ret=62, mode=1001
+FRAME 22: len=62
+  -> FINAL packet: ret=67, mode=1001
+FRAME 23: len=67
+  -> FINAL packet: ret=63, mode=1001
+FRAME 24: len=63
+  -> FINAL packet: ret=63, mode=1001
+FRAME 25: len=63
+  -> FINAL packet: ret=63, mode=1001
+FRAME 26: len=63
+  -> FINAL packet: ret=63, mode=1001
+FRAME 27: len=63
+  -> FINAL packet: ret=63, mode=1001
+FRAME 28: len=63
+  -> FINAL packet: ret=59, mode=1001
+FRAME 29: len=59
+  -> FINAL packet: ret=64, mode=1001
+FRAME 30: len=64
+  -> FINAL packet: ret=59, mode=1001
+FRAME 31: len=59
+  -> FINAL packet: ret=65, mode=1001
+FRAME 32: len=65
+  -> FINAL packet: ret=68, mode=1001
+FRAME 33: len=68
+  -> FINAL packet: ret=64, mode=1001
+FRAME 34: len=64
+  -> FINAL packet: ret=69, mode=1001
+FRAME 35: len=69
+  -> FINAL packet: ret=70, mode=1001
+FRAME 36: len=70
+  -> FINAL packet: ret=80, mode=1001
+FRAME 37: len=80
+  -> FINAL packet: ret=62, mode=1001
+FRAME 38: len=62
+  -> FINAL packet: ret=71, mode=1001
+FRAME 39: len=71
+  -> FINAL packet: ret=59, mode=1001
+FRAME 40: len=59
+  -> FINAL packet: ret=67, mode=1001
+FRAME 41: len=67
+  -> FINAL packet: ret=77, mode=1001
+FRAME 42: len=77
+  -> FINAL packet: ret=81, mode=1001
+FRAME 43: len=81
+  -> FINAL packet: ret=80, mode=1001
+FRAME 44: len=80
+  -> FINAL packet: ret=72, mode=1001
+FRAME 45: len=72
+  -> FINAL packet: ret=82, mode=1001
+FRAME 46: len=82
+  -> FINAL packet: ret=79, mode=1001
+FRAME 47: len=79
+  -> FINAL packet: ret=83, mode=1001
+FRAME 48: len=83
+  -> FINAL packet: ret=81, mode=1001
+FRAME 49: len=81
+  -> FINAL packet: ret=76, mode=1001
+FRAME 50: len=76
+  -> FINAL packet: ret=77, mode=1001
+FRAME 51: len=77
+  -> FINAL packet: ret=88, mode=1001
+FRAME 52: len=88
+  -> FINAL packet: ret=84, mode=1001
+FRAME 53: len=84
+  -> FINAL packet: ret=84, mode=1001
+FRAME 54: len=84
+  -> FINAL packet: ret=86, mode=1001
+FRAME 55: len=86
+  -> FINAL packet: ret=95, mode=1001
+FRAME 56: len=95
+  -> FINAL packet: ret=83, mode=1001
+FRAME 57: len=83
+  -> FINAL packet: ret=72, mode=1001
+FRAME 58: len=72
+  -> FINAL packet: ret=85, mode=1001
+FRAME 59: len=85
+  -> FINAL packet: ret=90, mode=1001
+FRAME 60: len=90
+  -> FINAL packet: ret=86, mode=1001
+FRAME 61: len=86
+  -> FINAL packet: ret=71, mode=1001
+FRAME 62: len=71
+  -> FINAL packet: ret=84, mode=1001
+FRAME 63: len=84
+  -> FINAL packet: ret=87, mode=1001
+FRAME 64: len=87
+  -> FINAL packet: ret=93, mode=1001
+FRAME 65: len=93
+  -> FINAL packet: ret=80, mode=1001
+FRAME 66: len=80
+  -> FINAL packet: ret=86, mode=1001
+FRAME 67: len=86
+  -> FINAL packet: ret=87, mode=1001
+FRAME 68: len=87
+  -> FINAL packet: ret=87, mode=1001
+FRAME 69: len=87
+  -> FINAL packet: ret=96, mode=1001
+FRAME 70: len=96
+  -> FINAL packet: ret=75, mode=1001
+FRAME 71: len=75
+  -> FINAL packet: ret=81, mode=1001
+FRAME 72: len=81
+  -> FINAL packet: ret=70, mode=1001
+FRAME 73: len=70
+  -> FINAL packet: ret=86, mode=1001
+FRAME 74: len=86
+  -> FINAL packet: ret=82, mode=1001
+FRAME 75: len=82
+  -> FINAL packet: ret=76, mode=1001
+FRAME 76: len=76
+  -> FINAL packet: ret=79, mode=1001
+FRAME 77: len=79
+  -> FINAL packet: ret=88, mode=1001
+FRAME 78: len=88
+  -> FINAL packet: ret=85, mode=1001
+FRAME 79: len=85
+  -> FINAL packet: ret=83, mode=1001
+FRAME 80: len=83
+  -> FINAL packet: ret=89, mode=1001
+FRAME 81: len=89
+  -> FINAL packet: ret=77, mode=1001
+FRAME 82: len=77
+  -> FINAL packet: ret=83, mode=1001
+FRAME 83: len=83
+  -> FINAL packet: ret=73, mode=1001
+FRAME 84: len=73
+  -> FINAL packet: ret=86, mode=1001
+FRAME 85: len=86
+  -> FINAL packet: ret=85, mode=1001
+FRAME 86: len=85
+  -> FINAL packet: ret=87, mode=1001
+FRAME 87: len=87
+  -> FINAL packet: ret=82, mode=1001
+FRAME 88: len=82
+  -> FINAL packet: ret=87, mode=1001
+FRAME 89: len=87
+  -> FINAL packet: ret=90, mode=1001
+FRAME 90: len=90
+  -> FINAL packet: ret=75, mode=1001
+FRAME 91: len=75
+  -> FINAL packet: ret=68, mode=1001
+FRAME 92: len=68
+  -> FINAL packet: ret=68, mode=1001
+FRAME 93: len=68
+  -> FINAL packet: ret=66, mode=1001
+FRAME 94: len=66
+  -> FINAL packet: ret=91, mode=1001
+FRAME 95: len=91
+  -> FINAL packet: ret=78, mode=1001
+FRAME 96: len=78
+  -> FINAL packet: ret=80, mode=1001
+FRAME 97: len=80
+  -> FINAL packet: ret=73, mode=1001
+FRAME 98: len=73
+  -> FINAL packet: ret=77, mode=1001
+FRAME 99: len=77
+  -> FINAL packet: ret=76, mode=1001
+FRAME 100: len=76
+  -> FINAL packet: ret=79, mode=1001
+FRAME 101: len=79
+  -> FINAL packet: ret=70, mode=1001
+FRAME 102: len=70
+  -> FINAL packet: ret=71, mode=1001
+FRAME 103: len=71
+  -> FINAL packet: ret=70, mode=1001
+FRAME 104: len=70
+  -> FINAL packet: ret=72, mode=1001
+FRAME 105: len=72
+  -> FINAL packet: ret=71, mode=1001
+FRAME 106: len=71
+  -> FINAL packet: ret=81, mode=1001
+FRAME 107: len=81
+  -> FINAL packet: ret=76, mode=1001
+FRAME 108: len=76
+  -> FINAL packet: ret=69, mode=1001
+FRAME 109: len=69
+  -> FINAL packet: ret=77, mode=1001
+FRAME 110: len=77
+  -> FINAL packet: ret=81, mode=1001
+FRAME 111: len=81
+  -> FINAL packet: ret=83, mode=1001
+FRAME 112: len=83
+  -> FINAL packet: ret=79, mode=1001
+FRAME 113: len=79
+  -> FINAL packet: ret=81, mode=1001
+FRAME 114: len=81
+  -> FINAL packet: ret=78, mode=1001
+FRAME 115: len=78
+  -> FINAL packet: ret=99, mode=1001
+FRAME 116: len=99
+  -> FINAL packet: ret=98, mode=1001
+FRAME 117: len=98
+  -> FINAL packet: ret=92, mode=1001
+FRAME 118: len=92
+  -> FINAL packet: ret=87, mode=1001
+FRAME 119: len=87
+  -> FINAL packet: ret=94, mode=1001
+FRAME 120: len=94
+  -> FINAL packet: ret=79, mode=1001
+FRAME 121: len=79
+  -> FINAL packet: ret=78, mode=1001
+FRAME 122: len=78
+  -> FINAL packet: ret=86, mode=1001
+FRAME 123: len=86
+  -> FINAL packet: ret=90, mode=1001
+FRAME 124: len=90
+  -> FINAL packet: ret=89, mode=1001
+FRAME 125: len=89
+  -> FINAL packet: ret=98, mode=1001
+FRAME 126: len=98
+  -> FINAL packet: ret=93, mode=1001
+FRAME 127: len=93
+  -> FINAL packet: ret=85, mode=1001
+FRAME 128: len=85
+  -> FINAL packet: ret=87, mode=1001
+FRAME 129: len=87
+  -> FINAL packet: ret=83, mode=1001
+FRAME 130: len=83
+  -> FINAL packet: ret=88, mode=1001
+FRAME 131: len=88
+  -> FINAL packet: ret=83, mode=1001
+FRAME 132: len=83
+  -> FINAL packet: ret=80, mode=1001
+FRAME 133: len=80
+  -> FINAL packet: ret=80, mode=1001
+FRAME 134: len=80
+  -> FINAL packet: ret=80, mode=1001
+FRAME 135: len=80
+  -> FINAL packet: ret=78, mode=1001
+FRAME 136: len=78
+  -> FINAL packet: ret=77, mode=1001
+FRAME 137: len=77
+  -> FINAL packet: ret=77, mode=1001
+FRAME 138: len=77
+  -> FINAL packet: ret=82, mode=1001
+FRAME 139: len=82
+  -> FINAL packet: ret=98, mode=1001
+FRAME 140: len=98
+  -> FINAL packet: ret=92, mode=1001
+FRAME 141: len=92
+  -> FINAL packet: ret=80, mode=1001
+FRAME 142: len=80
+  -> FINAL packet: ret=68, mode=1001
+FRAME 143: len=68
+  -> FINAL packet: ret=65, mode=1001
+FRAME 144: len=65
+  -> FINAL packet: ret=65, mode=1001
+FRAME 145: len=65
+  -> FINAL packet: ret=63, mode=1001
+FRAME 146: len=63
+  -> FINAL packet: ret=79, mode=1001
+FRAME 147: len=79
+  -> FINAL packet: ret=82, mode=1001
+FRAME 148: len=82
+  -> FINAL packet: ret=83, mode=1001
+FRAME 149: len=83
+  -> FINAL packet: ret=75, mode=1001
+FRAME 150: len=75
+  -> FINAL packet: ret=78, mode=1001
+FRAME 151: len=78
+  -> FINAL packet: ret=72, mode=1001
+FRAME 152: len=72
+  -> FINAL packet: ret=67, mode=1001
+FRAME 153: len=67
+  -> FINAL packet: ret=64, mode=1001
+FRAME 154: len=64
+  -> FINAL packet: ret=69, mode=1001
+FRAME 155: len=69
+  -> FINAL packet: ret=69, mode=1001
+FRAME 156: len=69
+  -> FINAL packet: ret=68, mode=1001
+FRAME 157: len=68
+  -> FINAL packet: ret=66, mode=1001
+FRAME 158: len=66
+  -> FINAL packet: ret=63, mode=1001
+FRAME 159: len=63
+  -> FINAL packet: ret=64, mode=1001
+FRAME 160: len=64
+  -> FINAL packet: ret=65, mode=1001
+FRAME 161: len=65
+  -> FINAL packet: ret=70, mode=1001
+FRAME 162: len=70
+  -> FINAL packet: ret=72, mode=1001
+FRAME 163: len=72
+  -> FINAL packet: ret=61, mode=1001
+FRAME 164: len=61
+  -> FINAL packet: ret=65, mode=1001
+FRAME 165: len=65
+  -> FINAL packet: ret=71, mode=1001
+FRAME 166: len=71
+  -> FINAL packet: ret=68, mode=1001
+FRAME 167: len=68
+  -> FINAL packet: ret=74, mode=1001
+FRAME 168: len=74
+  -> FINAL packet: ret=73, mode=1001
+FRAME 169: len=73
+  -> FINAL packet: ret=70, mode=1001
+FRAME 170: len=70
+  -> FINAL packet: ret=73, mode=1001
+FRAME 171: len=73
+  -> FINAL packet: ret=75, mode=1001
+FRAME 172: len=75
+  -> FINAL packet: ret=78, mode=1001
+FRAME 173: len=78
+  -> FINAL packet: ret=77, mode=1001
+FRAME 174: len=77
+  -> FINAL packet: ret=82, mode=1001
+FRAME 175: len=82
+  -> FINAL packet: ret=95, mode=1001
+FRAME 176: len=95
+  -> FINAL packet: ret=87, mode=1001
+FRAME 177: len=87
+  -> FINAL packet: ret=88, mode=1001
+FRAME 178: len=88
+  -> FINAL packet: ret=84, mode=1001
+FRAME 179: len=84
+  -> FINAL packet: ret=88, mode=1001
+FRAME 180: len=88
+  -> FINAL packet: ret=82, mode=1001
+FRAME 181: len=82
+  -> FINAL packet: ret=84, mode=1001
+FRAME 182: len=84
+  -> FINAL packet: ret=74, mode=1001
+FRAME 183: len=74
+  -> FINAL packet: ret=75, mode=1001
+FRAME 184: len=75
+  -> FINAL packet: ret=76, mode=1001
+FRAME 185: len=76
+  -> FINAL packet: ret=74, mode=1001
+FRAME 186: len=74
+  -> FINAL packet: ret=84, mode=1001
+FRAME 187: len=84
+  -> FINAL packet: ret=86, mode=1001
+FRAME 188: len=86
+  -> FINAL packet: ret=92, mode=1001
+FRAME 189: len=92
+  -> FINAL packet: ret=91, mode=1001
+FRAME 190: len=91
+  -> FINAL packet: ret=77, mode=1001
+FRAME 191: len=77
+  -> FINAL packet: ret=97, mode=1001
+FRAME 192: len=97
+  -> FINAL packet: ret=87, mode=1001
+FRAME 193: len=87
+  -> FINAL packet: ret=79, mode=1001
+FRAME 194: len=79
+  -> FINAL packet: ret=84, mode=1001
+FRAME 195: len=84
+  -> FINAL packet: ret=77, mode=1001
+FRAME 196: len=77
+  -> FINAL packet: ret=81, mode=1001
+FRAME 197: len=81
+  -> FINAL packet: ret=95, mode=1001
+FRAME 198: len=95
+  -> FINAL packet: ret=89, mode=1001
+FRAME 199: len=89
+  -> FINAL packet: ret=88, mode=1001
+FRAME 200: len=88
+  -> FINAL packet: ret=84, mode=1001
+FRAME 201: len=84
+  -> FINAL packet: ret=81, mode=1001
+FRAME 202: len=81
+  -> FINAL packet: ret=86, mode=1001
+FRAME 203: len=86
+  -> FINAL packet: ret=85, mode=1001
+FRAME 204: len=85
+  -> FINAL packet: ret=83, mode=1001
+FRAME 205: len=83
+  -> FINAL packet: ret=79, mode=1001
+FRAME 206: len=79
+  -> FINAL packet: ret=77, mode=1001
+FRAME 207: len=77
+  -> FINAL packet: ret=79, mode=1001
+FRAME 208: len=79
+  -> FINAL packet: ret=72, mode=1001
+FRAME 209: len=72
+  -> FINAL packet: ret=71, mode=1001
+FRAME 210: len=71
+  -> FINAL packet: ret=66, mode=1001
+FRAME 211: len=66
+  -> FINAL packet: ret=73, mode=1001
+FRAME 212: len=73
+  -> FINAL packet: ret=61, mode=1001
+FRAME 213: len=61
+  -> FINAL packet: ret=75, mode=1001
+FRAME 214: len=75
+  -> FINAL packet: ret=80, mode=1001
+FRAME 215: len=80
+  -> FINAL packet: ret=81, mode=1001
+FRAME 216: len=81
+  -> FINAL packet: ret=75, mode=1001
+FRAME 217: len=75
+  -> FINAL packet: ret=70, mode=1001
+FRAME 218: len=70
+  -> FINAL packet: ret=70, mode=1001
+FRAME 219: len=70
+  -> FINAL packet: ret=61, mode=1001
+FRAME 220: len=61
+  -> FINAL packet: ret=65, mode=1001
+FRAME 221: len=65
+  -> FINAL packet: ret=62, mode=1001
+FRAME 222: len=62
+  -> FINAL packet: ret=66, mode=1001
+FRAME 223: len=66
+  -> FINAL packet: ret=65, mode=1001
+FRAME 224: len=65
+  -> FINAL packet: ret=62, mode=1001
+FRAME 225: len=62
+  -> FINAL packet: ret=71, mode=1001
+FRAME 226: len=71
+  -> FINAL packet: ret=73, mode=1001
+FRAME 227: len=73
+  -> FINAL packet: ret=68, mode=1001
+FRAME 228: len=68
+  -> FINAL packet: ret=69, mode=1001
+FRAME 229: len=69
+  -> FINAL packet: ret=67, mode=1001
+FRAME 230: len=67
+  -> FINAL packet: ret=64, mode=1001
+FRAME 231: len=64
+  -> FINAL packet: ret=71, mode=1001
+FRAME 232: len=71
+  -> FINAL packet: ret=70, mode=1001
+FRAME 233: len=70
+  -> FINAL packet: ret=67, mode=1001
+FRAME 234: len=67
+  -> FINAL packet: ret=64, mode=1001
+FRAME 235: len=64
+  -> FINAL packet: ret=65, mode=1001
+FRAME 236: len=65
+  -> FINAL packet: ret=66, mode=1001
+FRAME 237: len=66
+  -> FINAL packet: ret=72, mode=1001
+FRAME 238: len=72
+  -> FINAL packet: ret=68, mode=1001
+FRAME 239: len=68
+  -> FINAL packet: ret=69, mode=1001
+FRAME 240: len=69
+  -> FINAL packet: ret=69, mode=1001
+FRAME 241: len=69
+  -> FINAL packet: ret=74, mode=1001
+FRAME 242: len=74
+  -> FINAL packet: ret=78, mode=1001
+FRAME 243: len=78
+  -> FINAL packet: ret=89, mode=1001
+FRAME 244: len=89
+  -> FINAL packet: ret=84, mode=1001
+FRAME 245: len=84
+  -> FINAL packet: ret=83, mode=1001
+FRAME 246: len=83
+  -> FINAL packet: ret=83, mode=1001
+FRAME 247: len=83
+  -> FINAL packet: ret=78, mode=1001
+FRAME 248: len=78
+  -> FINAL packet: ret=78, mode=1001
+FRAME 249: len=78
+  -> FINAL packet: ret=84, mode=1001
+FRAME 250: len=84
+  -> FINAL packet: ret=84, mode=1001
+FRAME 251: len=84
+  -> FINAL packet: ret=85, mode=1001
+FRAME 252: len=85
+  -> FINAL packet: ret=89, mode=1001
+FRAME 253: len=89
+  -> FINAL packet: ret=84, mode=1001
+FRAME 254: len=84
+  -> FINAL packet: ret=94, mode=1001
+FRAME 255: len=94
+  -> FINAL packet: ret=93, mode=1001
+FRAME 256: len=93
+  -> FINAL packet: ret=81, mode=1001
+FRAME 257: len=81
+  -> FINAL packet: ret=88, mode=1001
+FRAME 258: len=88
+  -> FINAL packet: ret=82, mode=1001
+FRAME 259: len=82
+  -> FINAL packet: ret=89, mode=1001
+FRAME 260: len=89
+  -> FINAL packet: ret=79, mode=1001
+FRAME 261: len=79
+  -> FINAL packet: ret=85, mode=1001
+FRAME 262: len=85
+  -> FINAL packet: ret=69, mode=1001
+FRAME 263: len=69
+  -> FINAL packet: ret=69, mode=1001
+FRAME 264: len=69
+  -> FINAL packet: ret=76, mode=1001
+FRAME 265: len=76
+  -> FINAL packet: ret=61, mode=1001
+FRAME 266: len=61
+  -> FINAL packet: ret=68, mode=1001
+FRAME 267: len=68
+  -> FINAL packet: ret=72, mode=1001
+FRAME 268: len=72
+  -> FINAL packet: ret=88, mode=1001
+FRAME 269: len=88
+  -> FINAL packet: ret=87, mode=1001
+FRAME 270: len=87
+  -> FINAL packet: ret=79, mode=1001
+FRAME 271: len=79
+  -> FINAL packet: ret=75, mode=1001
+FRAME 272: len=75
+  -> FINAL packet: ret=85, mode=1001
+FRAME 273: len=85
+  -> FINAL packet: ret=90, mode=1001
+FRAME 274: len=90
+  -> FINAL packet: ret=83, mode=1001
+FRAME 275: len=83
+  -> FINAL packet: ret=86, mode=1001
+FRAME 276: len=86
+  -> FINAL packet: ret=82, mode=1001
+FRAME 277: len=82
+  -> FINAL packet: ret=77, mode=1001
+FRAME 278: len=77
+  -> FINAL packet: ret=89, mode=1001
+FRAME 279: len=89
+  -> FINAL packet: ret=88, mode=1001
+FRAME 280: len=88
+  -> FINAL packet: ret=84, mode=1001
+FRAME 281: len=84
+  -> FINAL packet: ret=87, mode=1001
+FRAME 282: len=87
+  -> FINAL packet: ret=81, mode=1001
+FRAME 283: len=81
+  -> FINAL packet: ret=83, mode=1001
+FRAME 284: len=83
+  -> FINAL packet: ret=80, mode=1001
+FRAME 285: len=80
+  -> FINAL packet: ret=78, mode=1001
+FRAME 286: len=78
+  -> FINAL packet: ret=81, mode=1001
+FRAME 287: len=81
+  -> FINAL packet: ret=84, mode=1001
+FRAME 288: len=84
+  -> FINAL packet: ret=81, mode=1001
+FRAME 289: len=81
+  -> FINAL packet: ret=90, mode=1001
+FRAME 290: len=90
+  -> FINAL packet: ret=83, mode=1001
+FRAME 291: len=83
+  -> FINAL packet: ret=86, mode=1001
+FRAME 292: len=86
+  -> FINAL packet: ret=78, mode=1001
+FRAME 293: len=78
+  -> FINAL packet: ret=72, mode=1001
+FRAME 294: len=72
+  -> FINAL packet: ret=67, mode=1001
+FRAME 295: len=67
+  -> FINAL packet: ret=66, mode=1001
+FRAME 296: len=66
+  -> FINAL packet: ret=68, mode=1001
+FRAME 297: len=68
+  -> FINAL packet: ret=67, mode=1001
+FRAME 298: len=67
+  -> FINAL packet: ret=67, mode=1001
+FRAME 299: len=67
+  -> FINAL packet: ret=65, mode=1001
+FRAME 300: len=65
+  -> FINAL packet: ret=66, mode=1001
+FRAME 301: len=66
+  -> FINAL packet: ret=65, mode=1001
+FRAME 302: len=65
+  -> FINAL packet: ret=71, mode=1001
+FRAME 303: len=71
+  -> FINAL packet: ret=67, mode=1001
+FRAME 304: len=67
+  -> FINAL packet: ret=65, mode=1001
+FRAME 305: len=65
+  -> FINAL packet: ret=71, mode=1001
+FRAME 306: len=71
+  -> FINAL packet: ret=71, mode=1001
+FRAME 307: len=71
+  -> FINAL packet: ret=66, mode=1001
+FRAME 308: len=66
+  -> FINAL packet: ret=70, mode=1001
+FRAME 309: len=70
+  -> FINAL packet: ret=66, mode=1001
+FRAME 310: len=66
+  -> FINAL packet: ret=69, mode=1001
+FRAME 311: len=69
+  -> FINAL packet: ret=66, mode=1001
+FRAME 312: len=66
+  -> FINAL packet: ret=66, mode=1001
+FRAME 313: len=66
+  -> FINAL packet: ret=66, mode=1001
+FRAME 314: len=66
+  -> FINAL packet: ret=69, mode=1001
+FRAME 315: len=69
+  -> FINAL packet: ret=67, mode=1001
+FRAME 316: len=67
+  -> FINAL packet: ret=67, mode=1001
+FRAME 317: len=67
+  -> FINAL packet: ret=80, mode=1001
+FRAME 318: len=80
+  -> FINAL packet: ret=85, mode=1001
+FRAME 319: len=85
+  -> FINAL packet: ret=81, mode=1001
+FRAME 320: len=81
+  -> FINAL packet: ret=83, mode=1001
+FRAME 321: len=83
+  -> FINAL packet: ret=78, mode=1001
+FRAME 322: len=78
+  -> FINAL packet: ret=74, mode=1001
+FRAME 323: len=74
+  -> FINAL packet: ret=76, mode=1001
+FRAME 324: len=76
+  -> FINAL packet: ret=85, mode=1001
+FRAME 325: len=85
+  -> FINAL packet: ret=81, mode=1001
+FRAME 326: len=81
+  -> FINAL packet: ret=85, mode=1001
+FRAME 327: len=85
+  -> FINAL packet: ret=86, mode=1001
+FRAME 328: len=86
+  -> FINAL packet: ret=80, mode=1001
+FRAME 329: len=80
+  -> FINAL packet: ret=87, mode=1001
+FRAME 330: len=87
+  -> FINAL packet: ret=99, mode=1001
+FRAME 331: len=99
+  -> FINAL packet: ret=90, mode=1001
+FRAME 332: len=90
+  -> FINAL packet: ret=81, mode=1001
+FRAME 333: len=81
+  -> FINAL packet: ret=78, mode=1001
+FRAME 334: len=78
+  -> FINAL packet: ret=78, mode=1001
+FRAME 335: len=78
+  -> FINAL packet: ret=82, mode=1001
+FRAME 336: len=82
+  -> FINAL packet: ret=77, mode=1001
+FRAME 337: len=77
+  -> FINAL packet: ret=73, mode=1001
+FRAME 338: len=73
+  -> FINAL packet: ret=95, mode=1001
+FRAME 339: len=95
+  -> FINAL packet: ret=91, mode=1001
+FRAME 340: len=91
+  -> FINAL packet: ret=89, mode=1001
+FRAME 341: len=89
+  -> FINAL packet: ret=89, mode=1001
+FRAME 342: len=89
+  -> FINAL packet: ret=85, mode=1001
+FRAME 343: len=85
+  -> FINAL packet: ret=94, mode=1001
+FRAME 344: len=94
+  -> FINAL packet: ret=87, mode=1001
+FRAME 345: len=87
+  -> FINAL packet: ret=92, mode=1001
+FRAME 346: len=92
+  -> FINAL packet: ret=78, mode=1001
+FRAME 347: len=78
+  -> FINAL packet: ret=85, mode=1001
+FRAME 348: len=85
+  -> FINAL packet: ret=83, mode=1001
+FRAME 349: len=83
+  -> FINAL packet: ret=82, mode=1001
+FRAME 350: len=82
+  -> FINAL packet: ret=78, mode=1001
+FRAME 351: len=78
+  -> FINAL packet: ret=76, mode=1001
+FRAME 352: len=76
+  -> FINAL packet: ret=85, mode=1001
+FRAME 353: len=85
+  -> FINAL packet: ret=89, mode=1001
+FRAME 354: len=89
+  -> FINAL packet: ret=87, mode=1001
+FRAME 355: len=87
+  -> FINAL packet: ret=76, mode=1001
+FRAME 356: len=76
+  -> FINAL packet: ret=89, mode=1001
+FRAME 357: len=89
+  -> FINAL packet: ret=76, mode=1001
+FRAME 358: len=76
+  -> FINAL packet: ret=78, mode=1001
+FRAME 359: len=78
+  -> FINAL packet: ret=84, mode=1001
+FRAME 360: len=84
+  -> FINAL packet: ret=82, mode=1001
+FRAME 361: len=82
+  -> FINAL packet: ret=82, mode=1001
+FRAME 362: len=82
+  -> FINAL packet: ret=80, mode=1001
+FRAME 363: len=80
+  -> FINAL packet: ret=79, mode=1001
+FRAME 364: len=79
+  -> FINAL packet: ret=76, mode=1001
+FRAME 365: len=76
+  -> FINAL packet: ret=75, mode=1001
+FRAME 366: len=75
+  -> FINAL packet: ret=80, mode=1001
+FRAME 367: len=80
+  -> FINAL packet: ret=79, mode=1001
+FRAME 368: len=79
+  -> FINAL packet: ret=78, mode=1001
+FRAME 369: len=78
+  -> FINAL packet: ret=77, mode=1001
+FRAME 370: len=77
+  -> FINAL packet: ret=83, mode=1001
+FRAME 371: len=83
+  -> FINAL packet: ret=79, mode=1001
+FRAME 372: len=79
+  -> FINAL packet: ret=78, mode=1001
+FRAME 373: len=78
+  -> FINAL packet: ret=68, mode=1001
+FRAME 374: len=68
+  -> FINAL packet: ret=70, mode=1001
+FRAME 375: len=70
+  -> FINAL packet: ret=78, mode=1001
+FRAME 376: len=78
+  -> FINAL packet: ret=80, mode=1001
+FRAME 377: len=80
+  -> FINAL packet: ret=86, mode=1001
+FRAME 378: len=86
+  -> FINAL packet: ret=77, mode=1001
+FRAME 379: len=77
+  -> FINAL packet: ret=83, mode=1001
+FRAME 380: len=83
+  -> FINAL packet: ret=81, mode=1001
+FRAME 381: len=81
+  -> FINAL packet: ret=83, mode=1001
+FRAME 382: len=83
+  -> FINAL packet: ret=81, mode=1001
+FRAME 383: len=81
+  -> FINAL packet: ret=83, mode=1001
+FRAME 384: len=83
+  -> FINAL packet: ret=81, mode=1001
+FRAME 385: len=81
+  -> FINAL packet: ret=89, mode=1001
+FRAME 386: len=89
+  -> FINAL packet: ret=77, mode=1001
+FRAME 387: len=77
+  -> FINAL packet: ret=74, mode=1001
+FRAME 388: len=74
+  -> FINAL packet: ret=74, mode=1001
+FRAME 389: len=74
+  -> FINAL packet: ret=76, mode=1001
+FRAME 390: len=76
+  -> FINAL packet: ret=76, mode=1001
+FRAME 391: len=76
+  -> FINAL packet: ret=81, mode=1001
+FRAME 392: len=81
+  -> FINAL packet: ret=68, mode=1001
+FRAME 393: len=68
+  -> FINAL packet: ret=76, mode=1001
+FRAME 394: len=76
+  -> FINAL packet: ret=77, mode=1001
+FRAME 395: len=77
+  -> FINAL packet: ret=78, mode=1001
+FRAME 396: len=78
+  -> FINAL packet: ret=81, mode=1001
+FRAME 397: len=81
+  -> FINAL packet: ret=79, mode=1001
+FRAME 398: len=79
+  -> FINAL packet: ret=74, mode=1001
+FRAME 399: len=74
+  -> FINAL packet: ret=81, mode=1001
+FRAME 400: len=81
+  -> FINAL packet: ret=71, mode=1001
+FRAME 401: len=71
+  -> FINAL packet: ret=67, mode=1001
+FRAME 402: len=67
+  -> FINAL packet: ret=69, mode=1001
+FRAME 403: len=69
+  -> FINAL packet: ret=66, mode=1001
+FRAME 404: len=66
+  -> FINAL packet: ret=69, mode=1001
+FRAME 405: len=69
+  -> FINAL packet: ret=66, mode=1001
+FRAME 406: len=66
+  -> FINAL packet: ret=67, mode=1001
+FRAME 407: len=67
+  -> FINAL packet: ret=71, mode=1001
+FRAME 408: len=71
+  -> FINAL packet: ret=69, mode=1001
+FRAME 409: len=69
+  -> FINAL packet: ret=66, mode=1001
+FRAME 410: len=66
+  -> FINAL packet: ret=72, mode=1001
+FRAME 411: len=72
+  -> FINAL packet: ret=76, mode=1001
+FRAME 412: len=76
+  -> FINAL packet: ret=79, mode=1001
+FRAME 413: len=79
+  -> FINAL packet: ret=71, mode=1001
+FRAME 414: len=71
+  -> FINAL packet: ret=76, mode=1001
+FRAME 415: len=76
+  -> FINAL packet: ret=64, mode=1001
+FRAME 416: len=64
+  -> FINAL packet: ret=64, mode=1001
+FRAME 417: len=64
+  -> FINAL packet: ret=67, mode=1001
+FRAME 418: len=67
+  -> FINAL packet: ret=89, mode=1001
+FRAME 419: len=89
+  -> FINAL packet: ret=91, mode=1001
+FRAME 420: len=91
+  -> FINAL packet: ret=94, mode=1001
+FRAME 421: len=94
+  -> FINAL packet: ret=87, mode=1001
+FRAME 422: len=87
+  -> FINAL packet: ret=82, mode=1001
+FRAME 423: len=82
+  -> FINAL packet: ret=88, mode=1001
+FRAME 424: len=88
+  -> FINAL packet: ret=84, mode=1001
+FRAME 425: len=84
+  -> FINAL packet: ret=88, mode=1001
+FRAME 426: len=88
+  -> FINAL packet: ret=85, mode=1001
+FRAME 427: len=85
+  -> FINAL packet: ret=86, mode=1001
+FRAME 428: len=86
+  -> FINAL packet: ret=89, mode=1001
+FRAME 429: len=89
+  -> FINAL packet: ret=88, mode=1001
+FRAME 430: len=88
+  -> FINAL packet: ret=89, mode=1001
+FRAME 431: len=89
+  -> FINAL packet: ret=84, mode=1001
+FRAME 432: len=84
+  -> FINAL packet: ret=83, mode=1001
+FRAME 433: len=83
+  -> FINAL packet: ret=75, mode=1001
+FRAME 434: len=75
+  -> FINAL packet: ret=71, mode=1001
+FRAME 435: len=71
+  -> FINAL packet: ret=72, mode=1001
+FRAME 436: len=72
+  -> FINAL packet: ret=66, mode=1001
+FRAME 437: len=66
+  -> FINAL packet: ret=62, mode=1001
+FRAME 438: len=62
+  -> FINAL packet: ret=68, mode=1001
+FRAME 439: len=68
+  -> FINAL packet: ret=72, mode=1001
+FRAME 440: len=72
+  -> FINAL packet: ret=68, mode=1001
+FRAME 441: len=68
+  -> FINAL packet: ret=76, mode=1001
+FRAME 442: len=76
+  -> FINAL packet: ret=86, mode=1001
+FRAME 443: len=86
+  -> FINAL packet: ret=72, mode=1001
+FRAME 444: len=72
+  -> FINAL packet: ret=78, mode=1001
+FRAME 445: len=78
+  -> FINAL packet: ret=67, mode=1001
+FRAME 446: len=67
+  -> FINAL packet: ret=66, mode=1001
+FRAME 447: len=66
+  -> FINAL packet: ret=72, mode=1001
+FRAME 448: len=72
+  -> FINAL packet: ret=69, mode=1001
+FRAME 449: len=69
+  -> FINAL packet: ret=90, mode=1001
+FRAME 450: len=90
+  -> FINAL packet: ret=86, mode=1001
+FRAME 451: len=86
+  -> FINAL packet: ret=88, mode=1001
+FRAME 452: len=88
+  -> FINAL packet: ret=88, mode=1001
+FRAME 453: len=88
+  -> FINAL packet: ret=87, mode=1001
+FRAME 454: len=87
+  -> FINAL packet: ret=89, mode=1001
+FRAME 455: len=89
+  -> FINAL packet: ret=88, mode=1001
+FRAME 456: len=88
+  -> FINAL packet: ret=100, mode=1001
+FRAME 457: len=100
+  -> FINAL packet: ret=93, mode=1001
+FRAME 458: len=93
+  -> FINAL packet: ret=100, mode=1001
+FRAME 459: len=100
+  -> FINAL packet: ret=90, mode=1001
+FRAME 460: len=90
+  -> FINAL packet: ret=94, mode=1001
+FRAME 461: len=94
+  -> FINAL packet: ret=93, mode=1001
+FRAME 462: len=93
+  -> FINAL packet: ret=92, mode=1001
+FRAME 463: len=92
+  -> FINAL packet: ret=92, mode=1001
+FRAME 464: len=92
+  -> FINAL packet: ret=85, mode=1001
+FRAME 465: len=85
+  -> FINAL packet: ret=80, mode=1001
+FRAME 466: len=80
+  -> FINAL packet: ret=72, mode=1001
+FRAME 467: len=72
+  -> FINAL packet: ret=76, mode=1001
+FRAME 468: len=76
+  -> FINAL packet: ret=72, mode=1001
+FRAME 469: len=72
+  -> FINAL packet: ret=83, mode=1001
+FRAME 470: len=83
+  -> FINAL packet: ret=86, mode=1001
+FRAME 471: len=86
+  -> FINAL packet: ret=74, mode=1001
+FRAME 472: len=74
+  -> FINAL packet: ret=81, mode=1001
+FRAME 473: len=81
+  -> FINAL packet: ret=79, mode=1001
+FRAME 474: len=79
+  -> FINAL packet: ret=88, mode=1001
+FRAME 475: len=88
+  -> FINAL packet: ret=78, mode=1001
+FRAME 476: len=78
+  -> FINAL packet: ret=84, mode=1001
+FRAME 477: len=84
+  -> FINAL packet: ret=87, mode=1001
+FRAME 478: len=87
+  -> FINAL packet: ret=83, mode=1001
+FRAME 479: len=83
+  -> FINAL packet: ret=91, mode=1001
+FRAME 480: len=91
+  -> FINAL packet: ret=90, mode=1001
+FRAME 481: len=90
+  -> FINAL packet: ret=96, mode=1001
+FRAME 482: len=96
+  -> FINAL packet: ret=87, mode=1001
+FRAME 483: len=87
+  -> FINAL packet: ret=86, mode=1001
+FRAME 484: len=86
+  -> FINAL packet: ret=90, mode=1001
+FRAME 485: len=90
+  -> FINAL packet: ret=73, mode=1001
+FRAME 486: len=73
+  -> FINAL packet: ret=74, mode=1001
+FRAME 487: len=74
+  -> FINAL packet: ret=61, mode=1001
+FRAME 488: len=61
+  -> FINAL packet: ret=74, mode=1001
+FRAME 489: len=74
+  -> FINAL packet: ret=78, mode=1001
+FRAME 490: len=78
+  -> FINAL packet: ret=63, mode=1001
+FRAME 491: len=63
+  -> FINAL packet: ret=62, mode=1001
+FRAME 492: len=62
+  -> FINAL packet: ret=66, mode=1001
+FRAME 493: len=66
+  -> FINAL packet: ret=61, mode=1001
+FRAME 494: len=61
+  -> FINAL packet: ret=64, mode=1001
+FRAME 495: len=64
+  -> FINAL packet: ret=65, mode=1001
+FRAME 496: len=65
+  -> FINAL packet: ret=65, mode=1001
+FRAME 497: len=65
+  -> FINAL packet: ret=80, mode=1001
+FRAME 498: len=80
+  -> FINAL packet: ret=61, mode=1001
+FRAME 499: len=61
+  -> FINAL packet: ret=56, mode=1001
+FRAME 500: len=56
+  -> FINAL packet: ret=43, mode=1001
+FRAME 501: len=43
+Encoded 502 packets

@@ -2,20 +2,21 @@
 
 --- Custom tools ---
 FOUND: /home/ishu/research/redundant_celt_frame_steganography/scripts/encode_raw
-/home/ishu/research/redundant_celt_frame_steganography/scripts/encode_raw: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=0ae10a0a411d5caef6c54bbfc24ac34b24cf88cb, for GNU/Linux 4.4.0, not stripped
-	linux-vdso.so.1 (0x00007f76374ec000)
-	libopus.so.0 => /usr/lib/libopus.so.0 (0x00007f7637000000)
-	libm.so.6 => /usr/lib/libm.so.6 (0x00007f7636ecd000)
-	libc.so.6 => /usr/lib/libc.so.6 (0x00007f7636c00000)
-	/lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f76374ee000)
+/home/ishu/research/redundant_celt_frame_steganography/scripts/encode_raw: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=f0635be02599622962dc6b818a0013eb0347dab9, for GNU/Linux 4.4.0, with debug_info, not stripped
+	linux-vdso.so.1 (0x00007fd66f996000)
+	libm.so.6 => /usr/lib/libm.so.6 (0x00007fd66f7cd000)
+	libc.so.6 => /usr/lib/libc.so.6 (0x00007fd66f400000)
+	/lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007fd66f998000)
 
 FOUND: /home/ishu/research/redundant_celt_frame_steganography/scripts/decode_raw
-/home/ishu/research/redundant_celt_frame_steganography/scripts/decode_raw: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=c53f32b727a19ff004dc728353832bf6a31bf902, for GNU/Linux 4.4.0, not stripped
-	linux-vdso.so.1 (0x00007f5a34859000)
-	libopus.so.0 => /usr/lib/libopus.so.0 (0x00007f5a34400000)
-	libm.so.6 => /usr/lib/libm.so.6 (0x00007f5a342cd000)
-	libc.so.6 => /usr/lib/libc.so.6 (0x00007f5a34000000)
-	/lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f5a3485b000)
+/home/ishu/research/redundant_celt_frame_steganography/scripts/decode_raw: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=8bf79ab66348dd5956669165432d19cd9d843392, for GNU/Linux 4.4.0, with debug_info, not stripped
+	linux-vdso.so.1 (0x00007f52acfa2000)
+	libm.so.6 => /usr/lib/libm.so.6 (0x00007f52ace0e000)
+	libc.so.6 => /usr/lib/libc.so.6 (0x00007f52aca00000)
+	/lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f52acfa4000)
+
+--- Which libopus does encode_raw link against? ---
+Expected: /home/ishu/research/redundant_celt_frame_steganography/opus/.libs/libopus.so.0
 
 --- opus_demo ---
 FOUND: /home/ishu/research/redundant_celt_frame_steganography/opus/opus_demo

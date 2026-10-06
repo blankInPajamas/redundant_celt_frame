@@ -18,6 +18,7 @@ data/output/
 # note) only if you want the exact logs backing the paper's reported
 # numbers preserved; otherwise ignore them too and regenerate.
 logs/*.log
+*.tar.gz
 
 # Copyrighted source PDFs — do not redistribute
 papers/

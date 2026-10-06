@@ -10,16 +10,28 @@ AC_INIT([opus],[CURRENT_VERSION],[opus@xiph.org])
   $PACKAGE_NAME $PACKAGE_VERSION:  Automatic configuration OK.
 
 --- Git status (if repo) ---
-4264f0fbe8b6f71d0b76467282584661890d8ef3
-?? logs/
-?? scripts/00_env/
-?? scripts/01_inventory/
-?? scripts/02_build/
-?? scripts/03_reproduce/
-?? scripts/04_tools/
-?? scripts/05_freeze/
-?? scripts/logs/
-?? scripts/run_phase_a.sh
-4264f0f feat: add fix-frame patch and modified setup script
+5ac6b3689c230f58e5ac5f601ccc48b4d78ce9dc
+ M .gitignore
+ M logs/phase_a/build_check.txt
+ M logs/phase_a/inputs_inventory.txt
+ M logs/phase_a/logs_inventory.txt
+ M logs/phase_a/opus_inventory.txt
+ M logs/phase_a/repro_32k_audio/encoder.log
+ M logs/phase_a/tree.txt
+ M scripts/00_env/check_env.sh
+ M scripts/00_env/env_report.txt
+ M scripts/04_tools/check_python_tools.sh
+ M scripts/04_tools/smoke_test_pipeline.sh
+ M scripts/05_freeze/snapshot_tree.sh
+ M scripts/run_phase_a.sh
+?? logs/phase_a/checksums.txt
+?? logs/phase_a/phase_a_run.log
+?? logs/phase_a/python_tools_check.txt
+?? logs/phase_a/repro_32k_audio/decoded.pcm
+?? logs/phase_a/repro_32k_audio/decoder.log
+?? logs/phase_a/repro_32k_audio/encoded.bin
+?? logs/phase_a/smoke_test/
+?? patches/opus_encoder_instrumentation_from_worktree.patch
+5ac6b36 chore: add phase_a scripts
 
 --- Instrumented file presence ---

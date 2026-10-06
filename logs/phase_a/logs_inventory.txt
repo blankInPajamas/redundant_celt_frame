@@ -4,6 +4,9 @@
 ./logs/encode_test01_audio32k.log
 ./logs/phase_a/instrumentation_check.txt
 ./logs/phase_a/logs_inventory.txt
+./logs/phase_a/phase_a_run.log
+./logs/phase_a/python_tools_check.txt
+./logs/phase_a/repro_32k_audio/encoder.log
 ./logs/redundancy_hybrid.log
 
 --- Encoded .bin outputs ---
@@ -16,8 +19,12 @@
 ./data/bitstreams/encoded/test01_voip24k.bin
 ./data/bitstreams/encoded/transition_test.bin
 ./data/bitstreams/modified/test01_modified.bin
+./logs/phase_a/repro_32k_audio/encoded.bin
+./logs/phase_a/smoke_test/encoded.bin
 
 --- Decoded PCM outputs ---
+./logs/phase_a/repro_32k_audio/decoded.pcm
+./logs/phase_a/smoke_test/decoded.pcm
 
 --- Any 32 kbps audio run artifacts ---
 ./data/bitstreams/encoded/test01_audio32k.bin

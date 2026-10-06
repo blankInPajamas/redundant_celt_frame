@@ -31,6 +31,31 @@
 ./data/pcm/spontaneous-speech-en-8.pcm                           432000 bytes  ~4.500s
 ./data/pcm/spontaneous-speech-en-9.pcm                           369792 bytes  ~3.852s
 ./data/pcm/transition_test.pcm                                  1678080 bytes  ~17.480s
+./logs/phase_a/repro_32k_audio/decoded.pcm                       963840 bytes  ~10.040s
+./logs/phase_a/smoke_test/decoded.pcm                             96000 bytes  ~1.000s
+./logs/phase_a/smoke_test/silence_1s.pcm                          96000 bytes  ~1.000s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-1234Hz-le-1ch-10S-20bit-extra.wav         74 bytes  ~0.001s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-44100Hz-2ch-32bit-float-be.wav       3586 bytes  ~0.037s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-44100Hz-2ch-32bit-float-le.wav       3586 bytes  ~0.037s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-44100Hz-be-1ch-4bytes.wav      17720 bytes  ~0.185s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-early-eof-no-data.wav         72 bytes  ~0.001s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-early-eof.wav       1024 bytes  ~0.011s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-incomplete-chunk.wav         13 bytes  ~0.000s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-rf64.wav      17756 bytes  ~0.185s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-44100Hz-le-1ch-4bytes.wav      17720 bytes  ~0.185s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-48000Hz-2ch-64bit-float-le-wavex.wav       7792 bytes  ~0.081s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-8000Hz-be-3ch-5S-24bit.wav         90 bytes  ~0.001s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-8000Hz-le-1ch-1byte-ulaw.wav         70 bytes  ~0.001s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-8000Hz-le-2ch-1byteu.wav       1644 bytes  ~0.017s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-24bit-inconsistent.wav         90 bytes  ~0.001s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-24bit-rf64.wav        126 bytes  ~0.001s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-24bit.wav         90 bytes  ~0.001s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-36bit.wav        120 bytes  ~0.001s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-45bit.wav        134 bytes  ~0.001s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-53bit.wav        150 bytes  ~0.002s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-64bit.wav        164 bytes  ~0.002s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-8000Hz-le-4ch-9S-12bit.wav        116 bytes  ~0.001s
+./.venv/lib/python3.14/site-packages/scipy/io/tests/data/test-8000Hz-le-5ch-9S-5bit.wav         89 bytes  ~0.001s
 
 --- Mozilla Spontaneous Speech references ---
 ./data/pcm/spontaneous-speech-en-10.pcm

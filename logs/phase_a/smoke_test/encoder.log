@@ -1,0 +1,102 @@
+CONFIG: mode=voip bitrate=24000 complexity=10 fec=0 loss_pct=0
+  -> FINAL packet: ret=22, mode=1001
+FRAME 0: len=22
+  -> FINAL packet: ret=24, mode=1001
+FRAME 1: len=24
+  -> FINAL packet: ret=25, mode=1001
+FRAME 2: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 3: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 4: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 5: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 6: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 7: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 8: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 9: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 10: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 11: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 12: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 13: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 14: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 15: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 16: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 17: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 18: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 19: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 20: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 21: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 22: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 23: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 24: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 25: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 26: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 27: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 28: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 29: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 30: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 31: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 32: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 33: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 34: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 35: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 36: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 37: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 38: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 39: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 40: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 41: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 42: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 43: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 44: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 45: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 46: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 47: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 48: len=25
+  -> FINAL packet: ret=25, mode=1001
+FRAME 49: len=25
+Encoded 50 packets
