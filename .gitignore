@@ -1,0 +1,35 @@
+# Cloned + patched upstream source — not versioned directly.
+# Reproduced via setup.sh from patches/0001-redundancy-instrumentation.patch
+opus/
+
+# Compiled binaries (rebuilt by setup.sh)
+scripts/encode_raw
+scripts/decode_raw
+
+# Large / regenerable data — see data/README.md for provenance and
+# regeneration commands for everything under this tree.
+data/raw/
+data/pcm/
+data/bitstreams/
+data/output/
+
+# Logs are experiment output, not source — regenerate via the commands
+# in README.md Section 10. Keep logs/ itself tracked (see data/README.md
+# note) only if you want the exact logs backing the paper's reported
+# numbers preserved; otherwise ignore them too and regenerate.
+logs/*.log
+
+# Copyrighted source PDFs — do not redistribute
+papers/
+
+# Work-in-progress writing, not part of the reproducible pipeline
+drafts/
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor/OS cruft
+.DS_Store
+*.swp
+.vscode/
