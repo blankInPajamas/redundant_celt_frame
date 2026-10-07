@@ -47,7 +47,7 @@ grep -n 'REDUNDANCY' "$ENC_LOG" || echo "(none)"
 
 echo
 echo "=== First 15 FRAME/FINAL lines ==="
-grep -n 'FRAME\|FINAL' "$ENC_LOG" | head -n 20
+awk '/FRAME|FINAL/ {print; n++; if (n>=20) exit}' "$ENC_LOG"
 
 echo
 echo "=== Parsing packets ==="

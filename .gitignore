@@ -58,3 +58,7 @@ papers/
 
 # ---- Error dumps ----
 *.err
+
+# ----- Extras ---
+snapshots/
+drafts/
