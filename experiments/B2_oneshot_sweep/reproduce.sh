@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 cd "$ROOT"
 
 OUT="$ROOT/logs/phase_b/B2"
@@ -13,10 +13,8 @@ echo "application,bitrate,frames,tail_frames,max_tail" > "$RESULTS"
 for app in voip audio lowdelay; do
   for br in 16000 20000 24000 28000 32000 40000 48000 64000; do
     bin="$OUT/${app}_${br}.bin"
-    log="$OUT/${app}_${br}.log"
-
     LD_LIBRARY_PATH="$ROOT/opus/.libs" scripts/encode_raw \
-      data/pcm/spontaneous-speech-en-1.pcm "$bin" "$app" "$br" 2> "$log"
+      data/pcm/spontaneous-speech-en-1.pcm "$bin" "$app" "$br" 2> /dev/null
 
     python3 - "$bin" "$app" "$br" >> "$RESULTS" <<'PY'
 import struct, sys

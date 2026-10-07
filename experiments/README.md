@@ -31,3 +31,37 @@ This regenerates every `results.csv` from scratch. It assumes:
 - `opus/` is a patched libopus tree at commit 503d81b1
 - `scripts/encode_raw` and `scripts/decode_raw` are built against it
 - `data/pcm/spontaneous-speech-en-*.pcm` are the 20 converted inputs
+
+# Reproducibility
+
+## Requirements
+
+- Arch Linux or Ubuntu 22.04+
+- gcc, make, autoconf, automake, libtool
+- Python 3.10+
+- ffmpeg
+
+## Steps
+
+1. Clone libopus:
+   git clone https://gitlab.xiph.org/xiph/opus.git opus
+   cd opus && git checkout 503d81b1 && cd ..
+
+2. Apply patches:
+   cd opus
+   for p in ../patches/000*.patch; do git apply "$p"; done
+   ./autogen.sh && ./configure && make -j"$(nproc)"
+   cd ..
+
+3. Build tools:
+   bash scripts/02_build/fix_libopus_binding.sh
+
+4. Convert test inputs:
+   for f in data/raw/*.mp3; do
+     ffmpeg -i "$f" -ac 1 -ar 48000 -f s16le "${f%.mp3}.pcm"
+   done
+
+5. Run all experiments:
+   bash scripts/experiments/run_experiments.sh
+
+All results are regenerated in logs/phase_b/.
