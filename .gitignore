@@ -1,41 +1,60 @@
-# Cloned + patched upstream source — not versioned directly.
-# Reproduced via setup.sh from patches/0001-redundancy-instrumentation.patch
+# =============================================================================
+# Reproducibility note
+# =============================================================================
+# Everything below is regenerable from the scripts in scripts/ and the
+# patches in patches/. The canonical entry point is:
+#   bash scripts/run_phase_a.sh
+# See README.md for the full pipeline.
+# =============================================================================
+
+# ---- Upstream source tree (rebuilt by scripts/setup.sh) ----
 opus/
 
-# Compiled binaries (rebuilt by setup.sh)
+# ---- Compiled binaries ----
 scripts/encode_raw
 scripts/decode_raw
 
-# Large / regenerable data — see data/README.md for provenance and
-# regeneration commands for everything under this tree.
+# ---- Large / regenerable data ----
 data/raw/
 data/pcm/
 data/bitstreams/
 data/output/
 
-# Logs are experiment output, not source — regenerate via the commands
-# in README.md Section 10. Keep logs/ itself tracked (see data/README.md
-# note) only if you want the exact logs backing the paper's reported
-# numbers preserved; otherwise ignore them too and regenerate.
-logs/*.log
-*.tar.gz
+# ---- Log output (regenerable); keep only the curated reference subset ----
+logs/
+!logs/reference/
+!logs/reference/**
 
-# Copyrighted source PDFs — do not redistribute
-papers/
-
-# Work-in-progress writing, not part of the reproducible pipeline
-drafts/
-
-# Python
+# ---- Python ----
 __pycache__/
 *.pyc
+.venv/
+venv/
 
-# Editor/OS cruft
+# ---- Editor / OS ----
 .DS_Store
 *.swp
+*.swo
 .vscode/
 
-# Individual files
-# *.log
+# ---- Archives ----
+*.tar.gz
+*.zip
+
+# ---- Binary artifacts anywhere ----
 *.bin
 *.pcm
+
+# ---- Copyrighted reference material ----
+papers/
+
+# ---- Build artifacts ----
+*.o
+*.lo
+*.la
+*.a
+*.so
+*.so.*
+
+# ---- Error dumps ----
+*.err
