@@ -1,0 +1,85 @@
+diff --git a/src/opus_encoder.c b/src/opus_encoder.c
+index d18d582f..92858b02 100644
+--- a/src/opus_encoder.c
++++ b/src/opus_encoder.c
+@@ -29,6 +29,7 @@
+ #include "config.h"
+ #endif
+ 
++#include <stdio.h>
+ #include <stdarg.h>
+ #include "celt.h"
+ #include "entenc.h"
+@@ -1710,13 +1711,18 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_val16 *pc
+     void *silk_enc;
+     CELTEncoder *celt_enc;
+     const CELTMode *celt_mode;
++    static int dbg_frame_counter = 0;
++    static int dbg_global_frame_id = 0;
++    int this_frame_id;
++    int dbg_redundancy_region_start = -1;
++    int dbg_redundancy_region_size  = -1;
+     int i;
+     int ret=0;
+     opus_int32 nBytes;
+     ec_enc enc;
+     int bytes_target;
+     int start_band = 0;
+-    int redundancy_bytes = 0; /* Number of bytes to use for redundancy frame */
++    int redundancy_bytes = 0;
+     int nb_compr_bytes;
+     opus_uint32 redundant_rng = 0;
+     int cutoff_Hz;
+@@ -1732,6 +1738,10 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_val16 *pc
+     VARDECL(opus_val16, tmp_prefill);
+     SAVE_STACK;
+ 
++    this_frame_id = dbg_global_frame_id++;
++    dbg_redundancy_region_start = -1;
++    dbg_redundancy_region_size  = -1;
++
+     st->rangeFinal = 0;
+     silk_enc = (char*)st+st->silk_enc_offset;
+     celt_enc = (CELTEncoder*)((char*)st+st->celt_enc_offset);
+@@ -2173,6 +2183,9 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_val16 *pc
+         if (redundancy)
+         {
+             int max_redundancy;
++            dbg_frame_counter++;
++            fprintf(stderr, "REDUNDANCY: event=%d frame_id=%d mode=%d celt_to_silk=%d bytes=%d\n",
++                     dbg_frame_counter, this_frame_id, st->mode, celt_to_silk, redundancy_bytes);
+             ec_enc_bit_logp(&enc, celt_to_silk, 1);
+             if (st->mode == MODE_HYBRID)
+             {
+@@ -2243,6 +2256,9 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_val16 *pc
+         celt_encoder_ctl(celt_enc, OPUS_SET_VBR(0));
+         celt_encoder_ctl(celt_enc, OPUS_SET_BITRATE(OPUS_BITRATE_MAX));
+         err = celt_encode_with_ec(celt_enc, pcm_buf, st->Fs/200, data+nb_compr_bytes, redundancy_bytes, NULL);
++        fprintf(stderr, "  -> redundant frame written at offset %d, size %d\n", nb_compr_bytes, redundancy_bytes);
++        dbg_redundancy_region_start = nb_compr_bytes;
++        dbg_redundancy_region_size  = redundancy_bytes;
+         if (err < 0)
+         {
+            RESTORE_STACK;
+@@ -2336,6 +2352,9 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_val16 *pc
+         celt_encode_with_ec(celt_enc, pcm_buf+st->channels*(frame_size-N2-N4), N4, dummy, 2, NULL);
+ 
+         err = celt_encode_with_ec(celt_enc, pcm_buf+st->channels*(frame_size-N2), N2, data+nb_compr_bytes, redundancy_bytes, NULL);
++        fprintf(stderr, "  -> redundant frame written at offset %d, size %d\n", nb_compr_bytes, redundancy_bytes);
++        dbg_redundancy_region_start = nb_compr_bytes;
++        dbg_redundancy_region_size  = redundancy_bytes;
+         if (err < 0)
+         {
+            RESTORE_STACK;
+@@ -2455,6 +2474,11 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_val16 *pc
+        ret = max_data_bytes;
+     }
+     RESTORE_STACK;
++    fprintf(stderr, "  -> FINAL packet: frame_id=%d ret=%d, mode=%d, "
++            "redundancy_region=[%d,%d)\n",
++            this_frame_id, ret, st->mode,
++            dbg_redundancy_region_start,
++            dbg_redundancy_region_start < 0 ? -1 : dbg_redundancy_region_start + dbg_redundancy_region_size);
+     return ret;
+ }
+ 

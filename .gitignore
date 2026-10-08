@@ -9,6 +9,7 @@
 
 # ---- Upstream source tree (rebuilt by scripts/setup.sh) ----
 opus/
+opus*/
 
 # ---- Compiled binaries ----
 scripts/encode_raw
@@ -62,3 +63,4 @@ papers/
 # ----- Extras ---
 snapshots/
 drafts/
+backups/

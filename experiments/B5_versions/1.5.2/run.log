@@ -1,0 +1,26 @@
+========== Running B0_decisive ==========
+B.0 done. Results: /home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B0/results.csv
+structural (decode fails): 0 bytes: []
+inert (decode succeeds, PCM unchanged): 46 bytes: [30, 31, 33, 35, 36, 38, 39, 41, 42, 43, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83]
+content (decode succeeds, PCM changed): 38 bytes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 32, 34, 37, 40, 44, 45, 46, 47]
+
+Covert channel capacity: 46 bytes = 368 bits per transition
+Inert region is NOT contiguous; gaps: {32, 34, 37, 40, 44, 45, 46, 47}
+
+========== Running B1_multitransition ==========
+B.1 done. Results: /home/ishu/research/redundant_celt_frame_steganography/experiments/B1_multitransition/results.csv
+
+========== Running B2_oneshot_sweep ==========
+B.2 done. Results: /home/ishu/research/redundant_celt_frame_steganography/experiments/B2_oneshot_sweep/results.csv
+
+========== Running B3_tail_scaling ==========
+B.3 done. Results: /home/ishu/research/redundant_celt_frame_steganography/experiments/B3_tail_scaling/results.csv
+
+========== Running B4_payload ==========
+embedded 27 bytes into frame 3 (tail_start=48, tail_len=36)
+PASS: modified decode identical to baseline
+Expected: HybridModeOfOpus:CELT+SILK
+Recovered: HybridModeOfOpus:CELT+SILK
+PASS: message recovered exactly
+
+All experiments complete.
