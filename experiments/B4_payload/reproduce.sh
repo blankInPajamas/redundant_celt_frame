@@ -33,7 +33,8 @@ else
 fi
 
 # 6. Extract message and write to file (avoids shell null stripping)
-python3 "$SCRIPT_DIR/extract.py" "$OUT/modified.bin" "$TARGET_FRAME" > "$OUT/recovered.txt"
+python3 "$SCRIPT_DIR/extract.py" "$OUT/modified.bin" > "$OUT/recovered.txt"
+cp "$OUT/recovered.txt" "$SCRIPT_DIR/recovered.txt"
 
 echo "Expected: $MESSAGE"
 echo "Recovered: $(cat "$OUT/recovered.txt")"
