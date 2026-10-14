@@ -75,6 +75,10 @@ payload_size,stream_type,detector,label,score
 0,clean,chi_squared,clean,4.0000
 0,clean,entropy,clean,0.6690
 0,clean,blind_outlier,stego,6.3957
+0,clean,trailing_zero_count,clean,36.0000
+0,clean,chi_squared,clean,4.0000
+0,clean,entropy,clean,0.6690
+0,clean,blind_outlier,clean,2.3139
 1,stego,trailing_zero_count,stego,34.0000
 1,stego,chi_squared,stego,6.0000
 1,stego,entropy,stego,0.9976
@@ -151,6 +155,10 @@ payload_size,stream_type,detector,label,score
 1,stego,chi_squared,stego,6.0000
 1,stego,entropy,stego,0.9976
 1,stego,blind_outlier,stego,6.3957
+1,stego,trailing_zero_count,stego,34.0000
+1,stego,chi_squared,stego,6.0000
+1,stego,entropy,stego,0.9976
+1,stego,blind_outlier,clean,2.3139
 2,stego,trailing_zero_count,stego,33.0000
 2,stego,chi_squared,stego,7.0000
 2,stego,entropy,stego,1.1103
@@ -227,6 +235,10 @@ payload_size,stream_type,detector,label,score
 2,stego,chi_squared,stego,7.0000
 2,stego,entropy,stego,1.1103
 2,stego,blind_outlier,stego,6.3957
+2,stego,trailing_zero_count,stego,33.0000
+2,stego,chi_squared,stego,7.0000
+2,stego,entropy,stego,1.1103
+2,stego,blind_outlier,clean,2.3139
 4,stego,trailing_zero_count,stego,31.0000
 4,stego,chi_squared,stego,9.0000
 4,stego,entropy,stego,1.2824
@@ -303,6 +315,10 @@ payload_size,stream_type,detector,label,score
 4,stego,chi_squared,stego,9.0000
 4,stego,entropy,stego,1.2824
 4,stego,blind_outlier,stego,6.3957
+4,stego,trailing_zero_count,stego,31.0000
+4,stego,chi_squared,stego,9.0000
+4,stego,entropy,stego,1.2824
+4,stego,blind_outlier,clean,2.3139
 8,stego,trailing_zero_count,stego,27.0000
 8,stego,chi_squared,stego,13.0000
 8,stego,entropy,stego,1.5124
@@ -379,6 +395,10 @@ payload_size,stream_type,detector,label,score
 8,stego,chi_squared,stego,13.0000
 8,stego,entropy,stego,1.4624
 8,stego,blind_outlier,stego,6.3957
+8,stego,trailing_zero_count,stego,27.0000
+8,stego,chi_squared,stego,13.0000
+8,stego,entropy,stego,1.5124
+8,stego,blind_outlier,clean,2.3139
 16,stego,trailing_zero_count,stego,19.0000
 16,stego,chi_squared,stego,21.0000
 16,stego,entropy,stego,1.7042
@@ -455,6 +475,10 @@ payload_size,stream_type,detector,label,score
 16,stego,chi_squared,stego,21.0000
 16,stego,entropy,stego,1.7042
 16,stego,blind_outlier,stego,6.3957
+16,stego,trailing_zero_count,stego,19.0000
+16,stego,chi_squared,stego,21.0000
+16,stego,entropy,stego,1.7042
+16,stego,blind_outlier,clean,2.3139
 24,stego,trailing_zero_count,stego,11.0000
 24,stego,chi_squared,stego,29.0000
 24,stego,entropy,stego,1.6196
@@ -531,6 +555,10 @@ payload_size,stream_type,detector,label,score
 24,stego,chi_squared,stego,29.0000
 24,stego,entropy,stego,1.6196
 24,stego,blind_outlier,stego,6.3957
+24,stego,trailing_zero_count,stego,11.0000
+24,stego,chi_squared,stego,29.0000
+24,stego,entropy,stego,1.6196
+24,stego,blind_outlier,clean,2.3139
 32,stego,trailing_zero_count,stego,3.0000
 32,stego,chi_squared,stego,37.0000
 32,stego,entropy,stego,1.2031
@@ -607,3 +635,7 @@ payload_size,stream_type,detector,label,score
 32,stego,chi_squared,stego,37.0000
 32,stego,entropy,stego,1.2031
 32,stego,blind_outlier,stego,6.3957
+32,stego,trailing_zero_count,stego,3.0000
+32,stego,chi_squared,stego,37.0000
+32,stego,entropy,stego,1.2031
+32,stego,blind_outlier,clean,2.3139
