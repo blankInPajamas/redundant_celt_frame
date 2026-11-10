@@ -1,6 +1,6 @@
 # Redundant CELT Frame Steganography in Opus — Research Log
 
-**Author:** ishu  
+**Author:** ishmam  
 **Date started:** 2026-09-29  
 **Repository:** /home/ishu/research/redundant_celt_frame  
 **Status:** Negative result — redundant CELT frame is not a viable covert channel under standard operating conditions
