@@ -1,0 +1,21 @@
+========== B13 INDEPENDENT AUDIT REPORT ==========
+Run: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849
+Checksum errors: 0
+ML metric rows: 108
+OOF prediction rows: 28800
+Feature summary rows: 7200
+Tail-rule rows: 54
+Cover zero-tail rows: 3600/3600
+Stego nonzero-tail rows: 3600/3600
+Speaker leakage cases: 0
+Invalid event pairs: 0
+Metric mismatches: 0
+Errors: 0
+
+INTERPRETATION:
+- Target-tail classification is an informed, target-aware test.
+- Global-only classification is the more relevant non-localized baseline.
+- Perfect detection must not be interpreted as universal detectability.
+- This audit does not establish resistance to other detection methods.
+
+AUDIT STATUS: PASS

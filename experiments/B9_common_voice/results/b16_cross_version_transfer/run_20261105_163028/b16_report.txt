@@ -1,0 +1,75 @@
+========== B16 CROSS-VERSION TRANSFER REPORT ==========
+Run: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b16_cross_version_transfer/run_20261105_163028
+B12 manifest SHA256: e993cd21001ff1d16467f8bab65ef5fb4dbaa2138a3b8aeb95cc0084b9e8c9b8
+B14 source SHA256: 4205c3d6864dea29653ec304bd8387680e01a82ae67917a0c0640a9765e756db
+
+DESIGN
+- Train on one encoder version and test on the other.
+- Both transfer directions are evaluated.
+- Primary repetition only; no repeated-payload pseudoreplication.
+- Shared speaker IDs and shared recording IDs are excluded from both sides.
+- Threshold fixed at 0.5; no test-set threshold tuning.
+- Confidence intervals use speaker-cluster bootstrap of paired cover/stego rows.
+
+SAMPLE COUNTS
+1.5.2: original_events=100; retained_events=96; retained_speakers=96; retained_recordings=96
+1.6.1: original_events=100; retained_events=96; retained_speakers=96; retained_recordings=96
+Shared speakers excluded: 4
+Shared recording IDs excluded: 4
+
+NEGATIVE CONTROLS
+1.5.2 | 4B | packet_geometry: 96/96 identical pairs
+1.5.2 | 4B | target_prefix_control: 96/96 identical pairs
+1.5.2 | 8B | packet_geometry: 96/96 identical pairs
+1.5.2 | 8B | target_prefix_control: 96/96 identical pairs
+1.5.2 | 16B | packet_geometry: 96/96 identical pairs
+1.5.2 | 16B | target_prefix_control: 96/96 identical pairs
+1.5.2 | 24B | packet_geometry: 96/96 identical pairs
+1.5.2 | 24B | target_prefix_control: 96/96 identical pairs
+1.5.2 | 32B | packet_geometry: 96/96 identical pairs
+1.5.2 | 32B | target_prefix_control: 96/96 identical pairs
+1.5.2 | 36B | packet_geometry: 96/96 identical pairs
+1.5.2 | 36B | target_prefix_control: 96/96 identical pairs
+1.6.1 | 4B | packet_geometry: 96/96 identical pairs
+1.6.1 | 4B | target_prefix_control: 96/96 identical pairs
+1.6.1 | 8B | packet_geometry: 96/96 identical pairs
+1.6.1 | 8B | target_prefix_control: 96/96 identical pairs
+1.6.1 | 16B | packet_geometry: 96/96 identical pairs
+1.6.1 | 16B | target_prefix_control: 96/96 identical pairs
+1.6.1 | 24B | packet_geometry: 96/96 identical pairs
+1.6.1 | 24B | target_prefix_control: 96/96 identical pairs
+1.6.1 | 32B | packet_geometry: 96/96 identical pairs
+1.6.1 | 32B | target_prefix_control: 96/96 identical pairs
+1.6.1 | 36B | packet_geometry: 96/96 identical pairs
+1.6.1 | 36B | target_prefix_control: 96/96 identical pairs
+
+RESULTS OVERVIEW
+Metric rows: 264
+Prediction rows: 50688
+
+Top ROC-AUC rows (descriptive; not a post-hoc selection rule):
+1.5.2_to_1.6.1 | 4B | global_all | logistic_regression | AUC=1.0000 [1.0000, 1.0000] | BA=1.0000
+1.5.2_to_1.6.1 | 4B | global_all | random_forest | AUC=1.0000 [1.0000, 1.0000] | BA=1.0000
+1.5.2_to_1.6.1 | 4B | stream_scalar | logistic_regression | AUC=1.0000 [1.0000, 1.0000] | BA=1.0000
+1.5.2_to_1.6.1 | 4B | stream_scalar | random_forest | AUC=1.0000 [1.0000, 1.0000] | BA=1.0000
+1.5.2_to_1.6.1 | 4B | global_without_histogram | logistic_regression | AUC=1.0000 [1.0000, 1.0000] | BA=1.0000
+1.5.2_to_1.6.1 | 4B | global_without_histogram | random_forest | AUC=1.0000 [1.0000, 1.0000] | BA=1.0000
+1.5.2_to_1.6.1 | 4B | global_without_packet_geometry | logistic_regression | AUC=1.0000 [1.0000, 1.0000] | BA=1.0000
+1.5.2_to_1.6.1 | 4B | global_without_packet_geometry | random_forest | AUC=1.0000 [1.0000, 1.0000] | BA=1.0000
+1.5.2_to_1.6.1 | 4B | target_packet | logistic_regression | AUC=1.0000 [1.0000, 1.0000] | BA=0.9792
+1.6.1_to_1.5.2 | 4B | target_packet | logistic_regression | AUC=1.0000 [1.0000, 1.0000] | BA=0.9896
+1.5.2_to_1.6.1 | 4B | target_packet | random_forest | AUC=1.0000 [1.0000, 1.0000] | BA=0.9896
+1.6.1_to_1.5.2 | 4B | target_packet | random_forest | AUC=1.0000 [1.0000, 1.0000] | BA=1.0000
+1.5.2_to_1.6.1 | 4B | target_tail36 | logistic_regression | AUC=1.0000 [1.0000, 1.0000] | BA=1.0000
+1.6.1_to_1.5.2 | 4B | target_tail36 | logistic_regression | AUC=1.0000 [1.0000, 1.0000] | BA=1.0000
+1.5.2_to_1.6.1 | 4B | target_tail36 | random_forest | AUC=1.0000 [1.0000, 1.0000] | BA=1.0000
+
+INTERPRETATION LIMITS
+- Cross-version transfer is evaluated only for these two encoder versions.
+- Target-packet and target-tail feature groups assume the modified frame is known.
+- Global stream features summarize the complete serialized bitstream; they are not a blind arbitrary-location detector.
+- Negative-control feature groups should remain identical within each cover/stego pair.
+- Findings do not establish detectability of arbitrary steganographic methods.
+- Source bitstreams and B12 inputs were read-only.
+
+B16 STATUS: COMPLETE

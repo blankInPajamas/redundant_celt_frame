@@ -1,0 +1,31 @@
+========== B15 INDEPENDENT NATURAL-COVER AUDIT ==========
+Run: /home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/results/b15_natural_cover_audit/run_20261104_132107
+B7 source: /home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241
+Detector SHA256: 9dd4326387ee3fd5ddfbe8fed3cdbf08fb2bdbb06917712716428668c32b563a
+
+DETECTOR CONFIGURATION
+Tail size: 36
+Maximum payload: 35
+Packet scan: all packets, no target location supplied
+
+VERSION SUMMARY
+1.5.2: FPR=0/999 (0.000000), 95% CI=[0.000000,0.003831]; TPR=10/10 (1.000000), 95% CI=[0.722467,1.000000]
+1.6.1: FPR=0/999 (0.000000), 95% CI=[0.000000,0.003831]; TPR=10/10 (1.000000), 95% CI=[0.722467,1.000000]
+
+CROSS-VERSION AGREEMENT
+[{'class': 'cover', 'paired_recordings': 999, 'both_detected': 0, 'only_1_5_2_detected': 0, 'only_1_6_1_detected': 0, 'neither_detected': 999}, {'class': 'positive_control', 'paired_recordings': 10, 'both_detected': 10, 'only_1_5_2_detected': 0, 'only_1_6_1_detected': 0, 'neither_detected': 0}]
+
+INTERPRETATION LIMITS
+- Clean recordings are GTZAN natural-music covers.
+- The same source recordings occur in both encoder groups.
+- Positive controls use 10 source recordings per version.
+- Positive-control sample size is small.
+- Wilson intervals quantify sampling uncertainty.
+- The detector specifically targets printable,
+  length-prefixed payloads followed by zero padding.
+- Results do not establish universal detectability.
+- This experiment does not evaluate arbitrary steganographic methods.
+- This experiment does not evaluate B14 machine-learning models.
+- Original source bitstreams were not modified.
+
+B15 STATUS: COMPLETE

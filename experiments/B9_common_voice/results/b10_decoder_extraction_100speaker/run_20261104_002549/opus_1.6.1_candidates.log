@@ -1,0 +1,2031 @@
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_10143 frame=1
+return_code=0 pcm_bytes=405120
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=966bab56b537db58ce77501370fa51e3e4dc5fbc69d1fb55b2711739c5043b0f
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=88|primary_len=50|redundancy_len=38|red_hex=fffe074854fb121f0707a188192e72c785556dbbbd4ad3de1e6d2662b4d9522b67d27d2a203f|tail36=074854fb121f0707a188192e72c785556dbbbd4ad3de1e6d2662b4d9522b67d27d2a203f
+Decoded 211 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_115585 frame=2
+return_code=0 pcm_bytes=249600
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=be45506e1a8d8649119418d40cab5027d2dca54b65723327824b5b3b44b28e48
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=78|primary_len=40|redundancy_len=38|red_hex=fffee9acbf508ac21178eba109ceaa50c49df1e944cf3354723785cd0c792504a804906112fb|tail36=e9acbf508ac21178eba109ceaa50c49df1e944cf3354723785cd0c792504a804906112fb
+Decoded 130 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_137531 frame=1
+return_code=0 pcm_bytes=232320
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=fb7489b193fa8ef22590c3bf93c17c307021a106868f06be0ba66536e0537c20
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=100|primary_len=62|redundancy_len=38|red_hex=fffec0375710253b62aa9d6de3c0b8f50658a0b091fe37011c9a9c10d69406fb7fc65cf54c64|tail36=c0375710253b62aa9d6de3c0b8f50658a0b091fe37011c9a9c10d69406fb7fc65cf54c64
+Decoded 121 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_145658 frame=1
+return_code=0 pcm_bytes=295680
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=e021c4b1980a47412b0061aa971fa3b9df84e586eee8a75eb0d6c78e26fd8228
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=108|primary_len=70|redundancy_len=38|red_hex=fffe76717e3c4b282074266ad7fc19f3c174b5a8b6f452b97c6150402c9217ae7928d7b97d30|tail36=76717e3c4b282074266ad7fc19f3c174b5a8b6f452b97c6150402c9217ae7928d7b97d30
+Decoded 154 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_158913 frame=1
+return_code=0 pcm_bytes=414720
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=837638aa8e07e97c04b2213d1fd2d7095bd7ff210cf8c48793508644ab710650
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=103|primary_len=65|redundancy_len=38|red_hex=fffe97f3135fccdf119716ad5815d0249d237d7062a2cf6491da20a0063ffbde688b05466c8a|tail36=97f3135fccdf119716ad5815d0249d237d7062a2cf6491da20a0063ffbde688b05466c8a
+Decoded 216 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17250040 frame=1
+return_code=0 pcm_bytes=455040
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=87a64fe6f0fc44848f0fc3c020ece354e96ef61afd37ec9937316a2dff08b26e
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffe56e4f9ad1d469b9f3310bf20d32ff652240b1297fd791c69e9c663ad70f985e11146b585|tail36=56e4f9ad1d469b9f3310bf20d32ff652240b1297fd791c69e9c663ad70f985e11146b585
+Decoded 237 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17257945 frame=1
+return_code=0 pcm_bytes=301440
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=a89eecb92bbba97f9717d041fe33dfc237c2a6e6c8528488c81426b41e8d9850
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=89|primary_len=51|redundancy_len=38|red_hex=fffe969c63fae4c5b569c2fd46fd336100f8c8b66c610e2a23cb3279dac113633758c8040941|tail36=969c63fae4c5b569c2fd46fd336100f8c8b66c610e2a23cb3279dac113633758c8040941
+Decoded 157 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17260071 frame=1
+return_code=0 pcm_bytes=276480
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=7afd5f174264fdb263afee39f770c8cce6980bc206c2c6e4fa7f06462434055d
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=102|primary_len=64|redundancy_len=38|red_hex=fffec5456cd20d3331c7ff833a25d91b5c6aa24640dfbf7cf07e276b9e583f923309ee18aaf9|tail36=c5456cd20d3331c7ff833a25d91b5c6aa24640dfbf7cf07e276b9e583f923309ee18aaf9
+Decoded 144 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17276954 frame=1
+return_code=0 pcm_bytes=293760
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=f136ad4e300b3d33486cc28f866fc86daa09527f8390058c6243e28d79f154da
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=91|primary_len=53|redundancy_len=38|red_hex=fffe86d09c75dd59525ab3fcfa7747ad55a007af67041490d83ca1e7ed6fa2277ac69d8ff01c|tail36=86d09c75dd59525ab3fcfa7747ad55a007af67041490d83ca1e7ed6fa2277ac69d8ff01c
+Decoded 153 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17288645 frame=2
+return_code=0 pcm_bytes=664320
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=9771c5aff6b160e3370a0b76d0f6e8e9e392a46d756792fda8a16ede22681b8f
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=78|primary_len=40|redundancy_len=38|red_hex=fffe59363cbab17acb03a8548ed5f1e701abbe7659caeaeefcbdf2273bf75e33193271f7aed1|tail36=59363cbab17acb03a8548ed5f1e701abbe7659caeaeefcbdf2273bf75e33193271f7aed1
+B10|mode=1001|celt_to_silk=1|frame_data_len=131|primary_len=93|redundancy_len=38|red_hex=1f8a3eb64dc3d125b33db2bb8711190177da73127465d6db027c54c99f625b6d73b08a0422f0|tail36=3eb64dc3d125b33db2bb8711190177da73127465d6db027c54c99f625b6d73b08a0422f0
+Decoded 346 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17295802 frame=29
+return_code=0 pcm_bytes=238080
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=ebae1eca590d1e7541fc2c1036ff8b52db024326ddbf8df8cf82a33ffeac81fb
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=116|primary_len=78|redundancy_len=38|red_hex=fffeb20e76b17baacad3b38651085e42964828f8745ace7ecdd57c41ed1b56b813b4412032b3|tail36=b20e76b17baacad3b38651085e42964828f8745ace7ecdd57c41ed1b56b813b4412032b3
+B10|mode=1001|celt_to_silk=1|frame_data_len=120|primary_len=82|redundancy_len=38|red_hex=4ff3e06b65ec8f7b4c511789a887bc46d0ac84b8053bbb2c976c0fd67ae08e1891c99faa7267|tail36=e06b65ec8f7b4c511789a887bc46d0ac84b8053bbb2c976c0fd67ae08e1891c99faa7267
+Decoded 124 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17296746 frame=1
+return_code=0 pcm_bytes=324480
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=1f5ba39b29682630106fd95c935ebc1ba5b427ca0881d430365ace1012f2d3a4
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffe81649b2e8bfe4ef155724d63dabf227c7ed61cf0a9320f15d9efcff5bd2cad00371fd460|tail36=81649b2e8bfe4ef155724d63dabf227c7ed61cf0a9320f15d9efcff5bd2cad00371fd460
+Decoded 169 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17393664 frame=1
+return_code=0 pcm_bytes=140160
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=6ddd3241da72af5aad64b6586e0a90a9d34a565ec59acef24be65a5ccbbaced4
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=97|primary_len=59|redundancy_len=38|red_hex=fffefdbc2306914ba8d8cc3197ddffc1440aa41c06894f18b54e6679d77abfa5f8964dca1b8f|tail36=fdbc2306914ba8d8cc3197ddffc1440aa41c06894f18b54e6679d77abfa5f8964dca1b8f
+Decoded 73 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17399885 frame=1
+return_code=0 pcm_bytes=295680
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=58a2440a60d3501d7de3ae8f76cbf220fcecdef1b9292204ff5cfc407206024c
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffe3543d11fa4644eacc43d171e4c08982986d6b305b41c507f1ce93c6ace5fe2224328790a|tail36=3543d11fa4644eacc43d171e4c08982986d6b305b41c507f1ce93c6ace5fe2224328790a
+Decoded 154 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17399972 frame=1
+return_code=0 pcm_bytes=441600
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=21034c3f69f473fea660444ac47737ee277c19dd0eb14157d0aafdfcd40bb197
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=96|primary_len=58|redundancy_len=38|red_hex=fffe763b27fad95f9f02ea37fe9aefc96cd734cbb6ad0a3c46887e827414dae1a53c1db2ea67|tail36=763b27fad95f9f02ea37fe9aefc96cd734cbb6ad0a3c46887e827414dae1a53c1db2ea67
+B10|mode=1001|celt_to_silk=1|frame_data_len=131|primary_len=93|redundancy_len=38|red_hex=0d7e72c12db49da78846db9edca2dbf55ffe51ca9a6d20cbb6aab3b21ffd5deb74690116a7ba|tail36=72c12db49da78846db9edca2dbf55ffe51ca9a6d20cbb6aab3b21ffd5deb74690116a7ba
+Decoded 230 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17420343 frame=1
+return_code=0 pcm_bytes=468480
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=b1971c894f67f49f6153ef03ea77ce55b438d74471eb64dedaa1426b0f2a69ae
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffe506c37170e2c29faead204a81b7f9d6247bc35933a7768df9fc6fef0c36118889296be67|tail36=506c37170e2c29faead204a81b7f9d6247bc35933a7768df9fc6fef0c36118889296be67
+Decoded 244 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17544574 frame=3
+return_code=0 pcm_bytes=247680
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=4bc27e84ae24f82f9a943da85af5fba0e1da0cf80c76ff5ecb22e4183237884b
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=94|primary_len=56|redundancy_len=38|red_hex=fffe0f2ac10f6262cf10d4aebd4a08817e91f22ae694a477e1c37b19a7cce73c9e9f2c1597c8|tail36=0f2ac10f6262cf10d4aebd4a08817e91f22ae694a477e1c37b19a7cce73c9e9f2c1597c8
+B10|mode=1001|celt_to_silk=1|frame_data_len=126|primary_len=88|redundancy_len=38|red_hex=90d6baab8fc2c125e973a9b9793b9194100e3fe568b3cf17fcd8d73f19a486d358c25b7013a0|tail36=baab8fc2c125e973a9b9793b9194100e3fe568b3cf17fcd8d73f19a486d358c25b7013a0
+Decoded 129 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17638872 frame=7
+return_code=0 pcm_bytes=255360
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=de6ba79a8ade938d4fd14e1de9b8bcee67dc6be40aa5fb0a910430009ee6aadf
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=83|primary_len=45|redundancy_len=38|red_hex=fffe3386d340362aa623be82ff37f54ad8c1f8f954ecd2bcadf9f698828ab90447fa0e04affd|tail36=3386d340362aa623be82ff37f54ad8c1f8f954ecd2bcadf9f698828ab90447fa0e04affd
+B10|mode=1001|celt_to_silk=1|frame_data_len=137|primary_len=99|redundancy_len=38|red_hex=c05235df6e8887c927865a8dc931011957089b1ae4ae23b72c1a1ddb365bcbad579c07fa727b|tail36=35df6e8887c927865a8dc931011957089b1ae4ae23b72c1a1ddb365bcbad579c07fa727b
+Decoded 133 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17663048 frame=1
+return_code=0 pcm_bytes=399360
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=874d69e4b8f85f2451f91cc68ff1506842ed4080cb1b4631e74f953d2a49965d
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=93|primary_len=55|redundancy_len=38|red_hex=fffec5d6c909f7ca2ec9cae4ac2ea9abc76fe92685c49a284cee4da3e89a19cadd28a336c514|tail36=c5d6c909f7ca2ec9cae4ac2ea9abc76fe92685c49a284cee4da3e89a19cadd28a336c514
+Decoded 208 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17801214 frame=1
+return_code=0 pcm_bytes=238080
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=0b61132ce51d54704ee8b65525178dc5d3f344159f9b882bb86001863fea85d2
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=104|primary_len=66|redundancy_len=38|red_hex=fffe020e248c63dd100fb9884c18bcfbc07099144a23722e3eeafaca84716ac21fb87d3b234b|tail36=020e248c63dd100fb9884c18bcfbc07099144a23722e3eeafaca84716ac21fb87d3b234b
+Decoded 124 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17806959 frame=3
+return_code=0 pcm_bytes=330240
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=59401e3a85db4ab081af2c7882581a1cc202c4f4fea6b02e412df7a2d959802d
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=89|primary_len=51|redundancy_len=38|red_hex=fffe66a654d9cb08b1d5a8e765d13f2891208f509656aa1a7d7583c7e1791deba1891f839f10|tail36=66a654d9cb08b1d5a8e765d13f2891208f509656aa1a7d7583c7e1791deba1891f839f10
+Decoded 172 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17943882 frame=1
+return_code=0 pcm_bytes=174720
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=a6b667e49bad5af16ed2274bdcf6efc17408cb072228eda055cace4627014df6
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=93|primary_len=55|redundancy_len=38|red_hex=fffebeff1903b694a9eeefeb664c5b48c8eb77c08661d49ec4703b365d5f145b2eb2bdca501e|tail36=beff1903b694a9eeefeb664c5b48c8eb77c08661d49ec4703b365d5f145b2eb2bdca501e
+Decoded 91 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_17969876 frame=1
+return_code=0 pcm_bytes=230400
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=7df10eb1ce284be1d3098e4a1cb84d0757cf4ccc1c2c813effd8a9fd27e567a5
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=90|primary_len=52|redundancy_len=38|red_hex=fffeb272926c875d59efc5c22ddab6826f80e16ae404282f5ff95557f0aacfd508891b03c44d|tail36=b272926c875d59efc5c22ddab6826f80e16ae404282f5ff95557f0aacfd508891b03c44d
+Decoded 120 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_18152888 frame=1
+return_code=0 pcm_bytes=307200
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=b113ba36ca2fcca13aa5c0527dfe84a7fbb86cf3f7f7878e63722d2559e9f516
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=90|primary_len=52|redundancy_len=38|red_hex=fffe427a30f3d0965e5b8601edd3473a226cbc94b0523e930ebc19b8490ffaac0d7c18c3ccc2|tail36=427a30f3d0965e5b8601edd3473a226cbc94b0523e930ebc19b8490ffaac0d7c18c3ccc2
+Decoded 160 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_18171016 frame=1
+return_code=0 pcm_bytes=554880
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=8ef6f25596f44044475597b1e058dcae8c73fd6bc51ac9abebf03487633dec8b
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=110|primary_len=72|redundancy_len=38|red_hex=fffe60ca21df9c241e0e16170e68f1c8fe600d457ab9cfe3d7c9cea4225e8a65592aaa69cf16|tail36=60ca21df9c241e0e16170e68f1c8fe600d457ab9cfe3d7c9cea4225e8a65592aaa69cf16
+Decoded 289 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_18285296 frame=1
+return_code=0 pcm_bytes=255360
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=946b260b0157dcb4ed26325e5abfff8480db37412064966063ad412063b3d02d
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=102|primary_len=64|redundancy_len=38|red_hex=fffe469905b189c54064be735275cd6fa11456f012918b4d2b4bf4cd42f4455ac0d07be1e758|tail36=469905b189c54064be735275cd6fa11456f012918b4d2b4bf4cd42f4455ac0d07be1e758
+Decoded 133 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_18360944 frame=1
+return_code=0 pcm_bytes=432000
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=6ae39ce0bc280b6a7f25725d4170908ace84742c9760aea5afcd4028f92e539b
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffe8b1629435afe6152d7c965f94d777d72d4f386798d8b948e8de6799dddee9d08e8f9c913|tail36=8b1629435afe6152d7c965f94d777d72d4f386798d8b948e8de6799dddee9d08e8f9c913
+Decoded 225 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_18478721 frame=1
+return_code=0 pcm_bytes=428160
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=4350fe2e92bf009fc6e58b29382478ddec4b95452a6022a475bb07afc6c07c0d
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=102|primary_len=64|redundancy_len=38|red_hex=fffec5674c750290b39fb99cf52dc3270146e715944b365c9699a597bc79aa08bc25a979f71c|tail36=c5674c750290b39fb99cf52dc3270146e715944b365c9699a597bc79aa08bc25a979f71c
+Decoded 223 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_18483183 frame=1
+return_code=0 pcm_bytes=364800
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=79be1816737393174ddfa9a14999ef7f2857fb4d892ad35c425fabef0a89246b
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=103|primary_len=65|redundancy_len=38|red_hex=fffee81fbfd524b7eccbe448afcfaa6c557aae86584749ba21190942b2cb0ea69db277bb45ef|tail36=e81fbfd524b7eccbe448afcfaa6c557aae86584749ba21190942b2cb0ea69db277bb45ef
+Decoded 190 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_18604671 frame=1
+return_code=0 pcm_bytes=566400
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=5e002bbc6da77926b2f8ba35032d971d53ce76b1244fc00730c5d51bef69d42c
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffea49e25928a5193a2653bdd2beeb7ceef56c0495f3a4725b711e190611504179dc3c8a7ec|tail36=a49e25928a5193a2653bdd2beeb7ceef56c0495f3a4725b711e190611504179dc3c8a7ec
+B10|mode=1001|celt_to_silk=1|frame_data_len=94|primary_len=56|redundancy_len=38|red_hex=5d9427d1f1d424b4e85973bbc63de5b74c2feebe65a2bb24b09496643ff0f79457e67ce30649|tail36=27d1f1d424b4e85973bbc63de5b74c2feebe65a2bb24b09496643ff0f79457e67ce30649
+B10|mode=1001|celt_to_silk=1|frame_data_len=170|primary_len=132|redundancy_len=38|red_hex=d58f55e01f452ac5be1db93222459ec840a1216b08fb7fcc0899019dbe8a3e4cc5db7bdb86d4|tail36=55e01f452ac5be1db93222459ec840a1216b08fb7fcc0899019dbe8a3e4cc5db7bdb86d4
+Decoded 295 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_18636162 frame=1
+return_code=0 pcm_bytes=453120
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=63f7413561f163b273d2535b74416a56c1237d1ae810627cdea3bf191d7df2c2
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffe98f204a0f103c8a57a95930d46ebd04824f5debcdcc0c88f5ae6b80a2061f84ba69f9b7f|tail36=98f204a0f103c8a57a95930d46ebd04824f5debcdcc0c88f5ae6b80a2061f84ba69f9b7f
+Decoded 236 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_18649583 frame=2
+return_code=0 pcm_bytes=380160
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=52c81e14a8c2c9c50e6ef621454d5d348932657252361f6f89781817ced2e88c
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=106|primary_len=68|redundancy_len=38|red_hex=fffebf8a8dbfa86d88e270fefb3c1f6547e402d672254aa61c15824eb984c3cf9b9d1c8b5211|tail36=bf8a8dbfa86d88e270fefb3c1f6547e402d672254aa61c15824eb984c3cf9b9d1c8b5211
+Decoded 198 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_18745525 frame=1
+return_code=0 pcm_bytes=576000
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=6c0428456b6efaac020a69240598da79dbe408a549a7799c7f193cf388f7ee6f
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=95|primary_len=57|redundancy_len=38|red_hex=fffeef0e62e6f05f282a194fd07d46279904adb5604e9a646d9d9fa5ce2e52fe3e5799e932cf|tail36=ef0e62e6f05f282a194fd07d46279904adb5604e9a646d9d9fa5ce2e52fe3e5799e932cf
+Decoded 300 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_18779251 frame=1
+return_code=0 pcm_bytes=556800
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=d718c0cb801e283617542c0816fd803af47ccb57c820825e4553507b39862024
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=110|primary_len=72|redundancy_len=38|red_hex=fffe1867189fb78adf2da0aef6e2e50a5cfd00f0875c0c7928c80bd23b06f1aa085653a6d633|tail36=1867189fb78adf2da0aef6e2e50a5cfd00f0875c0c7928c80bd23b06f1aa085653a6d633
+Decoded 290 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_18780996 frame=1
+return_code=0 pcm_bytes=524160
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=54cc73ee1f7e7bf0eb0ecb5a2b2f3bd95126427a83aace7ada40af03d3bab7d1
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=98|primary_len=60|redundancy_len=38|red_hex=fffe5b8248f554cb3e46ad718995bae7c6fd271bcc18033a48d77c35642a5cded670df3e9850|tail36=5b8248f554cb3e46ad718995bae7c6fd271bcc18033a48d77c35642a5cded670df3e9850
+Decoded 273 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_19011803 frame=1
+return_code=0 pcm_bytes=526080
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=553998ff83a7193d0e4ad976d2e1ea40317575e73c758542c383562d2dbd284e
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=99|primary_len=61|redundancy_len=38|red_hex=fffea16620a72eefc3dce4fad0db26c31a81ac7ec28959f62b5c32227ee186896a5720fe2734|tail36=a16620a72eefc3dce4fad0db26c31a81ac7ec28959f62b5c32227ee186896a5720fe2734
+Decoded 274 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_19029062 frame=1
+return_code=0 pcm_bytes=714240
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=fcc7abd75875e95c3e3548fa1131445bfba81b0e940d0edc94e0bbf804766a86
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=97|primary_len=59|redundancy_len=38|red_hex=fffedff387dff16eb74e425d52ac2b1c29f4a71f01760541652cb59b72268297dfc20c4fd6f7|tail36=dff387dff16eb74e425d52ac2b1c29f4a71f01760541652cb59b72268297dfc20c4fd6f7
+Decoded 372 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_19090990 frame=3
+return_code=0 pcm_bytes=524160
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=5ed61b89a38c1f1816b527a7a23e08ac1594198014f58fce61ec94f62bad1530
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=108|primary_len=70|redundancy_len=38|red_hex=fffef77989e90a0558666cfa3a3f059fd2a9a556db45b6587198f8a8ed08a5c1f5609a84b783|tail36=f77989e90a0558666cfa3a3f059fd2a9a556db45b6587198f8a8ed08a5c1f5609a84b783
+Decoded 273 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_19453410 frame=1
+return_code=0 pcm_bytes=572160
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=cc984af340262c53af9cc8d04df19d12a4ee9c3373e80dee0af332794d338a78
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=94|primary_len=56|redundancy_len=38|red_hex=fffe9ce73ce20c73cfc2c465b446cdae27b457871a9725766b551ae864f962dec888c4ffde12|tail36=9ce73ce20c73cfc2c465b446cdae27b457871a9725766b551ae864f962dec888c4ffde12
+Decoded 298 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_19591135 frame=52
+return_code=0 pcm_bytes=739200
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=71073bfe2905d9f91552ae69bf54cd89012a91163886ed980b30fa68c2d34824
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=99|primary_len=61|redundancy_len=38|red_hex=fffe10db1dfea2a083e3c8eb2f536600d079876d3d5e65ba404fb6633e7094b996b5955b3621|tail36=10db1dfea2a083e3c8eb2f536600d079876d3d5e65ba404fb6633e7094b996b5955b3621
+B10|mode=1001|celt_to_silk=1|frame_data_len=139|primary_len=101|redundancy_len=38|red_hex=538471a200abc1832b26ecafcca79f6a3ff94089539617894a8886dcfba841e27bddb856d3a7|tail36=71a200abc1832b26ecafcca79f6a3ff94089539617894a8886dcfba841e27bddb856d3a7
+Decoded 385 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_196606 frame=5
+return_code=0 pcm_bytes=422400
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=1c54d99a8a6455f5d307fd7bf582df81eccdee8a54e7ee166ab8d0e9b31aa193
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=91|primary_len=53|redundancy_len=38|red_hex=fffe2230fca7cc023139ddf93c2642a68da599f78dec66eb4e8fa5d090dd9310527924b57402|tail36=2230fca7cc023139ddf93c2642a68da599f78dec66eb4e8fa5d090dd9310527924b57402
+B10|mode=1001|celt_to_silk=1|frame_data_len=120|primary_len=82|redundancy_len=38|red_hex=133a79ce5d8a0f3b1aac5cb65dc51c0719b8feedac0386c6ff95d394a3630e480e9d2ec3ec8f|tail36=79ce5d8a0f3b1aac5cb65dc51c0719b8feedac0386c6ff95d394a3630e480e9d2ec3ec8f
+Decoded 220 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_19681808 frame=1
+return_code=0 pcm_bytes=670080
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=3ee57614ba092c9a1d7133fa2f818c83b0202c735ec2d37a4d565e01326335a0
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=107|primary_len=69|redundancy_len=38|red_hex=fffe28af6e6bc07238fb66941e1ceecb42f46cde3730d91d68d913518ca50410fe8460838b2e|tail36=28af6e6bc07238fb66941e1ceecb42f46cde3730d91d68d913518ca50410fe8460838b2e
+Decoded 349 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_19769429 frame=1
+return_code=0 pcm_bytes=489600
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=37090f3d9fe041a0618316ec5753e97d7b301bae2d89671d7e07cdc303672fdd
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=102|primary_len=64|redundancy_len=38|red_hex=fffedf51c72751a35ebe265ed08a671009dbdbd064e7498c3c32ef6fa346f0128364753765e6|tail36=df51c72751a35ebe265ed08a671009dbdbd064e7498c3c32ef6fa346f0128364753765e6
+Decoded 255 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_19953652 frame=1
+return_code=0 pcm_bytes=687360
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=0c30d1bd65a762472b04db8399b072918f2d8e7e5ab06b32c5a9c54eba51a782
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=99|primary_len=61|redundancy_len=38|red_hex=fffe1b59849b740b7169dfc51a6c29f358e9fc783c6f46bec57be55f5d36dfc4c9ab3e9edbe7|tail36=1b59849b740b7169dfc51a6c29f358e9fc783c6f46bec57be55f5d36dfc4c9ab3e9edbe7
+Decoded 358 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_19956563 frame=1
+return_code=0 pcm_bytes=491520
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=8ade4239986fdedaab7b702a354326755ce445cdceeea9bc907b6e56bf810aac
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=97|primary_len=59|redundancy_len=38|red_hex=fffe6fb3fc6d071564b4c96be6fbc3002768607fb3cedb2b51e896879ebc004c72751aeda7ab|tail36=6fb3fc6d071564b4c96be6fbc3002768607fb3cedb2b51e896879ebc004c72751aeda7ab
+Decoded 256 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_20114918 frame=2
+return_code=0 pcm_bytes=672000
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=9a7d989b18d3aa345c0ed08d29c0efaebf871eca2d4fd749a81fa764c62abf4b
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=108|primary_len=70|redundancy_len=38|red_hex=fffe02cca6a4f6f912e60b3e411ea512bd3450145c9e950afa1c68bd836f63402f8fa12b600f|tail36=02cca6a4f6f912e60b3e411ea512bd3450145c9e950afa1c68bd836f63402f8fa12b600f
+Decoded 350 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_202250 frame=1
+return_code=0 pcm_bytes=266880
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=948d5c81912e171105f79d33d42cc5296f42e0a1e2d61a8ae3d911c92231f005
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=95|primary_len=57|redundancy_len=38|red_hex=fffe5b38b84c049d823f8e78c43ed029084d3145f1f3b407772230c4018f46846b56f360f40d|tail36=5b38b84c049d823f8e78c43ed029084d3145f1f3b407772230c4018f46846b56f360f40d
+Decoded 139 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_20357195 frame=1
+return_code=0 pcm_bytes=439680
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=a379e6af4081813fc551f0bf5f3c7c246e5adebd58ed546d1b74b15c30ce9d72
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=103|primary_len=65|redundancy_len=38|red_hex=fffe785f9ade980898e86ec201bd8f5681139cf45677ff0f82a6837b929ee3f44ba16306f3bf|tail36=785f9ade980898e86ec201bd8f5681139cf45677ff0f82a6837b929ee3f44ba16306f3bf
+Decoded 229 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_20461072 frame=1
+return_code=0 pcm_bytes=629760
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=ebb3f9f672deca57c8d1332731f88f32bc47ae0f4307ad07f2ccf2d841056f59
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=93|primary_len=55|redundancy_len=38|red_hex=fffe1c50979b1fc5950204dc9d5cdc3cf68e31c2c8ba709cd987e286cec305d3056347843a7d|tail36=1c50979b1fc5950204dc9d5cdc3cf68e31c2c8ba709cd987e286cec305d3056347843a7d
+Decoded 328 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_20483795 frame=1
+return_code=0 pcm_bytes=593280
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=147292a87f6cdd5edd472eb87821aaf2a36d7781afba5e7de6192d260365452f
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=94|primary_len=56|redundancy_len=38|red_hex=fffea3ea7f6b814083bd49fa93871f8a8063a30d69d8b9af8fea52ec584c0c6491ac9d6f7c41|tail36=a3ea7f6b814083bd49fa93871f8a8063a30d69d8b9af8fea52ec584c0c6491ac9d6f7c41
+Decoded 309 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_20704971 frame=1
+return_code=0 pcm_bytes=480000
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=a759d5f35796654a82bb4a59904390885e8d4493e8a356a11a39e6ba8c363b15
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=90|primary_len=52|redundancy_len=38|red_hex=fffe5d65458489ad85642bdd55fac9f719f92880c7d053b93563c12e69ea6d271352519a0b1c|tail36=5d65458489ad85642bdd55fac9f719f92880c7d053b93563c12e69ea6d271352519a0b1c
+Decoded 250 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_20887984 frame=1
+return_code=0 pcm_bytes=785280
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=3ea5e21dfca7afb1df037a0dce1bc15fd35d0d74a04409d1873716ae2068d453
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=103|primary_len=65|redundancy_len=38|red_hex=fffe5969afb4a23b70f98659930f75edc28c2b1736eff0e97eda171bd3207e85974b8c359393|tail36=5969afb4a23b70f98659930f75edc28c2b1736eff0e97eda171bd3207e85974b8c359393
+Decoded 409 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_21050727 frame=1
+return_code=0 pcm_bytes=635520
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=c498312ac9f642523850a45b2a8a86d448ef1275d4e3df3e8c99641513d7a686
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=100|primary_len=62|redundancy_len=38|red_hex=fffe29898866c3845b9f75922462488247ff0f7e12c1a22d776bad1c6bee86a9db39b1782cd6|tail36=29898866c3845b9f75922462488247ff0f7e12c1a22d776bad1c6bee86a9db39b1782cd6
+Decoded 331 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_21103439 frame=1
+return_code=0 pcm_bytes=921600
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=2637a5cab8bc4a555860131a6f08849d3292187e9a254b54c28c4a3c582fdd7b
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=99|primary_len=61|redundancy_len=38|red_hex=fffe70e8b84a1c8be76a43f1cd326c2bbc03b8168377ac253e4cb18c19a68caf028f4624ab35|tail36=70e8b84a1c8be76a43f1cd326c2bbc03b8168377ac253e4cb18c19a68caf028f4624ab35
+Decoded 480 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_21766331 frame=1
+return_code=0 pcm_bytes=468480
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=d9c623c69d941649e57e293c07e2e0ef16b88142fc9a4781323a9f9eb7122660
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=96|primary_len=58|redundancy_len=38|red_hex=fffe72784e2ff6a84827a2656f413547d0babe2c2b23cc75bb1f9177cc0fba6092f06311a0d7|tail36=72784e2ff6a84827a2656f413547d0babe2c2b23cc75bb1f9177cc0fba6092f06311a0d7
+Decoded 244 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_21857421 frame=42
+return_code=0 pcm_bytes=376320
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=f51023cbc2b3cfc32657ba030cd219f84c7b33e582269ae6f82d9337cd5f1ca5
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=103|primary_len=65|redundancy_len=38|red_hex=fffe1a61b3887ef3cd5d2499eb680e0be8d47047e829fd1bc60d5e6abb2991c7684b9b0520fe|tail36=1a61b3887ef3cd5d2499eb680e0be8d47047e829fd1bc60d5e6abb2991c7684b9b0520fe
+Decoded 196 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_21904064 frame=1
+return_code=0 pcm_bytes=524160
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=a10bb693cccc19b1af33dbb9e3210934210a99da49484e09806b68778edbb9c3
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffed322281bcda1a528baa6232d42165065c5cf1be9c061dd15db72ed637d0dd6acc1c1dd1e|tail36=d322281bcda1a528baa6232d42165065c5cf1be9c061dd15db72ed637d0dd6acc1c1dd1e
+B10|mode=1001|celt_to_silk=1|frame_data_len=127|primary_len=89|redundancy_len=38|red_hex=d5c9bbb3e83613b0562f7caaa1712554fe3ff54b89450689bfc31539afd900b8ed43424a742d|tail36=bbb3e83613b0562f7caaa1712554fe3ff54b89450689bfc31539afd900b8ed43424a742d
+Decoded 273 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_220334 frame=3
+return_code=0 pcm_bytes=280320
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=f21cd46578332887d782bbf324e38d487d078c861621bbd390db9b6853f0ee3f
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=109|primary_len=71|redundancy_len=38|red_hex=fffef04b75e710595c6ba3544084e65d8cb3922602b6b1e52450f86f687dd0d2de2d7fc86ab5|tail36=f04b75e710595c6ba3544084e65d8cb3922602b6b1e52450f86f687dd0d2de2d7fc86ab5
+Decoded 146 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_22299174 frame=2
+return_code=0 pcm_bytes=456960
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=cb8bacbb0e7ac68f693cc970694325375eb662aa657830af713148ff01513ae3
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=78|primary_len=40|redundancy_len=38|red_hex=fffea134f1f8a1e9ba1f8fafe8965c75b6a3dd6fafbd669754abf6d2ca2d3b48423d6956d4fd|tail36=a134f1f8a1e9ba1f8fafe8965c75b6a3dd6fafbd669754abf6d2ca2d3b48423d6956d4fd
+Decoded 238 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_22761971 frame=1
+return_code=0 pcm_bytes=405120
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=59ea5db5a300e9c1a0fcb66ecd36ad903bd39ba2fae5fd3c3f8e0450b6a28a10
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=98|primary_len=60|redundancy_len=38|red_hex=fffe7e0960e981c3986fe2be5b4d6ce1ea9273c53f23aaa017a408d1ea10df036760b194fd0a|tail36=7e0960e981c3986fe2be5b4d6ce1ea9273c53f23aaa017a408d1ea10df036760b194fd0a
+Decoded 211 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_22793670 frame=1
+return_code=0 pcm_bytes=566400
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=b5319cb2314bbc36b21814fb10d1f90936cb00df3554bf95298584e0c23a5371
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=82|primary_len=44|redundancy_len=38|red_hex=fffe5c5771238ab1266985e01c5e88725193dc35c243fdc954169a9dad5ada59fb20f6ee5d09|tail36=5c5771238ab1266985e01c5e88725193dc35c243fdc954169a9dad5ada59fb20f6ee5d09
+Decoded 295 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_22925967 frame=1
+return_code=0 pcm_bytes=480000
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=64eb25054be333a341356ce291ca2af91149c94a7c819d4bbcb634cd7273d4bc
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=97|primary_len=59|redundancy_len=38|red_hex=fffedf91f01620f8cc8b079cfa7af5e9a868c42951d382d95944a993d9a8a041a7c9e0b9691a|tail36=df91f01620f8cc8b079cfa7af5e9a868c42951d382d95944a993d9a8a041a7c9e0b9691a
+Decoded 250 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_23378917 frame=1
+return_code=0 pcm_bytes=495360
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=6256bf4cdedaf6dbbe8f8662f0e5eb0c7b374d7f9c296c24da96074d4ba0fb02
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=98|primary_len=60|redundancy_len=38|red_hex=fffe16f7dd2fadf1fc182d3216f0293b0ce31a11022f02f998b5e1e7779ca81920acf1964125|tail36=16f7dd2fadf1fc182d3216f0293b0ce31a11022f02f998b5e1e7779ca81920acf1964125
+Decoded 258 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_2340534 frame=1
+return_code=0 pcm_bytes=766080
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=df16beb723979108c139ffe9b712140b5d7ba0957f40425cece86c0504ea07fa
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=85|primary_len=47|redundancy_len=38|red_hex=fffe66a10f869f90516db63486fc93178509821d9b2396ee70ae43bd6f35b4bbf30e0914b357|tail36=66a10f869f90516db63486fc93178509821d9b2396ee70ae43bd6f35b4bbf30e0914b357
+Decoded 399 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_23639585 frame=1
+return_code=0 pcm_bytes=825600
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=7dea628d1db3b44942ac2e3fefd2ab986c9099cc25246a49b08252e1a4ebff2c
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=91|primary_len=53|redundancy_len=38|red_hex=fffea2caaf76490af4ac27031b5e7b7ed0fc88a33959b6b8f386bfc3cfdae0b696f1f141ce4c|tail36=a2caaf76490af4ac27031b5e7b7ed0fc88a33959b6b8f386bfc3cfdae0b696f1f141ce4c
+Decoded 430 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_23861252 frame=1
+return_code=0 pcm_bytes=324480
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=9131714b694c70c4de4190224a03ba40991c7afe042b4ab80aaed2037e48d14c
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=95|primary_len=57|redundancy_len=38|red_hex=fffeece969e9ca647b644244d24aad264eeb8aab04914d69e96d395212419472fa7e8def624f|tail36=ece969e9ca647b644244d24aad264eeb8aab04914d69e96d395212419472fa7e8def624f
+B10|mode=1001|celt_to_silk=1|frame_data_len=142|primary_len=104|redundancy_len=38|red_hex=3a6c4a88ff801092fdf6e0fb7d83fe743c71f858b8bcd073b9688c408026606c01bb170b2acc|tail36=4a88ff801092fdf6e0fb7d83fe743c71f858b8bcd073b9688c408026606c01bb170b2acc
+Decoded 169 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_24015131 frame=1
+return_code=0 pcm_bytes=414720
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=c5da6ef789fdd1e20cb57d998d7e704952fe9545a8e2addcccc63f9af8e13975
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=81|primary_len=43|redundancy_len=38|red_hex=fffeb2cdd9b064ca64e729dc3c874488b2aa5affd4d38ec3234ebdf540afee445e85459a5788|tail36=b2cdd9b064ca64e729dc3c874488b2aa5affd4d38ec3234ebdf540afee445e85459a5788
+Decoded 216 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_25087124 frame=1
+return_code=0 pcm_bytes=624000
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=74849b309f8c12e6b5e1fde5f70f0002b9512d329dc6e44a62da3c66fd60e70c
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=93|primary_len=55|redundancy_len=38|red_hex=fffe5b1eed480784a65e0d31a237cd020119be493a1e813248c704926627ff7ce56e5dce21d9|tail36=5b1eed480784a65e0d31a237cd020119be493a1e813248c704926627ff7ce56e5dce21d9
+B10|mode=1001|celt_to_silk=1|frame_data_len=133|primary_len=95|redundancy_len=38|red_hex=eedb20c3bb8a64c8af9825db6e97d46acba34d7cca7fc0b811fc036b5a013663f6a66b4a2472|tail36=20c3bb8a64c8af9825db6e97d46acba34d7cca7fc0b811fc036b5a013663f6a66b4a2472
+Decoded 325 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_25550681 frame=1
+return_code=0 pcm_bytes=462720
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=5e05388cd10771ab6a4f88acb8fcf9826e2bf9b325cdb38c4f98eecc7ec1b226
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=102|primary_len=64|redundancy_len=38|red_hex=fffe40bafe8777b33f664e6fe9ca76b6ba280781953c184d9799bad9bbb6b3f8f9562fe4d3dc|tail36=40bafe8777b33f664e6fe9ca76b6ba280781953c184d9799bad9bbb6b3f8f9562fe4d3dc
+B10|mode=1001|celt_to_silk=1|frame_data_len=134|primary_len=96|redundancy_len=38|red_hex=9784adb5b33281393af93d9ac19cf44056464fc6898a258e77a7b17845632e81966e08a1e77c|tail36=adb5b33281393af93d9ac19cf44056464fc6898a258e77a7b17845632e81966e08a1e77c
+Decoded 241 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_26951271 frame=8
+return_code=0 pcm_bytes=756480
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=1246ea344a56d215f61791736f2bed3d1c8b77b53bba44a6214ef824a98b244a
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=79|primary_len=41|redundancy_len=38|red_hex=fffeec96acf01244b0a10b78e7cabc02e5cfc4c02357045053831dab01b4bb45665737d4bd24|tail36=ec96acf01244b0a10b78e7cabc02e5cfc4c02357045053831dab01b4bb45665737d4bd24
+B10|mode=1001|celt_to_silk=1|frame_data_len=131|primary_len=93|redundancy_len=38|red_hex=f586e68a4499912193514dc115617e07b47a9cf4064bf300ee07c42b0aab7b4e1cfc7f0a041b|tail36=e68a4499912193514dc115617e07b47a9cf4064bf300ee07c42b0aab7b4e1cfc7f0a041b
+Decoded 394 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_26999948 frame=1
+return_code=0 pcm_bytes=441600
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=98934f4db07b4c28a5eb558142fd6789699a7b88e931eaa9748b43ccb9ac4872
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=90|primary_len=52|redundancy_len=38|red_hex=fffe7dbe603cb7c889d8d8303f0c28a176330f515de525578931e97223ba2e83dac2364138af|tail36=7dbe603cb7c889d8d8303f0c28a176330f515de525578931e97223ba2e83dac2364138af
+B10|mode=1001|celt_to_silk=1|frame_data_len=145|primary_len=107|redundancy_len=38|red_hex=0dcd46d8828712a496329a7cdd458aee39776bbd2a4299b674c157a25bda4df5cd7b48a8c76d|tail36=46d8828712a496329a7cdd458aee39776bbd2a4299b674c157a25bda4df5cd7b48a8c76d
+Decoded 230 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_27743463 frame=1
+return_code=0 pcm_bytes=380160
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=11f14b1ae96fd8665574a01a694707fc35097c1f8f2de01eff0f38051557de9f
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=91|primary_len=53|redundancy_len=38|red_hex=fffe3dc1c6d0af41e6cd8a2df04c33f44cc8a7ccc836d90464cce2b0a04f0a8c6c7af321865d|tail36=3dc1c6d0af41e6cd8a2df04c33f44cc8a7ccc836d90464cce2b0a04f0a8c6c7af321865d
+Decoded 198 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_28440382 frame=1
+return_code=0 pcm_bytes=597120
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=07b3a0257754ff6a84c95a722d7665faa1aa32b72db9dd23d1d6e02b81c482f5
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=83|primary_len=45|redundancy_len=38|red_hex=fffeeaddd75332f91502873de6b4edd0ca15c4255d27fb26340db1bb1bb11e4fea220d864e14|tail36=eaddd75332f91502873de6b4edd0ca15c4255d27fb26340db1bb1bb11e4fea220d864e14
+B10|mode=1001|celt_to_silk=1|frame_data_len=121|primary_len=83|redundancy_len=38|red_hex=d66813b3182c9dac47c5241213d4dfd3b0478e0c7c45236724c9fca320d02f2b3aeabdd70a84|tail36=13b3182c9dac47c5241213d4dfd3b0478e0c7c45236724c9fca320d02f2b3aeabdd70a84
+Decoded 311 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_29149495 frame=9
+return_code=0 pcm_bytes=437760
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=2ba4c3332213a549ebe50cf0bf84c6ab79ce90935d41d95f5f135051da0edab2
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=97|primary_len=59|redundancy_len=38|red_hex=fffe02cc41463c86e9d54285291b8319255c670fe3de59cfa4ccf6392cc6555014419b2fbcac|tail36=02cc41463c86e9d54285291b8319255c670fe3de59cfa4ccf6392cc6555014419b2fbcac
+Decoded 228 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_3080 frame=1
+return_code=0 pcm_bytes=184320
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=e86d026efda79b85635ba4dc854baba278d2a9975911c6d1523fc89a5067d94b
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=96|primary_len=58|redundancy_len=38|red_hex=fffe99971b538e891f0be9197276f23e6220e7e1e949ddf96aed78a12d8081b4577ea61f7f9a|tail36=99971b538e891f0be9197276f23e6220e7e1e949ddf96aed78a12d8081b4577ea61f7f9a
+Decoded 96 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_30965888 frame=2
+return_code=0 pcm_bytes=483840
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=f57e314db4a27764b9fad8d5be523fc7185b19653804ae5b03f570abe2310e18
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=83|primary_len=45|redundancy_len=38|red_hex=fffee9b9941f680281ab8a98a9fcfacf621275c7c445d629bf997150fec9fd8477311b0e6605|tail36=e9b9941f680281ab8a98a9fcfacf621275c7c445d629bf997150fec9fd8477311b0e6605
+Decoded 252 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_31302288 frame=1
+return_code=0 pcm_bytes=476160
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=bcbf257a8f5e7a4e73b02e8575e52f9af7f58d3f80c5d74248d35ec4b299ecf1
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=84|primary_len=46|redundancy_len=38|red_hex=fffe10af84e024a8672c909ec7812b8470cfed0e7fa52cbb7e2c167d9193aa63cf924782d503|tail36=10af84e024a8672c909ec7812b8470cfed0e7fa52cbb7e2c167d9193aa63cf924782d503
+Decoded 248 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_32651929 frame=3
+return_code=0 pcm_bytes=610560
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=6b9f54bcb74b0c0c0460584fbeb76857f7ca89386465881339af065d7286733a
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=78|primary_len=40|redundancy_len=38|red_hex=fffe02c871b5d04f8d38d2e67af9f962020c329c9c9c4cd9ca756cdc6d1ea81f702194dc4888|tail36=02c871b5d04f8d38d2e67af9f962020c329c9c9c4cd9ca756cdc6d1ea81f702194dc4888
+Decoded 318 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_33456369 frame=1
+return_code=0 pcm_bytes=376320
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=e45461465eb03f379d954deaeb08180474f84079f2a37b24d3b2bd709ffb9426
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=97|primary_len=59|redundancy_len=38|red_hex=fffe671694901eb7a593472f79306ba638f0896e1faeb7d346dd522c46b3ae799f81afb539d8|tail36=671694901eb7a593472f79306ba638f0896e1faeb7d346dd522c46b3ae799f81afb539d8
+B10|mode=1001|celt_to_silk=1|frame_data_len=136|primary_len=98|redundancy_len=38|red_hex=d7aa7245fa497139fd6f27e03c33fc02e4684b97735c236f07e0d7a945650da5b648ba860c79|tail36=7245fa497139fd6f27e03c33fc02e4684b97735c236f07e0d7a945650da5b648ba860c79
+Decoded 196 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_35057254 frame=1
+return_code=0 pcm_bytes=606720
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=9ec85ef416b967d08650ccf8f4d8a8287da898b2b2e39e4b574f56afee0206cf
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=88|primary_len=50|redundancy_len=38|red_hex=fffecc9ad3e1685d70d66c752cecc8a297fa9c1876db3730f2d04b3ff3a1a814f931f5dd9042|tail36=cc9ad3e1685d70d66c752cecc8a297fa9c1876db3730f2d04b3ff3a1a814f931f5dd9042
+Decoded 316 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_36705706 frame=1
+return_code=0 pcm_bytes=700800
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=0a8afe6469ca6ac39740e9e5a796dc7e5af7427fb5cc2c74e7189af35a8e1c37
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=91|primary_len=53|redundancy_len=38|red_hex=fffeab9507877d2632154e691574bc912434e0561d1e0d2e28423553fce4e1e799c1668e712c|tail36=ab9507877d2632154e691574bc912434e0561d1e0d2e28423553fce4e1e799c1668e712c
+Decoded 365 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_36805307 frame=21
+return_code=0 pcm_bytes=483840
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=5cd9757557ff8376210de758888fcdd1c6fe7ca185148d92cde874736622605b
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=91|primary_len=53|redundancy_len=38|red_hex=fffe5fb29813edafbb0c92f0a960f4670ae4a7059b5c94d82b0c71229c01acc9de99fa29e99b|tail36=5fb29813edafbb0c92f0a960f4670ae4a7059b5c94d82b0c71229c01acc9de99fa29e99b
+Decoded 252 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_38575859 frame=1
+return_code=0 pcm_bytes=449280
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=c7cbe436e741c4a630be277da01b4f4ced426f5f55e4112325723e3e56e17a89
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=83|primary_len=45|redundancy_len=38|red_hex=fffebaa67cfe93b52e37b1affaee991592ced9f0f9720bca8a49bf6955e5e56a4c7fa9bdd9c9|tail36=baa67cfe93b52e37b1affaee991592ced9f0f9720bca8a49bf6955e5e56a4c7fa9bdd9c9
+Decoded 234 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_39576106 frame=1
+return_code=0 pcm_bytes=572160
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=6c799e508e5dd038a4a55f9d8228bfa1d53af4003548d1891a6dc906c85700b3
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=87|primary_len=49|redundancy_len=38|red_hex=fffef0d12adbe34167316fa7fd4810d61101ff372a7c54bb638fb0642602c7891466888941a1|tail36=f0d12adbe34167316fa7fd4810d61101ff372a7c54bb638fb0642602c7891466888941a1
+B10|mode=1001|celt_to_silk=1|frame_data_len=151|primary_len=113|redundancy_len=38|red_hex=da311d531ddd0c93a991b542ff079e8f71cd6048e7454a80233bd6eb564c349582d2c2cc5d97|tail36=1d531ddd0c93a991b542ff079e8f71cd6048e7454a80233bd6eb564c349582d2c2cc5d97
+Decoded 298 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_39586216 frame=3
+return_code=0 pcm_bytes=432000
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=3a773ea79e123358d953f25bf96b290ea28842e14efeaa3a6e3c44d36fba78b1
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=92|primary_len=54|redundancy_len=38|red_hex=fffe2a88a304db3c4ab93ef6d400a3222906df47d0725f16e0080f0f385af5473cd3d85ba533|tail36=2a88a304db3c4ab93ef6d400a3222906df47d0725f16e0080f0f385af5473cd3d85ba533
+B10|mode=1001|celt_to_silk=1|frame_data_len=132|primary_len=94|redundancy_len=38|red_hex=73d7cb63a6f38590c3fd844199e37687798d74f131783c99d77ea4e2fba49426c3f39c45f4ec|tail36=cb63a6f38590c3fd844199e37687798d74f131783c99d77ea4e2fba49426c3f39c45f4ec
+Decoded 225 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_494209 frame=1
+return_code=0 pcm_bytes=272640
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=7cfa017991bcf9aff48cae3c4fc9cae107712a51f1469278a47d46fc9fbd936a
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=105|primary_len=67|redundancy_len=38|red_hex=fffe91f6ed3255754ac6c420ff9fde78a9c2a315a22b54321ef52794d06ef816135f7d4ab7b9|tail36=91f6ed3255754ac6c420ff9fde78a9c2a315a22b54321ef52794d06ef816135f7d4ab7b9
+Decoded 142 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_515799 frame=1
+return_code=0 pcm_bytes=480000
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=7e3b410038fbb4decc6732099af213fd649b05719492e29a3a75e57e943a5d33
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=103|primary_len=65|redundancy_len=38|red_hex=fffe13c03aab8067d19d8ae4638b1cc1c7c3d5a45dae29dcbf7f3187b06c9468eb232de925d0|tail36=13c03aab8067d19d8ae4638b1cc1c7c3d5a45dae29dcbf7f3187b06c9468eb232de925d0
+Decoded 250 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_516777 frame=1
+return_code=0 pcm_bytes=652800
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=ea256e492383695de71910b9acd691369560df684b040a8534c4172cb4347fa6
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=95|primary_len=57|redundancy_len=38|red_hex=fffe0ac187b4a196dbe0bbf27fc58d458641c041f07562d1a847e68fe0224a7ef8c233ce6f75|tail36=0ac187b4a196dbe0bbf27fc58d458641c041f07562d1a847e68fe0224a7ef8c233ce6f75
+Decoded 340 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_565467 frame=1
+return_code=0 pcm_bytes=370560
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=2fa01130a53717e511731601ec2172fd26553523927e9d1fa1f8e46bd36ddfc7
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=104|primary_len=66|redundancy_len=38|red_hex=fffe32772c092f7f6cb25f5e965bf994563831c61d4a034faecf21a5e80b1a878710cec7b198|tail36=32772c092f7f6cb25f5e965bf994563831c61d4a034faecf21a5e80b1a878710cec7b198
+Decoded 193 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_566145 frame=1
+return_code=0 pcm_bytes=341760
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=3e45b414d6bab799b8781da821614c0c2e4cddbf1b471ea7ed10bdb93e962851
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=107|primary_len=69|redundancy_len=38|red_hex=fffec54d6f874f43a37e0a88fe827a41bb9670a05f641f332c9e30922d60a6b14e5ef5972354|tail36=c54d6f874f43a37e0a88fe827a41bb9670a05f641f332c9e30922d60a6b14e5ef5972354
+Decoded 178 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_574053 frame=1
+return_code=0 pcm_bytes=272640
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=c93f69e2550ba74216df1bfb7d964b9114772653ff1c06452b3df2f19366eafe
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=106|primary_len=68|redundancy_len=38|red_hex=fffe9ca1269fd743197ae07fe83b1aecb9aba0d6a67eec78a0c7823b6e245785a31d965c1c3e|tail36=9ca1269fd743197ae07fe83b1aecb9aba0d6a67eec78a0c7823b6e245785a31d965c1c3e
+Decoded 142 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_574419 frame=1
+return_code=0 pcm_bytes=625920
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=d087ad96bc22aae5803b23a09e73ed5413b16e676c5d720ec0682e984a930d0e
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=89|primary_len=51|redundancy_len=38|red_hex=fffeac42d59f4c48012fde3b7e9f7e1e135f76e40485d6d909e25bdcc6cf7a1f4e68ee977435|tail36=ac42d59f4c48012fde3b7e9f7e1e135f76e40485d6d909e25bdcc6cf7a1f4e68ee977435
+Decoded 326 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_575809 frame=1
+return_code=0 pcm_bytes=236160
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=8b5d530fd5620099551bc726c33be71ef7ffa95f0b6943ad29022eb77aa91bfb
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=102|primary_len=64|redundancy_len=38|red_hex=fffe5f9a0ab796d4f1353a33faf422102b1c53e8e77fb0981ae8de33185c073bef7b4eff0c13|tail36=5f9a0ab796d4f1353a33faf422102b1c53e8e77fb0981ae8de33185c073bef7b4eff0c13
+Decoded 123 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_575996 frame=1
+return_code=0 pcm_bytes=255360
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=85906ab1551d33288c7f1041c971c6a98ed42cfbc28bf0392288f0d7354db952
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=104|primary_len=66|redundancy_len=38|red_hex=fffe441eb35a1aa6e0c8f294638a7205ccc8e4d4721e79c1a8b96c9b625cae9a4e7df9318d8e|tail36=441eb35a1aa6e0c8f294638a7205ccc8e4d4721e79c1a8b96c9b625cae9a4e7df9318d8e
+Decoded 133 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_602118 frame=1
+return_code=0 pcm_bytes=336000
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=b58428dc07af4b9a8e1bdc2ef111e6c30fa6771817708157eae3e73582199c4b
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffeda827465c581b8d361c989cd0ce37c50d45a4b8beac50528137d0060b408dd25ed7c0e47|tail36=da827465c581b8d361c989cd0ce37c50d45a4b8beac50528137d0060b408dd25ed7c0e47
+Decoded 175 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_609997 frame=5
+return_code=0 pcm_bytes=295680
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=7c64e8b811fee78048e9229c9f0b533c16fbe74fba34ed4cdb8daba2aca30e1f
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=96|primary_len=58|redundancy_len=38|red_hex=fffe88f41730e9e5997bcc8c6c74f0a7a74a97cc725dfc3fb7963e24748376a908cb92390b69|tail36=88f41730e9e5997bcc8c6c74f0a7a74a97cc725dfc3fb7963e24748376a908cb92390b69
+Decoded 154 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_619671 frame=1
+return_code=0 pcm_bytes=393600
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=a3b425ccbcfc71334114c20446bb4ebbb76eba52e4eeb4f847bcfd08c75c1a9d
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=105|primary_len=67|redundancy_len=38|red_hex=fffebfa2ca84ed013d3b0df7a086c3e8d9926a4f32cd6fe1e9e22fa795a12f2c19e19c52c940|tail36=bfa2ca84ed013d3b0df7a086c3e8d9926a4f32cd6fe1e9e22fa795a12f2c19e19c52c940
+Decoded 205 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_623709 frame=1
+return_code=0 pcm_bytes=232320
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=9883f9426fcfba1c4ee966ab8c9536db6ca0c07b9461d75d70a2556226cb8b8f
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=96|primary_len=58|redundancy_len=38|red_hex=fffeac8312c6865307e3b2b82acc932f2e8f25c257c1a9d76df221dd699f2e1db05e2d18fb6d|tail36=ac8312c6865307e3b2b82acc932f2e8f25c257c1a9d76df221dd699f2e1db05e2d18fb6d
+Decoded 121 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_635365 frame=1
+return_code=0 pcm_bytes=278400
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=c1d5c395e53dc4a8b90300e868f45ab95ee4d1b9026040d085244348a25e11f6
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffe07931e0faffce37ec115489c6ea87b4debcfc275f82d8b217b7119af654228074b710c56|tail36=07931e0faffce37ec115489c6ea87b4debcfc275f82d8b217b7119af654228074b710c56
+Decoded 145 frames
+
+
+========================================================================
+encoder=1.5.2 decoder=1.6.1 recording=common_voice_en_76718 frame=1
+return_code=0 pcm_bytes=453120
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=3aad786dfb6bc4df21123bf7724bd48bdef0d676cf3ec53ca73a56551ac4b632
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffee24cfb13332d44a9f5fccd2805e2f27e728b5ed14c8b8b67c4a67bb292c8510e3688b1f4|tail36=e24cfb13332d44a9f5fccd2805e2f27e728b5ed14c8b8b67c4a67bb292c8510e3688b1f4
+Decoded 236 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_117681 frame=5
+return_code=0 pcm_bytes=322560
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=f440befc962e2e6ffc61f8a038367eeee3ad2ab3aad3c588a41b427b8fde5e98
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=93|primary_len=55|redundancy_len=38|red_hex=fffe866c1fef9031e4892a3b52d57509aa8c2073d46b52c4ac86cdad0cc58682bde5c8d7a2b0|tail36=866c1fef9031e4892a3b52d57509aa8c2073d46b52c4ac86cdad0cc58682bde5c8d7a2b0
+Decoded 168 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_137531 frame=1
+return_code=0 pcm_bytes=232320
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=bc3453881d857407598580a09106914bf7a460219a07d2eca02e9ce801d3d6b7
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=100|primary_len=62|redundancy_len=38|red_hex=fffe16b40966e29f4ab593c3e4e3ab70b083d1d7b36aec4efd1493ee94b5675ce65db65e1463|tail36=16b40966e29f4ab593c3e4e3ab70b083d1d7b36aec4efd1493ee94b5675ce65db65e1463
+Decoded 121 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_15061 frame=1
+return_code=0 pcm_bytes=322560
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=7c3de168a9729515c877d3081fffc653dfb835d20dbb7181f70a1823e6aa3da0
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=94|primary_len=56|redundancy_len=38|red_hex=fffe4d46c8b72e4dcd6ea2040807bfb04b1ce29cd27c4073bf2bc7f61d94b0fe985bc24944ce|tail36=4d46c8b72e4dcd6ea2040807bfb04b1ce29cd27c4073bf2bc7f61d94b0fe985bc24944ce
+Decoded 168 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_153133 frame=1
+return_code=0 pcm_bytes=370560
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=94db7245a114632b6e890e5ba68ac77d641649e7d8a3e6b0f082840bf6ea6470
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=102|primary_len=64|redundancy_len=38|red_hex=fffeb69e99d1c40e053185f12116c851f47f4be7df12274619c2005754c3415d70b9babf74d8|tail36=b69e99d1c40e053185f12116c851f47f4be7df12274619c2005754c3415d70b9babf74d8
+Decoded 193 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_15904033 frame=1
+return_code=0 pcm_bytes=255360
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=527d33854cc746f3b8eb7890bb0fa6ad96f085647baf07f6d1e8235e4247564b
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=95|primary_len=57|redundancy_len=38|red_hex=fffee718907570a26ebfc7af5903c320ff61d08d8992f99e46ba5d980efdf7d3a3f1be72e38f|tail36=e718907570a26ebfc7af5903c320ff61d08d8992f99e46ba5d980efdf7d3a3f1be72e38f
+Decoded 133 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_159474 frame=2
+return_code=0 pcm_bytes=750720
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=4602af7e7a3a2aaeefcc0905e2443cc4cc3d20aa5d671b4ba6a22dd261d8fbc1
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=99|primary_len=61|redundancy_len=38|red_hex=fffee97d40deb3adb13effe2a1a73ef0504e2d363bdcb7f8339582a688e1e5f2b67aae859c30|tail36=e97d40deb3adb13effe2a1a73ef0504e2d363bdcb7f8339582a688e1e5f2b67aae859c30
+Decoded 391 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_165316 frame=1
+return_code=0 pcm_bytes=510720
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=ff7479aba82b08ffa30f05dc5706ed10f06925a99cc7d6aebb9e5ab393c56014
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=104|primary_len=66|redundancy_len=38|red_hex=fffe3f9aa14293c6f86d0b116ee98e91ddc83b86c8bfe6257f22b3dae49188dab7cebeb60691|tail36=3f9aa14293c6f86d0b116ee98e91ddc83b86c8bfe6257f22b3dae49188dab7cebeb60691
+Decoded 266 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_169306 frame=1
+return_code=0 pcm_bytes=445440
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=624ca2996ba7535b293d23480bbf71d8c859e3f70627e981e3193e782e328e0b
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=103|primary_len=65|redundancy_len=38|red_hex=fffec4c585e6fff9ab5c3bcfbae22924a7c0051a5bc0e5790eb71441f197a520c9b3fc46e99b|tail36=c4c585e6fff9ab5c3bcfbae22924a7c0051a5bc0e5790eb71441f197a520c9b3fc46e99b
+Decoded 232 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17251326 frame=1
+return_code=0 pcm_bytes=312960
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=df3a3b1d57bcabdac59e680faf7ebf07ba9c087ddd3a17c8182a8f618ab7e7b4
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=98|primary_len=60|redundancy_len=38|red_hex=fffe7630310a9b892ae2f7cfc977c1a992446956f7db3c7bd3ae6a12bac16554fd1c2179519c|tail36=7630310a9b892ae2f7cfc977c1a992446956f7db3c7bd3ae6a12bac16554fd1c2179519c
+Decoded 163 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17260071 frame=1
+return_code=0 pcm_bytes=276480
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=a174232644829f373de5656dc952d4578fb958519a0d2ef15cc42020ac8cc81f
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=102|primary_len=64|redundancy_len=38|red_hex=fffec9c0f0084dd80ea4337b13275198383e8859ba6d6b0e248a421370060d237810a0372b85|tail36=c9c0f0084dd80ea4337b13275198383e8859ba6d6b0e248a421370060d237810a0372b85
+Decoded 144 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17262394 frame=4
+return_code=0 pcm_bytes=94080
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=15925e51aae3400855f65cb32b00cabf26de25c8edf4fa1834e8a4387b2ffbfc
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=116|primary_len=78|redundancy_len=38|red_hex=fffe1db8d7aa03c897380d408e25cef70ea2539abd1d6e396777b5bbde1961acf9233ba7c4dd|tail36=1db8d7aa03c897380d408e25cef70ea2539abd1d6e396777b5bbde1961acf9233ba7c4dd
+Decoded 49 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17278718 frame=3
+return_code=0 pcm_bytes=314880
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=75187eef9be4f78fd29d6a2eb378c1b6abc2d41efda9454e7361d302fc5a2edf
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=94|primary_len=56|redundancy_len=38|red_hex=fffe6ee49ace7b626de87cc83a2cce39ed4809c2d611661ac93bb24c65a8460501f0f5f4327c|tail36=6ee49ace7b626de87cc83a2cce39ed4809c2d611661ac93bb24c65a8460501f0f5f4327c
+B10|mode=1001|celt_to_silk=1|frame_data_len=142|primary_len=104|redundancy_len=38|red_hex=e83d8e6458e4d9928b5e499ba9679b6089d920ea3b325ad41e7e8fc801071e024b547e172db4|tail36=8e6458e4d9928b5e499ba9679b6089d920ea3b325ad41e7e8fc801071e024b547e172db4
+Decoded 164 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17293314 frame=3
+return_code=0 pcm_bytes=207360
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=3eb0a47623cacee9844f426f734dd6e678ecd35256b5e6a795ffedc646213cfe
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=106|primary_len=68|redundancy_len=38|red_hex=fffe552c9ccf1da74ed424418250d2a273979642622fbfd9282851226905bdeb7382824b84ab|tail36=552c9ccf1da74ed424418250d2a273979642622fbfd9282851226905bdeb7382824b84ab
+B10|mode=1001|celt_to_silk=1|frame_data_len=124|primary_len=86|redundancy_len=38|red_hex=c984f398c0c5d36d3bd9b1ec7ffedcf1c0a22f827463fc64ae6d0d2ec2706aebec5af53e3a5f|tail36=f398c0c5d36d3bd9b1ec7ffedcf1c0a22f827463fc64ae6d0d2ec2706aebec5af53e3a5f
+Decoded 108 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17339964 frame=1
+return_code=0 pcm_bytes=420480
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=0f06d9a1cd82141dc20b9201d6eef71b4cd72db8c5bcc414a183f5825e50d07e
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=100|primary_len=62|redundancy_len=38|red_hex=fffe92e81dc0f4df04b9c081b4697b33cc7b7dee271554c5cb0e6ee91f9712cdaa0de6d345d7|tail36=92e81dc0f4df04b9c081b4697b33cc7b7dee271554c5cb0e6ee91f9712cdaa0de6d345d7
+Decoded 219 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17358393 frame=1
+return_code=0 pcm_bytes=489600
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=fa123d4dad329151d1e9556af801a25a81b4d5e5dad63579aa6546d631c5d1db
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=106|primary_len=68|redundancy_len=38|red_hex=fffe9dd36ac19c177793e36276b7f69e3bb9247123c3e676d44ff9d0176c45c519fdad381864|tail36=9dd36ac19c177793e36276b7f69e3bb9247123c3e676d44ff9d0176c45c519fdad381864
+Decoded 255 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17389852 frame=1
+return_code=0 pcm_bytes=577920
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=aee5b50ee63d9d05ed736a41250128db3ea3640a9fe50c2b1600c9190064a351
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=99|primary_len=61|redundancy_len=38|red_hex=fffe58e27dab3a6c072b3caf82dfc58c5154e6ffa71e3457ccffee77146f6db7b7f0875d30bb|tail36=58e27dab3a6c072b3caf82dfc58c5154e6ffa71e3457ccffee77146f6db7b7f0875d30bb
+Decoded 301 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17402481 frame=1
+return_code=0 pcm_bytes=485760
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=e7f4d0aa0b6f0c12b80ac8f41ed1c46da529d347dd991c99415391a91e6100f4
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=96|primary_len=58|redundancy_len=38|red_hex=fffe9c3a8f17bfca3884b5cad71fb3cfb2692c41cad5dae896591ae3ceccfb6f60977146e542|tail36=9c3a8f17bfca3884b5cad71fb3cfb2692c41cad5dae896591ae3ceccfb6f60977146e542
+Decoded 253 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17573126 frame=2
+return_code=0 pcm_bytes=455040
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=874bddacad6571aa22694d293a381bffa44577580c9a54b5b194dba7fc3b5b97
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=98|primary_len=60|redundancy_len=38|red_hex=fffe4d00046d061a5d795fc05c13e810a1b11dbbce2a494707d216bd597c2d0e02ffac85b5b4|tail36=4d00046d061a5d795fc05c13e810a1b11dbbce2a494707d216bd597c2d0e02ffac85b5b4
+Decoded 237 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17680099 frame=1
+return_code=0 pcm_bytes=474240
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=1a061057e88a033db16f93b9f16999277ecee5dd1d9c03726e945df26dd575c7
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=94|primary_len=56|redundancy_len=38|red_hex=fffe9bacd1adb0feb1ae53fb0c9928154655d2a75b6b41dcab6377bac151fcaf11c45cc10680|tail36=9bacd1adb0feb1ae53fb0c9928154655d2a75b6b41dcab6377bac151fcaf11c45cc10680
+Decoded 247 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17730082 frame=1
+return_code=0 pcm_bytes=293760
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=abafe518ed58c0c88c1068c4f7acd2eb3a393a57a2dd1e954225ac75563ac3c8
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=106|primary_len=68|redundancy_len=38|red_hex=fffe1f7b0d81deb59466294d11943b0566d93241c8caae6fdcebe24f7b9e08f4707dafd1b126|tail36=1f7b0d81deb59466294d11943b0566d93241c8caae6fdcebe24f7b9e08f4707dafd1b126
+Decoded 153 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17838120 frame=1
+return_code=0 pcm_bytes=339840
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=6b5a6ad0f25f665e0256201dd2f4d9491cdcb0e0c3abbc269cb9ce66be93002c
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=99|primary_len=61|redundancy_len=38|red_hex=fffe946378a672a28f339f873f9dd5f66c75e3ba4b33bbd76f42abbba012b8b947f0eb139a2b|tail36=946378a672a28f339f873f9dd5f66c75e3ba4b33bbd76f42abbba012b8b947f0eb139a2b
+Decoded 177 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17857266 frame=4
+return_code=0 pcm_bytes=420480
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=b7d96246ed4745bb25ed7fd4046016d98aece3aa24c38ea4582d45bacb2d15f3
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=85|primary_len=47|redundancy_len=38|red_hex=fffed96d3ba8ca9ca2e9c4d642ff74f7ba143d76e2ac1a5b2312b973e0b42da05d6fc2c164d1|tail36=d96d3ba8ca9ca2e9c4d642ff74f7ba143d76e2ac1a5b2312b973e0b42da05d6fc2c164d1
+Decoded 219 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17893190 frame=1
+return_code=0 pcm_bytes=387840
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=9f3897f2315f7d5973fb360259ce02893385c5c893f46fac393ab66c497c46de
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=106|primary_len=68|redundancy_len=38|red_hex=fffe48e94a4f853bb110a42a934decff8eb0fd35c761f15e21fc12b5448cc7aa63f2193712cb|tail36=48e94a4f853bb110a42a934decff8eb0fd35c761f15e21fc12b5448cc7aa63f2193712cb
+Decoded 202 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_17942629 frame=1
+return_code=0 pcm_bytes=266880
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=1cb1c89f15031cc4b4de29b83e4df3ffd2702bf1d5ab8ec04ce28a79335cabf5
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=119|primary_len=81|redundancy_len=38|red_hex=fffe2e1b75a0aeadd126c2a56262691155f4e7175e95ee9134e4e53fefe82eb37a53c002949d|tail36=2e1b75a0aeadd126c2a56262691155f4e7175e95ee9134e4e53fefe82eb37a53c002949d
+Decoded 139 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_18057218 frame=1
+return_code=0 pcm_bytes=334080
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=285180aee834a24d986cfea31841eed54ee5e25340c00ad1e72a7d597b23425f
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=104|primary_len=66|redundancy_len=38|red_hex=fffe3acd66d46e7e20b453352e8529ef71b4289329a39659c2fc5a4dd1163b277f9985eda177|tail36=3acd66d46e7e20b453352e8529ef71b4289329a39659c2fc5a4dd1163b277f9985eda177
+Decoded 174 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_18158755 frame=1
+return_code=0 pcm_bytes=456960
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=83c6c54a307032c02432b55e98917099efc0dc465b8249d45111d9ed6d13697b
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=95|primary_len=57|redundancy_len=38|red_hex=fffec23fe556ff5f734a1d3c1b83c84091c029a2e06f6da43e7663f1d0c98741089150253817|tail36=c23fe556ff5f734a1d3c1b83c84091c029a2e06f6da43e7663f1d0c98741089150253817
+Decoded 238 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_18206366 frame=1
+return_code=0 pcm_bytes=374400
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=bbdb5abc005900863f438897fd1df6c6435824d6e2bc6520493b79caa2dd4253
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=102|primary_len=64|redundancy_len=38|red_hex=fffecbdc8ea69cacf2824940e6abcc98c813d15c2216a3e0efed825d098cd7d1c7becfc96e0d|tail36=cbdc8ea69cacf2824940e6abcc98c813d15c2216a3e0efed825d098cd7d1c7becfc96e0d
+Decoded 195 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_18210791 frame=1
+return_code=0 pcm_bytes=324480
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=1fdbf0f6a6e7afec039c18f62e9e7cbf445a5de8b930e737a29166e1553f1a27
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=96|primary_len=58|redundancy_len=38|red_hex=fffe02e0cb2b42a248b5197158a8f06f79a8ba1437fe2578e23c33b0fd2a313145e1c011feff|tail36=02e0cb2b42a248b5197158a8f06f79a8ba1437fe2578e23c33b0fd2a313145e1c011feff
+Decoded 169 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_18319858 frame=1
+return_code=0 pcm_bytes=622080
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=e3b874762cd2a51899b8512ac2160f093778199938cb7459cb49aa96f48e1a06
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=100|primary_len=62|redundancy_len=38|red_hex=fffe4d177ac6cc3213d52f5207a694501ee01ccf5bf8ca238f76d64ec3ca3a73c7ddc5d64093|tail36=4d177ac6cc3213d52f5207a694501ee01ccf5bf8ca238f76d64ec3ca3a73c7ddc5d64093
+Decoded 324 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_18335650 frame=1
+return_code=0 pcm_bytes=318720
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=a648cd4533d779843b33120d95290e6943fd3665b47a79cd9aad823f8b64e545
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=94|primary_len=56|redundancy_len=38|red_hex=fffe8e1ad4adda8638f8fac1b16b118f8a63e5322276f42fa853fef38d2678f03ccd956e20f1|tail36=8e1ad4adda8638f8fac1b16b118f8a63e5322276f42fa853fef38d2678f03ccd956e20f1
+Decoded 166 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_18362411 frame=1
+return_code=0 pcm_bytes=314880
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=9db0a645dd2b2d69dc08fb14f17f01ea9c1ebc066f5e2cb5a3c5cec3a8c9b672
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=97|primary_len=59|redundancy_len=38|red_hex=fffeaeecfea85c4ad9de24a633c3d65424528ea7436bdee6d0bd88bca72909f610bea2d00e59|tail36=aeecfea85c4ad9de24a633c3d65424528ea7436bdee6d0bd88bca72909f610bea2d00e59
+Decoded 164 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_18717610 frame=1
+return_code=0 pcm_bytes=570240
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=6eb50e713071d925195250894f051ee1ab4f4e3143fb13674a51991c77d46a13
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffe399333e5ec30d0c3f826ec363ebaa5902d7cd17e4dcdfa2e5cc387818a95abc050df09a6|tail36=399333e5ec30d0c3f826ec363ebaa5902d7cd17e4dcdfa2e5cc387818a95abc050df09a6
+Decoded 297 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_18731875 frame=1
+return_code=0 pcm_bytes=522240
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=dc2c02148d8c76fab0256591973310708ce7791a0659c243977e0ccfe03ac056
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=95|primary_len=57|redundancy_len=38|red_hex=fffe10f3eac764c0b56331b5833de6b10f108be50c61aa1fa5d47a3b6403fccb9fef18dd05f9|tail36=10f3eac764c0b56331b5833de6b10f108be50c61aa1fa5d47a3b6403fccb9fef18dd05f9
+Decoded 272 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_18835223 frame=1
+return_code=0 pcm_bytes=616320
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=5ede75ea55cc9ff67604c2d8ad92e2049571b2d0e10ecaac73216782a6805020
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=106|primary_len=68|redundancy_len=38|red_hex=fffe273c55de3714e5c7319c9503bb5eb7bb41ba8e888b00fa8fb270294928e87764d04cfc1c|tail36=273c55de3714e5c7319c9503bb5eb7bb41ba8e888b00fa8fb270294928e87764d04cfc1c
+Decoded 321 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_18877657 frame=1
+return_code=0 pcm_bytes=618240
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=0f9276019558703fc692e4384510f666326752b7a4360abe954320307d3a6be2
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=107|primary_len=69|redundancy_len=38|red_hex=fffeb78ebc66deae9fb661df56fc2638befd6b7fdf4b6ca563419c9e30c08777a2673215c5ea|tail36=b78ebc66deae9fb661df56fc2638befd6b7fdf4b6ca563419c9e30c08777a2673215c5ea
+Decoded 322 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_19083487 frame=1
+return_code=0 pcm_bytes=520320
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=2215f158aa2a4081e063033329fccbe6337231417ba0d011bba9e67065f3b191
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=105|primary_len=67|redundancy_len=38|red_hex=fffe260e9f0b00bd52b12d7a642ab471fdbe94cf511e243424a490b1a56a7dd305556be3965f|tail36=260e9f0b00bd52b12d7a642ab471fdbe94cf511e243424a490b1a56a7dd305556be3965f
+Decoded 271 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_19247290 frame=1
+return_code=0 pcm_bytes=506880
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=1a36846ea4dd68ad8d30b2d57fbca8ad4fd64bc451e89a85dafa39c6540754c5
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=106|primary_len=68|redundancy_len=38|red_hex=fffedcca7d729cdb623be818eed820f3edfb4e7177c7a54b4289d5068930e63f62801e9c967c|tail36=dcca7d729cdb623be818eed820f3edfb4e7177c7a54b4289d5068930e63f62801e9c967c
+Decoded 264 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_19471535 frame=1
+return_code=0 pcm_bytes=913920
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=f77b19e72d6a3026c1ec68f856bad4dca722aa55659d12ceb0b71d363b04ae21
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=104|primary_len=66|redundancy_len=38|red_hex=fffeeef4d117db67709c3e711873c4c2b631853c4cfa16bd2df8a7a40fac447baf4813cbf650|tail36=eef4d117db67709c3e711873c4c2b631853c4cfa16bd2df8a7a40fac447baf4813cbf650
+Decoded 476 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_19809180 frame=1
+return_code=0 pcm_bytes=468480
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=d8d0ff96de627f72ddc5d62a4dfd7eedac44d278fdfa81368d8b1923443c7940
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=99|primary_len=61|redundancy_len=38|red_hex=fffe6ff7aba01af91980a06df543d38c036208a7387c225ed34af541178c468ffaaf4303ffde|tail36=6ff7aba01af91980a06df543d38c036208a7387c225ed34af541178c468ffaaf4303ffde
+Decoded 244 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_19857285 frame=1
+return_code=0 pcm_bytes=543360
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=37655fe8d439b9be4fa240a9fc881e40dd421c9c636278b7afe5195bf75b1d20
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=96|primary_len=58|redundancy_len=38|red_hex=fffe24789f7a433b858002651691b22542ccfff160f2bdf3071afe974f7fe24316497a526f9a|tail36=24789f7a433b858002651691b22542ccfff160f2bdf3071afe974f7fe24316497a526f9a
+Decoded 283 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_19942731 frame=1
+return_code=0 pcm_bytes=462720
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=4156885115c2f5a573fcce79685e294116e6e7edb3de5fd1375e5d664c6411e7
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=94|primary_len=56|redundancy_len=38|red_hex=fffe7f569365523a6ca47e9dbb270ea66e3fdc8e106567ae4b20a1d2dd809e45a5e1118654e5|tail36=7f569365523a6ca47e9dbb270ea66e3fdc8e106567ae4b20a1d2dd809e45a5e1118654e5
+B10|mode=1001|celt_to_silk=1|frame_data_len=123|primary_len=85|redundancy_len=38|red_hex=32b8918ed72d3e2fde58e2fd43d3ff9749fa5b2a80258910e380f7015358548c2a2f1b84946b|tail36=918ed72d3e2fde58e2fd43d3ff9749fa5b2a80258910e380f7015358548c2a2f1b84946b
+Decoded 241 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_20027679 frame=1
+return_code=0 pcm_bytes=535680
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=3150b681dc0b242bf31f2e0dcc409abfd1f6f39fb14283d696d8415266600215
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=97|primary_len=59|redundancy_len=38|red_hex=fffeda3534ad33fe18c2f46da5e1b174fc259d828f9cff4e9a705c316fda74545ca6d03dbdab|tail36=da3534ad33fe18c2f46da5e1b174fc259d828f9cff4e9a705c316fda74545ca6d03dbdab
+Decoded 279 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_20047554 frame=1
+return_code=0 pcm_bytes=652800
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=ac3f133d0b778ead8fe208935c741a819f02c3f275357cdd669d2a67ffda88c7
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=91|primary_len=53|redundancy_len=38|red_hex=fffefff71d78d8cb3ae35c737dcdb901187c2c31f6614b9f9a7d683e1853237aa35ef467233d|tail36=fff71d78d8cb3ae35c737dcdb901187c2c31f6614b9f9a7d683e1853237aa35ef467233d
+Decoded 340 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_20284765 frame=1
+return_code=0 pcm_bytes=750720
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=bf50275f67cebf114fe5be407771f92c0e7cb8a1c4ecb9a58664269de8c87121
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffe83138d02a72b18dd9f9f4ceb55df8305d3e7703abd610d5e2ddebad9ef77b01f98ce5729|tail36=83138d02a72b18dd9f9f4ceb55df8305d3e7703abd610d5e2ddebad9ef77b01f98ce5729
+Decoded 391 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_20371345 frame=1
+return_code=0 pcm_bytes=791040
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=da1f9a2f25139413667424e8bb01d9a668ede3704aa917c9229aa6a97e499a48
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffedcfbca09ad5a50a6abd00bdb724ab87e4cb5693362e5ab96a7ff5516f1e257d9dcb6ddb1|tail36=dcfbca09ad5a50a6abd00bdb724ab87e4cb5693362e5ab96a7ff5516f1e257d9dcb6ddb1
+Decoded 412 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_20709494 frame=3
+return_code=0 pcm_bytes=497280
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=2835839995484cced72d435e8bd1a1ff1012d02f193e67d267d348f9feb7264c
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=86|primary_len=48|redundancy_len=38|red_hex=fffeff152f511c71dc41343fce442e5bda5682f073378743d6961024dad4a2ba41ced6aa98b1|tail36=ff152f511c71dc41343fce442e5bda5682f073378743d6961024dad4a2ba41ced6aa98b1
+Decoded 259 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_20715844 frame=1
+return_code=0 pcm_bytes=658560
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=25252733d060d4f2dfd7e438d443ad9962c2680fcf65fd27762a5c9d8457c029
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=97|primary_len=59|redundancy_len=38|red_hex=fffe0d0b7181741e68d1ebfe90d23814d13ed6eb986819beda7e7f14790be3534c79a80f781c|tail36=0d0b7181741e68d1ebfe90d23814d13ed6eb986819beda7e7f14790be3534c79a80f781c
+Decoded 343 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_21492024 frame=1
+return_code=0 pcm_bytes=520320
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=38651b5a721a8e4c055512a96ec34e45d753a090fe3d087fc39e1b30406822e7
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=95|primary_len=57|redundancy_len=38|red_hex=fffed7953922591e26b23a93fa11eb8094b9db34064fce306ce2f0f9ff33c31c050b7142aab8|tail36=d7953922591e26b23a93fa11eb8094b9db34064fce306ce2f0f9ff33c31c050b7142aab8
+Decoded 271 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_21705215 frame=1
+return_code=0 pcm_bytes=524160
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=631e27101fe56ed60cfd67eac030a7dfdd0df599f8e6c66bb0c53fdc1080fe4e
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=96|primary_len=58|redundancy_len=38|red_hex=fffe2daa815ce55c6016b8dcf0ebd52978b759dbdc688a8f439bb67dac8a3fb8a0af2a3af2fe|tail36=2daa815ce55c6016b8dcf0ebd52978b759dbdc688a8f439bb67dac8a3fb8a0af2a3af2fe
+Decoded 273 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_21758640 frame=1
+return_code=0 pcm_bytes=545280
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=468ef4799cec2e907262d4a50bc26af19a7eb6cb460180dd54f95d7c291bc288
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=100|primary_len=62|redundancy_len=38|red_hex=fffeed4dbda34855f2ef6647018afe56e3eac2b00c82d9d585d92b86fab699c5f345b22291c0|tail36=ed4dbda34855f2ef6647018afe56e3eac2b00c82d9d585d92b86fab699c5f345b22291c0
+Decoded 284 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_22010172 frame=5
+return_code=0 pcm_bytes=213120
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=5067eb0311e955862fe7ae7fb11002b602e4daa76ad04a48812af9cde3f87246
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=99|primary_len=61|redundancy_len=38|red_hex=fffe178dfce0f41cda8698e52c6a01aff474d383ba9e69a6f7c39006762ce07dd4c59b9f289b|tail36=178dfce0f41cda8698e52c6a01aff474d383ba9e69a6f7c39006762ce07dd4c59b9f289b
+Decoded 111 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_22081355 frame=1
+return_code=0 pcm_bytes=835200
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=3fd4426e35c24f0f7d4f4ad5d0cc376c96b78f4b577cc2e1fcb5b6758eec624d
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=99|primary_len=61|redundancy_len=38|red_hex=fffe3f354513ae88a294f85ad25a27aa2bbd6d05d17ccbf59e0b540596d21ee68c8b115c34d8|tail36=3f354513ae88a294f85ad25a27aa2bbd6d05d17ccbf59e0b540596d21ee68c8b115c34d8
+Decoded 435 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_22082048 frame=1
+return_code=0 pcm_bytes=241920
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=73e7fdae84f547694d0019fde6e7a7494f29b0b513362b68ae68c330c916862d
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=97|primary_len=59|redundancy_len=38|red_hex=fffeab2a1d50980c2efe9bb40a3c63181477ae92ddf7a14fb19f4298a0a28e201018f5d479a2|tail36=ab2a1d50980c2efe9bb40a3c63181477ae92ddf7a14fb19f4298a0a28e201018f5d479a2
+Decoded 126 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_22183579 frame=1
+return_code=0 pcm_bytes=174720
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=b0eadbc263c077741c8098ada152a46e95e5d66856085a626f88ed0d91d54815
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=100|primary_len=62|redundancy_len=38|red_hex=fffef99b3f1c5980370398bd7539486b8c31224ef2a5758a175fa313c96af002317dd40567b4|tail36=f99b3f1c5980370398bd7539486b8c31224ef2a5758a175fa313c96af002317dd40567b4
+Decoded 91 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_22233762 frame=1
+return_code=0 pcm_bytes=710400
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=21e37d78d3b345f1423838be4a7cb827bae90b4b1b0352970abe1804b62d7ee3
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=100|primary_len=62|redundancy_len=38|red_hex=fffe988b7377803c8fd5d93735457b0312abd1a70ee106555de262e7d6657e6d69d90993a734|tail36=988b7377803c8fd5d93735457b0312abd1a70ee106555de262e7d6657e6d69d90993a734
+B10|mode=1001|celt_to_silk=1|frame_data_len=132|primary_len=94|redundancy_len=38|red_hex=d91df82fe02e2a4d539c0c00a37bff44600d7e86468abb258d92089a002c38c2e4900dceb216|tail36=f82fe02e2a4d539c0c00a37bff44600d7e86468abb258d92089a002c38c2e4900dceb216
+Decoded 370 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_22730873 frame=1
+return_code=0 pcm_bytes=405120
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=1eff6f4defad7d9eb32dee0ee02296784598cb682849900bc52a65cd593f73bb
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=104|primary_len=66|redundancy_len=38|red_hex=fffee61f9bb0337b9284f7b1ada8e244299cba14212c46cfa39453eea872526a41f48124b671|tail36=e61f9bb0337b9284f7b1ada8e244299cba14212c46cfa39453eea872526a41f48124b671
+Decoded 211 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_22929167 frame=1
+return_code=0 pcm_bytes=589440
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=23fa4318e9f3fbc6df3fcb89be40c9f0bf3baf23851c11efb949ae0ac5f7fee1
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffeee34e4cc346ecfc760bad29908c7d3d65dd214bedf4658b7f4cfccf3c6f175ed0ec1d868|tail36=ee34e4cc346ecfc760bad29908c7d3d65dd214bedf4658b7f4cfccf3c6f175ed0ec1d868
+Decoded 307 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_22946672 frame=2
+return_code=0 pcm_bytes=407040
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=2f711d465a2a6f60f89e302f73d23e04753f789438d034c8e97a5cdc11d5c825
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=79|primary_len=41|redundancy_len=38|red_hex=fffe454e84ef87457892f9e22040e611e8d9ffcda3c0905eccd3dca75870f4d5deb27f280a1c|tail36=454e84ef87457892f9e22040e611e8d9ffcda3c0905eccd3dca75870f4d5deb27f280a1c
+B10|mode=1001|celt_to_silk=1|frame_data_len=139|primary_len=101|redundancy_len=38|red_hex=fb47c9a58edf5feeeb90415d9d7f6de1cb77f24e10e62d4e77d96959aa5b9c1ad7dded8e0827|tail36=c9a58edf5feeeb90415d9d7f6de1cb77f24e10e62d4e77d96959aa5b9c1ad7dded8e0827
+Decoded 212 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_23568435 frame=1
+return_code=0 pcm_bytes=405120
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=c530437902b179a0011bfcce24a43fd69731b166bd68b14c0e48514c3f039cf0
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=97|primary_len=59|redundancy_len=38|red_hex=fffe4c92c5f683d5cfa74b5193cb0cf2cb0971181f29642db6552bc92ba3a75551828b8f194f|tail36=4c92c5f683d5cfa74b5193cb0cf2cb0971181f29642db6552bc92ba3a75551828b8f194f
+Decoded 211 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_23659042 frame=1
+return_code=0 pcm_bytes=407040
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=f8d12cb33a800319b733926fb15d8043bdbc0341bbb75bc7bf8d581150c04d90
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=103|primary_len=65|redundancy_len=38|red_hex=fffe5fdbdf77c911c9c2f5b2630dbf237b56af9dcdc0a41ba541e6687274edae7d84d8a9db26|tail36=5fdbdf77c911c9c2f5b2630dbf237b56af9dcdc0a41ba541e6687274edae7d84d8a9db26
+Decoded 212 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_23755037 frame=1
+return_code=0 pcm_bytes=312960
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=01cc34dbbcb877dcbfa4f59205fd6aa91732419a6c1b85547a22ae647e507c52
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=104|primary_len=66|redundancy_len=38|red_hex=fffea9cb526def7f3a9a03da9489f771fff899cbc4cd145cb5dc97228f0965e44c10e798dee2|tail36=a9cb526def7f3a9a03da9489f771fff899cbc4cd145cb5dc97228f0965e44c10e798dee2
+Decoded 163 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_24683276 frame=1
+return_code=0 pcm_bytes=289920
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=24f6e2fabd162b930b6dea4404ec444032efafcdf2c9fbf9d2a62a8c235fa1a5
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=95|primary_len=57|redundancy_len=38|red_hex=fffe7b6a880c1ef9c9fa726a05b15cb4eb215f50e5dcb282f8db493269dc927ad9ac265cdd15|tail36=7b6a880c1ef9c9fa726a05b15cb4eb215f50e5dcb282f8db493269dc927ad9ac265cdd15
+Decoded 151 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_24808197 frame=1
+return_code=0 pcm_bytes=506880
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=8f2f4e8a50cdbe21658b845f46bed09f9da9467bf1b2c1d5d2a69368ae5cae0f
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=85|primary_len=47|redundancy_len=38|red_hex=fffe98c97d06ef1e9eac7c95a976dbbf68de2382e0f2bece14410311cbfa7d4027f7a33d9eb8|tail36=98c97d06ef1e9eac7c95a976dbbf68de2382e0f2bece14410311cbfa7d4027f7a33d9eb8
+Decoded 264 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_25006019 frame=1
+return_code=0 pcm_bytes=839040
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=351e70a6019c57dc012d9ae653ff38a242a69aa75f96c4332e353dd78014bc96
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=94|primary_len=56|redundancy_len=38|red_hex=fffed06b8a612ee2788ba00d7f4d7a39e46a53a6c67b6f18aad6538db48d330107b4ad2ba433|tail36=d06b8a612ee2788ba00d7f4d7a39e46a53a6c67b6f18aad6538db48d330107b4ad2ba433
+B10|mode=1001|celt_to_silk=1|frame_data_len=139|primary_len=101|redundancy_len=38|red_hex=7ef00d98aa8598bd29a297fbd489bb5708eaf69c496bce6dab79cf08bdc40e829a3259b4349b|tail36=0d98aa8598bd29a297fbd489bb5708eaf69c496bce6dab79cf08bdc40e829a3259b4349b
+Decoded 437 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_25139244 frame=1
+return_code=0 pcm_bytes=597120
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=dddfcdcca2f96e8fb60e2373e2dae050577a40bac0cef3b5e97768220ba86ffe
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=83|primary_len=45|redundancy_len=38|red_hex=fffe647c2e268d0263ecd19358a47ed37d4df9f3d26add3575849b032f41f6f926a63f5cae70|tail36=647c2e268d0263ecd19358a47ed37d4df9f3d26add3575849b032f41f6f926a63f5cae70
+Decoded 311 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_25269619 frame=7
+return_code=0 pcm_bytes=399360
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=a2a25a4a1d926e1cabc980e0ac38f13ed19a0aec3bf19762d3f45cc4edc1d23c
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=82|primary_len=44|redundancy_len=38|red_hex=fffec933e35131571304e68cef23c769f51dc470fab6165769a5001243f9e1074f5f851b6a3c|tail36=c933e35131571304e68cef23c769f51dc470fab6165769a5001243f9e1074f5f851b6a3c
+Decoded 208 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_25318456 frame=3
+return_code=0 pcm_bytes=631680
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=1deb418f217de07a9171c060b6ba7a3415bfc8ac58713f7e8ea653eb791361e1
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=86|primary_len=48|redundancy_len=38|red_hex=fffeaf4a6c818ce124e56d13841e60627ef3eda0392eef40f5af9cda6d42a6e0d2bf39da067c|tail36=af4a6c818ce124e56d13841e60627ef3eda0392eef40f5af9cda6d42a6e0d2bf39da067c
+B10|mode=1001|celt_to_silk=1|frame_data_len=124|primary_len=86|redundancy_len=38|red_hex=3656b7293087f37b5ccd571cb84aff83859d1944d5d46dd5884255755236daa84d77b5f7c804|tail36=b7293087f37b5ccd571cb84aff83859d1944d5d46dd5884255755236daa84d77b5f7c804
+Decoded 329 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_25341677 frame=1
+return_code=0 pcm_bytes=846720
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=73ed7f8434a552dfaf70007b53e0235a3f50dd46e91415af8bce5ae75bc1a27c
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=83|primary_len=45|redundancy_len=38|red_hex=fffea9802e0f84f01106279a2eb044cc0bfdac67360ea6aa5c6859a42de8c8acab704fc0f092|tail36=a9802e0f84f01106279a2eb044cc0bfdac67360ea6aa5c6859a42de8c8acab704fc0f092
+Decoded 441 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_25392750 frame=4
+return_code=0 pcm_bytes=295680
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=7efb19890f722e235690fbc6176cf1f74cc04d47fb9cbee1a0e68d89cbdddee2
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=101|primary_len=63|redundancy_len=38|red_hex=fffee9e013bb906b14f56de6888045792098322d63c476c52e207ce6eb750765d5ed7142076b|tail36=e9e013bb906b14f56de6888045792098322d63c476c52e207ce6eb750765d5ed7142076b
+Decoded 154 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_25535643 frame=1
+return_code=0 pcm_bytes=330240
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=1ca0258f6680ae33257b8e35354e84f572c7755513b3148b8fa636cab8a26a3f
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=84|primary_len=46|redundancy_len=38|red_hex=fffec6fc2cdb85f47f634cb7664ef75dbc1b78ba051721cf837ee8e0cde7ba72c84b07e4a0bc|tail36=c6fc2cdb85f47f634cb7664ef75dbc1b78ba051721cf837ee8e0cde7ba72c84b07e4a0bc
+Decoded 172 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_25804833 frame=1
+return_code=0 pcm_bytes=441600
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=6391b803bfb5daf034b0e468894fc3bbad35f15efb92185346c9d603b5f4a095
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=93|primary_len=55|redundancy_len=38|red_hex=fffefef374c32b0118144d987542212299e13cebd2740c723a63391048afb6361e1069d56931|tail36=fef374c32b0118144d987542212299e13cebd2740c723a63391048afb6361e1069d56931
+B10|mode=1001|celt_to_silk=1|frame_data_len=154|primary_len=116|redundancy_len=38|red_hex=d6fc1aaa6836b767089183f1ae22132a59af3a02e6f6a4e40363ded3b2e7f9d3bad189dc1d23|tail36=1aaa6836b767089183f1ae22132a59af3a02e6f6a4e40363ded3b2e7f9d3bad189dc1d23
+Decoded 230 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_25946986 frame=1
+return_code=0 pcm_bytes=760320
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=09f995762ea321fb218d1b3f66c57eaa9fb1ad1a841e79c3771e47f2efe7dfb4
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=88|primary_len=50|redundancy_len=38|red_hex=fffeb558d85d67e6a7ce7787cf921461cf96e9232fd3fa8fb43f1e9d2ce6ccdfb7e11a4856c9|tail36=b558d85d67e6a7ce7787cf921461cf96e9232fd3fa8fb43f1e9d2ce6ccdfb7e11a4856c9
+B10|mode=1001|celt_to_silk=1|frame_data_len=132|primary_len=94|redundancy_len=38|red_hex=db6fdabd04cbfe85498ebe13686aeebc71a0e2898180017216b96b682168564755353404c459|tail36=dabd04cbfe85498ebe13686aeebc71a0e2898180017216b96b682168564755353404c459
+Decoded 396 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_26738752 frame=1
+return_code=0 pcm_bytes=347520
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=fa663b43b69483b169c43e89911a71094f034aff6db0491af34cff33d7e902e3
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=82|primary_len=44|redundancy_len=38|red_hex=fffeb1882c2474f62c60d564f0e27b89216bcbc95410fca4378681c63d18c33753705462b446|tail36=b1882c2474f62c60d564f0e27b89216bcbc95410fca4378681c63d18c33753705462b446
+Decoded 181 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_28440382 frame=1
+return_code=0 pcm_bytes=597120
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=76efb8b0ff487a64e59ea9fa4b97e833a7ce081bbb47291232af62175e63e8ad
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=83|primary_len=45|redundancy_len=38|red_hex=fffe822af0a3c32c03d88521ea2044051d4eefefcc675f1659f24c8ed352a45466a72f990fc0|tail36=822af0a3c32c03d88521ea2044051d4eefefcc675f1659f24c8ed352a45466a72f990fc0
+B10|mode=1001|celt_to_silk=1|frame_data_len=121|primary_len=83|redundancy_len=38|red_hex=d66813b3182c9dac47c5241213d4dfd3b0478e0c7c45236724c9fca320d02f2b3aeabdd70a84|tail36=13b3182c9dac47c5241213d4dfd3b0478e0c7c45236724c9fca320d02f2b3aeabdd70a84
+Decoded 311 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_28950183 frame=1
+return_code=0 pcm_bytes=693120
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=78cecedafb55ac98a619bb5adeae55f33f468e4ba939735de98e48c814b1c16e
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=91|primary_len=53|redundancy_len=38|red_hex=fffecfd4f9aadaf53586ce1bf17373caf4f144bafd4017fa90eee4033ec78abbd9b28731bf7b|tail36=cfd4f9aadaf53586ce1bf17373caf4f144bafd4017fa90eee4033ec78abbd9b28731bf7b
+Decoded 361 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_29174154 frame=1
+return_code=0 pcm_bytes=673920
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=fdfa6b32ba9e962bc8c6534d49082e8e1d0ef23ec26690142e6605d825493c4a
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=93|primary_len=55|redundancy_len=38|red_hex=fffe6a3068507a1276c1e046b477f60824ed6c148c2eafb145faeebcde2f48bd82f13856085b|tail36=6a3068507a1276c1e046b477f60824ed6c148c2eafb145faeebcde2f48bd82f13856085b
+Decoded 351 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_30651218 frame=2
+return_code=0 pcm_bytes=372480
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=7c2d6a250dbba163282840d91b76f8592a4a91d0a992de850e48e49477acdb4b
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=90|primary_len=52|redundancy_len=38|red_hex=fffe16e711fdb249521ca3bd7ecc9831d82ea841316a6eb80fccaaafffe4c93cd152fce1ffff|tail36=16e711fdb249521ca3bd7ecc9831d82ea841316a6eb80fccaaafffe4c93cd152fce1ffff
+Decoded 194 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_30678398 frame=1
+return_code=0 pcm_bytes=407040
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=19daad0dc34554e13a3782f2fd0a4564770ff1c4ca95d294d5edf35181636f85
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=99|primary_len=61|redundancy_len=38|red_hex=fffe2aa2f44fb127e7888ead2950ca5339b33d4b688443ff0ec6ff00f2db1fe238a47b2e096e|tail36=2aa2f44fb127e7888ead2950ca5339b33d4b688443ff0ec6ff00f2db1fe238a47b2e096e
+Decoded 212 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_31857757 frame=14
+return_code=0 pcm_bytes=604800
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=bbdc5a769f5f81bd2781afad9e443750eef46d3e4e6fa82098292993128b43fc
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=92|primary_len=54|redundancy_len=38|red_hex=fffe25642bd2f39438ea75e037b40e7d5678f1bc753dcd49e110afe290e35da026b3c5654c43|tail36=25642bd2f39438ea75e037b40e7d5678f1bc753dcd49e110afe290e35da026b3c5654c43
+Decoded 315 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_325822 frame=1
+return_code=0 pcm_bytes=455040
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=4b4d0df7275b823d1a19bed8b56e7e7ea412749c9ec7e7d62adee1a61dbd1c89
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=98|primary_len=60|redundancy_len=38|red_hex=fffe5af52d3d9ddadc541d732ad6f83a49697caaaa48ff419fdadca1625ccb8b5d24607803db|tail36=5af52d3d9ddadc541d732ad6f83a49697caaaa48ff419fdadca1625ccb8b5d24607803db
+Decoded 237 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_34185598 frame=3
+return_code=0 pcm_bytes=524160
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=9cb32e278c8b8be4b011783cba7904df6903408586470b19ff4acb5b8e9505e0
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=93|primary_len=55|redundancy_len=38|red_hex=fffe210b20d9e573a3fcc0a365a554004cbc1084a9b3fd12dcf582c9ff5d6d7f61ba33508797|tail36=210b20d9e573a3fcc0a365a554004cbc1084a9b3fd12dcf582c9ff5d6d7f61ba33508797
+Decoded 273 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_38502946 frame=1
+return_code=0 pcm_bytes=382080
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=00783915abaa98ca27fac6daa908014a686614cb147d53d65c8d404c29bc39a3
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=89|primary_len=51|redundancy_len=38|red_hex=fffee35049d5318189403c4fd0f7ca75d86889a3c2882b7201bf58adf8c54fe135ab75d7311e|tail36=e35049d5318189403c4fd0f7ca75d86889a3c2882b7201bf58adf8c54fe135ab75d7311e
+Decoded 199 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_39576106 frame=1
+return_code=0 pcm_bytes=572160
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=75e145762a75c42a3b39754e970ee9c31eea869dcc11426e08e042d56db73fd9
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=87|primary_len=49|redundancy_len=38|red_hex=fffe695e25a677a36e3b948a5fadf50671a454b2265a8f5c41a7b179c4a15423bc4ff578d6bc|tail36=695e25a677a36e3b948a5fadf50671a454b2265a8f5c41a7b179c4a15423bc4ff578d6bc
+B10|mode=1001|celt_to_silk=1|frame_data_len=151|primary_len=113|redundancy_len=38|red_hex=da311d531ddd0c93a991b542ff079e8f71cd6048e7454e80233bd6eb564c349682d2c2cc5d97|tail36=1d531ddd0c93a991b542ff079e8f71cd6048e7454e80233bd6eb564c349682d2c2cc5d97
+Decoded 298 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_39594974 frame=2
+return_code=0 pcm_bytes=445440
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=83fd16eebcdd60094c961a68d57106db973d87b4ec1ee74fc91e9b81eca27590
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=78|primary_len=40|redundancy_len=38|red_hex=fffe30bb2d2b72470a70b3a0986ccee46fd467736ad3c73b7f4573d793ca7dadc867ce8fb1bf|tail36=30bb2d2b72470a70b3a0986ccee46fd467736ad3c73b7f4573d793ca7dadc867ce8fb1bf
+Decoded 232 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_40050874 frame=1
+return_code=0 pcm_bytes=399360
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=896fcd3785a0d6d403722c8c5decba2f4f8fab337b8643164fb631c986332700
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=90|primary_len=52|redundancy_len=38|red_hex=fffe1221ce9bb66ebe1177d66705c73af80dec8e0142b6e42a6a0c69ad7bb8c7026bfd005e40|tail36=1221ce9bb66ebe1177d66705c73af80dec8e0142b6e42a6a0c69ad7bb8c7026bfd005e40
+B10|mode=1001|celt_to_silk=1|frame_data_len=149|primary_len=111|redundancy_len=38|red_hex=e24718c9521a99bda2bd34303fa39de2671ea516e377760352f32bb6c9ff40c8af44d4f9968e|tail36=18c9521a99bda2bd34303fa39de2671ea516e377760352f32bb6c9ff40c8af44d4f9968e
+Decoded 208 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_448516 frame=1
+return_code=0 pcm_bytes=282240
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=33a00821ab58a247d23215ec31eccd48222b3598ee766d39b544f92eb1a8f2fb
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=100|primary_len=62|redundancy_len=38|red_hex=fffe6e1b7135732f7c510fd0dfa9d41dcf98d941f2c5af669d7b0940b1b1f7d6f7255af42c04|tail36=6e1b7135732f7c510fd0dfa9d41dcf98d941f2c5af669d7b0940b1b1f7d6f7255af42c04
+Decoded 147 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_505461 frame=1
+return_code=0 pcm_bytes=213120
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=ddd21eca98553d3fb56dc35c69e9c8aa2edf36a70b8c127803e67e322cd0127b
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=102|primary_len=64|redundancy_len=38|red_hex=fffedd1b7507e7f16fa42af79817e0dbcb81d4a64378d9cc2f92a76f0802f656d97f2e4c868e|tail36=dd1b7507e7f16fa42af79817e0dbcb81d4a64378d9cc2f92a76f0802f656d97f2e4c868e
+Decoded 111 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_509176 frame=1
+return_code=0 pcm_bytes=710400
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=fba49d3de7a604087602a5094d12439ab0e9fa62812f5e76e1958145bae82148
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=93|primary_len=55|redundancy_len=38|red_hex=fffe4dde59457e57c985ba570717a351324007be55464c6f1aecf07dd8f3b3450648bf1090d8|tail36=4dde59457e57c985ba570717a351324007be55464c6f1aecf07dd8f3b3450648bf1090d8
+Decoded 370 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_54511 frame=1
+return_code=0 pcm_bytes=368640
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=4acb6957136378cb479fbeb6c05de77c66f6bb8402af874d03b1e8ec999dc84d
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=90|primary_len=52|redundancy_len=38|red_hex=fffe19bb901cade0a298edb2e4b9d51d531eaf06d7b2e19fe334efccf66ca4a783c7e117db12|tail36=19bb901cade0a298edb2e4b9d51d531eaf06d7b2e19fe334efccf66ca4a783c7e117db12
+Decoded 192 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_55529 frame=1
+return_code=0 pcm_bytes=487680
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=ccc45656c34d99a224c7a616cd2a6a670d5fbd90f2b7ce3cf133e2c23b3d0725
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=94|primary_len=56|redundancy_len=38|red_hex=fffee798e29066a8241f34fbfb97e1036e6a886a5436cde56faafee64978231640b780a3cd8f|tail36=e798e29066a8241f34fbfb97e1036e6a886a5436cde56faafee64978231640b780a3cd8f
+Decoded 254 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_564866 frame=1
+return_code=0 pcm_bytes=174720
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=285ae4d9768a8528cfc796da84b61ef088a81c94409f1668a34223a6175539e7
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=96|primary_len=58|redundancy_len=38|red_hex=fffe767b973c911179217359991a9a6540e326b9c8b736b7ae073183802bc22803971f266bc2|tail36=767b973c911179217359991a9a6540e326b9c8b736b7ae073183802bc22803971f266bc2
+Decoded 91 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_60408 frame=1
+return_code=0 pcm_bytes=213120
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=1f75b656a1d954f8d7388f025934fef7db3a1091924df94f2e73672e9965a570
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=90|primary_len=52|redundancy_len=38|red_hex=fffe5176f24a7d8dac08b27e43b6c762a8dc5213c10b572deaaf5a420d43eff50458617dc230|tail36=5176f24a7d8dac08b27e43b6c762a8dc5213c10b572deaaf5a420d43eff50458617dc230
+Decoded 111 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_619760 frame=1
+return_code=0 pcm_bytes=362880
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=b791610e2648ef6f7c01840a617a88a1a287d648e044b06b92011112dc8b3d18
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=96|primary_len=58|redundancy_len=38|red_hex=fffe15c7f909b7ebe7774e91b3c71f57a71e757d289e84dfa5a28c1e41df37e87fd86b92b421|tail36=15c7f909b7ebe7774e91b3c71f57a71e757d289e84dfa5a28c1e41df37e87fd86b92b421
+Decoded 189 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_622016 frame=1
+return_code=0 pcm_bytes=510720
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=af59a602b4b9912110f721a4d991000a7651791aae2a2f8a7f1c0e2ed08958ff
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=105|primary_len=67|redundancy_len=38|red_hex=fffe659f86398dd09935b5d36b666a6fec5416277cf6078de4ab7342969a5046c5c9a53104ba|tail36=659f86398dd09935b5d36b666a6fec5416277cf6078de4ab7342969a5046c5c9a53104ba
+Decoded 266 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_636759 frame=1
+return_code=0 pcm_bytes=301440
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=f861eda2c6d2d68da6508b097d207b2fc5146cf0dde0b4b1520843464e436428
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=103|primary_len=65|redundancy_len=38|red_hex=fffe53f61aee493ca2fda00fad09ac5476da616e0e148cfb77c0f139a705772ed8145ea69520|tail36=53f61aee493ca2fda00fad09ac5476da616e0e148cfb77c0f139a705772ed8145ea69520
+Decoded 157 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_641211 frame=1
+return_code=0 pcm_bytes=581760
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=1aff7344fd583eb7b47f96b9d89e8d6a9e7fbb517d2c85edfd97921a65ecd51c
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=97|primary_len=59|redundancy_len=38|red_hex=fffe62584828fc0d6067613187b3db8d1c8927bbb863e89ce5f00da0b747b2a67fa2ca89ff44|tail36=62584828fc0d6067613187b3db8d1c8927bbb863e89ce5f00da0b747b2a67fa2ca89ff44
+Decoded 303 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_659719 frame=1
+return_code=0 pcm_bytes=508800
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=43817d4a87383b574f872915baad55337a9b37ec55cda4218eafaf81369d4947
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=106|primary_len=68|redundancy_len=38|red_hex=fffeefa75ef9684343cd5c9978d285fbb151a47f7538f9a1e979e6e76599b47397c41523e132|tail36=efa75ef9684343cd5c9978d285fbb151a47f7538f9a1e979e6e76599b47397c41523e132
+Decoded 265 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_662897 frame=1
+return_code=0 pcm_bytes=451200
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=9fdf46548522235ac889fbc191ae523769fa12436761c1b7a9ccd8fd0005e64d
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=105|primary_len=67|redundancy_len=38|red_hex=fffef3c2b217a98240d11784fc81c9fdf90f2727b662889c1a843bf52bfa38f3efdae5dcbe58|tail36=f3c2b217a98240d11784fc81c9fdf90f2727b662889c1a843bf52bfa38f3efdae5dcbe58
+Decoded 235 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_69447 frame=1
+return_code=0 pcm_bytes=295680
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=269a40c5a9fa1cec2e6228199f1cabdea740f341862e71a8d31b4257ee041986
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=97|primary_len=59|redundancy_len=38|red_hex=fffef22a852dbbcb13e433196eb8b1ed836393acf9bf63b4e46850b6939c8d7c12e0b7712c5e|tail36=f22a852dbbcb13e433196eb8b1ed836393acf9bf63b4e46850b6939c8d7c12e0b7712c5e
+Decoded 154 frames
+
+
+========================================================================
+encoder=1.6.1 decoder=1.6.1 recording=common_voice_en_9412178 frame=1
+return_code=0 pcm_bytes=293760
+candidate_count=0 match_count=0 status=NO_MATCH
+expected_sha256=a7ec713867f69804be7681e4679348e13116c90f684b1861416b8252534f9b43
+--- STDERR ---
+B10|mode=1001|celt_to_silk=1|frame_data_len=100|primary_len=62|redundancy_len=38|red_hex=fffe834fdd9830b9d2bdce850b4f1cb962c0ac38db7b428816ffc70eda51b586c59e0f3f8eee|tail36=834fdd9830b9d2bdce850b4f1cb962c0ac38db7b428816ffc70eda51b586c59e0f3f8eee
+Decoded 153 frames
+

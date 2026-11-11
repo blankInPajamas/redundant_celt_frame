@@ -1,0 +1,44 @@
+{
+  "stage": "B14",
+  "b12_run": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705",
+  "manifest_sha256": "e993cd21001ff1d16467f8bab65ef5fb4dbaa2138a3b8aeb95cc0084b9e8c9b8",
+  "events": 200,
+  "speaker_groups": 196,
+  "encoders": [
+    "1.5.2",
+    "1.6.1"
+  ],
+  "payload_sizes": [
+    4,
+    8,
+    16,
+    24,
+    32,
+    36
+  ],
+  "primary_repetition": 1,
+  "folds": 5,
+  "seed": 42,
+  "bootstrap_repetitions": 1000,
+  "permutation_repeats": 3,
+  "cross_validation": "StratifiedGroupKFold",
+  "group_unit": "speaker_sha256",
+  "models": [
+    "logistic_regression",
+    "random_forest"
+  ],
+  "feature_group_sizes": {
+    "global_all": 271,
+    "stream_scalar": 10,
+    "stream_histogram": 256,
+    "packet_geometry": 5,
+    "global_without_histogram": 15,
+    "global_without_stream_scalars": 261,
+    "global_without_packet_geometry": 266,
+    "target_packet": 266,
+    "target_tail36": 266,
+    "target_prefix_control": 266,
+    "global_plus_tail36": 537
+  },
+  "read_only": true
+}

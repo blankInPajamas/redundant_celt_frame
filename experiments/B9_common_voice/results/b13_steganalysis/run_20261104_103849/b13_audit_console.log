@@ -1,0 +1,119 @@
+========== B13 INDEPENDENT AUDIT ==========
+Run: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849
+
+========== OUTPUT COUNTS ==========
+ML metric rows: 108
+OOF prediction rows: 28800
+Feature summary rows: 7200
+Tail-rule rows: 54
+
+========== TARGET-TAIL CONSTRUCTION ==========
+Cover rows: 3600
+Cover rows with zero nonzero bytes: 3600
+Stego rows: 3600
+Stego rows with at least one nonzero byte: 3600
+
+========== GROUPED-CV LEAKAGE AUDIT ==========
+Speaker-fold leakage cases: 0
+Invalid or split event pairs: 0
+Unique event-pair groups: 14400
+
+========== METRIC RECOMPUTATION ==========
+Prediction groups: 108
+Metric mismatches: 0
+
+========== POOLED MODEL COMPARISON ==========
+ 4B | combined | logistic_regression    | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+ 4B | combined | random_forest          | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+ 4B | global   | logistic_regression    | AUC=0.9929 | BA=0.9950 | FPR=0.0000
+ 4B | global   | random_forest          | AUC=0.9910 | BA=0.9950 | FPR=0.0000
+ 4B | target   | logistic_regression    | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+ 4B | target   | random_forest          | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+ 8B | combined | logistic_regression    | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+ 8B | combined | random_forest          | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+ 8B | global   | logistic_regression    | AUC=0.9941 | BA=0.9950 | FPR=0.0000
+ 8B | global   | random_forest          | AUC=0.9924 | BA=0.9950 | FPR=0.0000
+ 8B | target   | logistic_regression    | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+ 8B | target   | random_forest          | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+16B | combined | logistic_regression    | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+16B | combined | random_forest          | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+16B | global   | logistic_regression    | AUC=0.9945 | BA=0.9950 | FPR=0.0000
+16B | global   | random_forest          | AUC=0.9925 | BA=0.9825 | FPR=0.0250
+16B | target   | logistic_regression    | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+16B | target   | random_forest          | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+24B | combined | logistic_regression    | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+24B | combined | random_forest          | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+24B | global   | logistic_regression    | AUC=0.9948 | BA=0.9950 | FPR=0.0000
+24B | global   | random_forest          | AUC=0.9902 | BA=0.9700 | FPR=0.0500
+24B | target   | logistic_regression    | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+24B | target   | random_forest          | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+32B | combined | logistic_regression    | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+32B | combined | random_forest          | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+32B | global   | logistic_regression    | AUC=0.9950 | BA=0.9925 | FPR=0.0000
+32B | global   | random_forest          | AUC=0.9903 | BA=0.9775 | FPR=0.0350
+32B | target   | logistic_regression    | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+32B | target   | random_forest          | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+36B | combined | logistic_regression    | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+36B | combined | random_forest          | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+36B | global   | logistic_regression    | AUC=0.9950 | BA=0.9925 | FPR=0.0000
+36B | global   | random_forest          | AUC=0.9907 | BA=0.9775 | FPR=0.0350
+36B | target   | logistic_regression    | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+36B | target   | random_forest          | AUC=1.0000 | BA=1.0000 | FPR=0.0000
+
+========== GLOBAL-ONLY RESULTS ==========
+ 4B | logistic_regression    | AUC=0.9929 | Accuracy=0.9950 | FPR=0.0000
+ 4B | random_forest          | AUC=0.9910 | Accuracy=0.9950 | FPR=0.0000
+ 8B | logistic_regression    | AUC=0.9941 | Accuracy=0.9950 | FPR=0.0000
+ 8B | random_forest          | AUC=0.9924 | Accuracy=0.9950 | FPR=0.0000
+16B | logistic_regression    | AUC=0.9945 | Accuracy=0.9950 | FPR=0.0000
+16B | random_forest          | AUC=0.9925 | Accuracy=0.9825 | FPR=0.0250
+24B | logistic_regression    | AUC=0.9948 | Accuracy=0.9950 | FPR=0.0000
+24B | random_forest          | AUC=0.9902 | Accuracy=0.9700 | FPR=0.0500
+32B | logistic_regression    | AUC=0.9950 | Accuracy=0.9925 | FPR=0.0000
+32B | random_forest          | AUC=0.9903 | Accuracy=0.9775 | FPR=0.0350
+36B | logistic_regression    | AUC=0.9950 | Accuracy=0.9925 | FPR=0.0000
+36B | random_forest          | AUC=0.9907 | Accuracy=0.9775 | FPR=0.0350
+
+========== TAIL RULE ==========
+4B | rep=1 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+4B | rep=2 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+4B | rep=3 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+8B | rep=1 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+8B | rep=2 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+8B | rep=3 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+16B | rep=1 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+16B | rep=2 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+16B | rep=3 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+24B | rep=1 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+24B | rep=2 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+24B | rep=3 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+32B | rep=1 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+32B | rep=2 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+32B | rep=3 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+36B | rep=1 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+36B | rep=2 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+36B | rep=3 | accuracy=1.0000 | TPR=1.0000 | FPR=0.0000
+
+========== B13 INDEPENDENT AUDIT REPORT ==========
+Run: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849
+Checksum errors: 0
+ML metric rows: 108
+OOF prediction rows: 28800
+Feature summary rows: 7200
+Tail-rule rows: 54
+Cover zero-tail rows: 3600/3600
+Stego nonzero-tail rows: 3600/3600
+Speaker leakage cases: 0
+Invalid event pairs: 0
+Metric mismatches: 0
+Errors: 0
+
+INTERPRETATION:
+- Target-tail classification is an informed, target-aware test.
+- Global-only classification is the more relevant non-localized baseline.
+- Perfect detection must not be interpreted as universal detectability.
+- This audit does not establish resistance to other detection methods.
+
+AUDIT STATUS: PASS
+
+B13 INDEPENDENT AUDIT: PASS

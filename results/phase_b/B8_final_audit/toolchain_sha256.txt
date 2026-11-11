@@ -1,0 +1,4 @@
+e1d2041039b8c318595e83a4ed04b8dbfec6afc7ba280c9ddf59c16d7496ba1b  scripts/encode_raw_1.5.2
+700be2a3f50f1e7e91aea425229626c0aeff36151386f5272510cedfc86ef9a3  scripts/encode_raw_1.6.1
+ad4713c202d2dd2fb92476758c7b43ce630e557de8f9a58dc9a71b05e7d4dbed  opus_1.5.2/src/opus_encoder.c
+24a82b69c4f5071bc572391c3d498b58fddff0d8c1088132b2af75558d0a287e  opus/src/opus_encoder.c

@@ -1,0 +1,51 @@
+========== B19 INDEPENDENT REPRODUCIBILITY AND EVIDENCE AUDIT ==========
+Project: /home/ishu/research/redundant_celt_frame_steganography
+B12 input: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705
+B17 input: /home/ishu/research/redundant_celt_frame_steganography/experiments/B17_cross_domain/results/b17_music_cross_domain/run_20261106_005837
+B17 supplementary input: /home/ishu/research/redundant_celt_frame_steganography/experiments/B17_cross_domain/results/b17_supplementary_audit/run_20261106_012816
+B18 input: /home/ishu/research/redundant_celt_frame_steganography/experiments/B18_robustness/results/run_20261106_012823_895999
+Output: /home/ishu/research/redundant_celt_frame_steganography/experiments/B19_reproducibility/results/run_20261106_014312_558515
+
+========== INDEPENDENT VALIDATION ==========
+Checks passed: 22/22
+Checks failed: 0
+PASS | B17 original checksum manifest | 26 verified; 0 failures
+PASS | B17 metric row count | rows=40
+PASS | B17 prediction row count | rows=40360
+PASS | B17 metrics independently recomputed | 40/40 groups matched
+PASS | B17 supplementary checksum manifest | 6 verified; 0 failures
+PASS | B17 supplementary summary rows | rows=4
+PASS | B17 matched-pair rows | rows=40
+PASS | B17 supplementary statistics independently recomputed | 4 conditions checked
+PASS | B17 positive-control genre scope | All genre rows containing positives should be hip-hop
+PASS | B18 checksum manifest | 3328 verified; 0 failures
+PASS | B12 manifest SHA256 | actual=e993cd21001ff1d16467f8bab65ef5fb4dbaa2138a3b8aeb95cc0084b9e8c9b8
+PASS | B12 selected row count | rows=400
+PASS | B12 source/stego bitstreams revalidated | 400 manifest rows checked; 0 failures
+PASS | B18 transformation row count | rows=3200
+PASS | B18 transformation summary row count | rows=32
+PASS | B18 transformation design balance | 32 groups; expected 32 groups × 100 cases
+PASS | B18 transformed bitstreams and payload outcomes independently revalidated | 3200 rows checked; 0 failures
+PASS | B18 transformation summary independently recomputed | 32 groups checked
+PASS | B18 decoder result row count | rows=360
+PASS | B18 decoder sample completion | 360/360 complete; 36 groups
+PASS | B18 PCM pair identity | 40/40 identical
+PASS | B18 codec re-encoding outcomes | 60 trials; PCM-identical=60; bitstream-identical=60; payload recovered=0
+
+========== MALFORMED TARGET-LENGTH DECODER FOLLOW-UP ==========
+Tests: 40 (20 recordings × 2 decoder versions)
+Completed by original frame-count criterion: 0/40
+This case was absent from the original B18 decoder-variant matrix.
+
+========== MANUSCRIPT INTERPRETATION NOTES ==========
+- B18 decoder completion means the custom decoder produced the expected frame count and output file; it does not by itself establish perceptual quality.
+- B18 PCM identity is bit-exact for the tested 20-recording sample and two decoder versions.
+- B18 re-encoding results are exploratory: 20 recordings, 10 per source encoder, at three bitrates.
+- The B18 transformation named target_marker_bitflip changes the byte immediately preceding the 36-byte tail. Confirm that byte's semantic role in the codec source before calling it a marker in the manuscript.
+- The B18 malformed_target_length transformation was parser-tested on all 400 event-size rows; B19 adds decoder tests on the 20-recording 36-byte decoder sample.
+- Packet deletion/reordering experiments operate on the custom packet-sequence files, not a full RTP/network simulation.
+- Positive music controls in B17 are limited to 10 hip-hop recordings; matched-pair direction does not establish general music-domain detection.
+- No universal cross-domain detection, network robustness, or arbitrary-transcoding claim is established.
+
+========== FINAL STATUS ==========
+PASS

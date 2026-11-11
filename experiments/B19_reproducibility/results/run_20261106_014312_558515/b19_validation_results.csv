@@ -1,0 +1,23 @@
+check,status,detail
+B17 original checksum manifest,PASS,26 verified; 0 failures
+B17 metric row count,PASS,rows=40
+B17 prediction row count,PASS,rows=40360
+B17 metrics independently recomputed,PASS,40/40 groups matched
+B17 supplementary checksum manifest,PASS,6 verified; 0 failures
+B17 supplementary summary rows,PASS,rows=4
+B17 matched-pair rows,PASS,rows=40
+B17 supplementary statistics independently recomputed,PASS,4 conditions checked
+B17 positive-control genre scope,PASS,All genre rows containing positives should be hip-hop
+B18 checksum manifest,PASS,3328 verified; 0 failures
+B12 manifest SHA256,PASS,actual=e993cd21001ff1d16467f8bab65ef5fb4dbaa2138a3b8aeb95cc0084b9e8c9b8
+B12 selected row count,PASS,rows=400
+B12 source/stego bitstreams revalidated,PASS,400 manifest rows checked; 0 failures
+B18 transformation row count,PASS,rows=3200
+B18 transformation summary row count,PASS,rows=32
+B18 transformation design balance,PASS,32 groups; expected 32 groups × 100 cases
+B18 transformed bitstreams and payload outcomes independently revalidated,PASS,3200 rows checked; 0 failures
+B18 transformation summary independently recomputed,PASS,32 groups checked
+B18 decoder result row count,PASS,rows=360
+B18 decoder sample completion,PASS,360/360 complete; 36 groups
+B18 PCM pair identity,PASS,40/40 identical
+B18 codec re-encoding outcomes,PASS,60 trials; PCM-identical=60; bitstream-identical=60; payload recovered=0

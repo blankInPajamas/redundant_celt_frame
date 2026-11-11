@@ -1,0 +1,40 @@
+{
+  "experiment": "B17",
+  "design": "Common Voice to GTZAN cross-domain transfer",
+  "training_domain": "Common Voice",
+  "testing_domain": "GTZAN natural music",
+  "training_payload_sizes": [
+    32,
+    36
+  ],
+  "primary_training_size": 36,
+  "music_payload_size_bytes": 35,
+  "training_events_per_size": 192,
+  "training_samples_per_size": 384,
+  "excluded_shared_speaker_groups": 4,
+  "test_samples_per_encoder": 1009,
+  "test_covers_per_encoder": 999,
+  "test_positives_per_encoder": 10,
+  "models": [
+    "logistic_regression",
+    "random_forest"
+  ],
+  "feature_groups": [
+    "global_without_packet_geometry",
+    "global_all",
+    "stream_histogram",
+    "stream_scalar",
+    "packet_geometry"
+  ],
+  "primary_feature_group": "global_without_packet_geometry",
+  "target_location_features_used": false,
+  "music_threshold_tuning": false,
+  "decision_threshold": 0.5,
+  "bootstrap_repetitions": 1000,
+  "bootstrap_unit": "recording_id_with_matched_pairs",
+  "seed": 42,
+  "read_only_source_data": true,
+  "b14_source_sha256": "4205c3d6864dea29653ec304bd8387680e01a82ae67917a0c0640a9765e756db",
+  "b12_manifest_sha256": "e993cd21001ff1d16467f8bab65ef5fb4dbaa2138a3b8aeb95cc0084b9e8c9b8",
+  "b14_config_sha256": "64a2b78c27f985124d5aa9e65f4c860bcf897cf87f091aefdb0ae9f086fc6af0"
+}

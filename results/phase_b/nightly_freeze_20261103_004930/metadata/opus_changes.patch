@@ -1,0 +1,169 @@
+diff --git a/src/opus_encoder.c b/src/opus_encoder.c
+index a74631fc..44ffdbd8 100644
+--- a/src/opus_encoder.c
++++ b/src/opus_encoder.c
+@@ -29,6 +29,8 @@
+ #include "config.h"
+ #endif
+ 
++#include <math.h>
++#include <stdio.h>
+ #include <stdarg.h>
+ #include "celt.h"
+ #include "entenc.h"
+@@ -1867,6 +1869,13 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
+     void *silk_enc=NULL;
+     CELTEncoder *celt_enc=NULL;
+     const CELTMode *celt_mode=NULL;
++    static int dbg_frame_counter = 0;
++    static int dbg_global_frame_id = 0;
++    int this_frame_id;
++    int dbg_red_write_offset = -1;
++    int dbg_red_final_offset = -1;
++    int dbg_red_size = 0;
++    int dbg_red_moved = 0;
+     int i;
+     int ret=0;
+     int max_data_bytes;
+@@ -1890,6 +1899,8 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
+     VARDECL(opus_res, tmp_prefill);
+     SAVE_STACK;
+ 
++    this_frame_id = dbg_global_frame_id++;
++
+     max_data_bytes = IMIN(orig_max_data_bytes, 1276);
+     st->rangeFinal = 0;
+     if (st->application != OPUS_APPLICATION_RESTRICTED_CELT)
+@@ -2356,6 +2367,15 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
+         if (redundancy)
+         {
+             int max_redundancy;
++            dbg_frame_counter++;
++            fprintf(stderr,
++               "REDUNDANCY: event=%d frame_id=%d mode=%d "
++               "celt_to_silk=%d bytes=%d\n",
++               dbg_frame_counter,
++               this_frame_id,
++               st->mode,
++               celt_to_silk,
++               redundancy_bytes);
+             ec_enc_bit_logp(&enc, celt_to_silk, 1);
+             if (st->mode == MODE_HYBRID)
+             {
+@@ -2431,7 +2451,37 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
+         celt_encoder_ctl(celt_enc, CELT_SET_START_BAND(0));
+         celt_encoder_ctl(celt_enc, OPUS_SET_VBR(0));
+         celt_encoder_ctl(celt_enc, OPUS_SET_BITRATE(OPUS_BITRATE_MAX));
++        /* --- RED_PCM DIAGNOSTIC --- */
++        {
++            int _n = st->Fs/200;
++            int _ch = st->channels;
++            int _total = _n * _ch;
++            double _sum_sq = 0.0;
++            double _peak_d = 0.0;
++            int _k;
++            for (_k = 0; _k < _total; _k++) {
++                /* opus_val16 is either opus_int16 or float depending on
++                   FIXED_POINT; read as double to be correct for both. */
++                double _d = (double)pcm_buf[_k];
++                _sum_sq += _d * _d;
++                double _a = _d < 0.0 ? -_d : _d;
++                if (_a > _peak_d) _peak_d = _a;
++            }
++            double _rms = (_total > 0) ? sqrt(_sum_sq / (double)_total) : 0.0;
++            /* Also dump first 4 samples so we can see the scale */
++            fprintf(stderr,
++                "  -> RED_PCM: samples=%d rms=%.6f peak=%.6f "
++                "sample0=%.6f sample1=%.6f sample2=%.6f sample3=%.6f\n",
++                _total, _rms, _peak_d,
++                (double)pcm_buf[0], (double)pcm_buf[1],
++                (double)pcm_buf[2], (double)pcm_buf[3]);
++        }
++        /* --- END RED_PCM DIAGNOSTIC --- */
+         err = celt_encode_with_ec(celt_enc, pcm_buf, st->Fs/200, data+nb_compr_bytes, redundancy_bytes, NULL);
++        dbg_red_write_offset = nb_compr_bytes;
++        dbg_red_final_offset = nb_compr_bytes;
++        dbg_red_size = redundancy_bytes;
++        fprintf(stderr, "  -> redundant frame written at offset %d, size %d\n", nb_compr_bytes, redundancy_bytes);
+         if (err < 0)
+         {
+            RESTORE_STACK;
+@@ -2499,12 +2549,34 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
+               RESTORE_STACK;
+               return OPUS_INTERNAL_ERROR;
+            }
++           /* --- RELOCATION DIAGNOSTIC --- */
++           fprintf(stderr, "  -> PRE_MOVE: ret=%d nb_compr_bytes=%d max_data_bytes=%d redundancy=%d celt_to_silk=%d mode=%d\n",
++                   ret, nb_compr_bytes, max_data_bytes, redundancy, celt_to_silk, st->mode);
+            /* Put CELT->SILK redundancy data in the right place. */
+            if (redundancy && celt_to_silk && st->mode==MODE_HYBRID && nb_compr_bytes != ret)
+            {
++              fprintf(stderr, "  -> MOVE_ENTERED: from=data+%d to=data+%d size=%d; first8_src: %02x %02x %02x %02x %02x %02x %02x %02x\n",
++                      nb_compr_bytes, ret, redundancy_bytes,
++                      data[nb_compr_bytes], data[nb_compr_bytes+1], data[nb_compr_bytes+2], data[nb_compr_bytes+3],
++                      data[nb_compr_bytes+4], data[nb_compr_bytes+5], data[nb_compr_bytes+6], data[nb_compr_bytes+7]);
+               OPUS_MOVE(data+ret, data+nb_compr_bytes, redundancy_bytes);
++
++              dbg_red_final_offset = ret;
++              dbg_red_moved = 1;
++
+               nb_compr_bytes = ret+redundancy_bytes;
++              fprintf(stderr, "  -> POST_MOVE: ret=%d new_nb_compr_bytes=%d; first8_dst: %02x %02x %02x %02x %02x %02x %02x %02x\n",
++                      ret, nb_compr_bytes,
++                      data[ret], data[ret+1], data[ret+2], data[ret+3],
++                      data[ret+4], data[ret+5], data[ret+6], data[ret+7]);
+            }
++           else
++           {
++              fprintf(stderr, "  -> MOVE_SKIPPED: redundancy=%d celt_to_silk=%d is_hybrid=%d nb_compr_bytes=%d ret=%d equal=%d\n",
++                      redundancy, celt_to_silk, (st->mode==MODE_HYBRID),
++                      nb_compr_bytes, ret, (nb_compr_bytes == ret));
++           }
++           /* --- END RELOCATION DIAGNOSTIC --- */
+         }
+         celt_encoder_ctl(celt_enc, OPUS_GET_FINAL_RANGE(&st->rangeFinal));
+     } else {
+@@ -2536,6 +2608,12 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
+         celt_encode_with_ec(celt_enc, pcm_buf+st->channels*(frame_size-N2-N4), N4, dummy, 2, NULL);
+ 
+         err = celt_encode_with_ec(celt_enc, pcm_buf+st->channels*(frame_size-N2), N2, data+nb_compr_bytes, redundancy_bytes, NULL);
++
++        dbg_red_write_offset = nb_compr_bytes;
++        dbg_red_final_offset = nb_compr_bytes;
++        dbg_red_size = redundancy_bytes;
++
++        fprintf(stderr, "  -> redundant frame written at offset %d, size %d\n", nb_compr_bytes, redundancy_bytes);
+         if (err < 0)
+         {
+            RESTORE_STACK;
+@@ -2653,6 +2731,30 @@ static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm,
+        ret = orig_max_data_bytes;
+     }
+     RESTORE_STACK;
++    fprintf(stderr,
++      "RED_FINAL: frame=%d mode=%d redundancy=%d "
++      "celt_to_silk=%d write_packet_offset=%d "
++      "final_packet_offset=%d final_packet_end=%d "
++      "redundancy_size=%d packet_return_length=%d moved=%d\n",
++
++      this_frame_id,
++      st->mode,
++      redundancy,
++      celt_to_silk,
++
++      dbg_red_write_offset < 0 ?
++         -1 : dbg_red_write_offset + 1,
++
++      dbg_red_final_offset < 0 ?
++         -1 : dbg_red_final_offset + 1,
++
++      dbg_red_final_offset < 0 ?
++         -1 : dbg_red_final_offset + 1 + dbg_red_size,
++
++      dbg_red_size,
++      ret,
++      dbg_red_moved
++   );
+     return ret;
+ }
+ 

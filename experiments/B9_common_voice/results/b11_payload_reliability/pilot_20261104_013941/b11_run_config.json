@@ -1,0 +1,24 @@
+{
+  "experiment": "B11 Common Voice payload reliability pilot",
+  "source_manifest": "experiments/B9_common_voice/results/b9_full_encoding/payload_roundtrip_100speaker/b9_payload_manifest.csv",
+  "source_manifest_sha256": "98ec88d41e79bd5c9a5c82afbe7f68cf55f06e0e6a3059ec4bbe721f3a5e0f2e",
+  "encoders": [
+    "1.5.2",
+    "1.6.1"
+  ],
+  "payload_sizes_bytes": [
+    4,
+    8,
+    16,
+    24,
+    32,
+    36
+  ],
+  "repetitions": 3,
+  "usable_capacity_bytes": 36,
+  "pilot_events_per_encoder": 10,
+  "corruption": "one bit flipped in repetition 1 for each event-size pair",
+  "integrity": "out-of-band SHA256 comparison with original payload",
+  "pcm_comparison": "modified versus baseline within the same decoder",
+  "script_sha256": "8c5af8ee054ab64c076ca019c1f4b9ff7ef3e4c6b54d2fb3abd24b63a0bce99a"
+}

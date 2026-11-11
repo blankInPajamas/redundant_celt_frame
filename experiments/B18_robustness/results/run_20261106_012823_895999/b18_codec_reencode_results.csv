@@ -1,0 +1,771 @@
+source_encoder,recording,payload_size_bytes,payload_sha256,bitrate,cover_pcm_decode_complete,stego_pcm_decode_complete,cover_pcm_sha256,stego_pcm_sha256,cover_stego_pcm_identical,reencoded_cover_sha256,reencoded_stego_sha256,reencoded_bitstreams_identical,payload_exact_in_reencoded_cover,payload_exact_in_reencoded_stego,payload_hit_packets_cover,payload_hit_packets_stego,reencoded_cover_decode_complete,reencoded_stego_decode_complete,reencoded_cover_packet_count,reencoded_stego_packet_count,encoder_config_log,status
+1.5.2,common_voice_en_10143,36,928d31ba342d3c6b3d7f1a27e6097f9f67af8f7683d51cf5bdeaf1acf50dfb15,16000,True,True,c766cf96e8fb5af0c46715b1a2a4ba0c3168964f194618b782d659cfc70f278a,c766cf96e8fb5af0c46715b1a2a4ba0c3168964f194618b782d659cfc70f278a,True,a2cb386901072ddf04d87f5c3ee9dada26d84969e0c90f47c2acc83c8c7c90c1,a2cb386901072ddf04d87f5c3ee9dada26d84969e0c90f47c2acc83c8c7c90c1,True,False,False,,,True,True,211,211,"5: len=22
+RED_FINAL: frame=206 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=21 moved=0
+FRAME 206: len=21
+RED_FINAL: frame=207 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=20 moved=0
+FRAME 207: len=20
+RED_FINAL: frame=208 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=25 moved=0
+FRAME 208: len=25
+RED_FINAL: frame=209 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=21 moved=0
+FRAME 209: len=21
+RED_FINAL: frame=210 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=20 moved=0
+FRAME 210: len=20
+Encoded 211 packets
+",COMPLETE
+1.5.2,common_voice_en_10143,36,928d31ba342d3c6b3d7f1a27e6097f9f67af8f7683d51cf5bdeaf1acf50dfb15,32000,True,True,c766cf96e8fb5af0c46715b1a2a4ba0c3168964f194618b782d659cfc70f278a,c766cf96e8fb5af0c46715b1a2a4ba0c3168964f194618b782d659cfc70f278a,True,5dc5d114f3355e859f25ce617c6dab52c319bc7e70d8e31b4c0d60c5cc01ef53,5dc5d114f3355e859f25ce617c6dab52c319bc7e70d8e31b4c0d60c5cc01ef53,True,False,False,,,True,True,211,211,"5: len=46
+RED_FINAL: frame=206 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=47 moved=0
+FRAME 206: len=47
+RED_FINAL: frame=207 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=41 moved=0
+FRAME 207: len=41
+RED_FINAL: frame=208 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=46 moved=0
+FRAME 208: len=46
+RED_FINAL: frame=209 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=41 moved=0
+FRAME 209: len=41
+RED_FINAL: frame=210 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=43 moved=0
+FRAME 210: len=43
+Encoded 211 packets
+",COMPLETE
+1.5.2,common_voice_en_10143,36,928d31ba342d3c6b3d7f1a27e6097f9f67af8f7683d51cf5bdeaf1acf50dfb15,64000,True,True,c766cf96e8fb5af0c46715b1a2a4ba0c3168964f194618b782d659cfc70f278a,c766cf96e8fb5af0c46715b1a2a4ba0c3168964f194618b782d659cfc70f278a,True,40b28d34ed701f92b260021e124b034e2f0dedd613558c944ccf94a2ad013ed2,40b28d34ed701f92b260021e124b034e2f0dedd613558c944ccf94a2ad013ed2,True,False,False,,,True,True,211,211,"RED_FINAL: frame=206 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 206: len=161
+RED_FINAL: frame=207 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 207: len=161
+RED_FINAL: frame=208 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 208: len=161
+RED_FINAL: frame=209 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 209: len=161
+RED_FINAL: frame=210 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 210: len=161
+Encoded 211 packets
+",COMPLETE
+1.5.2,common_voice_en_115585,36,b707c6db287a21f76282890e3a160d04a6faba9f2bf84c2a6f5da5d9d9f31215,16000,True,True,3bb39f46ab1862043e644cf6f7c9b1d0cd91119027a6f3411b96b2e2d59053cb,3bb39f46ab1862043e644cf6f7c9b1d0cd91119027a6f3411b96b2e2d59053cb,True,1e4aead2c001fc70378f23cc16ff17b27de5d111f2691cb0ea05e8e16cabe0e3,1e4aead2c001fc70378f23cc16ff17b27de5d111f2691cb0ea05e8e16cabe0e3,True,False,False,,,True,True,130,130,"4: len=39
+RED_FINAL: frame=125 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=36 moved=0
+FRAME 125: len=36
+RED_FINAL: frame=126 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=37 moved=0
+FRAME 126: len=37
+RED_FINAL: frame=127 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=29 moved=0
+FRAME 127: len=29
+RED_FINAL: frame=128 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=37 moved=0
+FRAME 128: len=37
+RED_FINAL: frame=129 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=26 moved=0
+FRAME 129: len=26
+Encoded 130 packets
+",COMPLETE
+1.5.2,common_voice_en_115585,36,b707c6db287a21f76282890e3a160d04a6faba9f2bf84c2a6f5da5d9d9f31215,32000,True,True,3bb39f46ab1862043e644cf6f7c9b1d0cd91119027a6f3411b96b2e2d59053cb,3bb39f46ab1862043e644cf6f7c9b1d0cd91119027a6f3411b96b2e2d59053cb,True,a44206cb03a63f385a6da3d5d52e66b7a15a37ad74611cf27bd057946a694d35,a44206cb03a63f385a6da3d5d52e66b7a15a37ad74611cf27bd057946a694d35,True,False,False,,,True,True,130,130,"4: len=71
+RED_FINAL: frame=125 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=73 moved=0
+FRAME 125: len=73
+RED_FINAL: frame=126 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=73 moved=0
+FRAME 126: len=73
+RED_FINAL: frame=127 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=66 moved=0
+FRAME 127: len=66
+RED_FINAL: frame=128 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=72 moved=0
+FRAME 128: len=72
+RED_FINAL: frame=129 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=71 moved=0
+FRAME 129: len=71
+Encoded 130 packets
+",COMPLETE
+1.5.2,common_voice_en_115585,36,b707c6db287a21f76282890e3a160d04a6faba9f2bf84c2a6f5da5d9d9f31215,64000,True,True,3bb39f46ab1862043e644cf6f7c9b1d0cd91119027a6f3411b96b2e2d59053cb,3bb39f46ab1862043e644cf6f7c9b1d0cd91119027a6f3411b96b2e2d59053cb,True,85baa531194dc3d7bca1f3cdab918c72c9517e6e9d520b5e7e2e64e57bd38ede,85baa531194dc3d7bca1f3cdab918c72c9517e6e9d520b5e7e2e64e57bd38ede,True,False,False,,,True,True,130,130,"RED_FINAL: frame=125 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 125: len=161
+RED_FINAL: frame=126 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 126: len=161
+RED_FINAL: frame=127 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=130 moved=0
+FRAME 127: len=130
+RED_FINAL: frame=128 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=131 moved=0
+FRAME 128: len=131
+RED_FINAL: frame=129 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=131 moved=0
+FRAME 129: len=131
+Encoded 130 packets
+",COMPLETE
+1.5.2,common_voice_en_137531,36,d77de91c04f327b6350a6049fe1141b418c6dbf81e4971fd29af45bbb9407147,16000,True,True,921f230e1a2a1d6cdc1fcd7a0a047678981277ea0f016a385420362efa80fee3,921f230e1a2a1d6cdc1fcd7a0a047678981277ea0f016a385420362efa80fee3,True,eaf45ff4ac9523f1212a45f5ec7bbbef77675152aa27f9866142afaf70b052eb,eaf45ff4ac9523f1212a45f5ec7bbbef77675152aa27f9866142afaf70b052eb,True,False,False,,,True,True,121,121,"5: len=30
+RED_FINAL: frame=116 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=31 moved=0
+FRAME 116: len=31
+RED_FINAL: frame=117 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=33 moved=0
+FRAME 117: len=33
+RED_FINAL: frame=118 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=36 moved=0
+FRAME 118: len=36
+RED_FINAL: frame=119 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=35 moved=0
+FRAME 119: len=35
+RED_FINAL: frame=120 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=28 moved=0
+FRAME 120: len=28
+Encoded 121 packets
+",COMPLETE
+1.5.2,common_voice_en_137531,36,d77de91c04f327b6350a6049fe1141b418c6dbf81e4971fd29af45bbb9407147,32000,True,True,921f230e1a2a1d6cdc1fcd7a0a047678981277ea0f016a385420362efa80fee3,921f230e1a2a1d6cdc1fcd7a0a047678981277ea0f016a385420362efa80fee3,True,139500e80b6c1d8a90b33a0a305554539a8a6895cba85e4c5bb46d731532df53,139500e80b6c1d8a90b33a0a305554539a8a6895cba85e4c5bb46d731532df53,True,False,False,,,True,True,121,121,"5: len=71
+RED_FINAL: frame=116 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=73 moved=0
+FRAME 116: len=73
+RED_FINAL: frame=117 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=72 moved=0
+FRAME 117: len=72
+RED_FINAL: frame=118 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=77 moved=0
+FRAME 118: len=77
+RED_FINAL: frame=119 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=69 moved=0
+FRAME 119: len=69
+RED_FINAL: frame=120 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=67 moved=0
+FRAME 120: len=67
+Encoded 121 packets
+",COMPLETE
+1.5.2,common_voice_en_137531,36,d77de91c04f327b6350a6049fe1141b418c6dbf81e4971fd29af45bbb9407147,64000,True,True,921f230e1a2a1d6cdc1fcd7a0a047678981277ea0f016a385420362efa80fee3,921f230e1a2a1d6cdc1fcd7a0a047678981277ea0f016a385420362efa80fee3,True,108ea15ece5c8a0447d776d6503d6efceca4b8bdc7f6d5c77e96d4531b87e621,108ea15ece5c8a0447d776d6503d6efceca4b8bdc7f6d5c77e96d4531b87e621,True,False,False,,,True,True,121,121,"RED_FINAL: frame=116 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 116: len=161
+RED_FINAL: frame=117 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 117: len=161
+RED_FINAL: frame=118 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 118: len=161
+RED_FINAL: frame=119 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 119: len=161
+RED_FINAL: frame=120 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 120: len=161
+Encoded 121 packets
+",COMPLETE
+1.5.2,common_voice_en_145658,36,12fe99eb2ac4b3614a0d51e2e930f67390cd6954a2503d64d6a6713e7d305bb2,16000,True,True,1b98e0e3baabfd7b10866d070038af24d23ad9cef9bc94a34d252eb11b2c324b,1b98e0e3baabfd7b10866d070038af24d23ad9cef9bc94a34d252eb11b2c324b,True,37e4e625c17211ed89af27aa2f7b2526a54a4e043e1946c6b8f2677f1bc58732,37e4e625c17211ed89af27aa2f7b2526a54a4e043e1946c6b8f2677f1bc58732,True,False,False,,,True,True,154,154,"8: len=23
+RED_FINAL: frame=149 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=28 moved=0
+FRAME 149: len=28
+RED_FINAL: frame=150 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=28 moved=0
+FRAME 150: len=28
+RED_FINAL: frame=151 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=26 moved=0
+FRAME 151: len=26
+RED_FINAL: frame=152 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=23 moved=0
+FRAME 152: len=23
+RED_FINAL: frame=153 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=24 moved=0
+FRAME 153: len=24
+Encoded 154 packets
+",COMPLETE
+1.5.2,common_voice_en_145658,36,12fe99eb2ac4b3614a0d51e2e930f67390cd6954a2503d64d6a6713e7d305bb2,32000,True,True,1b98e0e3baabfd7b10866d070038af24d23ad9cef9bc94a34d252eb11b2c324b,1b98e0e3baabfd7b10866d070038af24d23ad9cef9bc94a34d252eb11b2c324b,True,8e5b534ca51029d9f667c539af06a7dedc391bd489e0b9f168a4202cd39b1606,8e5b534ca51029d9f667c539af06a7dedc391bd489e0b9f168a4202cd39b1606,True,False,False,,,True,True,154,154,"8: len=42
+RED_FINAL: frame=149 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=52 moved=0
+FRAME 149: len=52
+RED_FINAL: frame=150 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=54 moved=0
+FRAME 150: len=54
+RED_FINAL: frame=151 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=52 moved=0
+FRAME 151: len=52
+RED_FINAL: frame=152 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=44 moved=0
+FRAME 152: len=44
+RED_FINAL: frame=153 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=41 moved=0
+FRAME 153: len=41
+Encoded 154 packets
+",COMPLETE
+1.5.2,common_voice_en_145658,36,12fe99eb2ac4b3614a0d51e2e930f67390cd6954a2503d64d6a6713e7d305bb2,64000,True,True,1b98e0e3baabfd7b10866d070038af24d23ad9cef9bc94a34d252eb11b2c324b,1b98e0e3baabfd7b10866d070038af24d23ad9cef9bc94a34d252eb11b2c324b,True,00273067d30f7736f5c92637d9c0162a88645f1284aeae76708d5391640596d9,00273067d30f7736f5c92637d9c0162a88645f1284aeae76708d5391640596d9,True,False,False,,,True,True,154,154,"RED_FINAL: frame=149 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 149: len=161
+RED_FINAL: frame=150 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 150: len=161
+RED_FINAL: frame=151 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 151: len=161
+RED_FINAL: frame=152 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 152: len=161
+RED_FINAL: frame=153 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 153: len=161
+Encoded 154 packets
+",COMPLETE
+1.5.2,common_voice_en_158913,36,62592b73a4534fd215e4de87f59b1ce186ec13128b50ed6e2af2f6cd947b9689,16000,True,True,c71ba2ab0d354d4ae6daa70a221339e2baf09a91202fc808cabe56317fd69cf0,c71ba2ab0d354d4ae6daa70a221339e2baf09a91202fc808cabe56317fd69cf0,True,12465594b6d5fd02e77cb53e382af98538d9d812b4d06e10f37b4300cbeeb0b3,12465594b6d5fd02e77cb53e382af98538d9d812b4d06e10f37b4300cbeeb0b3,True,False,False,,,True,True,216,216,"0: len=32
+RED_FINAL: frame=211 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=37 moved=0
+FRAME 211: len=37
+RED_FINAL: frame=212 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=29 moved=0
+FRAME 212: len=29
+RED_FINAL: frame=213 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=26 moved=0
+FRAME 213: len=26
+RED_FINAL: frame=214 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=32 moved=0
+FRAME 214: len=32
+RED_FINAL: frame=215 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=30 moved=0
+FRAME 215: len=30
+Encoded 216 packets
+",COMPLETE
+1.5.2,common_voice_en_158913,36,62592b73a4534fd215e4de87f59b1ce186ec13128b50ed6e2af2f6cd947b9689,32000,True,True,c71ba2ab0d354d4ae6daa70a221339e2baf09a91202fc808cabe56317fd69cf0,c71ba2ab0d354d4ae6daa70a221339e2baf09a91202fc808cabe56317fd69cf0,True,79d4a72a8e3f27617ad82f2225d657c878384eec33dc20bd3a933c72707c3eac,79d4a72a8e3f27617ad82f2225d657c878384eec33dc20bd3a933c72707c3eac,True,False,False,,,True,True,216,216,"0: len=76
+RED_FINAL: frame=211 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=74 moved=0
+FRAME 211: len=74
+RED_FINAL: frame=212 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=73 moved=0
+FRAME 212: len=73
+RED_FINAL: frame=213 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=62 moved=0
+FRAME 213: len=62
+RED_FINAL: frame=214 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=68 moved=0
+FRAME 214: len=68
+RED_FINAL: frame=215 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=62 moved=0
+FRAME 215: len=62
+Encoded 216 packets
+",COMPLETE
+1.5.2,common_voice_en_158913,36,62592b73a4534fd215e4de87f59b1ce186ec13128b50ed6e2af2f6cd947b9689,64000,True,True,c71ba2ab0d354d4ae6daa70a221339e2baf09a91202fc808cabe56317fd69cf0,c71ba2ab0d354d4ae6daa70a221339e2baf09a91202fc808cabe56317fd69cf0,True,6e3399ba8740397523df5755ea7185507061d6b8feb9dc8c5e9fedc0dc0e3179,6e3399ba8740397523df5755ea7185507061d6b8feb9dc8c5e9fedc0dc0e3179,True,False,False,,,True,True,216,216,"RED_FINAL: frame=211 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 211: len=161
+RED_FINAL: frame=212 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 212: len=161
+RED_FINAL: frame=213 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 213: len=161
+RED_FINAL: frame=214 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 214: len=161
+RED_FINAL: frame=215 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=195 moved=0
+FRAME 215: len=195
+Encoded 216 packets
+",COMPLETE
+1.5.2,common_voice_en_17250040,36,e120f26541549165708c0b0b372e12660be9e75c4de082d7b41e2be84d3a22eb,16000,True,True,69095338ab931c7cf28a6feb0ec0285b624cd16b3284d72b9bc9e863b5dee63e,69095338ab931c7cf28a6feb0ec0285b624cd16b3284d72b9bc9e863b5dee63e,True,4172072c798844da1bf6b7f2f01b63f89bd18a2c621a7ee04c988f957a42c372,4172072c798844da1bf6b7f2f01b63f89bd18a2c621a7ee04c988f957a42c372,True,False,False,,,True,True,237,237,"1: len=37
+RED_FINAL: frame=232 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=32 moved=0
+FRAME 232: len=32
+RED_FINAL: frame=233 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=31 moved=0
+FRAME 233: len=31
+RED_FINAL: frame=234 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=34 moved=0
+FRAME 234: len=34
+RED_FINAL: frame=235 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=32 moved=0
+FRAME 235: len=32
+RED_FINAL: frame=236 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=34 moved=0
+FRAME 236: len=34
+Encoded 237 packets
+",COMPLETE
+1.5.2,common_voice_en_17250040,36,e120f26541549165708c0b0b372e12660be9e75c4de082d7b41e2be84d3a22eb,32000,True,True,69095338ab931c7cf28a6feb0ec0285b624cd16b3284d72b9bc9e863b5dee63e,69095338ab931c7cf28a6feb0ec0285b624cd16b3284d72b9bc9e863b5dee63e,True,0314b6c942d83cf09cb0902bae8d1e762fef08cc112168f6a1da90d46d419b0b,0314b6c942d83cf09cb0902bae8d1e762fef08cc112168f6a1da90d46d419b0b,True,False,False,,,True,True,237,237,"1: len=72
+RED_FINAL: frame=232 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=73 moved=0
+FRAME 232: len=73
+RED_FINAL: frame=233 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=69 moved=0
+FRAME 233: len=69
+RED_FINAL: frame=234 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=69 moved=0
+FRAME 234: len=69
+RED_FINAL: frame=235 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=69 moved=0
+FRAME 235: len=69
+RED_FINAL: frame=236 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=66 moved=0
+FRAME 236: len=66
+Encoded 237 packets
+",COMPLETE
+1.5.2,common_voice_en_17250040,36,e120f26541549165708c0b0b372e12660be9e75c4de082d7b41e2be84d3a22eb,64000,True,True,69095338ab931c7cf28a6feb0ec0285b624cd16b3284d72b9bc9e863b5dee63e,69095338ab931c7cf28a6feb0ec0285b624cd16b3284d72b9bc9e863b5dee63e,True,b7662f697d2afde4f8b8dbc58cb716bb837adf936572435f4b4183f7c06e3e99,b7662f697d2afde4f8b8dbc58cb716bb837adf936572435f4b4183f7c06e3e99,True,False,False,,,True,True,237,237,"RED_FINAL: frame=232 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 232: len=161
+RED_FINAL: frame=233 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 233: len=161
+RED_FINAL: frame=234 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 234: len=161
+RED_FINAL: frame=235 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 235: len=161
+RED_FINAL: frame=236 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 236: len=161
+Encoded 237 packets
+",COMPLETE
+1.5.2,common_voice_en_17257945,36,be185dd717820fab6b97cd9721ea137784e9f8b454e0355cf7e77002eed11bd8,16000,True,True,b488f430b50d2f81ea06f236c6ad0da02b95f2e05ca9aef5ce10f9db3ba77a1b,b488f430b50d2f81ea06f236c6ad0da02b95f2e05ca9aef5ce10f9db3ba77a1b,True,db32c9a36ac33bf2491354b3c411f167b59220eeea80720e3653e0110d20ffbb,db32c9a36ac33bf2491354b3c411f167b59220eeea80720e3653e0110d20ffbb,True,False,False,,,True,True,157,157,"1: len=26
+RED_FINAL: frame=152 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=26 moved=0
+FRAME 152: len=26
+RED_FINAL: frame=153 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=26 moved=0
+FRAME 153: len=26
+RED_FINAL: frame=154 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=27 moved=0
+FRAME 154: len=27
+RED_FINAL: frame=155 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=26 moved=0
+FRAME 155: len=26
+RED_FINAL: frame=156 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=32 moved=0
+FRAME 156: len=32
+Encoded 157 packets
+",COMPLETE
+1.5.2,common_voice_en_17257945,36,be185dd717820fab6b97cd9721ea137784e9f8b454e0355cf7e77002eed11bd8,32000,True,True,b488f430b50d2f81ea06f236c6ad0da02b95f2e05ca9aef5ce10f9db3ba77a1b,b488f430b50d2f81ea06f236c6ad0da02b95f2e05ca9aef5ce10f9db3ba77a1b,True,107f470fcff3edaf5d014281333c40fbef0fe852cfd22b823fa14e22400c2e3b,107f470fcff3edaf5d014281333c40fbef0fe852cfd22b823fa14e22400c2e3b,True,False,False,,,True,True,157,157,"1: len=52
+RED_FINAL: frame=152 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=51 moved=0
+FRAME 152: len=51
+RED_FINAL: frame=153 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=53 moved=0
+FRAME 153: len=53
+RED_FINAL: frame=154 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=52 moved=0
+FRAME 154: len=52
+RED_FINAL: frame=155 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=55 moved=0
+FRAME 155: len=55
+RED_FINAL: frame=156 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=59 moved=0
+FRAME 156: len=59
+Encoded 157 packets
+",COMPLETE
+1.5.2,common_voice_en_17257945,36,be185dd717820fab6b97cd9721ea137784e9f8b454e0355cf7e77002eed11bd8,64000,True,True,b488f430b50d2f81ea06f236c6ad0da02b95f2e05ca9aef5ce10f9db3ba77a1b,b488f430b50d2f81ea06f236c6ad0da02b95f2e05ca9aef5ce10f9db3ba77a1b,True,30cd3c9275c9412b6d3c14cb92a5e367bcf5c89f7c555b01a5c61b1a300beee4,30cd3c9275c9412b6d3c14cb92a5e367bcf5c89f7c555b01a5c61b1a300beee4,True,False,False,,,True,True,157,157,"RED_FINAL: frame=152 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 152: len=161
+RED_FINAL: frame=153 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 153: len=161
+RED_FINAL: frame=154 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 154: len=161
+RED_FINAL: frame=155 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 155: len=161
+RED_FINAL: frame=156 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 156: len=161
+Encoded 157 packets
+",COMPLETE
+1.5.2,common_voice_en_17260071,36,ad32da5d7b38ffbdca1eddcf45a8e5f9a75d1c276aa87c8a8728e5a463610190,16000,True,True,778e32c5bad6bc5f2fe22929ba0b207e07a245397694d3ffb74db1db019e9bff,778e32c5bad6bc5f2fe22929ba0b207e07a245397694d3ffb74db1db019e9bff,True,cc156f29436fe9204a72d902fbb322a0398e703573c129bef1565c4a9f880484,cc156f29436fe9204a72d902fbb322a0398e703573c129bef1565c4a9f880484,True,False,False,,,True,True,144,144,"8: len=27
+RED_FINAL: frame=139 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=24 moved=0
+FRAME 139: len=24
+RED_FINAL: frame=140 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=28 moved=0
+FRAME 140: len=28
+RED_FINAL: frame=141 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=26 moved=0
+FRAME 141: len=26
+RED_FINAL: frame=142 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=26 moved=0
+FRAME 142: len=26
+RED_FINAL: frame=143 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=23 moved=0
+FRAME 143: len=23
+Encoded 144 packets
+",COMPLETE
+1.5.2,common_voice_en_17260071,36,ad32da5d7b38ffbdca1eddcf45a8e5f9a75d1c276aa87c8a8728e5a463610190,32000,True,True,778e32c5bad6bc5f2fe22929ba0b207e07a245397694d3ffb74db1db019e9bff,778e32c5bad6bc5f2fe22929ba0b207e07a245397694d3ffb74db1db019e9bff,True,16b47b9b6f87d1ff6504a54a6789986028b0d11d0e12fabaa9b32d932d091f50,16b47b9b6f87d1ff6504a54a6789986028b0d11d0e12fabaa9b32d932d091f50,True,False,False,,,True,True,144,144,"8: len=52
+RED_FINAL: frame=139 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=55 moved=0
+FRAME 139: len=55
+RED_FINAL: frame=140 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=53 moved=0
+FRAME 140: len=53
+RED_FINAL: frame=141 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=51 moved=0
+FRAME 141: len=51
+RED_FINAL: frame=142 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=49 moved=0
+FRAME 142: len=49
+RED_FINAL: frame=143 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=48 moved=0
+FRAME 143: len=48
+Encoded 144 packets
+",COMPLETE
+1.5.2,common_voice_en_17260071,36,ad32da5d7b38ffbdca1eddcf45a8e5f9a75d1c276aa87c8a8728e5a463610190,64000,True,True,778e32c5bad6bc5f2fe22929ba0b207e07a245397694d3ffb74db1db019e9bff,778e32c5bad6bc5f2fe22929ba0b207e07a245397694d3ffb74db1db019e9bff,True,37a3798ad8d021e9524cbe8989619327d2742c3211b092e0b5dd7f6750606953,37a3798ad8d021e9524cbe8989619327d2742c3211b092e0b5dd7f6750606953,True,False,False,,,True,True,144,144,"RED_FINAL: frame=139 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 139: len=161
+RED_FINAL: frame=140 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 140: len=161
+RED_FINAL: frame=141 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 141: len=161
+RED_FINAL: frame=142 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 142: len=161
+RED_FINAL: frame=143 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=182 moved=0
+FRAME 143: len=182
+Encoded 144 packets
+",COMPLETE
+1.5.2,common_voice_en_17276954,36,bad9a955ce32519f390426e68c3a3dd579c0b0ab0bd9064382f2bc26544f0743,16000,True,True,3f463a7edda43786d0c2c40a462944213031f37eb87de0abb12a7dff968d2229,3f463a7edda43786d0c2c40a462944213031f37eb87de0abb12a7dff968d2229,True,48440c56ed77fe276c725edcc8dcd2d81ec74b879b505e90a6368517bbbf2ec2,48440c56ed77fe276c725edcc8dcd2d81ec74b879b505e90a6368517bbbf2ec2,True,False,False,,,True,True,153,153,"7: len=25
+RED_FINAL: frame=148 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=26 moved=0
+FRAME 148: len=26
+RED_FINAL: frame=149 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=24 moved=0
+FRAME 149: len=24
+RED_FINAL: frame=150 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=23 moved=0
+FRAME 150: len=23
+RED_FINAL: frame=151 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=23 moved=0
+FRAME 151: len=23
+RED_FINAL: frame=152 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=23 moved=0
+FRAME 152: len=23
+Encoded 153 packets
+",COMPLETE
+1.5.2,common_voice_en_17276954,36,bad9a955ce32519f390426e68c3a3dd579c0b0ab0bd9064382f2bc26544f0743,32000,True,True,3f463a7edda43786d0c2c40a462944213031f37eb87de0abb12a7dff968d2229,3f463a7edda43786d0c2c40a462944213031f37eb87de0abb12a7dff968d2229,True,5c8ebaa07eb8986c41d79d7d45bf06c1cb01a9dcb8756706b86af9f35c243340,5c8ebaa07eb8986c41d79d7d45bf06c1cb01a9dcb8756706b86af9f35c243340,True,False,False,,,True,True,153,153,"7: len=50
+RED_FINAL: frame=148 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=53 moved=0
+FRAME 148: len=53
+RED_FINAL: frame=149 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=49 moved=0
+FRAME 149: len=49
+RED_FINAL: frame=150 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=45 moved=0
+FRAME 150: len=45
+RED_FINAL: frame=151 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=49 moved=0
+FRAME 151: len=49
+RED_FINAL: frame=152 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=47 moved=0
+FRAME 152: len=47
+Encoded 153 packets
+",COMPLETE
+1.5.2,common_voice_en_17276954,36,bad9a955ce32519f390426e68c3a3dd579c0b0ab0bd9064382f2bc26544f0743,64000,True,True,3f463a7edda43786d0c2c40a462944213031f37eb87de0abb12a7dff968d2229,3f463a7edda43786d0c2c40a462944213031f37eb87de0abb12a7dff968d2229,True,048159505595484ade56ed38ff00145429ebb7da0f54cab76c0ef6d90bd94655,048159505595484ade56ed38ff00145429ebb7da0f54cab76c0ef6d90bd94655,True,False,False,,,True,True,153,153,"RED_FINAL: frame=148 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 148: len=161
+RED_FINAL: frame=149 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 149: len=161
+RED_FINAL: frame=150 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 150: len=161
+RED_FINAL: frame=151 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 151: len=161
+RED_FINAL: frame=152 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 152: len=161
+Encoded 153 packets
+",COMPLETE
+1.5.2,common_voice_en_17288645,36,5757d89207a146bb40c9f3392eb616d654f86b9c08e420e80dec2033bb00fc68,16000,True,True,3db830b16c7d95156580fba81612e3e0bcec10becf7b199b07aec58726860e81,3db830b16c7d95156580fba81612e3e0bcec10becf7b199b07aec58726860e81,True,8136231dd0f2bd44373fe4fa172b31a7135e5364e15d7cc84bc00ea826e54f66,8136231dd0f2bd44373fe4fa172b31a7135e5364e15d7cc84bc00ea826e54f66,True,False,False,,,True,True,346,346,"0: len=33
+RED_FINAL: frame=341 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=27 moved=0
+FRAME 341: len=27
+RED_FINAL: frame=342 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=35 moved=0
+FRAME 342: len=35
+RED_FINAL: frame=343 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=31 moved=0
+FRAME 343: len=31
+RED_FINAL: frame=344 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=33 moved=0
+FRAME 344: len=33
+RED_FINAL: frame=345 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=32 moved=0
+FRAME 345: len=32
+Encoded 346 packets
+",COMPLETE
+1.5.2,common_voice_en_17288645,36,5757d89207a146bb40c9f3392eb616d654f86b9c08e420e80dec2033bb00fc68,32000,True,True,3db830b16c7d95156580fba81612e3e0bcec10becf7b199b07aec58726860e81,3db830b16c7d95156580fba81612e3e0bcec10becf7b199b07aec58726860e81,True,82751a726ed2176cd6365b1de6563a7af027aae94597ddb242cb70ad07bf69c8,82751a726ed2176cd6365b1de6563a7af027aae94597ddb242cb70ad07bf69c8,True,False,False,,,True,True,346,346,"0: len=71
+RED_FINAL: frame=341 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=66 moved=0
+FRAME 341: len=66
+RED_FINAL: frame=342 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=69 moved=0
+FRAME 342: len=69
+RED_FINAL: frame=343 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=70 moved=0
+FRAME 343: len=70
+RED_FINAL: frame=344 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=61 moved=0
+FRAME 344: len=61
+RED_FINAL: frame=345 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=68 moved=0
+FRAME 345: len=68
+Encoded 346 packets
+",COMPLETE
+1.5.2,common_voice_en_17288645,36,5757d89207a146bb40c9f3392eb616d654f86b9c08e420e80dec2033bb00fc68,64000,True,True,3db830b16c7d95156580fba81612e3e0bcec10becf7b199b07aec58726860e81,3db830b16c7d95156580fba81612e3e0bcec10becf7b199b07aec58726860e81,True,08fe398f7c49eb1318c0e68b2efa9a7c1892cfb699e56552f3d7617eb2957179,08fe398f7c49eb1318c0e68b2efa9a7c1892cfb699e56552f3d7617eb2957179,True,False,False,,,True,True,346,346,"RED_FINAL: frame=341 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 341: len=161
+RED_FINAL: frame=342 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 342: len=161
+RED_FINAL: frame=343 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 343: len=161
+RED_FINAL: frame=344 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 344: len=161
+RED_FINAL: frame=345 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=161 moved=0
+FRAME 345: len=161
+Encoded 346 packets
+",COMPLETE
+1.6.1,common_voice_en_117681,36,110ec00170676cecded762e81148c791bd215be3d7ae3d4c8828bbdbc65293d2,16000,True,True,3781c568c87b91b7ed9fd7121a2f73634931e68ee6a6ceb01f088a68b645684d,3781c568c87b91b7ed9fd7121a2f73634931e68ee6a6ceb01f088a68b645684d,True,f4fb28d229f84c5426e2ddae96425786d25f15e82e113911c0f51e1def759283,f4fb28d229f84c5426e2ddae96425786d25f15e82e113911c0f51e1def759283,True,False,False,,,True,True,168,168,"t=33 equal=0
+RED_FINAL: frame=165 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=34 moved=0
+FRAME 165: len=34
+  -> PRE_MOVE: ret=34 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=34 equal=0
+RED_FINAL: frame=166 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=35 moved=0
+FRAME 166: len=35
+  -> PRE_MOVE: ret=29 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=29 equal=0
+RED_FINAL: frame=167 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=30 moved=0
+FRAME 167: len=30
+Encoded 168 packets
+",COMPLETE
+1.6.1,common_voice_en_117681,36,110ec00170676cecded762e81148c791bd215be3d7ae3d4c8828bbdbc65293d2,32000,True,True,3781c568c87b91b7ed9fd7121a2f73634931e68ee6a6ceb01f088a68b645684d,3781c568c87b91b7ed9fd7121a2f73634931e68ee6a6ceb01f088a68b645684d,True,5a88f321fdae7e8c2d295c1142f566bf46af1d67af4ad3de05d97339a950175c,5a88f321fdae7e8c2d295c1142f566bf46af1d67af4ad3de05d97339a950175c,True,False,False,,,True,True,168,168,"t=65 equal=0
+RED_FINAL: frame=165 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=66 moved=0
+FRAME 165: len=66
+  -> PRE_MOVE: ret=69 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=69 equal=0
+RED_FINAL: frame=166 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=70 moved=0
+FRAME 166: len=70
+  -> PRE_MOVE: ret=53 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=53 equal=0
+RED_FINAL: frame=167 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=54 moved=0
+FRAME 167: len=54
+Encoded 168 packets
+",COMPLETE
+1.6.1,common_voice_en_117681,36,110ec00170676cecded762e81148c791bd215be3d7ae3d4c8828bbdbc65293d2,64000,True,True,3781c568c87b91b7ed9fd7121a2f73634931e68ee6a6ceb01f088a68b645684d,3781c568c87b91b7ed9fd7121a2f73634931e68ee6a6ceb01f088a68b645684d,True,e729a874ae16abc533c520cdd599947329f06a5acf250a9614575e317d3d061c,e729a874ae16abc533c520cdd599947329f06a5acf250a9614575e317d3d061c,True,False,False,,,True,True,168,168,"=0
+RED_FINAL: frame=165 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 165: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=166 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 166: len=161
+  -> PRE_MOVE: ret=258 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=258 equal=0
+RED_FINAL: frame=167 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=259 moved=0
+FRAME 167: len=259
+Encoded 168 packets
+",COMPLETE
+1.6.1,common_voice_en_137531,36,7a1bc42cfdf67466591503c2eb0d3fb5a08bb5a010cc9ffcff3185496eff8ce3,16000,True,True,01d8f802e1246ac9ffbb39121e23841ca55e5a26d6960e8bf1d23fdb3db064db,01d8f802e1246ac9ffbb39121e23841ca55e5a26d6960e8bf1d23fdb3db064db,True,07a1b6fbe862126bac64857b2f4e8aa6b1552572a6f3a9cbf2a03647aed86e31,07a1b6fbe862126bac64857b2f4e8aa6b1552572a6f3a9cbf2a03647aed86e31,True,False,False,,,True,True,121,121,"ME 115: len=36
+RED_FINAL: frame=116 mode=1000 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=33 moved=0
+FRAME 116: len=33
+RED_FINAL: frame=117 mode=1000 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=32 moved=0
+FRAME 117: len=32
+RED_FINAL: frame=118 mode=1000 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=36 moved=0
+FRAME 118: len=36
+RED_FINAL: frame=119 mode=1000 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=32 moved=0
+FRAME 119: len=32
+RED_FINAL: frame=120 mode=1000 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=25 moved=0
+FRAME 120: len=25
+Encoded 121 packets
+",COMPLETE
+1.6.1,common_voice_en_137531,36,7a1bc42cfdf67466591503c2eb0d3fb5a08bb5a010cc9ffcff3185496eff8ce3,32000,True,True,01d8f802e1246ac9ffbb39121e23841ca55e5a26d6960e8bf1d23fdb3db064db,01d8f802e1246ac9ffbb39121e23841ca55e5a26d6960e8bf1d23fdb3db064db,True,524a1502ea236abba3dc4e9830684cb44abd3894d76d83654015beab334d846d,524a1502ea236abba3dc4e9830684cb44abd3894d76d83654015beab334d846d,True,False,False,,,True,True,121,121,"t=70 equal=0
+RED_FINAL: frame=118 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=71 moved=0
+FRAME 118: len=71
+  -> PRE_MOVE: ret=67 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=67 equal=0
+RED_FINAL: frame=119 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=68 moved=0
+FRAME 119: len=68
+  -> PRE_MOVE: ret=64 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=64 equal=0
+RED_FINAL: frame=120 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=65 moved=0
+FRAME 120: len=65
+Encoded 121 packets
+",COMPLETE
+1.6.1,common_voice_en_137531,36,7a1bc42cfdf67466591503c2eb0d3fb5a08bb5a010cc9ffcff3185496eff8ce3,64000,True,True,01d8f802e1246ac9ffbb39121e23841ca55e5a26d6960e8bf1d23fdb3db064db,01d8f802e1246ac9ffbb39121e23841ca55e5a26d6960e8bf1d23fdb3db064db,True,9e58b02b69791e19ffded82885349cc8965441a797c9f57a74a3a57cc5555adc,9e58b02b69791e19ffded82885349cc8965441a797c9f57a74a3a57cc5555adc,True,False,False,,,True,True,121,121,"=0
+RED_FINAL: frame=118 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 118: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=119 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 119: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=120 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 120: len=161
+Encoded 121 packets
+",COMPLETE
+1.6.1,common_voice_en_15061,36,3566c5a4c933629f736fcb2b69f45150800ee57f2d4ffc64180d86f11c7cbc5d,16000,True,True,deec19912e05eefaf2b6969268e9fd615057aea0b75a36358e74e4f598375ba4,deec19912e05eefaf2b6969268e9fd615057aea0b75a36358e74e4f598375ba4,True,65d5863b0a6af942740cde2d84fc4d8426d82d1f82309d65e1baed74b3e8a480,65d5863b0a6af942740cde2d84fc4d8426d82d1f82309d65e1baed74b3e8a480,True,False,False,,,True,True,168,168,"t=25 equal=0
+RED_FINAL: frame=165 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=26 moved=0
+FRAME 165: len=26
+  -> PRE_MOVE: ret=28 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=28 equal=0
+RED_FINAL: frame=166 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=29 moved=0
+FRAME 166: len=29
+  -> PRE_MOVE: ret=26 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=26 equal=0
+RED_FINAL: frame=167 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=27 moved=0
+FRAME 167: len=27
+Encoded 168 packets
+",COMPLETE
+1.6.1,common_voice_en_15061,36,3566c5a4c933629f736fcb2b69f45150800ee57f2d4ffc64180d86f11c7cbc5d,32000,True,True,deec19912e05eefaf2b6969268e9fd615057aea0b75a36358e74e4f598375ba4,deec19912e05eefaf2b6969268e9fd615057aea0b75a36358e74e4f598375ba4,True,03298419e5407483e4db4f372ad4858171700d123c7580d58dd06c78fba7e45e,03298419e5407483e4db4f372ad4858171700d123c7580d58dd06c78fba7e45e,True,False,False,,,True,True,168,168,"t=55 equal=0
+RED_FINAL: frame=165 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=56 moved=0
+FRAME 165: len=56
+  -> PRE_MOVE: ret=55 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=55 equal=0
+RED_FINAL: frame=166 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=56 moved=0
+FRAME 166: len=56
+  -> PRE_MOVE: ret=54 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=54 equal=0
+RED_FINAL: frame=167 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=55 moved=0
+FRAME 167: len=55
+Encoded 168 packets
+",COMPLETE
+1.6.1,common_voice_en_15061,36,3566c5a4c933629f736fcb2b69f45150800ee57f2d4ffc64180d86f11c7cbc5d,64000,True,True,deec19912e05eefaf2b6969268e9fd615057aea0b75a36358e74e4f598375ba4,deec19912e05eefaf2b6969268e9fd615057aea0b75a36358e74e4f598375ba4,True,13ae26908e5f6b763417c387d71236bddf84b73ccb8fc8e3c43e1b9e032e6eae,13ae26908e5f6b763417c387d71236bddf84b73ccb8fc8e3c43e1b9e032e6eae,True,False,False,,,True,True,168,168,"=0
+RED_FINAL: frame=165 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 165: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=166 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 166: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=167 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 167: len=161
+Encoded 168 packets
+",COMPLETE
+1.6.1,common_voice_en_153133,36,57134926042e7d5c473d6218fcb77091ea1a2c1788eb172f4391728e09694820,16000,True,True,20d9c975b9a19ee635b84d156310bd58e8ca40d092b6a38ed8c51d2fe5db2ea7,20d9c975b9a19ee635b84d156310bd58e8ca40d092b6a38ed8c51d2fe5db2ea7,True,5555868d65eda07d1e8dae001da5dfd739ef3d22855e097cf5432203702438ca,5555868d65eda07d1e8dae001da5dfd739ef3d22855e097cf5432203702438ca,True,False,False,,,True,True,193,193,"t=30 equal=0
+RED_FINAL: frame=190 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=31 moved=0
+FRAME 190: len=31
+  -> PRE_MOVE: ret=33 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=33 equal=0
+RED_FINAL: frame=191 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=34 moved=0
+FRAME 191: len=34
+  -> PRE_MOVE: ret=29 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=29 equal=0
+RED_FINAL: frame=192 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=30 moved=0
+FRAME 192: len=30
+Encoded 193 packets
+",COMPLETE
+1.6.1,common_voice_en_153133,36,57134926042e7d5c473d6218fcb77091ea1a2c1788eb172f4391728e09694820,32000,True,True,20d9c975b9a19ee635b84d156310bd58e8ca40d092b6a38ed8c51d2fe5db2ea7,20d9c975b9a19ee635b84d156310bd58e8ca40d092b6a38ed8c51d2fe5db2ea7,True,da886640efddb9b2907a7d8c0bd6c481a1fb17fefb9a98b9c4f93b84f4755409,da886640efddb9b2907a7d8c0bd6c481a1fb17fefb9a98b9c4f93b84f4755409,True,False,False,,,True,True,193,193,"t=72 equal=0
+RED_FINAL: frame=190 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=73 moved=0
+FRAME 190: len=73
+  -> PRE_MOVE: ret=73 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=73 equal=0
+RED_FINAL: frame=191 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=74 moved=0
+FRAME 191: len=74
+  -> PRE_MOVE: ret=73 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=73 equal=0
+RED_FINAL: frame=192 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=74 moved=0
+FRAME 192: len=74
+Encoded 193 packets
+",COMPLETE
+1.6.1,common_voice_en_153133,36,57134926042e7d5c473d6218fcb77091ea1a2c1788eb172f4391728e09694820,64000,True,True,20d9c975b9a19ee635b84d156310bd58e8ca40d092b6a38ed8c51d2fe5db2ea7,20d9c975b9a19ee635b84d156310bd58e8ca40d092b6a38ed8c51d2fe5db2ea7,True,07b6e4ddc0bb4d885aa2cc3d86421770aa61aa7784b70790a443908f2f0f035f,07b6e4ddc0bb4d885aa2cc3d86421770aa61aa7784b70790a443908f2f0f035f,True,False,False,,,True,True,193,193,"=0
+RED_FINAL: frame=190 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 190: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=191 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 191: len=161
+  -> PRE_MOVE: ret=211 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=211 equal=0
+RED_FINAL: frame=192 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=212 moved=0
+FRAME 192: len=212
+Encoded 193 packets
+",COMPLETE
+1.6.1,common_voice_en_15904033,36,433111d5470b2d34eec622d85791609b6d17132d014ec922e47101d04f736219,16000,True,True,0e5ac75741153aff027018917a8821efc65c420b40b6d3edaef518c263359ecd,0e5ac75741153aff027018917a8821efc65c420b40b6d3edaef518c263359ecd,True,fe127b675985fc6f10e23618cec87db3c36fa3e520f0a3b2f685788ee1b5f67b,fe127b675985fc6f10e23618cec87db3c36fa3e520f0a3b2f685788ee1b5f67b,True,False,False,,,True,True,133,133,"t=27 equal=0
+RED_FINAL: frame=130 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=28 moved=0
+FRAME 130: len=28
+  -> PRE_MOVE: ret=26 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=26 equal=0
+RED_FINAL: frame=131 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=27 moved=0
+FRAME 131: len=27
+  -> PRE_MOVE: ret=28 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=28 equal=0
+RED_FINAL: frame=132 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=29 moved=0
+FRAME 132: len=29
+Encoded 133 packets
+",COMPLETE
+1.6.1,common_voice_en_15904033,36,433111d5470b2d34eec622d85791609b6d17132d014ec922e47101d04f736219,32000,True,True,0e5ac75741153aff027018917a8821efc65c420b40b6d3edaef518c263359ecd,0e5ac75741153aff027018917a8821efc65c420b40b6d3edaef518c263359ecd,True,0e67429cba52cf92f8d6c8cc5c57a33aeadd40852eece11b0791a8444767b737,0e67429cba52cf92f8d6c8cc5c57a33aeadd40852eece11b0791a8444767b737,True,False,False,,,True,True,133,133,"t=49 equal=0
+RED_FINAL: frame=130 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=50 moved=0
+FRAME 130: len=50
+  -> PRE_MOVE: ret=51 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=51 equal=0
+RED_FINAL: frame=131 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=52 moved=0
+FRAME 131: len=52
+  -> PRE_MOVE: ret=52 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=52 equal=0
+RED_FINAL: frame=132 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=53 moved=0
+FRAME 132: len=53
+Encoded 133 packets
+",COMPLETE
+1.6.1,common_voice_en_15904033,36,433111d5470b2d34eec622d85791609b6d17132d014ec922e47101d04f736219,64000,True,True,0e5ac75741153aff027018917a8821efc65c420b40b6d3edaef518c263359ecd,0e5ac75741153aff027018917a8821efc65c420b40b6d3edaef518c263359ecd,True,8dac7363dc1ac897b92d66e937737ad7e3a3f0432c0debaf3062f0b66104fcc3,8dac7363dc1ac897b92d66e937737ad7e3a3f0432c0debaf3062f0b66104fcc3,True,False,False,,,True,True,133,133,"=0
+RED_FINAL: frame=130 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 130: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=131 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 131: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=132 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 132: len=161
+Encoded 133 packets
+",COMPLETE
+1.6.1,common_voice_en_159474,36,1f5b1a35f50b6a84d845c178c8561d253131b8ab3ca1ebce16dfc83cc797927c,16000,True,True,8e79bc14e0fdc24f2bf5962e67e29a2b1eab3828a7ab17f5d5f4b4ac14a6c1c6,8e79bc14e0fdc24f2bf5962e67e29a2b1eab3828a7ab17f5d5f4b4ac14a6c1c6,True,e0b00977bd6b5c9bdd47430376ca720560f100d3efe795019783531177737bcb,e0b00977bd6b5c9bdd47430376ca720560f100d3efe795019783531177737bcb,True,False,False,,,True,True,391,391,"t=20 equal=0
+RED_FINAL: frame=388 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=21 moved=0
+FRAME 388: len=21
+  -> PRE_MOVE: ret=26 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=26 equal=0
+RED_FINAL: frame=389 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=27 moved=0
+FRAME 389: len=27
+  -> PRE_MOVE: ret=25 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=25 equal=0
+RED_FINAL: frame=390 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=26 moved=0
+FRAME 390: len=26
+Encoded 391 packets
+",COMPLETE
+1.6.1,common_voice_en_159474,36,1f5b1a35f50b6a84d845c178c8561d253131b8ab3ca1ebce16dfc83cc797927c,32000,True,True,8e79bc14e0fdc24f2bf5962e67e29a2b1eab3828a7ab17f5d5f4b4ac14a6c1c6,8e79bc14e0fdc24f2bf5962e67e29a2b1eab3828a7ab17f5d5f4b4ac14a6c1c6,True,81da9f0f945e078fbb1df82e4626b056a034e5406f7f466098ac9a6a62f1a4c6,81da9f0f945e078fbb1df82e4626b056a034e5406f7f466098ac9a6a62f1a4c6,True,False,False,,,True,True,391,391,"t=55 equal=0
+RED_FINAL: frame=388 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=56 moved=0
+FRAME 388: len=56
+  -> PRE_MOVE: ret=55 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=55 equal=0
+RED_FINAL: frame=389 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=56 moved=0
+FRAME 389: len=56
+  -> PRE_MOVE: ret=59 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=59 equal=0
+RED_FINAL: frame=390 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=60 moved=0
+FRAME 390: len=60
+Encoded 391 packets
+",COMPLETE
+1.6.1,common_voice_en_159474,36,1f5b1a35f50b6a84d845c178c8561d253131b8ab3ca1ebce16dfc83cc797927c,64000,True,True,8e79bc14e0fdc24f2bf5962e67e29a2b1eab3828a7ab17f5d5f4b4ac14a6c1c6,8e79bc14e0fdc24f2bf5962e67e29a2b1eab3828a7ab17f5d5f4b4ac14a6c1c6,True,4096e325126a42d2f4b5c6f360818051ad6681c316dd533e818a05b528c95738,4096e325126a42d2f4b5c6f360818051ad6681c316dd533e818a05b528c95738,True,False,False,,,True,True,391,391,"=0
+RED_FINAL: frame=388 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 388: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=389 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 389: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=390 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 390: len=161
+Encoded 391 packets
+",COMPLETE
+1.6.1,common_voice_en_165316,36,2d865595c749805e38b249b19587ec64a56f8ceb9c29b1d54cfb33f383d3f375,16000,True,True,37ade8d0a79fe063672a805fca2508de9e99ae04aec22644cb73faf4bb2cca9a,37ade8d0a79fe063672a805fca2508de9e99ae04aec22644cb73faf4bb2cca9a,True,bbb3dd501c025176d1c6602e4e1aefca62029e90bceda4aca5f8d40173d02028,bbb3dd501c025176d1c6602e4e1aefca62029e90bceda4aca5f8d40173d02028,True,False,False,,,True,True,266,266,"t=26 equal=0
+RED_FINAL: frame=263 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=27 moved=0
+FRAME 263: len=27
+  -> PRE_MOVE: ret=24 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=24 equal=0
+RED_FINAL: frame=264 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=25 moved=0
+FRAME 264: len=25
+  -> PRE_MOVE: ret=21 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=21 equal=0
+RED_FINAL: frame=265 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=22 moved=0
+FRAME 265: len=22
+Encoded 266 packets
+",COMPLETE
+1.6.1,common_voice_en_165316,36,2d865595c749805e38b249b19587ec64a56f8ceb9c29b1d54cfb33f383d3f375,32000,True,True,37ade8d0a79fe063672a805fca2508de9e99ae04aec22644cb73faf4bb2cca9a,37ade8d0a79fe063672a805fca2508de9e99ae04aec22644cb73faf4bb2cca9a,True,da2dfc33495cf88b7a1962a91fca263470cb42f74bf9e8886192175251aec668,da2dfc33495cf88b7a1962a91fca263470cb42f74bf9e8886192175251aec668,True,False,False,,,True,True,266,266,"t=55 equal=0
+RED_FINAL: frame=263 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=56 moved=0
+FRAME 263: len=56
+  -> PRE_MOVE: ret=54 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=54 equal=0
+RED_FINAL: frame=264 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=55 moved=0
+FRAME 264: len=55
+  -> PRE_MOVE: ret=54 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=54 equal=0
+RED_FINAL: frame=265 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=55 moved=0
+FRAME 265: len=55
+Encoded 266 packets
+",COMPLETE
+1.6.1,common_voice_en_165316,36,2d865595c749805e38b249b19587ec64a56f8ceb9c29b1d54cfb33f383d3f375,64000,True,True,37ade8d0a79fe063672a805fca2508de9e99ae04aec22644cb73faf4bb2cca9a,37ade8d0a79fe063672a805fca2508de9e99ae04aec22644cb73faf4bb2cca9a,True,06d02a94b809e63b7ea57c6771bc9685647c9264481bdd7a2f4a2f6fb585f576,06d02a94b809e63b7ea57c6771bc9685647c9264481bdd7a2f4a2f6fb585f576,True,False,False,,,True,True,266,266,"=0
+RED_FINAL: frame=263 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 263: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=264 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 264: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=265 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 265: len=161
+Encoded 266 packets
+",COMPLETE
+1.6.1,common_voice_en_169306,36,5dc5f53de8aafe7dd37551a491d20c938f9e12c034c17b4245096dcf544c5689,16000,True,True,372e1ecac8ab5f9f506d584713cd5577ce1926f25873452c335dc3ae22d00b7b,372e1ecac8ab5f9f506d584713cd5577ce1926f25873452c335dc3ae22d00b7b,True,249b02171c47494fbf4afa129595759b54da10b53a6b1198b673d75fd6afd6e1,249b02171c47494fbf4afa129595759b54da10b53a6b1198b673d75fd6afd6e1,True,False,False,,,True,True,232,232,"t=29 equal=0
+RED_FINAL: frame=229 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=30 moved=0
+FRAME 229: len=30
+  -> PRE_MOVE: ret=33 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=33 equal=0
+RED_FINAL: frame=230 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=34 moved=0
+FRAME 230: len=34
+  -> PRE_MOVE: ret=35 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=35 equal=0
+RED_FINAL: frame=231 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=36 moved=0
+FRAME 231: len=36
+Encoded 232 packets
+",COMPLETE
+1.6.1,common_voice_en_169306,36,5dc5f53de8aafe7dd37551a491d20c938f9e12c034c17b4245096dcf544c5689,32000,True,True,372e1ecac8ab5f9f506d584713cd5577ce1926f25873452c335dc3ae22d00b7b,372e1ecac8ab5f9f506d584713cd5577ce1926f25873452c335dc3ae22d00b7b,True,076227103bfda5b98b861a27002d24432a62b3ac9893b1341628b1807ab672b0,076227103bfda5b98b861a27002d24432a62b3ac9893b1341628b1807ab672b0,True,False,False,,,True,True,232,232,"t=64 equal=0
+RED_FINAL: frame=229 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=65 moved=0
+FRAME 229: len=65
+  -> PRE_MOVE: ret=67 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=67 equal=0
+RED_FINAL: frame=230 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=68 moved=0
+FRAME 230: len=68
+  -> PRE_MOVE: ret=83 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=83 equal=0
+RED_FINAL: frame=231 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=84 moved=0
+FRAME 231: len=84
+Encoded 232 packets
+",COMPLETE
+1.6.1,common_voice_en_169306,36,5dc5f53de8aafe7dd37551a491d20c938f9e12c034c17b4245096dcf544c5689,64000,True,True,372e1ecac8ab5f9f506d584713cd5577ce1926f25873452c335dc3ae22d00b7b,372e1ecac8ab5f9f506d584713cd5577ce1926f25873452c335dc3ae22d00b7b,True,46c5bfcbf85f6a2770df1c2dc475b7ad97f627b2dac5fe1d5f814c5454bb03b5,46c5bfcbf85f6a2770df1c2dc475b7ad97f627b2dac5fe1d5f814c5454bb03b5,True,False,False,,,True,True,232,232,"=0
+RED_FINAL: frame=229 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 229: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=230 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 230: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=231 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 231: len=161
+Encoded 232 packets
+",COMPLETE
+1.6.1,common_voice_en_17251326,36,b28a62bbc90393d3696171843c8ccb8333dca38bae544ab6a0c9c2efe5197448,16000,True,True,da4eca5f53d6a0a4354e2541e99bbc79856877bbf851aed0565451a7bd59a5ec,da4eca5f53d6a0a4354e2541e99bbc79856877bbf851aed0565451a7bd59a5ec,True,1a29b47d52422e752331445580b20f6b8cd66afe922bb90215a4a7716aecacd8,1a29b47d52422e752331445580b20f6b8cd66afe922bb90215a4a7716aecacd8,True,False,False,,,True,True,163,163,"t=22 equal=0
+RED_FINAL: frame=160 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=23 moved=0
+FRAME 160: len=23
+  -> PRE_MOVE: ret=21 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=21 equal=0
+RED_FINAL: frame=161 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=22 moved=0
+FRAME 161: len=22
+  -> PRE_MOVE: ret=25 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=25 equal=0
+RED_FINAL: frame=162 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=26 moved=0
+FRAME 162: len=26
+Encoded 163 packets
+",COMPLETE
+1.6.1,common_voice_en_17251326,36,b28a62bbc90393d3696171843c8ccb8333dca38bae544ab6a0c9c2efe5197448,32000,True,True,da4eca5f53d6a0a4354e2541e99bbc79856877bbf851aed0565451a7bd59a5ec,da4eca5f53d6a0a4354e2541e99bbc79856877bbf851aed0565451a7bd59a5ec,True,938e32a2c683ab2f692a7e06e6dce076b03020ea922192a7002f2c97ae11269b,938e32a2c683ab2f692a7e06e6dce076b03020ea922192a7002f2c97ae11269b,True,False,False,,,True,True,163,163,"t=49 equal=0
+RED_FINAL: frame=160 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=50 moved=0
+FRAME 160: len=50
+  -> PRE_MOVE: ret=46 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=46 equal=0
+RED_FINAL: frame=161 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=47 moved=0
+FRAME 161: len=47
+  -> PRE_MOVE: ret=49 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=49 equal=0
+RED_FINAL: frame=162 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=50 moved=0
+FRAME 162: len=50
+Encoded 163 packets
+",COMPLETE
+1.6.1,common_voice_en_17251326,36,b28a62bbc90393d3696171843c8ccb8333dca38bae544ab6a0c9c2efe5197448,64000,True,True,da4eca5f53d6a0a4354e2541e99bbc79856877bbf851aed0565451a7bd59a5ec,da4eca5f53d6a0a4354e2541e99bbc79856877bbf851aed0565451a7bd59a5ec,True,d1ab7afdac0668e4df75ddbcb7bb87a4c49e11dd40c445e4f937cb2362d5d7ac,d1ab7afdac0668e4df75ddbcb7bb87a4c49e11dd40c445e4f937cb2362d5d7ac,True,False,False,,,True,True,163,163,"=0
+RED_FINAL: frame=160 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 160: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=161 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 161: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=162 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 162: len=161
+Encoded 163 packets
+",COMPLETE
+1.6.1,common_voice_en_17260071,36,118fb25784063aa200ec4561d18311d0c07a6e8e93427a7d019893362108858a,16000,True,True,7fb1b7b1daf164112726b9619ede70fbd07ecdb7f51e427f3a2705daf1c2a59f,7fb1b7b1daf164112726b9619ede70fbd07ecdb7f51e427f3a2705daf1c2a59f,True,898972c08f0a3ba43746e95ac41e88d8dfe71cd4a8df25e5e97743f60568b5dd,898972c08f0a3ba43746e95ac41e88d8dfe71cd4a8df25e5e97743f60568b5dd,True,False,False,,,True,True,144,144,"t=25 equal=0
+RED_FINAL: frame=141 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=26 moved=0
+FRAME 141: len=26
+  -> PRE_MOVE: ret=25 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=25 equal=0
+RED_FINAL: frame=142 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=26 moved=0
+FRAME 142: len=26
+  -> PRE_MOVE: ret=22 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=22 equal=0
+RED_FINAL: frame=143 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=23 moved=0
+FRAME 143: len=23
+Encoded 144 packets
+",COMPLETE
+1.6.1,common_voice_en_17260071,36,118fb25784063aa200ec4561d18311d0c07a6e8e93427a7d019893362108858a,32000,True,True,7fb1b7b1daf164112726b9619ede70fbd07ecdb7f51e427f3a2705daf1c2a59f,7fb1b7b1daf164112726b9619ede70fbd07ecdb7f51e427f3a2705daf1c2a59f,True,ecba113f5c92f6688311edf2c04e398bad65fc8eb780a9c2f290c72766cd22f1,ecba113f5c92f6688311edf2c04e398bad65fc8eb780a9c2f290c72766cd22f1,True,False,False,,,True,True,144,144,"t=50 equal=0
+RED_FINAL: frame=141 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=51 moved=0
+FRAME 141: len=51
+  -> PRE_MOVE: ret=48 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=48 equal=0
+RED_FINAL: frame=142 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=49 moved=0
+FRAME 142: len=49
+  -> PRE_MOVE: ret=47 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=47 equal=0
+RED_FINAL: frame=143 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=48 moved=0
+FRAME 143: len=48
+Encoded 144 packets
+",COMPLETE
+1.6.1,common_voice_en_17260071,36,118fb25784063aa200ec4561d18311d0c07a6e8e93427a7d019893362108858a,64000,True,True,7fb1b7b1daf164112726b9619ede70fbd07ecdb7f51e427f3a2705daf1c2a59f,7fb1b7b1daf164112726b9619ede70fbd07ecdb7f51e427f3a2705daf1c2a59f,True,fd782f8d9ec2a2069655e27beca6f805ed89db9c92ebab10d0e269352df871d5,fd782f8d9ec2a2069655e27beca6f805ed89db9c92ebab10d0e269352df871d5,True,False,False,,,True,True,144,144,"=0
+RED_FINAL: frame=141 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 141: len=161
+  -> PRE_MOVE: ret=160 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=160 equal=0
+RED_FINAL: frame=142 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=161 moved=0
+FRAME 142: len=161
+  -> PRE_MOVE: ret=181 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=181 equal=0
+RED_FINAL: frame=143 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=0 packet_return_length=182 moved=0
+FRAME 143: len=182
+Encoded 144 packets
+",COMPLETE

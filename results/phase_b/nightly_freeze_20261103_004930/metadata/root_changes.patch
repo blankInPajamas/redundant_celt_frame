@@ -1,0 +1,1799 @@
+diff --git a/experiments/B4_payload/embed.py b/experiments/B4_payload/embed.py
+index 90edf40..c0bde90 100644
+--- a/experiments/B4_payload/embed.py
++++ b/experiments/B4_payload/embed.py
+@@ -12,17 +12,11 @@ def trailing_zeros(pkt):
+             break
+     return t
+ 
+-def find_transition_frame(packets, min_tail=20):
+-    """Return the index of the transition frame, or -1 if none.
+-
+-    The transition frame is the first frame with a large trailing-zero run
+-    (≥ min_tail bytes). If no such frame exists, the stream doesn't
+-    produce a transition.
+-    """
+-    for i, pkt in enumerate(packets):
+-        if trailing_zeros(pkt) >= min_tail:
+-            return i
+-    return -1
++def find_transition_candidates(packets, min_tail=20):
++    return [
++        i for i, pkt in enumerate(packets)
++        if trailing_zeros(pkt) >= min_tail
++    ]
+ 
+ def find_tail_start(pkt):
+     """Return the index where the trailing zero run starts."""
+@@ -31,46 +25,95 @@ def find_tail_start(pkt):
+             return i + 1
+     return 0
+ 
+-def embed(infile, outfile, message):
++
++def embed(infile, outfile, message, target_idx=None):
++
+     msg_bytes = message.encode("ascii")
++
+     if len(msg_bytes) > 254:
+-        print(f"message too long: {len(msg_bytes)} > 254")
+-        sys.exit(1)
++        raise ValueError("Message too long")
++
+     payload = bytes([len(msg_bytes)]) + msg_bytes
+ 
+     data = open(infile, "rb").read()
++
+     packets = []
+     off = 0
++
+     while off + 4 <= len(data):
+         ln = struct.unpack("<I", data[off:off+4])[0]
+         off += 4
++
++        if off + ln > len(data):
++            raise ValueError("Invalid packet framing")
++
+         packets.append(bytearray(data[off:off+ln]))
+         off += ln
+ 
+-    target = find_transition_frame(packets)
+-    if target < 0:
+-        print("no transition frame found")
+-        sys.exit(1)
++    candidates = find_transition_candidates(packets)
++
++    # Select the explicitly supplied index when available.
++    if target_idx is None:
++
++        if len(candidates) != 1:
++            raise ValueError(
++                f"Expected one candidate, found {candidates}"
++            )
++
++        target = candidates[0]
++
++    else:
++
++        target = int(target_idx)
++
++        if not 0 <= target < len(packets):
++            raise ValueError("Invalid target frame index")
++
++        if target not in candidates:
++            raise ValueError(
++                f"Target {target} is not a verified zero-tail candidate"
++            )
+ 
+     pkt = packets[target]
++
+     tail_start = find_tail_start(pkt)
+     tail_len = len(pkt) - tail_start
+ 
+     if tail_len < len(payload):
+-        print(f"frame {target}: tail too short ({tail_len} < {len(payload)})")
+-        sys.exit(2)
++        raise ValueError(
++            f"Frame {target}: insufficient tail capacity "
++            f"({tail_len} < {len(payload)})"
++        )
+ 
+-    for i, b in enumerate(payload):
+-        pkt[tail_start + i] = b
++    # Modify only the reserved zero-filled region.
++    pkt[tail_start:tail_start + len(payload)] = payload
+ 
++    # Reconstruct the original packet framing.
+     out = bytearray()
++
+     for p in packets:
+         out += struct.pack("<I", len(p))
+         out += p
+ 
+-    open(outfile, "wb").write(bytes(out))
+-    print(f"embedded {len(payload)} bytes into frame {target} (tail_start={tail_start}, tail_len={tail_len})")
++    with open(outfile, "wb") as f:
++        f.write(out)
++
++    print(
++        f"embedded {len(payload)} bytes "
++        f"into frame {target} "
++        f"(tail_start={tail_start}, tail_len={tail_len})"
++    )
+ 
+ if __name__ == "__main__":
+-    infile, outfile, message = sys.argv[1], sys.argv[2], sys.argv[3]
+-    embed(infile, outfile, message)
+\ No newline at end of file
++
++    infile = sys.argv[1]
++    outfile = sys.argv[2]
++    message = sys.argv[3]
++
++    target_idx = (
++        int(sys.argv[4])
++        if len(sys.argv) > 4
++        else None
++    )
++
++    embed(infile, outfile, message, target_idx)
+\ No newline at end of file
+diff --git a/experiments/B4_payload/reproduce.sh b/experiments/B4_payload/reproduce.sh
+index ca6dbe3..e132146 100644
+--- a/experiments/B4_payload/reproduce.sh
++++ b/experiments/B4_payload/reproduce.sh
+@@ -8,7 +8,7 @@ OUT="$ROOT/logs/phase_b/B4"
+ mkdir -p "$OUT"
+ 
+ MESSAGE="HybridModeOfOpus:CELT+SILK"
+-TARGET_FRAME=3
++# TARGET_FRAME=3
+ 
+ # 1. Encode
+ LD_LIBRARY_PATH="$ROOT/opus/.libs" scripts/encode_raw \
+@@ -33,7 +33,13 @@ else
+ fi
+ 
+ # 6. Extract message and write to file (avoids shell null stripping)
+-python3 "$SCRIPT_DIR/extract.py" "$OUT/modified.bin" > "$OUT/recovered.txt"
++# python3 "$SCRIPT_DIR/extract.py" "$OUT/modified.bin" > "$OUT/recovered.txt"
++
++python3 "$SCRIPT_DIR/embed.py" \
++    "$OUT/original.bin" \
++    "$OUT/modified.bin" \
++    "$MESSAGE"
++
+ cp "$OUT/recovered.txt" "$SCRIPT_DIR/recovered.txt"
+ 
+ echo "Expected: $MESSAGE"
+diff --git a/experiments/B6_steganalysis/detection_accuracy.csv b/experiments/B6_steganalysis/detection_accuracy.csv
+index 719d769..9e56347 100644
+--- a/experiments/B6_steganalysis/detection_accuracy.csv
++++ b/experiments/B6_steganalysis/detection_accuracy.csv
+@@ -1,641 +1,481 @@
+-payload_size,stream_type,detector,label,score
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,clean,2.0695
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,clean,2.5298
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,clean,1.9724
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,clean,1.8481
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,3.0000
+-0,clean,entropy,clean,0.5032
+-0,clean,blind_outlier,clean,2.0495
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,clean,2.7335
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6190
+-0,clean,blind_outlier,clean,2.6838
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,clean,1.5047
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,clean,1.8163
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,clean,2.5982
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,clean,2.4467
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,clean,2.2680
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,clean,2.0849
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,clean,2.2464
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,stego,7.4502
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,stego,5.9875
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,stego,6.0645
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,stego,6.9323
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,stego,6.3957
+-0,clean,trailing_zero_count,clean,36.0000
+-0,clean,chi_squared,clean,4.0000
+-0,clean,entropy,clean,0.6690
+-0,clean,blind_outlier,clean,2.3139
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,clean,2.0695
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,clean,2.5298
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,clean,1.9724
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,clean,1.8481
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,clean,5.0000
+-1,stego,entropy,clean,0.7838
+-1,stego,blind_outlier,clean,2.0495
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,clean,2.7335
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9476
+-1,stego,blind_outlier,clean,2.6838
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,clean,1.5047
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,clean,1.8163
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,clean,2.5982
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,clean,2.4467
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,clean,2.2680
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,clean,2.0849
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,clean,2.2464
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,stego,7.4502
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,stego,5.9875
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,stego,6.0645
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,stego,6.9323
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,stego,6.3957
+-1,stego,trailing_zero_count,stego,34.0000
+-1,stego,chi_squared,stego,6.0000
+-1,stego,entropy,stego,0.9976
+-1,stego,blind_outlier,clean,2.3139
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,clean,2.0695
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,clean,2.5298
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,clean,1.9724
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,clean,1.8481
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,6.0000
+-2,stego,entropy,stego,0.9476
+-2,stego,blind_outlier,clean,2.0495
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,clean,2.7335
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.0603
+-2,stego,blind_outlier,clean,2.6838
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,clean,1.5047
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,clean,1.8163
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,clean,2.5982
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,clean,2.4467
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,clean,2.2680
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,clean,2.0849
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,clean,2.2464
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,stego,7.4502
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,stego,5.9875
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,stego,6.0645
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,stego,6.9323
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,stego,6.3957
+-2,stego,trailing_zero_count,stego,33.0000
+-2,stego,chi_squared,stego,7.0000
+-2,stego,entropy,stego,1.1103
+-2,stego,blind_outlier,clean,2.3139
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,clean,2.0695
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,clean,2.5298
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,clean,1.9724
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,clean,1.8481
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,8.0000
+-4,stego,entropy,stego,1.1219
+-4,stego,blind_outlier,clean,2.0495
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,clean,2.7335
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2324
+-4,stego,blind_outlier,clean,2.6838
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,clean,1.5047
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,clean,1.8163
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,clean,2.5982
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,clean,2.4467
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,clean,2.2680
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,clean,2.0849
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,clean,2.2464
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,stego,7.4502
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,stego,5.9875
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,stego,6.0645
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,stego,6.9323
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,stego,6.3957
+-4,stego,trailing_zero_count,stego,31.0000
+-4,stego,chi_squared,stego,9.0000
+-4,stego,entropy,stego,1.2824
+-4,stego,blind_outlier,clean,2.3139
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,clean,2.0695
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,clean,2.5298
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,clean,1.9724
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,clean,1.8481
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,12.0000
+-8,stego,entropy,stego,1.3568
+-8,stego,blind_outlier,clean,2.0495
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,clean,2.7335
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.4624
+-8,stego,blind_outlier,clean,2.6838
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,clean,1.5047
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,clean,1.8163
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,clean,2.5982
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,clean,2.4467
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,clean,2.2680
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,clean,2.0849
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,clean,2.2464
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,stego,7.4502
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,stego,5.9875
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,stego,6.0645
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,stego,6.9323
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.4624
+-8,stego,blind_outlier,stego,6.3957
+-8,stego,trailing_zero_count,stego,27.0000
+-8,stego,chi_squared,stego,13.0000
+-8,stego,entropy,stego,1.5124
+-8,stego,blind_outlier,clean,2.3139
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,clean,2.0695
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,clean,2.5298
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,clean,1.9724
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,clean,1.8481
+-16,stego,trailing_zero_count,stego,0.0000
+-16,stego,chi_squared,stego,40.0000
+-16,stego,entropy,stego,5.2219
+-16,stego,blind_outlier,clean,2.0495
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,clean,2.7335
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.6542
+-16,stego,blind_outlier,clean,2.6838
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,clean,1.5047
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,clean,1.8163
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,clean,2.5982
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,clean,2.4467
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,clean,2.2680
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,clean,2.0849
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,clean,2.2464
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,stego,7.4502
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,stego,5.9875
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,stego,6.0645
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,stego,6.9323
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,stego,6.3957
+-16,stego,trailing_zero_count,stego,19.0000
+-16,stego,chi_squared,stego,21.0000
+-16,stego,entropy,stego,1.7042
+-16,stego,blind_outlier,clean,2.3139
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,clean,2.0695
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,clean,2.5298
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,clean,1.9724
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,clean,1.8481
+-24,stego,trailing_zero_count,stego,0.0000
+-24,stego,chi_squared,stego,40.0000
+-24,stego,entropy,stego,5.2219
+-24,stego,blind_outlier,clean,2.0495
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,clean,2.7335
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.5696
+-24,stego,blind_outlier,clean,2.6838
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,clean,1.5047
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,clean,1.8163
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,clean,2.5982
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,clean,2.4467
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,clean,2.2680
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,clean,2.0849
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,clean,2.2464
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,stego,7.4502
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,stego,5.9875
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,stego,6.0645
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,stego,6.9323
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,stego,6.3957
+-24,stego,trailing_zero_count,stego,11.0000
+-24,stego,chi_squared,stego,29.0000
+-24,stego,entropy,stego,1.6196
+-24,stego,blind_outlier,clean,2.3139
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,clean,2.0695
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,clean,2.5298
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,clean,1.9724
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,clean,1.8481
+-32,stego,trailing_zero_count,stego,0.0000
+-32,stego,chi_squared,stego,40.0000
+-32,stego,entropy,stego,5.2219
+-32,stego,blind_outlier,clean,2.0495
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,clean,2.7335
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.1531
+-32,stego,blind_outlier,clean,2.6838
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,clean,1.5047
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,clean,1.8163
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,clean,2.5982
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,clean,2.4467
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,clean,2.2680
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,clean,2.0849
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,clean,2.2464
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,stego,7.4502
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,stego,5.9875
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,stego,6.0645
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,stego,6.9323
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,stego,6.3957
+-32,stego,trailing_zero_count,stego,3.0000
+-32,stego,chi_squared,stego,37.0000
+-32,stego,entropy,stego,1.2031
+-32,stego,blind_outlier,clean,2.3139
++payload_size,stream_type,detector,label,score,target_frame
++0,clean,trailing_zero_count,clean,36.000000,3
++0,clean,tail_nonzero_count,clean,0.000000,3
++0,clean,entropy,clean,0.000000,3
++0,clean,trailing_zero_count,clean,36.000000,5
++0,clean,tail_nonzero_count,clean,0.000000,5
++0,clean,entropy,clean,0.000000,5
++0,clean,trailing_zero_count,clean,36.000000,3
++0,clean,tail_nonzero_count,clean,0.000000,3
++0,clean,entropy,clean,0.000000,3
++0,clean,trailing_zero_count,clean,36.000000,3
++0,clean,tail_nonzero_count,clean,0.000000,3
++0,clean,entropy,clean,0.000000,3
++0,clean,trailing_zero_count,clean,36.000000,5
++0,clean,tail_nonzero_count,clean,0.000000,5
++0,clean,entropy,clean,0.000000,5
++0,clean,trailing_zero_count,clean,36.000000,3
++0,clean,tail_nonzero_count,clean,0.000000,3
++0,clean,entropy,clean,0.000000,3
++0,clean,trailing_zero_count,clean,36.000000,5
++0,clean,tail_nonzero_count,clean,0.000000,5
++0,clean,entropy,clean,0.000000,5
++0,clean,trailing_zero_count,clean,36.000000,3
++0,clean,tail_nonzero_count,clean,0.000000,3
++0,clean,entropy,clean,0.000000,3
++0,clean,trailing_zero_count,clean,36.000000,5
++0,clean,tail_nonzero_count,clean,0.000000,5
++0,clean,entropy,clean,0.000000,5
++0,clean,trailing_zero_count,clean,36.000000,3
++0,clean,tail_nonzero_count,clean,0.000000,3
++0,clean,entropy,clean,0.000000,3
++0,clean,trailing_zero_count,clean,36.000000,3
++0,clean,tail_nonzero_count,clean,0.000000,3
++0,clean,entropy,clean,0.000000,3
++0,clean,trailing_zero_count,clean,36.000000,4
++0,clean,tail_nonzero_count,clean,0.000000,4
++0,clean,entropy,clean,0.000000,4
++0,clean,trailing_zero_count,clean,36.000000,3
++0,clean,tail_nonzero_count,clean,0.000000,3
++0,clean,entropy,clean,0.000000,3
++0,clean,trailing_zero_count,clean,36.000000,3
++0,clean,tail_nonzero_count,clean,0.000000,3
++0,clean,entropy,clean,0.000000,3
++0,clean,trailing_zero_count,clean,36.000000,5
++0,clean,tail_nonzero_count,clean,0.000000,5
++0,clean,entropy,clean,0.000000,5
++0,clean,trailing_zero_count,clean,36.000000,5
++0,clean,tail_nonzero_count,clean,0.000000,5
++0,clean,entropy,clean,0.000000,5
++0,clean,trailing_zero_count,clean,36.000000,3
++0,clean,tail_nonzero_count,clean,0.000000,3
++0,clean,entropy,clean,0.000000,3
++0,clean,trailing_zero_count,clean,36.000000,3
++0,clean,tail_nonzero_count,clean,0.000000,3
++0,clean,entropy,clean,0.000000,3
++0,clean,trailing_zero_count,clean,36.000000,3
++0,clean,tail_nonzero_count,clean,0.000000,3
++0,clean,entropy,clean,0.000000,3
++0,clean,trailing_zero_count,clean,36.000000,3
++0,clean,tail_nonzero_count,clean,0.000000,3
++0,clean,entropy,clean,0.000000,3
++1,stego,trailing_zero_count,stego,34.000000,3
++1,stego,tail_nonzero_count,stego,2.000000,3
++1,stego,entropy,stego,0.365099,3
++1,stego,trailing_zero_count,stego,34.000000,5
++1,stego,tail_nonzero_count,stego,2.000000,5
++1,stego,entropy,stego,0.365099,5
++1,stego,trailing_zero_count,stego,34.000000,3
++1,stego,tail_nonzero_count,stego,2.000000,3
++1,stego,entropy,stego,0.365099,3
++1,stego,trailing_zero_count,stego,34.000000,3
++1,stego,tail_nonzero_count,stego,2.000000,3
++1,stego,entropy,stego,0.365099,3
++1,stego,trailing_zero_count,stego,34.000000,5
++1,stego,tail_nonzero_count,stego,2.000000,5
++1,stego,entropy,stego,0.365099,5
++1,stego,trailing_zero_count,stego,34.000000,3
++1,stego,tail_nonzero_count,stego,2.000000,3
++1,stego,entropy,stego,0.365099,3
++1,stego,trailing_zero_count,stego,34.000000,5
++1,stego,tail_nonzero_count,stego,2.000000,5
++1,stego,entropy,stego,0.365099,5
++1,stego,trailing_zero_count,stego,34.000000,3
++1,stego,tail_nonzero_count,stego,2.000000,3
++1,stego,entropy,stego,0.365099,3
++1,stego,trailing_zero_count,stego,34.000000,5
++1,stego,tail_nonzero_count,stego,2.000000,5
++1,stego,entropy,stego,0.365099,5
++1,stego,trailing_zero_count,stego,34.000000,3
++1,stego,tail_nonzero_count,stego,2.000000,3
++1,stego,entropy,stego,0.365099,3
++1,stego,trailing_zero_count,stego,34.000000,3
++1,stego,tail_nonzero_count,stego,2.000000,3
++1,stego,entropy,stego,0.365099,3
++1,stego,trailing_zero_count,stego,34.000000,4
++1,stego,tail_nonzero_count,stego,2.000000,4
++1,stego,entropy,stego,0.365099,4
++1,stego,trailing_zero_count,stego,34.000000,3
++1,stego,tail_nonzero_count,stego,2.000000,3
++1,stego,entropy,stego,0.365099,3
++1,stego,trailing_zero_count,stego,34.000000,3
++1,stego,tail_nonzero_count,stego,2.000000,3
++1,stego,entropy,stego,0.365099,3
++1,stego,trailing_zero_count,stego,34.000000,5
++1,stego,tail_nonzero_count,stego,2.000000,5
++1,stego,entropy,stego,0.365099,5
++1,stego,trailing_zero_count,stego,34.000000,5
++1,stego,tail_nonzero_count,stego,2.000000,5
++1,stego,entropy,stego,0.365099,5
++1,stego,trailing_zero_count,stego,34.000000,3
++1,stego,tail_nonzero_count,stego,2.000000,3
++1,stego,entropy,stego,0.365099,3
++1,stego,trailing_zero_count,stego,34.000000,3
++1,stego,tail_nonzero_count,stego,2.000000,3
++1,stego,entropy,stego,0.365099,3
++1,stego,trailing_zero_count,stego,34.000000,3
++1,stego,tail_nonzero_count,stego,2.000000,3
++1,stego,entropy,stego,0.365099,3
++1,stego,trailing_zero_count,stego,34.000000,3
++1,stego,tail_nonzero_count,stego,2.000000,3
++1,stego,entropy,stego,0.365099,3
++2,stego,trailing_zero_count,stego,33.000000,3
++2,stego,tail_nonzero_count,stego,3.000000,3
++2,stego,entropy,stego,0.490342,3
++2,stego,trailing_zero_count,stego,33.000000,5
++2,stego,tail_nonzero_count,stego,3.000000,5
++2,stego,entropy,stego,0.490342,5
++2,stego,trailing_zero_count,stego,33.000000,3
++2,stego,tail_nonzero_count,stego,3.000000,3
++2,stego,entropy,stego,0.490342,3
++2,stego,trailing_zero_count,stego,33.000000,3
++2,stego,tail_nonzero_count,stego,3.000000,3
++2,stego,entropy,stego,0.490342,3
++2,stego,trailing_zero_count,stego,33.000000,5
++2,stego,tail_nonzero_count,stego,3.000000,5
++2,stego,entropy,stego,0.490342,5
++2,stego,trailing_zero_count,stego,33.000000,3
++2,stego,tail_nonzero_count,stego,3.000000,3
++2,stego,entropy,stego,0.490342,3
++2,stego,trailing_zero_count,stego,33.000000,5
++2,stego,tail_nonzero_count,stego,3.000000,5
++2,stego,entropy,stego,0.490342,5
++2,stego,trailing_zero_count,stego,33.000000,3
++2,stego,tail_nonzero_count,stego,3.000000,3
++2,stego,entropy,stego,0.490342,3
++2,stego,trailing_zero_count,stego,33.000000,5
++2,stego,tail_nonzero_count,stego,3.000000,5
++2,stego,entropy,stego,0.490342,5
++2,stego,trailing_zero_count,stego,33.000000,3
++2,stego,tail_nonzero_count,stego,3.000000,3
++2,stego,entropy,stego,0.490342,3
++2,stego,trailing_zero_count,stego,33.000000,3
++2,stego,tail_nonzero_count,stego,3.000000,3
++2,stego,entropy,stego,0.490342,3
++2,stego,trailing_zero_count,stego,33.000000,4
++2,stego,tail_nonzero_count,stego,3.000000,4
++2,stego,entropy,stego,0.490342,4
++2,stego,trailing_zero_count,stego,33.000000,3
++2,stego,tail_nonzero_count,stego,3.000000,3
++2,stego,entropy,stego,0.490342,3
++2,stego,trailing_zero_count,stego,33.000000,3
++2,stego,tail_nonzero_count,stego,3.000000,3
++2,stego,entropy,stego,0.490342,3
++2,stego,trailing_zero_count,stego,33.000000,5
++2,stego,tail_nonzero_count,stego,3.000000,5
++2,stego,entropy,stego,0.490342,5
++2,stego,trailing_zero_count,stego,33.000000,5
++2,stego,tail_nonzero_count,stego,3.000000,5
++2,stego,entropy,stego,0.490342,5
++2,stego,trailing_zero_count,stego,33.000000,3
++2,stego,tail_nonzero_count,stego,3.000000,3
++2,stego,entropy,stego,0.490342,3
++2,stego,trailing_zero_count,stego,33.000000,3
++2,stego,tail_nonzero_count,stego,3.000000,3
++2,stego,entropy,stego,0.490342,3
++2,stego,trailing_zero_count,stego,33.000000,3
++2,stego,tail_nonzero_count,stego,3.000000,3
++2,stego,entropy,stego,0.490342,3
++2,stego,trailing_zero_count,stego,33.000000,3
++2,stego,tail_nonzero_count,stego,3.000000,3
++2,stego,entropy,stego,0.490342,3
++4,stego,trailing_zero_count,stego,31.000000,3
++4,stego,tail_nonzero_count,stego,5.000000,3
++4,stego,entropy,stego,0.681589,3
++4,stego,trailing_zero_count,stego,31.000000,5
++4,stego,tail_nonzero_count,stego,5.000000,5
++4,stego,entropy,stego,0.681589,5
++4,stego,trailing_zero_count,stego,31.000000,3
++4,stego,tail_nonzero_count,stego,5.000000,3
++4,stego,entropy,stego,0.681589,3
++4,stego,trailing_zero_count,stego,31.000000,3
++4,stego,tail_nonzero_count,stego,5.000000,3
++4,stego,entropy,stego,0.681589,3
++4,stego,trailing_zero_count,stego,31.000000,5
++4,stego,tail_nonzero_count,stego,5.000000,5
++4,stego,entropy,stego,0.681589,5
++4,stego,trailing_zero_count,stego,31.000000,3
++4,stego,tail_nonzero_count,stego,5.000000,3
++4,stego,entropy,stego,0.681589,3
++4,stego,trailing_zero_count,stego,31.000000,5
++4,stego,tail_nonzero_count,stego,5.000000,5
++4,stego,entropy,stego,0.681589,5
++4,stego,trailing_zero_count,stego,31.000000,3
++4,stego,tail_nonzero_count,stego,5.000000,3
++4,stego,entropy,stego,0.681589,3
++4,stego,trailing_zero_count,stego,31.000000,5
++4,stego,tail_nonzero_count,stego,5.000000,5
++4,stego,entropy,stego,0.681589,5
++4,stego,trailing_zero_count,stego,31.000000,3
++4,stego,tail_nonzero_count,stego,5.000000,3
++4,stego,entropy,stego,0.681589,3
++4,stego,trailing_zero_count,stego,31.000000,3
++4,stego,tail_nonzero_count,stego,5.000000,3
++4,stego,entropy,stego,0.681589,3
++4,stego,trailing_zero_count,stego,31.000000,4
++4,stego,tail_nonzero_count,stego,5.000000,4
++4,stego,entropy,stego,0.681589,4
++4,stego,trailing_zero_count,stego,31.000000,3
++4,stego,tail_nonzero_count,stego,5.000000,3
++4,stego,entropy,stego,0.681589,3
++4,stego,trailing_zero_count,stego,31.000000,3
++4,stego,tail_nonzero_count,stego,5.000000,3
++4,stego,entropy,stego,0.681589,3
++4,stego,trailing_zero_count,stego,31.000000,5
++4,stego,tail_nonzero_count,stego,5.000000,5
++4,stego,entropy,stego,0.681589,5
++4,stego,trailing_zero_count,stego,31.000000,5
++4,stego,tail_nonzero_count,stego,5.000000,5
++4,stego,entropy,stego,0.681589,5
++4,stego,trailing_zero_count,stego,31.000000,3
++4,stego,tail_nonzero_count,stego,5.000000,3
++4,stego,entropy,stego,0.681589,3
++4,stego,trailing_zero_count,stego,31.000000,3
++4,stego,tail_nonzero_count,stego,5.000000,3
++4,stego,entropy,stego,0.681589,3
++4,stego,trailing_zero_count,stego,31.000000,3
++4,stego,tail_nonzero_count,stego,5.000000,3
++4,stego,entropy,stego,0.681589,3
++4,stego,trailing_zero_count,stego,31.000000,3
++4,stego,tail_nonzero_count,stego,5.000000,3
++4,stego,entropy,stego,0.681589,3
++8,stego,trailing_zero_count,stego,27.000000,3
++8,stego,tail_nonzero_count,stego,9.000000,3
++8,stego,entropy,stego,0.937093,3
++8,stego,trailing_zero_count,stego,27.000000,5
++8,stego,tail_nonzero_count,stego,9.000000,5
++8,stego,entropy,stego,0.937093,5
++8,stego,trailing_zero_count,stego,27.000000,3
++8,stego,tail_nonzero_count,stego,9.000000,3
++8,stego,entropy,stego,0.937093,3
++8,stego,trailing_zero_count,stego,27.000000,3
++8,stego,tail_nonzero_count,stego,9.000000,3
++8,stego,entropy,stego,0.937093,3
++8,stego,trailing_zero_count,stego,27.000000,5
++8,stego,tail_nonzero_count,stego,9.000000,5
++8,stego,entropy,stego,0.937093,5
++8,stego,trailing_zero_count,stego,27.000000,3
++8,stego,tail_nonzero_count,stego,9.000000,3
++8,stego,entropy,stego,0.937093,3
++8,stego,trailing_zero_count,stego,27.000000,5
++8,stego,tail_nonzero_count,stego,9.000000,5
++8,stego,entropy,stego,0.937093,5
++8,stego,trailing_zero_count,stego,27.000000,3
++8,stego,tail_nonzero_count,stego,9.000000,3
++8,stego,entropy,stego,0.937093,3
++8,stego,trailing_zero_count,stego,27.000000,5
++8,stego,tail_nonzero_count,stego,9.000000,5
++8,stego,entropy,stego,0.937093,5
++8,stego,trailing_zero_count,stego,27.000000,3
++8,stego,tail_nonzero_count,stego,9.000000,3
++8,stego,entropy,stego,0.937093,3
++8,stego,trailing_zero_count,stego,27.000000,3
++8,stego,tail_nonzero_count,stego,9.000000,3
++8,stego,entropy,stego,0.937093,3
++8,stego,trailing_zero_count,stego,27.000000,4
++8,stego,tail_nonzero_count,stego,9.000000,4
++8,stego,entropy,stego,0.937093,4
++8,stego,trailing_zero_count,stego,27.000000,3
++8,stego,tail_nonzero_count,stego,9.000000,3
++8,stego,entropy,stego,0.937093,3
++8,stego,trailing_zero_count,stego,27.000000,3
++8,stego,tail_nonzero_count,stego,9.000000,3
++8,stego,entropy,stego,0.937093,3
++8,stego,trailing_zero_count,stego,27.000000,5
++8,stego,tail_nonzero_count,stego,9.000000,5
++8,stego,entropy,stego,0.937093,5
++8,stego,trailing_zero_count,stego,27.000000,5
++8,stego,tail_nonzero_count,stego,9.000000,5
++8,stego,entropy,stego,0.937093,5
++8,stego,trailing_zero_count,stego,27.000000,3
++8,stego,tail_nonzero_count,stego,9.000000,3
++8,stego,entropy,stego,0.937093,3
++8,stego,trailing_zero_count,stego,27.000000,3
++8,stego,tail_nonzero_count,stego,9.000000,3
++8,stego,entropy,stego,0.937093,3
++8,stego,trailing_zero_count,stego,27.000000,3
++8,stego,tail_nonzero_count,stego,9.000000,3
++8,stego,entropy,stego,0.937093,3
++8,stego,trailing_zero_count,stego,27.000000,3
++8,stego,tail_nonzero_count,stego,9.000000,3
++8,stego,entropy,stego,0.937093,3
++16,stego,trailing_zero_count,stego,19.000000,3
++16,stego,tail_nonzero_count,stego,17.000000,3
++16,stego,entropy,stego,1.150185,3
++16,stego,trailing_zero_count,stego,19.000000,5
++16,stego,tail_nonzero_count,stego,17.000000,5
++16,stego,entropy,stego,1.150185,5
++16,stego,trailing_zero_count,stego,19.000000,3
++16,stego,tail_nonzero_count,stego,17.000000,3
++16,stego,entropy,stego,1.150185,3
++16,stego,trailing_zero_count,stego,19.000000,3
++16,stego,tail_nonzero_count,stego,17.000000,3
++16,stego,entropy,stego,1.150185,3
++16,stego,trailing_zero_count,stego,19.000000,5
++16,stego,tail_nonzero_count,stego,17.000000,5
++16,stego,entropy,stego,1.150185,5
++16,stego,trailing_zero_count,stego,19.000000,3
++16,stego,tail_nonzero_count,stego,17.000000,3
++16,stego,entropy,stego,1.150185,3
++16,stego,trailing_zero_count,stego,19.000000,5
++16,stego,tail_nonzero_count,stego,17.000000,5
++16,stego,entropy,stego,1.150185,5
++16,stego,trailing_zero_count,stego,19.000000,3
++16,stego,tail_nonzero_count,stego,17.000000,3
++16,stego,entropy,stego,1.150185,3
++16,stego,trailing_zero_count,stego,19.000000,5
++16,stego,tail_nonzero_count,stego,17.000000,5
++16,stego,entropy,stego,1.150185,5
++16,stego,trailing_zero_count,stego,19.000000,3
++16,stego,tail_nonzero_count,stego,17.000000,3
++16,stego,entropy,stego,1.150185,3
++16,stego,trailing_zero_count,stego,19.000000,3
++16,stego,tail_nonzero_count,stego,17.000000,3
++16,stego,entropy,stego,1.150185,3
++16,stego,trailing_zero_count,stego,19.000000,4
++16,stego,tail_nonzero_count,stego,17.000000,4
++16,stego,entropy,stego,1.150185,4
++16,stego,trailing_zero_count,stego,19.000000,3
++16,stego,tail_nonzero_count,stego,17.000000,3
++16,stego,entropy,stego,1.150185,3
++16,stego,trailing_zero_count,stego,19.000000,3
++16,stego,tail_nonzero_count,stego,17.000000,3
++16,stego,entropy,stego,1.150185,3
++16,stego,trailing_zero_count,stego,19.000000,5
++16,stego,tail_nonzero_count,stego,17.000000,5
++16,stego,entropy,stego,1.150185,5
++16,stego,trailing_zero_count,stego,19.000000,5
++16,stego,tail_nonzero_count,stego,17.000000,5
++16,stego,entropy,stego,1.150185,5
++16,stego,trailing_zero_count,stego,19.000000,3
++16,stego,tail_nonzero_count,stego,17.000000,3
++16,stego,entropy,stego,1.150185,3
++16,stego,trailing_zero_count,stego,19.000000,3
++16,stego,tail_nonzero_count,stego,17.000000,3
++16,stego,entropy,stego,1.150185,3
++16,stego,trailing_zero_count,stego,19.000000,3
++16,stego,tail_nonzero_count,stego,17.000000,3
++16,stego,entropy,stego,1.150185,3
++16,stego,trailing_zero_count,stego,19.000000,3
++16,stego,tail_nonzero_count,stego,17.000000,3
++16,stego,entropy,stego,1.150185,3
++24,stego,trailing_zero_count,stego,11.000000,3
++24,stego,tail_nonzero_count,stego,25.000000,3
++24,stego,entropy,stego,1.056235,3
++24,stego,trailing_zero_count,stego,11.000000,5
++24,stego,tail_nonzero_count,stego,25.000000,5
++24,stego,entropy,stego,1.056235,5
++24,stego,trailing_zero_count,stego,11.000000,3
++24,stego,tail_nonzero_count,stego,25.000000,3
++24,stego,entropy,stego,1.056235,3
++24,stego,trailing_zero_count,stego,11.000000,3
++24,stego,tail_nonzero_count,stego,25.000000,3
++24,stego,entropy,stego,1.056235,3
++24,stego,trailing_zero_count,stego,11.000000,5
++24,stego,tail_nonzero_count,stego,25.000000,5
++24,stego,entropy,stego,1.056235,5
++24,stego,trailing_zero_count,stego,11.000000,3
++24,stego,tail_nonzero_count,stego,25.000000,3
++24,stego,entropy,stego,1.056235,3
++24,stego,trailing_zero_count,stego,11.000000,5
++24,stego,tail_nonzero_count,stego,25.000000,5
++24,stego,entropy,stego,1.056235,5
++24,stego,trailing_zero_count,stego,11.000000,3
++24,stego,tail_nonzero_count,stego,25.000000,3
++24,stego,entropy,stego,1.056235,3
++24,stego,trailing_zero_count,stego,11.000000,5
++24,stego,tail_nonzero_count,stego,25.000000,5
++24,stego,entropy,stego,1.056235,5
++24,stego,trailing_zero_count,stego,11.000000,3
++24,stego,tail_nonzero_count,stego,25.000000,3
++24,stego,entropy,stego,1.056235,3
++24,stego,trailing_zero_count,stego,11.000000,3
++24,stego,tail_nonzero_count,stego,25.000000,3
++24,stego,entropy,stego,1.056235,3
++24,stego,trailing_zero_count,stego,11.000000,4
++24,stego,tail_nonzero_count,stego,25.000000,4
++24,stego,entropy,stego,1.056235,4
++24,stego,trailing_zero_count,stego,11.000000,3
++24,stego,tail_nonzero_count,stego,25.000000,3
++24,stego,entropy,stego,1.056235,3
++24,stego,trailing_zero_count,stego,11.000000,3
++24,stego,tail_nonzero_count,stego,25.000000,3
++24,stego,entropy,stego,1.056235,3
++24,stego,trailing_zero_count,stego,11.000000,5
++24,stego,tail_nonzero_count,stego,25.000000,5
++24,stego,entropy,stego,1.056235,5
++24,stego,trailing_zero_count,stego,11.000000,5
++24,stego,tail_nonzero_count,stego,25.000000,5
++24,stego,entropy,stego,1.056235,5
++24,stego,trailing_zero_count,stego,11.000000,3
++24,stego,tail_nonzero_count,stego,25.000000,3
++24,stego,entropy,stego,1.056235,3
++24,stego,trailing_zero_count,stego,11.000000,3
++24,stego,tail_nonzero_count,stego,25.000000,3
++24,stego,entropy,stego,1.056235,3
++24,stego,trailing_zero_count,stego,11.000000,3
++24,stego,tail_nonzero_count,stego,25.000000,3
++24,stego,entropy,stego,1.056235,3
++24,stego,trailing_zero_count,stego,11.000000,3
++24,stego,tail_nonzero_count,stego,25.000000,3
++24,stego,entropy,stego,1.056235,3
++32,stego,trailing_zero_count,stego,3.000000,3
++32,stego,tail_nonzero_count,stego,33.000000,3
++32,stego,entropy,stego,0.593400,3
++32,stego,trailing_zero_count,stego,3.000000,5
++32,stego,tail_nonzero_count,stego,33.000000,5
++32,stego,entropy,stego,0.593400,5
++32,stego,trailing_zero_count,stego,3.000000,3
++32,stego,tail_nonzero_count,stego,33.000000,3
++32,stego,entropy,stego,0.593400,3
++32,stego,trailing_zero_count,stego,3.000000,3
++32,stego,tail_nonzero_count,stego,33.000000,3
++32,stego,entropy,stego,0.593400,3
++32,stego,trailing_zero_count,stego,3.000000,5
++32,stego,tail_nonzero_count,stego,33.000000,5
++32,stego,entropy,stego,0.593400,5
++32,stego,trailing_zero_count,stego,3.000000,3
++32,stego,tail_nonzero_count,stego,33.000000,3
++32,stego,entropy,stego,0.593400,3
++32,stego,trailing_zero_count,stego,3.000000,5
++32,stego,tail_nonzero_count,stego,33.000000,5
++32,stego,entropy,stego,0.593400,5
++32,stego,trailing_zero_count,stego,3.000000,3
++32,stego,tail_nonzero_count,stego,33.000000,3
++32,stego,entropy,stego,0.593400,3
++32,stego,trailing_zero_count,stego,3.000000,5
++32,stego,tail_nonzero_count,stego,33.000000,5
++32,stego,entropy,stego,0.593400,5
++32,stego,trailing_zero_count,stego,3.000000,3
++32,stego,tail_nonzero_count,stego,33.000000,3
++32,stego,entropy,stego,0.593400,3
++32,stego,trailing_zero_count,stego,3.000000,3
++32,stego,tail_nonzero_count,stego,33.000000,3
++32,stego,entropy,stego,0.593400,3
++32,stego,trailing_zero_count,stego,3.000000,4
++32,stego,tail_nonzero_count,stego,33.000000,4
++32,stego,entropy,stego,0.593400,4
++32,stego,trailing_zero_count,stego,3.000000,3
++32,stego,tail_nonzero_count,stego,33.000000,3
++32,stego,entropy,stego,0.593400,3
++32,stego,trailing_zero_count,stego,3.000000,3
++32,stego,tail_nonzero_count,stego,33.000000,3
++32,stego,entropy,stego,0.593400,3
++32,stego,trailing_zero_count,stego,3.000000,5
++32,stego,tail_nonzero_count,stego,33.000000,5
++32,stego,entropy,stego,0.593400,5
++32,stego,trailing_zero_count,stego,3.000000,5
++32,stego,tail_nonzero_count,stego,33.000000,5
++32,stego,entropy,stego,0.593400,5
++32,stego,trailing_zero_count,stego,3.000000,3
++32,stego,tail_nonzero_count,stego,33.000000,3
++32,stego,entropy,stego,0.593400,3
++32,stego,trailing_zero_count,stego,3.000000,3
++32,stego,tail_nonzero_count,stego,33.000000,3
++32,stego,entropy,stego,0.593400,3
++32,stego,trailing_zero_count,stego,3.000000,3
++32,stego,tail_nonzero_count,stego,33.000000,3
++32,stego,entropy,stego,0.593400,3
++32,stego,trailing_zero_count,stego,3.000000,3
++32,stego,tail_nonzero_count,stego,33.000000,3
++32,stego,entropy,stego,0.593400,3
+diff --git a/experiments/B6_steganalysis/detectors.py b/experiments/B6_steganalysis/detectors.py
+index 02afb7f..a978a3a 100644
+--- a/experiments/B6_steganalysis/detectors.py
++++ b/experiments/B6_steganalysis/detectors.py
+@@ -47,13 +47,18 @@ def trailing_zeros(pkt):
+ 
+ 
+ def find_transition_frame(packets, min_tail=20):
+-    for i, pkt in enumerate(packets):
+-        if trailing_zeros(pkt) >= min_tail:
+-            return i, len(pkt)
+-    for i, pkt in enumerate(packets):
+-        if len(pkt) >= 80:
+-            return i, len(pkt)
+-    return -1, 0
++
++    candidates = [
++        i for i, pkt in enumerate(packets)
++        if trailing_zeros(pkt) >= min_tail
++    ]
++
++    if len(candidates) != 1:
++        return -1, 0
++
++    idx = candidates[0]
++
++    return idx, len(packets[idx])
+ 
+ 
+ # --- Detector 1: trailing-zero count ---
+@@ -70,7 +75,7 @@ def detector_trailing_zero_count(packets, expected_min_tail=35):
+ 
+ # --- Detector 2: chi-squared on tail bytes ---
+ 
+-def detector_chi_squared(packets, threshold=5.0):
++def tail_nonzero_count(packets, threshold=5.0):
+     """Chi-squared-like statistic on the largest packet's tail.
+ 
+     Null: all tail bytes are zero. We use sum(b*b) as a simple statistic
+@@ -116,9 +121,55 @@ def detector_entropy(packets, threshold=0.8):
+     return label, H
+ 
+ 
++
++def blind_structural_scan(packets, tail_size=36, max_payload=32):
++
++    hits = []
++
++    for idx, pkt in enumerate(packets):
++
++        if len(pkt) < tail_size:
++            continue
++
++        region = pkt[-tail_size:]
++
++        # First byte stores payload length.
++        msg_len = region[0]
++
++        if not (1 <= msg_len <= max_payload):
++            continue
++
++        if msg_len + 1 > tail_size:
++            continue
++
++        payload = region[1:1 + msg_len]
++        padding = region[1 + msg_len:]
++
++        # Current B6 payloads use printable ASCII.
++        printable = all(32 <= b < 127 for b in payload)
++
++        # Remaining bytes should retain zero padding.
++        zero_padding = all(b == 0 for b in padding)
++
++        if printable and zero_padding:
++
++            hits.append({
++                "packet_index": idx,
++                "payload_length": msg_len,
++                "payload": payload.decode("ascii"),
++                "zero_padding": len(padding)
++            })
++
++    return {
++        "label": "stego" if hits else "clean",
++        "hit_count": len(hits),
++        "hits": hits
++    }
++
++
+ # --- Detector 4: blind outlier ---
+ 
+-def detector_blind_tail_outlier(packets, sigma=3.0):
++def packet_size_baseline(packets, sigma=3.0):
+     """Flag any stream whose packet sizes deviate from the baseline.
+ 
+     Note: this detector does not distinguish clean from stego streams.
+@@ -139,16 +190,67 @@ def detector_blind_tail_outlier(packets, sigma=3.0):
+     return label, z
+ 
+ 
++def get_transition_features(packets, target_idx, tail_size=36):
++
++    if target_idx < 0 or target_idx >= len(packets):
++        raise ValueError("Invalid transition frame index")
++
++    pkt = packets[target_idx]
++
++    if len(pkt) < tail_size:
++        raise ValueError("Packet shorter than expected tail")
++
++    region = pkt[-tail_size:]
++
++    zero_run = trailing_zeros(pkt)
++
++    nonzero_count = sum(
++        1 for b in region if b != 0
++    )
++
++    entropy = shannon_entropy(region)
++
++    return {
++        "trailing_zero_count": zero_run,
++        "tail_nonzero_count": nonzero_count,
++        "tail_entropy": entropy
++    }
++
++def run_known_detectors(packets, target_idx):
++
++    f = get_transition_features(
++        packets, target_idx, tail_size=36
++    )
++
++    return {
++        "trailing_zero_count": (
++            "stego" if f["trailing_zero_count"] < 36
++            else "clean",
++            float(f["trailing_zero_count"])
++        ),
++
++        "tail_nonzero_count": (
++            "stego" if f["tail_nonzero_count"] > 0
++            else "clean",
++            float(f["tail_nonzero_count"])
++        ),
++
++        "entropy": (
++            "stego" if f["tail_entropy"] > 0
++            else "clean",
++            f["tail_entropy"]
++        )
++    }
++
+ # --- Convenience ---
+ 
+ DETECTORS = {
+     "trailing_zero_count": detector_trailing_zero_count,
+-    "chi_squared":         detector_chi_squared,
+-    "entropy":             detector_entropy,
+-    "blind_outlier":       detector_blind_tail_outlier,
++    "tail_nonzero_count": tail_nonzero_count,
++    "entropy_tail": detector_entropy,
++    "packet_size_baseline": packet_size_baseline,
+ }
+ 
+-
+ def run_all_detectors(path):
+     packets = load_packets(path)
+     return {name: fn(packets) for name, fn in DETECTORS.items()}
+diff --git a/experiments/B6_steganalysis/reproduce_s2.sh b/experiments/B6_steganalysis/reproduce_s2.sh
+old mode 100644
+new mode 100755
+index 2210884..2a90c5c
+--- a/experiments/B6_steganalysis/reproduce_s2.sh
++++ b/experiments/B6_steganalysis/reproduce_s2.sh
+@@ -1,84 +1,251 @@
++
+ #!/usr/bin/env bash
+-set -uo pipefail
++set -euo pipefail
++
+ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+ cd "$ROOT"
+ 
+ OUT="$ROOT/logs/phase_b/B6_s2"
+ mkdir -p "$OUT"
++
+ RESULTS="$SCRIPT_DIR/detection_accuracy.csv"
+-echo "payload_size,stream_type,detector,label,score" > "$RESULTS"
++FRAME_RESULTS="$OUT/transition_frames.csv"
++
++echo "payload_size,stream_type,detector,label,score,target_frame" > "$RESULTS"
++echo "source_id,target_frame" > "$FRAME_RESULTS"
+ 
+ SKIPPED=0
+ TOTAL=0
++EMBEDDED=0
+ 
+-# --- 1. Generate clean streams and check for transitions ---
+ VALID_FILES=()
++declare -A TARGET_IDX=()
++
++# --- 1. Generate clean streams and identify transition frames ---
++
+ for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 24; do
+-  pcm="data/pcm/spontaneous-speech-en-${i}.pcm"
+-  [ -f "$pcm" ] || continue
+-  clean="$OUT/clean_${i}.bin"
+ 
+-  LD_LIBRARY_PATH="$ROOT/opus/.libs" scripts/encode_raw \
+-    "$pcm" "$clean" audio 32000 2> /dev/null
++    pcm="data/pcm/spontaneous-speech-en-${i}.pcm"
++    clean="$OUT/clean_${i}.bin"
++
++    TOTAL=$((TOTAL + 1))
++
++    if [[ ! -f "$pcm" ]]; then
++        echo "SKIP: Missing PCM file $i" >&2
++        SKIPPED=$((SKIPPED + 1))
++        continue
++    fi
++
++    # Encode clean stream
++    if ! LD_LIBRARY_PATH="$ROOT/opus/.libs" scripts/encode_raw \
++        "$pcm" "$clean" audio 32000 \
++        2> "$OUT/encode_clean_${i}.log"; then
+ 
+-  # Does this stream have a transition frame?
+-  has_transition=$(python3 - "$clean" <<'PY'
++        echo "SKIP: Encoding failed for recording $i" >&2
++        SKIPPED=$((SKIPPED + 1))
++        continue
++    fi
++
++    # Identify transition-frame candidates
++    candidate_info=$(python3 - "$clean" <<'PY'
+ import sys
++
+ sys.path.insert(0, "experiments/B6_steganalysis")
++
+ from detectors import load_packets, trailing_zeros
++
+ packets = load_packets(sys.argv[1])
+-print(1 if any(trailing_zeros(p) >= 20 for p in packets) else 0)
++
++candidates = [
++    i for i, pkt in enumerate(packets)
++    if trailing_zeros(pkt) >= 20
++]
++
++target_idx = candidates[0] if len(candidates) == 1 else -1
++
++print(f"{len(candidates)}\t{target_idx}")
+ PY
+-  )
++    )
++
++    IFS=$'\t' read -r candidate_count target_idx <<< "$candidate_info"
++
++    # Require exactly one candidate
++    if [[ "$candidate_count" -ne 1 ]]; then
++
++        echo "SKIP: Recording $i has $candidate_count transition candidates" >&2
++
++        SKIPPED=$((SKIPPED + 1))
++        continue
++    fi
+ 
+-  if [ "$has_transition" -eq 1 ]; then
+     VALID_FILES+=("$i")
+-  else
+-    echo "  skip: ${i} (no transition frame)" | tee -a "$RESULTS"
+-    SKIPPED=$((SKIPPED + 1))
+-  fi
+-  TOTAL=$((TOTAL + 1))
++    TARGET_IDX["$i"]="$target_idx"
++
++    echo "$i,$target_idx" >> "$FRAME_RESULTS"
++
++    echo "VALID: Recording $i -> transition frame $target_idx"
++
+ done
+ 
+-echo "Valid: ${#VALID_FILES[@]} / $TOTAL (skipped $SKIPPED)"
++echo
++echo "Valid recordings: ${#VALID_FILES[@]} / $TOTAL"
++echo "Skipped recordings: $SKIPPED"
++
++if [[ ${#VALID_FILES[@]} -eq 0 ]]; then
++    echo "ERROR: No valid transition frames found."
++    exit 1
++fi
++
+ 
+ # --- 2. Generate stego streams for valid files ---
++
+ for N in 1 2 4 8 16 24 32; do
+-  MSG=$(python3 -c "print('A' * $N)")
+-  for i in "${VALID_FILES[@]}"; do
+-    clean="$OUT/clean_${i}.bin"
+-    stego="$OUT/stego_N${N}_${i}.bin"
+-    python3 "$ROOT/experiments/B4_payload/embed.py" "$clean" "$stego" "$MSG" 2>/dev/null || {
+-      echo "  embed failed for N=$N i=$i" >&2
+-      rm -f "$stego"
+-    }
+-  done
++
++    MSG=$(python3 -c "print('A' * $N)")
++
++    echo
++    echo "Generating payload size: $N bytes"
++
++    for i in "${VALID_FILES[@]}"; do
++
++        clean="$OUT/clean_${i}.bin"
++        stego="$OUT/stego_N${N}_${i}.bin"
++
++        target_idx="${TARGET_IDX[$i]}"
++
++        # Embed using the verified transition-frame index
++        if python3 "$ROOT/experiments/B4_payload/embed.py" \
++            "$clean" "$stego" "$MSG" "$target_idx" \
++            > "$OUT/embed_N${N}_${i}.log" 2>&1; then
++
++            EMBEDDED=$((EMBEDDED + 1))
++
++            echo "  OK: N=$N recording=$i frame=$target_idx"
++
++        else
++
++            echo "  FAILED: N=$N recording=$i" >&2
++
++            cat "$OUT/embed_N${N}_${i}.log" >&2
++
++            rm -f "$stego"
++
++        fi
++
++    done
++
+ done
+ 
+-# --- 3. Run detectors ---
++
++# --- 3. Run known-location detectors ---
++
+ run_detectors() {
+-  local bin="$1"
+-  local psize="$2"
+-  local kind="$3"
+-  [ -f "$bin" ] || return
+-  python3 - "$bin" "$psize" "$kind" >> "$RESULTS" <<'PY'
++
++    local bin="$1"
++    local psize="$2"
++    local kind="$3"
++    local target_idx="$4"
++
++    if [[ ! -s "$bin" ]]; then
++        echo "WARNING: Missing stream $bin" >&2
++        return 0
++    fi
++
++    python3 - "$bin" "$psize" "$kind" "$target_idx" >> "$RESULTS" <<'PY'
++
+ import sys
++
+ sys.path.insert(0, "experiments/B6_steganalysis")
+-from detectors import run_all_detectors
+-for name, (label, score) in run_all_detectors(sys.argv[1]).items():
+-    print(f"{sys.argv[2]},{sys.argv[3]},{name},{label},{score:.4f}")
++
++from detectors import load_packets, run_known_detectors
++
++bin_path = sys.argv[1]
++payload_size = sys.argv[2]
++stream_type = sys.argv[3]
++target_idx = int(sys.argv[4])
++
++packets = load_packets(bin_path)
++
++results = run_known_detectors(packets, target_idx)
++
++for name, (label, score) in results.items():
++
++    print(
++        f"{payload_size},"
++        f"{stream_type},"
++        f"{name},"
++        f"{label},"
++        f"{float(score):.6f},"
++        f"{target_idx}"
++    )
++
+ PY
++
+ }
+ 
++
++# --- 4. Evaluate clean streams ---
++
++echo
++echo "Running detectors on clean streams..."
++
+ for i in "${VALID_FILES[@]}"; do
+-  run_detectors "$OUT/clean_${i}.bin" 0 clean
++
++    target_idx="${TARGET_IDX[$i]}"
++
++    run_detectors \
++        "$OUT/clean_${i}.bin" \
++        0 \
++        clean \
++        "$target_idx"
++
+ done
+ 
++
++# --- 5. Evaluate stego streams ---
++
++echo
++echo "Running detectors on stego streams..."
++
+ for N in 1 2 4 8 16 24 32; do
+-  for i in "${VALID_FILES[@]}"; do
+-    run_detectors "$OUT/stego_N${N}_${i}.bin" "$N" stego
+-  done
++
++    for i in "${VALID_FILES[@]}"; do
++
++        target_idx="${TARGET_IDX[$i]}"
++
++        run_detectors \
++            "$OUT/stego_N${N}_${i}.bin" \
++            "$N" \
++            stego \
++            "$target_idx"
++
++    done
++
+ done
+ 
+-echo "S2 done. Results: $RESULTS ($(wc -l < "$RESULTS") lines)"
+\ No newline at end of file
++
++# --- 6. Final summary ---
++
++echo
++echo "======================================"
++echo "B6 S2 EXPERIMENT COMPLETED"
++echo "======================================"
++
++echo "Total recordings: $TOTAL"
++echo "Valid recordings: ${#VALID_FILES[@]}"
++echo "Skipped recordings: $SKIPPED"
++echo "Successful embeddings: $EMBEDDED"
++
++echo
++echo "Detection results:"
++echo "$RESULTS"
++
++echo
++echo "Transition-frame records:"
++echo "$FRAME_RESULTS"
++
++echo
++echo "CSV rows: $(wc -l < "$RESULTS")"
++
++echo "======================================"
+diff --git a/experiments/B6_steganalysis/reproduce_s3.sh b/experiments/B6_steganalysis/reproduce_s3.sh
+index b60db07..e15d724 100644
+--- a/experiments/B6_steganalysis/reproduce_s3.sh
++++ b/experiments/B6_steganalysis/reproduce_s3.sh
+@@ -5,7 +5,7 @@ ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+ cd "$ROOT"
+ 
+ RESULTS="$SCRIPT_DIR/blind_detection.csv"
+-echo "sigma,stream_type,z_score" > "$RESULTS"
++echo "stream_type,z_score" > "$RESULTS"
+ 
+ for kind in clean stego_N32; do
+   for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 24; do
+@@ -17,7 +17,7 @@ sys.path.insert(0, "experiments/B6_steganalysis")
+ from detectors import load_packets, detector_blind_tail_outlier
+ packets = load_packets(sys.argv[1])
+ _, z = detector_blind_tail_outlier(packets, sigma=3.0)
+-print(f"0,{sys.argv[2]},{z:.4f}")
++print(f"{sys.argv[2]},{z:.4f}")
+ PY
+   done
+ done
+diff --git a/experiments/B6_steganalysis/reproduce_s4.sh b/experiments/B6_steganalysis/reproduce_s4.sh
+index fdef275..0ac6c80 100644
+--- a/experiments/B6_steganalysis/reproduce_s4.sh
++++ b/experiments/B6_steganalysis/reproduce_s4.sh
+@@ -17,6 +17,6 @@ for detector in sorted(set(k[0] for k in stats)):
+     for psize in sorted(set(k[1] for k in stats if k[0] == detector)):
+         s = stats[(detector, psize)]
+         tpr = s["stego_ok"] / s["stego"] if s["stego"] else 0
+-        if tpr >= 0.9:
++        if tpr >= 0.9 and fpr <= 0.05:
+             print(f"  {detector:25s} threshold = {psize} bytes")
+             break
+\ No newline at end of file

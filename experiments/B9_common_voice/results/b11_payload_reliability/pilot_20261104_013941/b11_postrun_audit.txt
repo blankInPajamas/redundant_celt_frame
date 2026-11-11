@@ -1,0 +1,14 @@
+========== B11 INDEPENDENT AUDIT REPORT ==========
+Pilot manifest records: 360
+Decoder records: 960
+Baseline records: 40
+Capacity records: 20
+
+Bitstream audit: 360/360
+Baseline audit: 40/40
+Decoder audit: 960/960
+Physical capacity audit: 20/20
+
+Failures: 0
+
+AUDIT STATUS: PASS

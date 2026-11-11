@@ -1,0 +1,62 @@
+========== B17 MUSIC INPUT AUDIT ==========
+Project: /home/ishu/research/redundant_celt_frame_steganography
+B7: /home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241
+B15: /home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/results/b15_natural_cover_audit/run_20261104_132107
+
+========== INPUT COUNTS ==========
+Recording rows: 2018
+Positive-control rows: 20
+Input hash rows: 2018
+
+========== CLASS DISTRIBUTION ==========
+('1.5.2', 'cover'): 999/999
+('1.6.1', 'cover'): 999/999
+('1.5.2', 'positive'): 10/10
+('1.6.1', 'positive'): 10/10
+
+========== BITSTREAM HASH VALIDATION ==========
+Validated 250/2018 records
+Validated 500/2018 records
+Validated 750/2018 records
+Validated 1000/2018 records
+Validated 1250/2018 records
+Validated 1500/2018 records
+Validated 1750/2018 records
+Validated 2000/2018 records
+Hash matches: 2018
+Missing files: 0
+Hash mismatches: 0
+
+========== POSITIVE CONTROL VALIDATION ==========
+1.5.2 | hiphop__hiphop.00036 | detected=True | recovered=True | frame=5
+1.5.2 | hiphop__hiphop.00037 | detected=True | recovered=True | frame=3
+1.5.2 | hiphop__hiphop.00038 | detected=True | recovered=True | frame=40
+1.5.2 | hiphop__hiphop.00039 | detected=True | recovered=True | frame=3
+1.5.2 | hiphop__hiphop.00040 | detected=True | recovered=True | frame=4
+1.5.2 | hiphop__hiphop.00041 | detected=True | recovered=True | frame=3
+1.5.2 | hiphop__hiphop.00042 | detected=True | recovered=True | frame=2
+1.5.2 | hiphop__hiphop.00043 | detected=True | recovered=True | frame=3
+1.5.2 | hiphop__hiphop.00044 | detected=True | recovered=True | frame=3
+1.5.2 | hiphop__hiphop.00045 | detected=True | recovered=True | frame=3
+1.6.1 | hiphop__hiphop.00036 | detected=True | recovered=True | frame=5
+1.6.1 | hiphop__hiphop.00037 | detected=True | recovered=True | frame=3
+1.6.1 | hiphop__hiphop.00038 | detected=True | recovered=True | frame=40
+1.6.1 | hiphop__hiphop.00039 | detected=True | recovered=True | frame=3
+1.6.1 | hiphop__hiphop.00040 | detected=True | recovered=True | frame=4
+1.6.1 | hiphop__hiphop.00041 | detected=True | recovered=True | frame=3
+1.6.1 | hiphop__hiphop.00042 | detected=True | recovered=True | frame=2
+1.6.1 | hiphop__hiphop.00043 | detected=True | recovered=True | frame=3
+1.6.1 | hiphop__hiphop.00044 | detected=True | recovered=True | frame=3
+1.6.1 | hiphop__hiphop.00045 | detected=True | recovered=True | frame=3
+
+========== MATCHED CLEAN CONTROLS ==========
+Matched positive-control recordings: 20/20
+
+========== PAYLOAD LENGTH INVENTORY ==========
+35: 20
+
+========== FINAL RESULT ==========
+B17 MUSIC INPUT AUDIT: PASS
+All 2018 input bitstream hashes verified.
+All 20 positive controls validated.
+All positive controls have matched clean recordings.

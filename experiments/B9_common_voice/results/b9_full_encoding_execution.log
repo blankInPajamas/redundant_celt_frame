@@ -1,0 +1,122 @@
+========== B9 FULL INPUT VALIDATION ==========
+PCM files: 5000
+Unique speakers: 1745
+Total complete frames: 1182950
+Total trailing samples: 1959274
+Manifest: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b9_full_encoding/input_manifest.tsv
+B9 INPUT FREEZE: PASS
+
+========== B9 FULL ENCODING ==========
+Recordings: 5000
+Versions: 2
+Total encoding jobs: 10000
+Workers: 4
+Processed 100/10000
+Processed 200/10000
+Processed 300/10000
+Processed 400/10000
+Processed 500/10000
+Processed 600/10000
+Processed 700/10000
+Processed 800/10000
+Processed 900/10000
+Processed 1000/10000
+Processed 1100/10000
+Processed 1200/10000
+Processed 1300/10000
+Processed 1400/10000
+Processed 1500/10000
+Processed 1600/10000
+Processed 1700/10000
+Processed 1800/10000
+Processed 1900/10000
+Processed 2000/10000
+Processed 2100/10000
+Processed 2200/10000
+Processed 2300/10000
+Processed 2400/10000
+Processed 2500/10000
+Processed 2600/10000
+Processed 2700/10000
+Processed 2800/10000
+Processed 2900/10000
+Processed 3000/10000
+Processed 3100/10000
+Processed 3200/10000
+Processed 3300/10000
+Processed 3400/10000
+Processed 3500/10000
+Processed 3600/10000
+Processed 3700/10000
+Processed 3800/10000
+Processed 3900/10000
+Processed 4000/10000
+Processed 4100/10000
+Processed 4200/10000
+Processed 4300/10000
+Processed 4400/10000
+Processed 4500/10000
+Processed 4600/10000
+Processed 4700/10000
+Processed 4800/10000
+Processed 4900/10000
+Processed 5000/10000
+Processed 5100/10000
+Processed 5200/10000
+Processed 5300/10000
+Processed 5400/10000
+Processed 5500/10000
+Processed 5600/10000
+Processed 5700/10000
+Processed 5800/10000
+Processed 5900/10000
+Processed 6000/10000
+Processed 6100/10000
+Processed 6200/10000
+Processed 6300/10000
+Processed 6400/10000
+Processed 6500/10000
+Processed 6600/10000
+Processed 6700/10000
+Processed 6800/10000
+Processed 6900/10000
+Processed 7000/10000
+Processed 7100/10000
+Processed 7200/10000
+Processed 7300/10000
+Processed 7400/10000
+Processed 7500/10000
+Processed 7600/10000
+Processed 7700/10000
+Processed 7800/10000
+Processed 7900/10000
+Processed 8000/10000
+Processed 8100/10000
+Processed 8200/10000
+Processed 8300/10000
+Processed 8400/10000
+Processed 8500/10000
+Processed 8600/10000
+Processed 8700/10000
+Processed 8800/10000
+Processed 8900/10000
+Processed 9000/10000
+Processed 9100/10000
+Processed 9200/10000
+Processed 9300/10000
+Processed 9400/10000
+Processed 9500/10000
+Processed 9600/10000
+Processed 9700/10000
+Processed 9800/10000
+Processed 9900/10000
+Processed 10000/10000
+
+========== B9 ENCODING SUMMARY ==========
+total_jobs: 10000
+workers: 4
+completed: 10000
+skipped: 0
+failed: 0
+
+B9 FULL ENCODING: PASS

@@ -1,0 +1,41 @@
+========== B13 STEGANALYSIS REPORT ==========
+B12 run: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705
+Manifest rows validated: 3600
+Unique events: 200
+Unique speaker groups: 196
+Encoders: Opus 1.5.2 and 1.6.1
+Payload sizes: 4, 8, 16, 24, 32, 36 bytes
+ML primary repetition: 1
+Cross-validation: 5-fold StratifiedGroupKFold
+Grouping: speaker_sha256
+Feature groups: global, target-region, combined
+Models: Logistic Regression and Random Forest
+
+========== BEST POOLED ML RESULT ==========
+Payload size: 4 bytes
+Feature set: target
+Model: logistic_regression
+ROC-AUC: 1.0000
+Accuracy: 1.0000
+Balanced accuracy: 1.0000
+TPR: 1.0000
+FPR: 0.0000
+
+========== SIMPLE TAIL RULE: POOLED, REP 1 ==========
+4B: accuracy=1.0000, TPR=1.0000, FPR=0.0000
+8B: accuracy=1.0000, TPR=1.0000, FPR=0.0000
+16B: accuracy=1.0000, TPR=1.0000, FPR=0.0000
+24B: accuracy=1.0000, TPR=1.0000, FPR=0.0000
+32B: accuracy=1.0000, TPR=1.0000, FPR=0.0000
+36B: accuracy=1.0000, TPR=1.0000, FPR=0.0000
+
+========== INTERPRETATION LIMITS ==========
+- Cover events were preselected to have exactly 36 zero bytes at the target tail.
+- The tail rule is an informed detector because the target region is known.
+- Global-only features provide a less localized comparison.
+- ML uses repetition 1; repetitions 2 and 3 are not independent recordings.
+- Speaker-grouped CV prevents the same speaker entering both train and test folds.
+- These results do not establish detectability or undetectability for all Opus traffic.
+- B13 is read-only; original B12 source bitstreams are not modified.
+
+Output directory: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849

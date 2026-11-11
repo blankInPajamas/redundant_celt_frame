@@ -1,0 +1,23 @@
+========== B11 PAYLOAD RELIABILITY PILOT REPORT ==========
+Run directory: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b11_payload_reliability/pilot_20261104_013941
+Source manifest SHA256: 98ec88d41e79bd5c9a5c82afbe7f68cf55f06e0e6a3059ec4bbe721f3a5e0f2e
+
+Design: 20 events (10 per encoder); 6 payload sizes; 3 deterministic SHAKE-256 repetitions.
+Payload sizes: 4, 8, 16, 24, 32, 36 bytes.
+Uncorrupted payload instances: 360
+One-bit corruption controls: 120 payload instances, each tested with both decoders.
+Integrity uses an out-of-band sender SHA256; this is not native Opus authentication.
+
+========== RESULTS ==========
+Baseline decodes: 40/40
+Uncorrupted extraction: 720/720
+Corrupted extraction: 240/240
+SHA256 integrity controls: 240/240
+Modified decoder runs successful: 960/960
+PCM identical vs same-decoder baseline: 960/960
+Packet framing preserved: 960/960
+37-byte rejection with source unchanged: 20/20
+Source bitstreams unchanged: True
+Usable payload tail: 36 bytes (288 bits)
+
+OVERALL B11 PILOT: PASS

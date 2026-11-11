@@ -1,0 +1,39 @@
+========== B10 DECODER EXTRACTION REPORT (CORRECTED AUDIT) ==========
+Run directory: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b10_decoder_extraction_100speaker/run_20261104_002549
+Method: re-parse raw tail36 fields and verify each candidate against the manifest SHA256.
+No decoder was rerun by this audit script.
+
+CSV records: 400
+Decoder log blocks: 400
+Unique encoder/recording/frame events: 200
+
+========== CROSS-VERSION EXTRACTION ==========
+Encoder 1.5.2 / Decoder 1.5.2: 100/100
+Encoder 1.5.2 / Decoder 1.6.1: 100/100
+Encoder 1.6.1 / Decoder 1.5.2: 100/100
+Encoder 1.6.1 / Decoder 1.6.1: 100/100
+
+========== EXTRACTION AUDIT ==========
+PASS: 400
+REVIEW_REQUIRED: 0
+Exact payload recoveries: 400/400
+Decoder return code 0: 400/400
+Non-empty PCM outputs: 400/400
+Candidate-count distribution: {1: 340, 2: 58, 3: 2}
+Expected-SHA256 match-count distribution: {1: 400}
+
+========== SEPARATE PCM VERSION COMPARISON ==========
+Paired encoder/recording/frame events: 200
+PCM SHA256 identical across decoder versions: 7/200
+PCM byte lengths identical across decoder versions: 200/200
+This is a cross-decoder-version comparison, not the baseline-versus-modified PCM-preservation test.
+Do not interpret cross-version PCM hash differences as payload-extraction failures.
+
+========== ORIGINAL PARSER FAILURE ==========
+The previous parser required a pipe or end-of-string immediately after tail36's 72 hex characters.
+The decoder log places a newline and the 'Decoded ... frames' message after the hex field.
+The old parser therefore produced false NO_MATCH results despite valid tail36 data.
+This audit uses: re.findall(r'tail36=([0-9a-fA-F]{72})', block)
+
+B10 PAYLOAD EXTRACTION AUDIT: PASS
+Corrected CSV: b10_decoder_extraction_results_CORRECTED.csv

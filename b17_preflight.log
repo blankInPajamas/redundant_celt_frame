@@ -1,0 +1,373 @@
+========== B17 PREFLIGHT INVENTORY ==========
+Project: /home/ishu/research/redundant_celt_frame_steganography
+Started: Thu Nov  5 05:52:44 PM +06 2026
+
+========== LOCATING EXACT B14 SCRIPT ==========
+B14 script: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/run_b14_feature_attribution.py
+4205c3d6864dea29653ec304bd8387680e01a82ae67917a0c0640a9765e756db  /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/run_b14_feature_attribution.py
+1365 /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/run_b14_feature_attribution.py
+
+Relevant implementation:
+9:- Separates global, histogram, structural and target-aware features.
+56:    "packet_geometry",
+59:    "global_without_packet_geometry",
+60:    "target_packet",
+61:    "target_tail36",
+63:    "global_plus_tail36",
+85:    "g_packet_count",
+86:    "g_packet_length_mean",
+87:    "g_packet_length_std",
+88:    "g_packet_length_min",
+89:    "g_packet_length_max",
+90:    "t_packet_entropy",
+91:    "t_packet_zero_fraction",
+92:    "t_tail36_entropy",
+93:    "t_tail36_zero_fraction",
+94:    "t_tail36_nonzero_count",
+95:    "t_tail36_trailing_zero_bytes",
+102:def sha_bytes(data):
+106:def sha_file(path):
+114:def read_packets(raw, label):
+115:    packets = []
+120:            raise ValueError(f"{label}: incomplete packet header")
+126:            raise ValueError(f"{label}: invalid packet length {n}")
+128:        packets.append(raw[offset:offset+n])
+131:    if not packets:
+132:        raise ValueError(f"{label}: no packets")
+134:    return packets
+137:def add_region_features(out, prefix, raw):
+141:        raise ValueError(f"Empty feature region: {prefix}")
+185:def extract_features(raw, packets, frame):
+186:    if frame < 0 or frame >= len(packets):
+187:        raise ValueError("Target frame outside packet count")
+189:    target = packets[frame]
+192:        raise ValueError("Target packet has no nonempty prefix")
+196:    # Entire serialized stream, including packet-length headers.
+197:    add_region_features(out, "g_stream", raw)
+199:    # Complete target packet.
+200:    add_region_features(out, "t_packet", target)
+203:    add_region_features(out, "t_tail36", target[-CAPACITY:])
+205:    # Negative control: unchanged bytes preceding the tail.
+206:    add_region_features(out, "t_prefix36", target[:-CAPACITY])
+209:        [len(p) for p in packets], dtype=float
+212:    out["g_packet_count"] = float(len(packets))
+213:    out["g_packet_length_mean"] = float(np.mean(lengths))
+214:    out["g_packet_length_std"] = float(np.std(lengths))
+215:    out["g_packet_length_min"] = float(np.min(lengths))
+216:    out["g_packet_length_max"] = float(np.max(lengths))
+221:def read_manifest(path):
+228:        raise ValueError("Empty B12 manifest")
+235:        "payload_size_bytes",
+237:        "payload_hex",
+238:        "payload_sha256",
+248:            "Missing manifest columns: " +
+255:def write_csv(path, rows):
+269:def build_records(root, b9, b12_run, manifest):
+274:    for i, row in enumerate(manifest, 1):
+281:        size = int(row["payload_size_bytes"])
+317:            cover_packets = read_packets(
+321:            if frame >= len(cover_packets):
+324:            cover_target = cover_packets[frame]
+328:                    f"Cover tail is not 36 zero bytes: {rec}"
+332:                "packets": cover_packets,
+333:                "features": extract_features(
+334:                    cover_raw, cover_packets, frame
+336:                "packet_lengths": [
+337:                    len(p) for p in cover_packets
+365:        stego_packets = read_packets(
+369:        if len(stego_packets) != len(cover["packets"]):
+372:        if [len(p) for p in stego_packets] != cover[
+373:            "packet_lengths"
+377:        payload = bytes.fromhex(row["payload_hex"])
+379:        if len(payload) != size:
+382:        if sha_bytes(payload) != row["payload_sha256"]:
+385:        expected_tail = bytes(CAPACITY-size) + payload
+387:        if stego_packets[frame][-CAPACITY:] != expected_tail:
+388:            raise ValueError("Stego tail does not match payload")
+391:            stego_packets[frame][:-CAPACITY]
+392:            != cover["packets"][frame][:-CAPACITY]
+403:            "cover_features": cover["features"],
+404:            "stego_features": extract_features(
+405:                stego_raw, stego_packets, frame
+410:            print(f"Validated {i}/{len(manifest)} rows")
+448:def define_feature_groups(keys):
+461:    packet_geometry = [
+463:        if k.startswith("g_packet_")
+470:    target_packet = [
+471:        k for k in keys if k.startswith("t_packet_")
+474:    target_tail = [
+475:        k for k in keys if k.startswith("t_tail36_")
+486:        "packet_geometry": packet_geometry,
+489:            stream_scalar + packet_geometry,
+492:            stream_histogram + packet_geometry,
+494:        "global_without_packet_geometry":
+497:        "target_packet": target_packet,
+498:        "target_tail36": target_tail,
+501:        "global_plus_tail36":
+502:            global_all + target_tail,
+507:            raise ValueError(f"Empty feature group: {name}")
+510:            raise ValueError(f"Duplicate features in {name}")
+515:def make_model(name, seed):
+531:            max_features="sqrt",
+541:def make_dataset(records, size, scope, cols):
+558:            (0, "cover_features"),
+559:            (1, "stego_features"),
+585:def calculate_metrics(y, pred, score):
+614:def evaluate_group(
+627:        n_splits=folds,
+637:        cv.split(X, y, groups), 1
+665:        "payload_size_bytes": size,
+666:        "feature_group": group_name,
+668:        "n_features": len(cols),
+673:        "split_unit": "speaker_sha256",
+683:            "payload_size_bytes": size,
+684:            "feature_group": group_name,
+699:def calculate_feature_effects(records, keys):
+714:                r["stego_features"][key]
+715:                - r["cover_features"][key]
+722:                else key.split("_")[0]
+726:                "payload_size_bytes": size,
+727:                "feature": key,
+728:                "feature_family": family,
+749:def cluster_bootstrap_effects(
+771:        for feature in FOCUS_FEATURES:
+777:                    r["stego_features"][feature]
+778:                    - r["cover_features"][feature]
+809:                "payload_size_bytes": size,
+810:                "feature": feature,
+823:def calculate_permutation_importance(
+845:                n_splits=folds,
+851:                cv.split(X, y, group_ids), 1
+870:                for j, feature in enumerate(cols):
+873:                        "payload_size_bytes": size,
+874:                        "feature_group": group_name,
+875:                        "feature": feature,
+891:def summarize_importance(rows):
+897:            (r["payload_size_bytes"],
+898:             r["feature_group"],
+899:             r["feature"])
+904:    for (size, group, feature), values in grouped.items():
+909:            "payload_size_bytes": size,
+910:            "feature_group": group,
+911:            "feature": feature,
+921:def save_figures(out, metrics, importance):
+929:        "packet_geometry",
+931:        "target_tail36",
+941:            and r["feature_group"] == group
+942:        ], key=lambda r: r["payload_size_bytes"])
+946:                [r["payload_size_bytes"] for r in rows],
+964:        out / "b14_feature_ablation_auc.png",
+971:        if r["payload_size_bytes"] == 36
+972:        and r["feature_group"] == "global_all"
+985:        labels = [r["feature"] for r in rows]
+992:            title="B14: Top global features at 36 bytes",
+1005:def main():
+1034:    manifest_path = b12_run / "b12_payload_manifest.csv"
+1036:    if not manifest_path.is_file():
+1037:        raise FileNotFoundError(manifest_path)
+1043:    manifest = read_manifest(manifest_path)
+1045:    print("Manifest records:", len(manifest))
+1048:        root, b9, b12_run, manifest
+1067:    keys = sorted(records[0]["cover_features"])
+1068:    feature_groups = define_feature_groups(keys)
+1070:    base = b9 / "results" / "b14_feature_attribution"
+1088:    # Full feature-family ablation on pooled recordings.
+1105:                    feature_groups[group_name],
+1133:                        feature_groups[group_name],
+1143:        out / "b14_feature_group_metrics.csv",
+1154:    effects = calculate_feature_effects(
+1159:        out / "b14_paired_feature_effects.csv",
+1180:        feature_groups,
+1204:        "manifest_sha256": sha_file(manifest_path),
+1208:        "payload_sizes": list(SIZES),
+1217:        "feature_group_sizes": {
+1218:            k: len(v) for k, v in feature_groups.items()
+1233:        f"Manifest records: {len(manifest)}",
+1244:    for name, cols in feature_groups.items():
+1245:        report.append(f"{name}: {len(cols)} features")
+1256:        "packet_geometry",
+1259:        "global_without_packet_geometry",
+1260:        "target_packet",
+
+========== B14 CONFIG FILES ==========
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_run_config.json
+
+========== B16 CONFIGURATION ==========
+{
+  "stage": "B16",
+  "b16_script_sha256": "3e95e7100993c5c1c80a3c8624ebca58438b301457167fa99473788f5b947e4b",
+  "b12_run": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705",
+  "b12_manifest_sha256": "e993cd21001ff1d16467f8bab65ef5fb4dbaa2138a3b8aeb95cc0084b9e8c9b8",
+  "b14_config": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_run_config.json",
+  "b14_config_sha256": "64a2b78c27f985124d5aa9e65f4c860bcf897cf87f091aefdb0ae9f086fc6af0",
+  "b14_script": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/run_b14_feature_attribution.py",
+  "b14_script_sha256": "4205c3d6864dea29653ec304bd8387680e01a82ae67917a0c0640a9765e756db",
+  "encoders": [
+    "1.5.2",
+    "1.6.1"
+  ],
+  "payload_sizes_bytes": [
+    4,
+    8,
+    16,
+    24,
+    32,
+    36
+  ],
+  "primary_repetition": 1,
+  "models": [
+    "logistic_regression",
+    "random_forest"
+  ],
+  "feature_groups": {
+    "global_all": 271,
+    "stream_scalar": 10,
+    "stream_histogram": 256,
+    "packet_geometry": 5,
+    "global_without_histogram": 15,
+    "global_without_stream_scalars": 261,
+    "global_without_packet_geometry": 266,
+    "target_packet": 266,
+    "target_tail36": 266,
+    "target_prefix_control": 266,
+    "global_plus_tail36": 537
+  },
+  "shared_speakers_excluded": 4,
+  "shared_recordings_excluded": 4,
+  "exclusion_policy": "exclude union of shared speaker IDs and recording IDs",
+  "retained_events": {
+    "1.5.2": 96,
+    "1.6.1": 96
+  },
+  "decision_threshold": 0.5,
+  "bootstrap_repetitions": 1000,
+  "bootstrap_unit": "speaker_sha256",
+  "seed": 42,
+  "training_testing": "train on one encoder; test on the other; both directions",
+  "read_only": true
+}
+========== B12 MANIFEST FILES ==========
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705/b12_corruption_manifest.csv
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705/b12_payload_manifest.csv
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705/b12_run_config.json
+
+========== B7 MUSIC MANIFEST ==========
+genre,filename,source_path,duration,sample_rate,channels
+blues,blues.00000.wav,data/raw/gtzan_official/genres_original/blues/blues.00000.wav,30.013333,22050,1
+blues,blues.00001.wav,data/raw/gtzan_official/genres_original/blues/blues.00001.wav,30.013333,22050,1
+blues,blues.00002.wav,data/raw/gtzan_official/genres_original/blues/blues.00002.wav,30.013333,22050,1
+blues,blues.00003.wav,data/raw/gtzan_official/genres_original/blues/blues.00003.wav,30.013333,22050,1
+
+========== B7 MUSIC RESULT HEADERS ==========
+--- /home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/results.csv
+content_type,file,frames,tail_frames,max_tail
+music,_home_sanchit_.cache_datasets_downloads_extracted_f729783d70a4541cc4c9d5649655490a9c660280bdbecddfe38a8a806c73f60e_genres_blues_blues.00000,1500,0,1
+music,_home_sanchit_.cache_datasets_downloads_extracted_f729783d70a4541cc4c9d5649655490a9c660280bdbecddfe38a8a806c73f60e_genres_blues_blues.00001,1500,0,1
+music,_home_sanchit_.cache_datasets_downloads_extracted_f729783d70a4541cc4c9d5649655490a9c660280bdbecddfe38a8a806c73f60e_genres_blues_blues.00002,1500,0,1
+--- /home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/b7_music_results.csv
+content_type,file,frames,tail_frames,max_tail
+music,_home_sanchit_.cache_datasets_downloads_extracted_f729783d70a4541cc4c9d5649655490a9c660280bdbecddfe38a8a806c73f60e_genres_blues_blues.00000,1500,0,1
+music,_home_sanchit_.cache_datasets_downloads_extracted_f729783d70a4541cc4c9d5649655490a9c660280bdbecddfe38a8a806c73f60e_genres_blues_blues.00001,1500,0,1
+music,_home_sanchit_.cache_datasets_downloads_extracted_f729783d70a4541cc4c9d5649655490a9c660280bdbecddfe38a8a806c73f60e_genres_blues_blues.00002,1500,0,1
+
+========== B7 RUN FILE INVENTORY ==========
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00000.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00001.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00002.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00003.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00004.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00005.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00006.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00007.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00008.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00009.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00010.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00011.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00012.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00013.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00014.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00015.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00016.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00017.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00018.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00019.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00020.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00021.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00022.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00023.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00024.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00025.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00026.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00027.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00028.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00029.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00030.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00031.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00032.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00033.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00034.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00035.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00036.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00037.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00038.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00039.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00040.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00041.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00042.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00043.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00044.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00045.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00046.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00047.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00048.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00049.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00050.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00051.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00052.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00053.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00054.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00055.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00056.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00057.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00058.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00059.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00060.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00061.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00062.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00063.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00064.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00065.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00066.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00067.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00068.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00069.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00070.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00071.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00072.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00073.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00074.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00075.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00076.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00077.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00078.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00079.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00080.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00081.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00082.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00083.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00084.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00085.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00086.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00087.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00088.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00089.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00090.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00091.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00092.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00093.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00094.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00095.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00096.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00097.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00098.bin
+/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241/1.5.2/bitstreams/blues__blues.00099.bin

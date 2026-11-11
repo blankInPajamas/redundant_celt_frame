@@ -1,0 +1,16 @@
+{
+  "experiment": "B17 supplementary audit",
+  "input_run": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B17_cross_domain/results/b17_music_cross_domain/run_20261106_005837",
+  "primary_training_payload_size_bytes": 36,
+  "primary_feature_group": "global_without_packet_geometry",
+  "bootstrap_repetitions": 5000,
+  "bootstrap_seed": 20261106,
+  "positive_controls": 10,
+  "positive_genres": [
+    "hiphop"
+  ],
+  "threshold": 0.5,
+  "models_retrained": false,
+  "threshold_retuned": false,
+  "source_data_modified": false
+}

@@ -1,0 +1,53 @@
+{
+  "stage": "B16",
+  "b16_script_sha256": "3e95e7100993c5c1c80a3c8624ebca58438b301457167fa99473788f5b947e4b",
+  "b12_run": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705",
+  "b12_manifest_sha256": "e993cd21001ff1d16467f8bab65ef5fb4dbaa2138a3b8aeb95cc0084b9e8c9b8",
+  "b14_config": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_run_config.json",
+  "b14_config_sha256": "64a2b78c27f985124d5aa9e65f4c860bcf897cf87f091aefdb0ae9f086fc6af0",
+  "b14_script": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/run_b14_feature_attribution.py",
+  "b14_script_sha256": "4205c3d6864dea29653ec304bd8387680e01a82ae67917a0c0640a9765e756db",
+  "encoders": [
+    "1.5.2",
+    "1.6.1"
+  ],
+  "payload_sizes_bytes": [
+    4,
+    8,
+    16,
+    24,
+    32,
+    36
+  ],
+  "primary_repetition": 1,
+  "models": [
+    "logistic_regression",
+    "random_forest"
+  ],
+  "feature_groups": {
+    "global_all": 271,
+    "stream_scalar": 10,
+    "stream_histogram": 256,
+    "packet_geometry": 5,
+    "global_without_histogram": 15,
+    "global_without_stream_scalars": 261,
+    "global_without_packet_geometry": 266,
+    "target_packet": 266,
+    "target_tail36": 266,
+    "target_prefix_control": 266,
+    "global_plus_tail36": 537
+  },
+  "shared_speakers_excluded": 4,
+  "shared_recordings_excluded": 4,
+  "exclusion_policy": "exclude union of shared speaker IDs and recording IDs",
+  "retained_events": {
+    "1.5.2": 96,
+    "1.6.1": 96
+  },
+  "decision_threshold": 0.5,
+  "bootstrap_repetitions": 1000,
+  "bootstrap_unit": "speaker_sha256",
+  "seed": 42,
+  "training_testing": "train on one encoder; test on the other; both directions",
+  "read_only": true
+}

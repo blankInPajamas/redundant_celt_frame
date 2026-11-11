@@ -1,0 +1,171 @@
+========== B13 INPUT VALIDATION ==========
+Project root: /home/ishu/research/redundant_celt_frame_steganography
+B12 run: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705
+Manifest rows: 3600
+Validated 300/3600 manifest rows
+Validated 600/3600 manifest rows
+Validated 900/3600 manifest rows
+Validated 1200/3600 manifest rows
+Validated 1500/3600 manifest rows
+Validated 1800/3600 manifest rows
+Validated 2100/3600 manifest rows
+Validated 2400/3600 manifest rows
+Validated 2700/3600 manifest rows
+Validated 3000/3600 manifest rows
+Validated 3300/3600 manifest rows
+Validated 3600/3600 manifest rows
+Unique events: 200
+Unique speaker groups across both versions: 196
+Cover/stego hashes, packet framing and payload-tail checks: PASS
+========== B13 GROUPED ML EVALUATION ==========
+4B | pooled | global | logistic_regression
+4B | pooled | global | random_forest
+4B | pooled | target | logistic_regression
+4B | pooled | target | random_forest
+4B | pooled | combined | logistic_regression
+4B | pooled | combined | random_forest
+4B | 1.5.2 | global | logistic_regression
+4B | 1.5.2 | global | random_forest
+4B | 1.5.2 | target | logistic_regression
+4B | 1.5.2 | target | random_forest
+4B | 1.5.2 | combined | logistic_regression
+4B | 1.5.2 | combined | random_forest
+4B | 1.6.1 | global | logistic_regression
+4B | 1.6.1 | global | random_forest
+4B | 1.6.1 | target | logistic_regression
+4B | 1.6.1 | target | random_forest
+4B | 1.6.1 | combined | logistic_regression
+4B | 1.6.1 | combined | random_forest
+8B | pooled | global | logistic_regression
+8B | pooled | global | random_forest
+8B | pooled | target | logistic_regression
+8B | pooled | target | random_forest
+8B | pooled | combined | logistic_regression
+8B | pooled | combined | random_forest
+8B | 1.5.2 | global | logistic_regression
+8B | 1.5.2 | global | random_forest
+8B | 1.5.2 | target | logistic_regression
+8B | 1.5.2 | target | random_forest
+8B | 1.5.2 | combined | logistic_regression
+8B | 1.5.2 | combined | random_forest
+8B | 1.6.1 | global | logistic_regression
+8B | 1.6.1 | global | random_forest
+8B | 1.6.1 | target | logistic_regression
+8B | 1.6.1 | target | random_forest
+8B | 1.6.1 | combined | logistic_regression
+8B | 1.6.1 | combined | random_forest
+16B | pooled | global | logistic_regression
+16B | pooled | global | random_forest
+16B | pooled | target | logistic_regression
+16B | pooled | target | random_forest
+16B | pooled | combined | logistic_regression
+16B | pooled | combined | random_forest
+16B | 1.5.2 | global | logistic_regression
+16B | 1.5.2 | global | random_forest
+16B | 1.5.2 | target | logistic_regression
+16B | 1.5.2 | target | random_forest
+16B | 1.5.2 | combined | logistic_regression
+16B | 1.5.2 | combined | random_forest
+16B | 1.6.1 | global | logistic_regression
+16B | 1.6.1 | global | random_forest
+16B | 1.6.1 | target | logistic_regression
+16B | 1.6.1 | target | random_forest
+16B | 1.6.1 | combined | logistic_regression
+16B | 1.6.1 | combined | random_forest
+24B | pooled | global | logistic_regression
+24B | pooled | global | random_forest
+24B | pooled | target | logistic_regression
+24B | pooled | target | random_forest
+24B | pooled | combined | logistic_regression
+24B | pooled | combined | random_forest
+24B | 1.5.2 | global | logistic_regression
+24B | 1.5.2 | global | random_forest
+24B | 1.5.2 | target | logistic_regression
+24B | 1.5.2 | target | random_forest
+24B | 1.5.2 | combined | logistic_regression
+24B | 1.5.2 | combined | random_forest
+24B | 1.6.1 | global | logistic_regression
+24B | 1.6.1 | global | random_forest
+24B | 1.6.1 | target | logistic_regression
+24B | 1.6.1 | target | random_forest
+24B | 1.6.1 | combined | logistic_regression
+24B | 1.6.1 | combined | random_forest
+32B | pooled | global | logistic_regression
+32B | pooled | global | random_forest
+32B | pooled | target | logistic_regression
+32B | pooled | target | random_forest
+32B | pooled | combined | logistic_regression
+32B | pooled | combined | random_forest
+32B | 1.5.2 | global | logistic_regression
+32B | 1.5.2 | global | random_forest
+32B | 1.5.2 | target | logistic_regression
+32B | 1.5.2 | target | random_forest
+32B | 1.5.2 | combined | logistic_regression
+32B | 1.5.2 | combined | random_forest
+32B | 1.6.1 | global | logistic_regression
+32B | 1.6.1 | global | random_forest
+32B | 1.6.1 | target | logistic_regression
+32B | 1.6.1 | target | random_forest
+32B | 1.6.1 | combined | logistic_regression
+32B | 1.6.1 | combined | random_forest
+36B | pooled | global | logistic_regression
+36B | pooled | global | random_forest
+36B | pooled | target | logistic_regression
+36B | pooled | target | random_forest
+36B | pooled | combined | logistic_regression
+36B | pooled | combined | random_forest
+36B | 1.5.2 | global | logistic_regression
+36B | 1.5.2 | global | random_forest
+36B | 1.5.2 | target | logistic_regression
+36B | 1.5.2 | target | random_forest
+36B | 1.5.2 | combined | logistic_regression
+36B | 1.5.2 | combined | random_forest
+36B | 1.6.1 | global | logistic_regression
+36B | 1.6.1 | global | random_forest
+36B | 1.6.1 | target | logistic_regression
+36B | 1.6.1 | target | random_forest
+36B | 1.6.1 | combined | logistic_regression
+36B | 1.6.1 | combined | random_forest
+========== B13 STEGANALYSIS REPORT ==========
+B12 run: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705
+Manifest rows validated: 3600
+Unique events: 200
+Unique speaker groups: 196
+Encoders: Opus 1.5.2 and 1.6.1
+Payload sizes: 4, 8, 16, 24, 32, 36 bytes
+ML primary repetition: 1
+Cross-validation: 5-fold StratifiedGroupKFold
+Grouping: speaker_sha256
+Feature groups: global, target-region, combined
+Models: Logistic Regression and Random Forest
+
+========== BEST POOLED ML RESULT ==========
+Payload size: 4 bytes
+Feature set: target
+Model: logistic_regression
+ROC-AUC: 1.0000
+Accuracy: 1.0000
+Balanced accuracy: 1.0000
+TPR: 1.0000
+FPR: 0.0000
+
+========== SIMPLE TAIL RULE: POOLED, REP 1 ==========
+4B: accuracy=1.0000, TPR=1.0000, FPR=0.0000
+8B: accuracy=1.0000, TPR=1.0000, FPR=0.0000
+16B: accuracy=1.0000, TPR=1.0000, FPR=0.0000
+24B: accuracy=1.0000, TPR=1.0000, FPR=0.0000
+32B: accuracy=1.0000, TPR=1.0000, FPR=0.0000
+36B: accuracy=1.0000, TPR=1.0000, FPR=0.0000
+
+========== INTERPRETATION LIMITS ==========
+- Cover events were preselected to have exactly 36 zero bytes at the target tail.
+- The tail rule is an informed detector because the target region is known.
+- Global-only features provide a less localized comparison.
+- ML uses repetition 1; repetitions 2 and 3 are not independent recordings.
+- Speaker-grouped CV prevents the same speaker entering both train and test folds.
+- These results do not establish detectability or undetectability for all Opus traffic.
+- B13 is read-only; original B12 source bitstreams are not modified.
+
+Output directory: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849
+Checksums: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849/b13_checksums.sha256
+B13 output: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849

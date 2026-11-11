@@ -1,0 +1,27 @@
+========== B17 SUPPLEMENTARY AUDIT ==========
+Frozen input run: /home/ishu/research/redundant_celt_frame_steganography/experiments/B17_cross_domain/results/b17_music_cross_domain/run_20261106_005837
+Supplementary output: /home/ishu/research/redundant_celt_frame_steganography/experiments/B17_cross_domain/results/b17_supplementary_audit/run_20261106_012816
+Original B17 outputs modified: NO
+Prediction rows: 40360
+Metric rows: 40
+Primary conditions audited: 4
+Positive music recordings: 10
+Positive-control genres: hiphop
+Positive controls are all hip-hop recordings.
+
+========== PRIMARY CONDITION DIAGNOSTICS ==========
+1.5.2 | logistic_regression | pooled AUC=0.2804 | hip-hop-only AUC=0.5020 [0.3430, 0.6590] | matched pairs=10/10 | matched-only AUC=1.0000 | mean paired delta=0.8632 [0.7823, 0.9213] | FPR=0.9890
+1.5.2 | random_forest | pooled AUC=0.5783 | hip-hop-only AUC=0.5430 [0.3800, 0.6980] | matched pairs=10/10 | matched-only AUC=1.0000 | mean paired delta=0.3049 [0.2900, 0.3261] | FPR=0.9990
+1.6.1 | logistic_regression | pooled AUC=0.2341 | hip-hop-only AUC=0.4340 [0.2860, 0.5820] | matched pairs=10/10 | matched-only AUC=1.0000 | mean paired delta=0.8585 [0.7910, 0.9093] | FPR=0.9890
+1.6.1 | random_forest | pooled AUC=0.4250 | hip-hop-only AUC=0.4240 [0.2870, 0.5670] | matched pairs=10/10 | matched-only AUC=1.0000 | mean paired delta=0.2943 [0.2766, 0.3202] | FPR=0.9990
+
+========== INTERPRETATION LIMITS ==========
+- The positive set contains only 10 unique music recordings.
+- All 10 positive recordings are from the hip-hop genre.
+- Each positive has a matched clean version in the prediction set.
+- Matched-pair score direction is not the same as cross-recording generalization.
+- Hip-hop-only AUC includes 100 clean hip-hop and 10 positive hip-hop recordings.
+- Hip-hop bootstrap resamples recording identities and preserves the 10 matched pairs.
+- Threshold remains the original fixed 0.5; no tuning or score inversion was performed.
+- These supplementary analyses do not increase the number of independent positive recordings.
+- The results do not establish universal music-domain detectability.

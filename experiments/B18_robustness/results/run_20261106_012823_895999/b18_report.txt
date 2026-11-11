@@ -1,0 +1,67 @@
+========== B18 ROBUSTNESS AND FAILURE-MODE EVALUATION ==========
+Project: /home/ishu/research/redundant_celt_frame_steganography
+Output: /home/ishu/research/redundant_celt_frame_steganography/experiments/B18_robustness/results/run_20261106_012823_895999
+B12 manifest SHA256: e993cd21001ff1d16467f8bab65ef5fb4dbaa2138a3b8aeb95cc0084b9e8c9b8
+Frozen B9/B12 input bitstreams modified: NO
+All transformations were written to new B18 files.
+Selected B12 rows: 400
+Unique underlying recording events: 200 (100 per encoder)
+Payload sizes tested: 32 and 36 bytes
+Transformation cases: 3200
+
+========== TRANSFORMATION SUMMARY ==========
+1.5.2 | 32B | payload_bitflip | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=100/100
+1.5.2 | 32B | target_marker_bitflip | n=100 | parser_valid=100/100 | payload_at_original_index=100/100 | payload_anywhere=100/100 | packet_count_preserved=100/100
+1.5.2 | 32B | noncarrier_packet_bitflip | n=100 | parser_valid=100/100 | payload_at_original_index=100/100 | payload_anywhere=100/100 | packet_count_preserved=100/100
+1.5.2 | 32B | drop_carrier_packet | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=0/100
+1.5.2 | 32B | drop_preceding_packet | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=100/100 | packet_count_preserved=0/100
+1.5.2 | 32B | swap_carrier_adjacent | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=100/100 | packet_count_preserved=100/100
+1.5.2 | 32B | truncate_carrier_packet | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=100/100
+1.5.2 | 32B | malformed_target_length | n=100 | parser_valid=0/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=0/100
+1.5.2 | 36B | payload_bitflip | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=100/100
+1.5.2 | 36B | target_marker_bitflip | n=100 | parser_valid=100/100 | payload_at_original_index=100/100 | payload_anywhere=100/100 | packet_count_preserved=100/100
+1.5.2 | 36B | noncarrier_packet_bitflip | n=100 | parser_valid=100/100 | payload_at_original_index=100/100 | payload_anywhere=100/100 | packet_count_preserved=100/100
+1.5.2 | 36B | drop_carrier_packet | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=0/100
+1.5.2 | 36B | drop_preceding_packet | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=100/100 | packet_count_preserved=0/100
+1.5.2 | 36B | swap_carrier_adjacent | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=100/100 | packet_count_preserved=100/100
+1.5.2 | 36B | truncate_carrier_packet | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=100/100
+1.5.2 | 36B | malformed_target_length | n=100 | parser_valid=0/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=0/100
+1.6.1 | 32B | payload_bitflip | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=100/100
+1.6.1 | 32B | target_marker_bitflip | n=100 | parser_valid=100/100 | payload_at_original_index=100/100 | payload_anywhere=100/100 | packet_count_preserved=100/100
+1.6.1 | 32B | noncarrier_packet_bitflip | n=100 | parser_valid=100/100 | payload_at_original_index=100/100 | payload_anywhere=100/100 | packet_count_preserved=100/100
+1.6.1 | 32B | drop_carrier_packet | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=0/100
+1.6.1 | 32B | drop_preceding_packet | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=100/100 | packet_count_preserved=0/100
+1.6.1 | 32B | swap_carrier_adjacent | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=100/100 | packet_count_preserved=100/100
+1.6.1 | 32B | truncate_carrier_packet | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=100/100
+1.6.1 | 32B | malformed_target_length | n=100 | parser_valid=0/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=0/100
+1.6.1 | 36B | payload_bitflip | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=100/100
+1.6.1 | 36B | target_marker_bitflip | n=100 | parser_valid=100/100 | payload_at_original_index=100/100 | payload_anywhere=100/100 | packet_count_preserved=100/100
+1.6.1 | 36B | noncarrier_packet_bitflip | n=100 | parser_valid=100/100 | payload_at_original_index=100/100 | payload_anywhere=100/100 | packet_count_preserved=100/100
+1.6.1 | 36B | drop_carrier_packet | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=0/100
+1.6.1 | 36B | drop_preceding_packet | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=100/100 | packet_count_preserved=0/100
+1.6.1 | 36B | swap_carrier_adjacent | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=100/100 | packet_count_preserved=100/100
+1.6.1 | 36B | truncate_carrier_packet | n=100 | parser_valid=100/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=100/100
+1.6.1 | 36B | malformed_target_length | n=100 | parser_valid=0/100 | payload_at_original_index=0/100 | payload_anywhere=0/100 | packet_count_preserved=0/100
+
+========== DECODER SAMPLE ==========
+Decoder result rows: 360
+Clean/stego same-decoder PCM pair rows: 40
+Same-decoder PCM-identical pairs: 40/40
+
+========== CODEC RE-ENCODING SAMPLE ==========
+Re-encoding result rows: 60
+Completed bitrate trials: 60
+Cover/stego decoded PCM identical: 60/60
+Re-encoded cover/stego bitstreams identical: 60/60
+Exact payload present after re-encoding (stego outputs): 0/60
+Re-encoded stego streams decoded completely: 60/60
+
+========== INTERPRETATION LIMITS ==========
+- B18 evaluates controlled transformations of the tested B12 bitstreams.
+- The 32B and 36B labels follow the B12 manifest; do not equate these labels automatically with application-layer capacity.
+- Packet deletion, reordering, truncation and byte flips are controlled file-level packet-sequence mutations, not a full RTP/network simulation.
+- A carrier packet that moves may retain the exact payload even when manifest-assisted extraction at its old index fails.
+- A bit flip in the payload tests integrity failure, not native Opus error correction.
+- Re-encoding is an audio-domain transformation; payload loss is expected because the decoder outputs PCM rather than the original redundant-frame bytes.
+- Codec re-encoding uses a small exploratory subset and should not be generalized to every Opus configuration.
+- Decoder completion and exact payload recovery are reported as separate outcomes.

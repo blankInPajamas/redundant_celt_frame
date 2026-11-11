@@ -1,0 +1,1787 @@
+====================================
+SOURCE: opus_1.5.2
+====================================
+opus_1.5.2/src/opus_encoder.c-578-   int i;
+opus_1.5.2/src/opus_encoder.c-579-   float bits;
+opus_1.5.2/src/opus_encoder.c-580-   /* Signaling DRED costs 3 bytes. */
+opus_1.5.2/src/opus_encoder.c-581-   bits = 8*(3+DRED_EXPERIMENTAL_BYTES);
+opus_1.5.2/src/opus_encoder.c-582-   /* Approximation for the size of the IS. */
+opus_1.5.2/src/opus_encoder.c-583-   bits += 50.f+dred_bits_table[q0];
+opus_1.5.2/src/opus_encoder.c:584:   dred_chunks = IMIN((duration+5)/4, DRED_NUM_REDUNDANCY_FRAMES/2);
+opus_1.5.2/src/opus_encoder.c-585-   if (target_chunks != NULL) *target_chunks = 0;
+opus_1.5.2/src/opus_encoder.c-586-   for (i=0;i<dred_chunks;i++) {
+opus_1.5.2/src/opus_encoder.c-587-      int q = compute_quantizer(q0, dQ, qmax, i);
+opus_1.5.2/src/opus_encoder.c-588-      bits += dred_bits_table[q];
+opus_1.5.2/src/opus_encoder.c-589-      if (target_chunks != NULL && bits < target_bits) *target_chunks = i+1;
+opus_1.5.2/src/opus_encoder.c-590-   }
+--
+opus_1.5.2/src/opus_encoder.c-608-         dred_frac = MIN16(.8f, .55f + st->silk_mode.packetLossPercentage/100.f);
+opus_1.5.2/src/opus_encoder.c-609-      } else {
+opus_1.5.2/src/opus_encoder.c-610-         dred_frac = 12*st->silk_mode.packetLossPercentage/100.f;
+opus_1.5.2/src/opus_encoder.c-611-      }
+opus_1.5.2/src/opus_encoder.c-612-      bitrate_offset = 12000;
+opus_1.5.2/src/opus_encoder.c-613-   }
+opus_1.5.2/src/opus_encoder.c:614:   /* Account for the fact that longer packets require less redundancy. */
+opus_1.5.2/src/opus_encoder.c-615-   dred_frac = dred_frac/(dred_frac + (1-dred_frac)*(frame_size*50.f)/st->Fs);
+opus_1.5.2/src/opus_encoder.c-616-   /* Approximate fit based on a few experiments. Could probably be improved. */
+opus_1.5.2/src/opus_encoder.c-617-   q0 = IMIN(15, IMAX(4, 51 - 3*EC_ILOG(IMAX(1, bitrate_bps-bitrate_offset))));
+opus_1.5.2/src/opus_encoder.c-618-   dQ = bitrate_bps-bitrate_offset > 36000 ? 3 : 5;
+opus_1.5.2/src/opus_encoder.c-619-   qmax = 15;
+opus_1.5.2/src/opus_encoder.c-620-   target_dred_bitrate = IMAX(0, (int)(dred_frac*(bitrate_bps-bitrate_offset)));
+--
+opus_1.5.2/src/opus_encoder.c-1012-
+opus_1.5.2/src/opus_encoder.c-1013-   return 0;
+opus_1.5.2/src/opus_encoder.c-1014-}
+opus_1.5.2/src/opus_encoder.c-1015-
+opus_1.5.2/src/opus_encoder.c-1016-#endif
+opus_1.5.2/src/opus_encoder.c-1017-
+opus_1.5.2/src/opus_encoder.c:1018:static int compute_redundancy_bytes(opus_int32 max_data_bytes, opus_int32 bitrate_bps, int frame_rate, int channels)
+opus_1.5.2/src/opus_encoder.c-1019-{
+opus_1.5.2/src/opus_encoder.c:1020:   int redundancy_bytes_cap;
+opus_1.5.2/src/opus_encoder.c:1021:   int redundancy_bytes;
+opus_1.5.2/src/opus_encoder.c:1022:   opus_int32 redundancy_rate;
+opus_1.5.2/src/opus_encoder.c-1023-   int base_bits;
+opus_1.5.2/src/opus_encoder.c-1024-   opus_int32 available_bits;
+opus_1.5.2/src/opus_encoder.c-1025-   base_bits = (40*channels+20);
+opus_1.5.2/src/opus_encoder.c-1026-
+opus_1.5.2/src/opus_encoder.c-1027-   /* Equivalent rate for 5 ms frames. */
+opus_1.5.2/src/opus_encoder.c:1028:   redundancy_rate = bitrate_bps + base_bits*(200 - frame_rate);
+opus_1.5.2/src/opus_encoder.c-1029-   /* For VBR, further increase the bitrate if we can afford it. It's pretty short
+opus_1.5.2/src/opus_encoder.c-1030-      and we'll avoid artefacts. */
+opus_1.5.2/src/opus_encoder.c:1031:   redundancy_rate = 3*redundancy_rate/2;
+opus_1.5.2/src/opus_encoder.c:1032:   redundancy_bytes = redundancy_rate/1600;
+opus_1.5.2/src/opus_encoder.c-1033-
+opus_1.5.2/src/opus_encoder.c-1034-   /* Compute the max rate we can use given CBR or VBR with cap. */
+opus_1.5.2/src/opus_encoder.c-1035-   available_bits = max_data_bytes*8 - 2*base_bits;
+opus_1.5.2/src/opus_encoder.c:1036:   redundancy_bytes_cap = (available_bits*240/(240+48000/frame_rate) + base_bits)/8;
+opus_1.5.2/src/opus_encoder.c:1037:   redundancy_bytes = IMIN(redundancy_bytes, redundancy_bytes_cap);
+opus_1.5.2/src/opus_encoder.c:1038:   /* It we can't get enough bits for redundancy to be worth it, rely on the decoder PLC. */
+opus_1.5.2/src/opus_encoder.c:1039:   if (redundancy_bytes > 4 + 8*channels)
+opus_1.5.2/src/opus_encoder.c:1040:      redundancy_bytes = IMIN(257, redundancy_bytes);
+opus_1.5.2/src/opus_encoder.c-1041-   else
+opus_1.5.2/src/opus_encoder.c:1042:      redundancy_bytes = 0;
+opus_1.5.2/src/opus_encoder.c:1043:   return redundancy_bytes;
+opus_1.5.2/src/opus_encoder.c-1044-}
+opus_1.5.2/src/opus_encoder.c-1045-
+opus_1.5.2/src/opus_encoder.c-1046-static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_val16 *pcm, int frame_size,
+opus_1.5.2/src/opus_encoder.c-1047-                unsigned char *data, opus_int32 max_data_bytes,
+opus_1.5.2/src/opus_encoder.c-1048-                int float_api, int first_frame,
+opus_1.5.2/src/opus_encoder.c-1049-#ifdef ENABLE_DRED
+opus_1.5.2/src/opus_encoder.c-1050-                opus_int32 dred_bitrate_bps,
+opus_1.5.2/src/opus_encoder.c-1051-#endif
+opus_1.5.2/src/opus_encoder.c-1052-#ifndef DISABLE_FLOAT_API
+opus_1.5.2/src/opus_encoder.c-1053-                AnalysisInfo *analysis_info, int is_silence,
+opus_1.5.2/src/opus_encoder.c-1054-#endif
+opus_1.5.2/src/opus_encoder.c:1055:                int redundancy, int celt_to_silk, int prefill,
+opus_1.5.2/src/opus_encoder.c-1056-                opus_int32 equiv_rate, int to_celt);
+opus_1.5.2/src/opus_encoder.c-1057-
+opus_1.5.2/src/opus_encoder.c-1058-opus_int32 opus_encode_native(OpusEncoder *st, const opus_val16 *pcm, int frame_size,
+opus_1.5.2/src/opus_encoder.c-1059-                unsigned char *data, opus_int32 out_data_bytes, int lsb_depth,
+opus_1.5.2/src/opus_encoder.c-1060-                const void *analysis_pcm, opus_int32 analysis_size, int c1, int c2,
+opus_1.5.2/src/opus_encoder.c-1061-                int analysis_channels, downmix_func downmix, int float_api)
+opus_1.5.2/src/opus_encoder.c-1062-{
+opus_1.5.2/src/opus_encoder.c-1063-    void *silk_enc;
+opus_1.5.2/src/opus_encoder.c-1064-    CELTEncoder *celt_enc;
+opus_1.5.2/src/opus_encoder.c-1065-    int i;
+opus_1.5.2/src/opus_encoder.c-1066-    int ret=0;
+opus_1.5.2/src/opus_encoder.c-1067-    int prefill=0;
+opus_1.5.2/src/opus_encoder.c:1068:    int redundancy = 0;
+opus_1.5.2/src/opus_encoder.c:1069:    int celt_to_silk = 0;
+opus_1.5.2/src/opus_encoder.c-1070-    int to_celt = 0;
+opus_1.5.2/src/opus_encoder.c-1071-    int voice_est; /* Probability of voice in Q7 */
+opus_1.5.2/src/opus_encoder.c-1072-    opus_int32 equiv_rate;
+opus_1.5.2/src/opus_encoder.c-1073-    int frame_rate;
+opus_1.5.2/src/opus_encoder.c-1074-    opus_int32 max_rate; /* Max bitrate we're allowed to use */
+opus_1.5.2/src/opus_encoder.c-1075-    int curr_bandwidth;
+--
+opus_1.5.2/src/opus_encoder.c-1397-       st->mode = MODE_CELT_ONLY;
+opus_1.5.2/src/opus_encoder.c-1398-
+opus_1.5.2/src/opus_encoder.c-1399-    if (st->prev_mode > 0 &&
+opus_1.5.2/src/opus_encoder.c-1400-        ((st->mode != MODE_CELT_ONLY && st->prev_mode == MODE_CELT_ONLY) ||
+opus_1.5.2/src/opus_encoder.c-1401-    (st->mode == MODE_CELT_ONLY && st->prev_mode != MODE_CELT_ONLY)))
+opus_1.5.2/src/opus_encoder.c-1402-    {
+opus_1.5.2/src/opus_encoder.c:1403:        redundancy = 1;
+opus_1.5.2/src/opus_encoder.c:1404:        celt_to_silk = (st->mode != MODE_CELT_ONLY);
+opus_1.5.2/src/opus_encoder.c:1405:        if (!celt_to_silk)
+opus_1.5.2/src/opus_encoder.c-1406-        {
+opus_1.5.2/src/opus_encoder.c-1407-            /* Switch to SILK/hybrid if frame size is 10 ms or more*/
+opus_1.5.2/src/opus_encoder.c-1408-            if (frame_size >= st->Fs/100)
+opus_1.5.2/src/opus_encoder.c-1409-            {
+opus_1.5.2/src/opus_encoder.c-1410-                st->mode = st->prev_mode;
+opus_1.5.2/src/opus_encoder.c-1411-                to_celt = 1;
+opus_1.5.2/src/opus_encoder.c-1412-            } else {
+opus_1.5.2/src/opus_encoder.c:1413:                redundancy=0;
+opus_1.5.2/src/opus_encoder.c-1414-            }
+opus_1.5.2/src/opus_encoder.c-1415-        }
+opus_1.5.2/src/opus_encoder.c-1416-    }
+opus_1.5.2/src/opus_encoder.c-1417-
+opus_1.5.2/src/opus_encoder.c-1418-    /* When encoding multiframes, we can ask for a switch to CELT only in the last frame. This switch
+opus_1.5.2/src/opus_encoder.c-1419-     * is processed above as the requested mode shouldn't interrupt stereo->mono transition. */
+--
+opus_1.5.2/src/opus_encoder.c-1511-    if (st->detected_bandwidth && st->user_bandwidth == OPUS_AUTO)
+opus_1.5.2/src/opus_encoder.c-1512-    {
+opus_1.5.2/src/opus_encoder.c-1513-       int min_detected_bandwidth;
+opus_1.5.2/src/opus_encoder.c-1514-       /* Makes bandwidth detection more conservative just in case the detector
+opus_1.5.2/src/opus_encoder.c-1515-          gets it wrong when we could have coded a high bandwidth transparently.
+opus_1.5.2/src/opus_encoder.c-1516-          When operating in SILK/hybrid mode, we don't go below wideband to avoid
+opus_1.5.2/src/opus_encoder.c:1517:          more complicated switches that require redundancy. */
+opus_1.5.2/src/opus_encoder.c-1518-       if (equiv_rate <= 18000*st->stream_channels && st->mode == MODE_CELT_ONLY)
+opus_1.5.2/src/opus_encoder.c-1519-          min_detected_bandwidth = OPUS_BANDWIDTH_NARROWBAND;
+opus_1.5.2/src/opus_encoder.c-1520-       else if (equiv_rate <= 24000*st->stream_channels && st->mode == MODE_CELT_ONLY)
+opus_1.5.2/src/opus_encoder.c-1521-          min_detected_bandwidth = OPUS_BANDWIDTH_MEDIUMBAND;
+opus_1.5.2/src/opus_encoder.c-1522-       else if (equiv_rate <= 30000*st->stream_channels)
+opus_1.5.2/src/opus_encoder.c-1523-          min_detected_bandwidth = OPUS_BANDWIDTH_WIDEBAND;
+--
+opus_1.5.2/src/opus_encoder.c-1614-          st->prev_channels = st->stream_channels;
+opus_1.5.2/src/opus_encoder.c-1615-
+opus_1.5.2/src/opus_encoder.c-1616-       for (i=0;i<nb_frames;i++)
+opus_1.5.2/src/opus_encoder.c-1617-       {
+opus_1.5.2/src/opus_encoder.c-1618-          int first_frame;
+opus_1.5.2/src/opus_encoder.c-1619-          int frame_to_celt;
+opus_1.5.2/src/opus_encoder.c:1620:          int frame_redundancy;
+opus_1.5.2/src/opus_encoder.c-1621-          opus_int32 curr_max;
+opus_1.5.2/src/opus_encoder.c-1622-          /* Attempt DRED encoding until we have a non-DTX frame. In case of DTX refresh,
+opus_1.5.2/src/opus_encoder.c-1623-             that allows for DRED not to be in the first frame. */
+opus_1.5.2/src/opus_encoder.c-1624-          first_frame = (i == 0) || (i == dtx_count);
+opus_1.5.2/src/opus_encoder.c-1625-          st->silk_mode.toMono = 0;
+opus_1.5.2/src/opus_encoder.c-1626-          st->nonfinal_frame = i<(nb_frames-1);
+opus_1.5.2/src/opus_encoder.c-1627-
+opus_1.5.2/src/opus_encoder.c-1628-          /* When switching from SILK/Hybrid to CELT, only ask for a switch at the last frame */
+opus_1.5.2/src/opus_encoder.c-1629-          frame_to_celt = to_celt && i==nb_frames-1;
+opus_1.5.2/src/opus_encoder.c:1630:          frame_redundancy = redundancy && (frame_to_celt || (!to_celt && i==0));
+opus_1.5.2/src/opus_encoder.c-1631-
+opus_1.5.2/src/opus_encoder.c-1632-          curr_max = IMIN(3*st->bitrate_bps/(3*8*st->Fs/enc_frame_size), max_len_sum/nb_frames);
+opus_1.5.2/src/opus_encoder.c-1633-#ifdef ENABLE_DRED
+opus_1.5.2/src/opus_encoder.c-1634-          curr_max = IMIN(curr_max, (max_len_sum-3*dred_bitrate_bps/(3*8*st->Fs/frame_size))/nb_frames);
+opus_1.5.2/src/opus_encoder.c-1635-          if (first_frame) curr_max += 3*dred_bitrate_bps/(3*8*st->Fs/frame_size);
+opus_1.5.2/src/opus_encoder.c-1636-#endif
+--
+opus_1.5.2/src/opus_encoder.c-1648-          dred_bitrate_bps,
+opus_1.5.2/src/opus_encoder.c-1649-#endif
+opus_1.5.2/src/opus_encoder.c-1650-#ifndef DISABLE_FLOAT_API
+opus_1.5.2/src/opus_encoder.c-1651-          &analysis_info,
+opus_1.5.2/src/opus_encoder.c-1652-          is_silence,
+opus_1.5.2/src/opus_encoder.c-1653-#endif
+opus_1.5.2/src/opus_encoder.c:1654:                    frame_redundancy, celt_to_silk, prefill,
+opus_1.5.2/src/opus_encoder.c-1655-                    equiv_rate, frame_to_celt
+opus_1.5.2/src/opus_encoder.c-1656-              );
+opus_1.5.2/src/opus_encoder.c-1657-          if (tmp_len<0)
+opus_1.5.2/src/opus_encoder.c-1658-          {
+opus_1.5.2/src/opus_encoder.c-1659-             RESTORE_STACK;
+opus_1.5.2/src/opus_encoder.c-1660-             return OPUS_INTERNAL_ERROR;
+--
+opus_1.5.2/src/opus_encoder.c-1685-                dred_bitrate_bps,
+opus_1.5.2/src/opus_encoder.c-1686-#endif
+opus_1.5.2/src/opus_encoder.c-1687-#ifndef DISABLE_FLOAT_API
+opus_1.5.2/src/opus_encoder.c-1688-                &analysis_info,
+opus_1.5.2/src/opus_encoder.c-1689-                is_silence,
+opus_1.5.2/src/opus_encoder.c-1690-#endif
+opus_1.5.2/src/opus_encoder.c:1691:                redundancy, celt_to_silk, prefill,
+opus_1.5.2/src/opus_encoder.c-1692-                equiv_rate, to_celt
+opus_1.5.2/src/opus_encoder.c-1693-          );
+opus_1.5.2/src/opus_encoder.c-1694-      RESTORE_STACK;
+opus_1.5.2/src/opus_encoder.c-1695-      return ret;
+opus_1.5.2/src/opus_encoder.c-1696-    }
+opus_1.5.2/src/opus_encoder.c-1697-}
+--
+opus_1.5.2/src/opus_encoder.c-1702-#ifdef ENABLE_DRED
+opus_1.5.2/src/opus_encoder.c-1703-                opus_int32 dred_bitrate_bps,
+opus_1.5.2/src/opus_encoder.c-1704-#endif
+opus_1.5.2/src/opus_encoder.c-1705-#ifndef DISABLE_FLOAT_API
+opus_1.5.2/src/opus_encoder.c-1706-                AnalysisInfo *analysis_info, int is_silence,
+opus_1.5.2/src/opus_encoder.c-1707-#endif
+opus_1.5.2/src/opus_encoder.c:1708:                int redundancy, int celt_to_silk, int prefill,
+opus_1.5.2/src/opus_encoder.c-1709-                opus_int32 equiv_rate, int to_celt)
+opus_1.5.2/src/opus_encoder.c-1710-{
+opus_1.5.2/src/opus_encoder.c-1711-    void *silk_enc;
+opus_1.5.2/src/opus_encoder.c-1712-    CELTEncoder *celt_enc;
+opus_1.5.2/src/opus_encoder.c-1713-    const CELTMode *celt_mode;
+opus_1.5.2/src/opus_encoder.c-1714-    static int dbg_frame_counter = 0;
+opus_1.5.2/src/opus_encoder.c-1715-    static int dbg_global_frame_id = 0;
+opus_1.5.2/src/opus_encoder.c-1716-    int this_frame_id;
+opus_1.5.2/src/opus_encoder.c:1717:    int dbg_redundancy_region_start = -1;
+opus_1.5.2/src/opus_encoder.c:1718:    int dbg_redundancy_region_size  = -1;
+opus_1.5.2/src/opus_encoder.c-1719-    int dbg_red_write_offset = -1;
+opus_1.5.2/src/opus_encoder.c-1720-    int dbg_red_moved = 0;
+opus_1.5.2/src/opus_encoder.c-1721-    int i;
+opus_1.5.2/src/opus_encoder.c-1722-    int ret=0;
+opus_1.5.2/src/opus_encoder.c-1723-    opus_int32 nBytes;
+opus_1.5.2/src/opus_encoder.c-1724-    ec_enc enc;
+opus_1.5.2/src/opus_encoder.c-1725-    int bytes_target;
+opus_1.5.2/src/opus_encoder.c-1726-    int start_band = 0;
+opus_1.5.2/src/opus_encoder.c:1727:    int redundancy_bytes = 0;
+opus_1.5.2/src/opus_encoder.c-1728-    int nb_compr_bytes;
+opus_1.5.2/src/opus_encoder.c-1729-    opus_uint32 redundant_rng = 0;
+opus_1.5.2/src/opus_encoder.c-1730-    int cutoff_Hz;
+opus_1.5.2/src/opus_encoder.c-1731-    int hp_freq_smth1;
+opus_1.5.2/src/opus_encoder.c-1732-    opus_val16 HB_gain;
+opus_1.5.2/src/opus_encoder.c-1733-    int apply_padding;
+--
+opus_1.5.2/src/opus_encoder.c-1738-    opus_int activity = VAD_NO_DECISION;
+opus_1.5.2/src/opus_encoder.c-1739-    VARDECL(opus_val16, pcm_buf);
+opus_1.5.2/src/opus_encoder.c-1740-    VARDECL(opus_val16, tmp_prefill);
+opus_1.5.2/src/opus_encoder.c-1741-    SAVE_STACK;
+opus_1.5.2/src/opus_encoder.c-1742-
+opus_1.5.2/src/opus_encoder.c-1743-    this_frame_id = dbg_global_frame_id++;
+opus_1.5.2/src/opus_encoder.c:1744:    dbg_redundancy_region_start = -1;
+opus_1.5.2/src/opus_encoder.c:1745:    dbg_redundancy_region_size  = -1;
+opus_1.5.2/src/opus_encoder.c-1746-
+opus_1.5.2/src/opus_encoder.c-1747-    st->rangeFinal = 0;
+opus_1.5.2/src/opus_encoder.c-1748-    silk_enc = (char*)st+st->silk_enc_offset;
+opus_1.5.2/src/opus_encoder.c-1749-    celt_enc = (CELTEncoder*)((char*)st+st->celt_enc_offset);
+opus_1.5.2/src/opus_encoder.c-1750-    celt_encoder_ctl(celt_enc, CELT_GET_MODE(&celt_mode));
+opus_1.5.2/src/opus_encoder.c-1751-    curr_bandwidth = st->bandwidth;
+--
+opus_1.5.2/src/opus_encoder.c-1773-    }
+opus_1.5.2/src/opus_encoder.c-1774-#endif
+opus_1.5.2/src/opus_encoder.c-1775-
+opus_1.5.2/src/opus_encoder.c-1776-    /* For the first frame at a new SILK bandwidth */
+opus_1.5.2/src/opus_encoder.c-1777-    if (st->silk_bw_switch)
+opus_1.5.2/src/opus_encoder.c-1778-    {
+opus_1.5.2/src/opus_encoder.c:1779:       redundancy = 1;
+opus_1.5.2/src/opus_encoder.c:1780:       celt_to_silk = 1;
+opus_1.5.2/src/opus_encoder.c-1781-       st->silk_bw_switch = 0;
+opus_1.5.2/src/opus_encoder.c-1782-       /* Do a prefill without resetting the sampling rate control. */
+opus_1.5.2/src/opus_encoder.c-1783-       prefill=2;
+opus_1.5.2/src/opus_encoder.c-1784-    }
+opus_1.5.2/src/opus_encoder.c-1785-
+opus_1.5.2/src/opus_encoder.c:1786:    /* If we decided to go with CELT, make sure redundancy is off, no matter what
+opus_1.5.2/src/opus_encoder.c-1787-       we decided earlier. */
+opus_1.5.2/src/opus_encoder.c-1788-    if (st->mode == MODE_CELT_ONLY)
+opus_1.5.2/src/opus_encoder.c:1789:        redundancy = 0;
+opus_1.5.2/src/opus_encoder.c-1790-
+opus_1.5.2/src/opus_encoder.c:1791:    if (redundancy)
+opus_1.5.2/src/opus_encoder.c-1792-    {
+opus_1.5.2/src/opus_encoder.c:1793:       redundancy_bytes = compute_redundancy_bytes(max_data_bytes, st->bitrate_bps, frame_rate, st->stream_channels);
+opus_1.5.2/src/opus_encoder.c:1794:       if (redundancy_bytes == 0)
+opus_1.5.2/src/opus_encoder.c:1795:          redundancy = 0;
+opus_1.5.2/src/opus_encoder.c-1796-    }
+opus_1.5.2/src/opus_encoder.c-1797-
+opus_1.5.2/src/opus_encoder.c-1798-    /* printf("%d %d %d %d\n", st->bitrate_bps, st->stream_channels, st->mode, curr_bandwidth); */
+opus_1.5.2/src/opus_encoder.c:1799:    bytes_target = IMIN(max_data_bytes-redundancy_bytes, st->bitrate_bps * frame_size / (st->Fs * 8)) - 1;
+opus_1.5.2/src/opus_encoder.c-1800-
+opus_1.5.2/src/opus_encoder.c-1801-    data += 1;
+opus_1.5.2/src/opus_encoder.c-1802-
+opus_1.5.2/src/opus_encoder.c-1803-    ec_enc_init(&enc, data, max_data_bytes-1);
+opus_1.5.2/src/opus_encoder.c-1804-
+opus_1.5.2/src/opus_encoder.c-1805-    ALLOC(pcm_buf, (total_buffer+frame_size)*st->channels, opus_val16);
+--
+opus_1.5.2/src/opus_encoder.c-1982-        }
+opus_1.5.2/src/opus_encoder.c-1983-
+opus_1.5.2/src/opus_encoder.c-1984-        st->silk_mode.useCBR = !st->use_vbr;
+opus_1.5.2/src/opus_encoder.c-1985-
+opus_1.5.2/src/opus_encoder.c-1986-        /* Call SILK encoder for the low band */
+opus_1.5.2/src/opus_encoder.c-1987-
+opus_1.5.2/src/opus_encoder.c:1988:        /* Max bits for SILK, counting ToC, redundancy bytes, and optionally redundancy. */
+opus_1.5.2/src/opus_encoder.c-1989-        st->silk_mode.maxBits = (max_data_bytes-1)*8;
+opus_1.5.2/src/opus_encoder.c:1990:        if (redundancy && redundancy_bytes >= 2)
+opus_1.5.2/src/opus_encoder.c-1991-        {
+opus_1.5.2/src/opus_encoder.c:1992:           /* Counting 1 bit for redundancy position and 20 bits for flag+size (only for hybrid). */
+opus_1.5.2/src/opus_encoder.c:1993:           st->silk_mode.maxBits -= redundancy_bytes*8 + 1;
+opus_1.5.2/src/opus_encoder.c-1994-           if (st->mode == MODE_HYBRID)
+opus_1.5.2/src/opus_encoder.c-1995-              st->silk_mode.maxBits -= 20;
+opus_1.5.2/src/opus_encoder.c-1996-        }
+opus_1.5.2/src/opus_encoder.c-1997-        if (st->silk_mode.useCBR)
+opus_1.5.2/src/opus_encoder.c-1998-        {
+opus_1.5.2/src/opus_encoder.c-1999-           /* When we're in CBR mode, but we have non-SILK data to encode, switch SILK to VBR with cap to
+--
+opus_1.5.2/src/opus_encoder.c-2081-           st->rangeFinal = 0;
+opus_1.5.2/src/opus_encoder.c-2082-           data[-1] = gen_toc(st->mode, st->Fs/frame_size, curr_bandwidth, st->stream_channels);
+opus_1.5.2/src/opus_encoder.c-2083-           RESTORE_STACK;
+opus_1.5.2/src/opus_encoder.c-2084-           return 1;
+opus_1.5.2/src/opus_encoder.c-2085-        }
+opus_1.5.2/src/opus_encoder.c-2086-
+opus_1.5.2/src/opus_encoder.c:2087:        /* FIXME: How do we allocate the redundancy for CBR? */
+opus_1.5.2/src/opus_encoder.c-2088-        if (st->silk_mode.opusCanSwitch)
+opus_1.5.2/src/opus_encoder.c-2089-        {
+opus_1.5.2/src/opus_encoder.c:2090:           redundancy_bytes = compute_redundancy_bytes(max_data_bytes, st->bitrate_bps, frame_rate, st->stream_channels);
+opus_1.5.2/src/opus_encoder.c:2091:           redundancy = (redundancy_bytes != 0);
+opus_1.5.2/src/opus_encoder.c:2092:           celt_to_silk = 0;
+opus_1.5.2/src/opus_encoder.c-2093-           st->silk_bw_switch = 1;
+opus_1.5.2/src/opus_encoder.c-2094-        }
+opus_1.5.2/src/opus_encoder.c-2095-    }
+opus_1.5.2/src/opus_encoder.c-2096-
+opus_1.5.2/src/opus_encoder.c-2097-    /* CELT processing */
+opus_1.5.2/src/opus_encoder.c-2098-    {
+--
+opus_1.5.2/src/opus_encoder.c-2176-            st->hybrid_stereo_width_Q14 = st->silk_mode.stereoWidth_Q14;
+opus_1.5.2/src/opus_encoder.c-2177-        }
+opus_1.5.2/src/opus_encoder.c-2178-    }
+opus_1.5.2/src/opus_encoder.c-2179-
+opus_1.5.2/src/opus_encoder.c-2180-    if ( st->mode != MODE_CELT_ONLY && ec_tell(&enc)+17+20*(st->mode == MODE_HYBRID) <= 8*(max_data_bytes-1))
+opus_1.5.2/src/opus_encoder.c-2181-    {
+opus_1.5.2/src/opus_encoder.c:2182:        /* For SILK mode, the redundancy is inferred from the length */
+opus_1.5.2/src/opus_encoder.c-2183-        if (st->mode == MODE_HYBRID)
+opus_1.5.2/src/opus_encoder.c:2184:           ec_enc_bit_logp(&enc, redundancy, 12);
+opus_1.5.2/src/opus_encoder.c:2185:        if (redundancy)
+opus_1.5.2/src/opus_encoder.c-2186-        {
+opus_1.5.2/src/opus_encoder.c:2187:            int max_redundancy;
+opus_1.5.2/src/opus_encoder.c-2188-            dbg_frame_counter++;
+opus_1.5.2/src/opus_encoder.c:2189:            fprintf(stderr, "REDUNDANCY: event=%d frame_id=%d mode=%d celt_to_silk=%d bytes=%d\n",
+opus_1.5.2/src/opus_encoder.c:2190:                     dbg_frame_counter, this_frame_id, st->mode, celt_to_silk, redundancy_bytes);
+opus_1.5.2/src/opus_encoder.c:2191:            ec_enc_bit_logp(&enc, celt_to_silk, 1);
+opus_1.5.2/src/opus_encoder.c-2192-            if (st->mode == MODE_HYBRID)
+opus_1.5.2/src/opus_encoder.c-2193-            {
+opus_1.5.2/src/opus_encoder.c:2194:               /* Reserve the 8 bits needed for the redundancy length,
+opus_1.5.2/src/opus_encoder.c-2195-                  and at least a few bits for CELT if possible */
+opus_1.5.2/src/opus_encoder.c:2196:               max_redundancy = (max_data_bytes-1)-((ec_tell(&enc)+8+3+7)>>3);
+opus_1.5.2/src/opus_encoder.c-2197-            }
+opus_1.5.2/src/opus_encoder.c-2198-            else
+opus_1.5.2/src/opus_encoder.c:2199:               max_redundancy = (max_data_bytes-1)-((ec_tell(&enc)+7)>>3);
+opus_1.5.2/src/opus_encoder.c:2200:            /* Target the same bit-rate for redundancy as for the rest,
+opus_1.5.2/src/opus_encoder.c-2201-               up to a max of 257 bytes */
+opus_1.5.2/src/opus_encoder.c:2202:            redundancy_bytes = IMIN(max_redundancy, redundancy_bytes);
+opus_1.5.2/src/opus_encoder.c:2203:            redundancy_bytes = IMIN(257, IMAX(2, redundancy_bytes));
+opus_1.5.2/src/opus_encoder.c-2204-            if (st->mode == MODE_HYBRID)
+opus_1.5.2/src/opus_encoder.c:2205:                ec_enc_uint(&enc, redundancy_bytes-2, 256);
+opus_1.5.2/src/opus_encoder.c-2206-        }
+opus_1.5.2/src/opus_encoder.c-2207-    } else {
+opus_1.5.2/src/opus_encoder.c:2208:        redundancy = 0;
+opus_1.5.2/src/opus_encoder.c-2209-    }
+opus_1.5.2/src/opus_encoder.c-2210-
+opus_1.5.2/src/opus_encoder.c:2211:    if (!redundancy)
+opus_1.5.2/src/opus_encoder.c-2212-    {
+opus_1.5.2/src/opus_encoder.c-2213-       st->silk_bw_switch = 0;
+opus_1.5.2/src/opus_encoder.c:2214:       redundancy_bytes = 0;
+opus_1.5.2/src/opus_encoder.c-2215-    }
+opus_1.5.2/src/opus_encoder.c-2216-    if (st->mode != MODE_CELT_ONLY)start_band=17;
+opus_1.5.2/src/opus_encoder.c-2217-
+opus_1.5.2/src/opus_encoder.c-2218-    if (st->mode == MODE_SILK_ONLY)
+opus_1.5.2/src/opus_encoder.c-2219-    {
+opus_1.5.2/src/opus_encoder.c-2220-        ret = (ec_tell(&enc)+7)>>3;
+opus_1.5.2/src/opus_encoder.c-2221-        ec_enc_done(&enc);
+opus_1.5.2/src/opus_encoder.c-2222-        nb_compr_bytes = ret;
+opus_1.5.2/src/opus_encoder.c-2223-    } else {
+opus_1.5.2/src/opus_encoder.c:2224:        nb_compr_bytes = (max_data_bytes-1)-redundancy_bytes;
+opus_1.5.2/src/opus_encoder.c-2225-#ifdef ENABLE_DRED
+opus_1.5.2/src/opus_encoder.c-2226-        if (st->dred_duration > 0)
+opus_1.5.2/src/opus_encoder.c-2227-        {
+opus_1.5.2/src/opus_encoder.c-2228-            int max_celt_bytes;
+opus_1.5.2/src/opus_encoder.c-2229-            opus_int32 dred_bytes = dred_bitrate_bps/(frame_rate*8);
+opus_1.5.2/src/opus_encoder.c-2230-            /* Allow CELT to steal up to 25% of the remaining bits. */
+opus_1.5.2/src/opus_encoder.c-2231-            max_celt_bytes = nb_compr_bytes - dred_bytes*3/4;
+opus_1.5.2/src/opus_encoder.c-2232-            /* But try to give CELT at least 5 bytes to prevent a mismatch with
+opus_1.5.2/src/opus_encoder.c:2233:               the redundancy signaling. */
+opus_1.5.2/src/opus_encoder.c-2234-            max_celt_bytes = IMAX((ec_tell(&enc)+7)/8 + 5, max_celt_bytes);
+opus_1.5.2/src/opus_encoder.c-2235-            /* Subject to the original max. */
+opus_1.5.2/src/opus_encoder.c-2236-            nb_compr_bytes = IMIN(nb_compr_bytes, max_celt_bytes);
+opus_1.5.2/src/opus_encoder.c-2237-        }
+opus_1.5.2/src/opus_encoder.c-2238-#endif
+opus_1.5.2/src/opus_encoder.c-2239-        ec_enc_shrink(&enc, nb_compr_bytes);
+opus_1.5.2/src/opus_encoder.c-2240-    }
+opus_1.5.2/src/opus_encoder.c-2241-
+opus_1.5.2/src/opus_encoder.c-2242-#ifndef DISABLE_FLOAT_API
+opus_1.5.2/src/opus_encoder.c:2243:    if (redundancy || st->mode != MODE_SILK_ONLY)
+opus_1.5.2/src/opus_encoder.c-2244-       celt_encoder_ctl(celt_enc, CELT_SET_ANALYSIS(analysis_info));
+opus_1.5.2/src/opus_encoder.c-2245-#endif
+opus_1.5.2/src/opus_encoder.c-2246-    if (st->mode == MODE_HYBRID) {
+opus_1.5.2/src/opus_encoder.c-2247-       SILKInfo info;
+opus_1.5.2/src/opus_encoder.c-2248-       info.signalType = st->silk_mode.signalType;
+opus_1.5.2/src/opus_encoder.c-2249-       info.offset = st->silk_mode.offset;
+opus_1.5.2/src/opus_encoder.c-2250-       celt_encoder_ctl(celt_enc, CELT_SET_SILK_INFO(&info));
+opus_1.5.2/src/opus_encoder.c-2251-    }
+opus_1.5.2/src/opus_encoder.c-2252-
+opus_1.5.2/src/opus_encoder.c-2253-    /* 5 ms redundant frame for CELT->SILK */
+opus_1.5.2/src/opus_encoder.c:2254:    if (redundancy && celt_to_silk)
+opus_1.5.2/src/opus_encoder.c-2255-    {
+opus_1.5.2/src/opus_encoder.c-2256-        int err;
+opus_1.5.2/src/opus_encoder.c-2257-        celt_encoder_ctl(celt_enc, CELT_SET_START_BAND(0));
+opus_1.5.2/src/opus_encoder.c-2258-        celt_encoder_ctl(celt_enc, OPUS_SET_VBR(0));
+opus_1.5.2/src/opus_encoder.c-2259-        celt_encoder_ctl(celt_enc, OPUS_SET_BITRATE(OPUS_BITRATE_MAX));
+opus_1.5.2/src/opus_encoder.c:2260:        err = celt_encode_with_ec(celt_enc, pcm_buf, st->Fs/200, data+nb_compr_bytes, redundancy_bytes, NULL);
+opus_1.5.2/src/opus_encoder.c:2261:        fprintf(stderr, "  -> redundant frame written at offset %d, size %d\n", nb_compr_bytes, redundancy_bytes);
+opus_1.5.2/src/opus_encoder.c-2262-        dbg_red_write_offset = nb_compr_bytes;
+opus_1.5.2/src/opus_encoder.c:2263:        dbg_redundancy_region_start = nb_compr_bytes;
+opus_1.5.2/src/opus_encoder.c:2264:        dbg_redundancy_region_size  = redundancy_bytes;
+opus_1.5.2/src/opus_encoder.c-2265-        if (err < 0)
+opus_1.5.2/src/opus_encoder.c-2266-        {
+opus_1.5.2/src/opus_encoder.c-2267-           RESTORE_STACK;
+opus_1.5.2/src/opus_encoder.c-2268-           return OPUS_INTERNAL_ERROR;
+opus_1.5.2/src/opus_encoder.c-2269-        }
+opus_1.5.2/src/opus_encoder.c-2270-        celt_encoder_ctl(celt_enc, OPUS_GET_FINAL_RANGE(&redundant_rng));
+--
+opus_1.5.2/src/opus_encoder.c-2318-           ret = celt_encode_with_ec(celt_enc, pcm_buf, frame_size, NULL, nb_compr_bytes, &enc);
+opus_1.5.2/src/opus_encoder.c-2319-           if (ret < 0)
+opus_1.5.2/src/opus_encoder.c-2320-           {
+opus_1.5.2/src/opus_encoder.c-2321-              RESTORE_STACK;
+opus_1.5.2/src/opus_encoder.c-2322-              return OPUS_INTERNAL_ERROR;
+opus_1.5.2/src/opus_encoder.c-2323-           }
+opus_1.5.2/src/opus_encoder.c:2324:           /* Put CELT->SILK redundancy data in the right place. */
+opus_1.5.2/src/opus_encoder.c:2325:           if (redundancy && celt_to_silk && st->mode==MODE_HYBRID && nb_compr_bytes != ret)
+opus_1.5.2/src/opus_encoder.c-2326-           {
+opus_1.5.2/src/opus_encoder.c:2327:              OPUS_MOVE(data+ret, data+nb_compr_bytes, redundancy_bytes);
+opus_1.5.2/src/opus_encoder.c-2328-
+opus_1.5.2/src/opus_encoder.c:2329:              /* Record final redundancy position after relocation */
+opus_1.5.2/src/opus_encoder.c:2330:              dbg_redundancy_region_start = ret;
+opus_1.5.2/src/opus_encoder.c-2331-              dbg_red_moved = 1;
+opus_1.5.2/src/opus_encoder.c-2332-
+opus_1.5.2/src/opus_encoder.c:2333:              nb_compr_bytes = ret+redundancy_bytes;
+opus_1.5.2/src/opus_encoder.c-2334-           }
+opus_1.5.2/src/opus_encoder.c-2335-        }
+opus_1.5.2/src/opus_encoder.c-2336-    }
+opus_1.5.2/src/opus_encoder.c-2337-
+opus_1.5.2/src/opus_encoder.c-2338-    /* 5 ms redundant frame for SILK->CELT */
+opus_1.5.2/src/opus_encoder.c:2339:    if (redundancy && !celt_to_silk)
+opus_1.5.2/src/opus_encoder.c-2340-    {
+opus_1.5.2/src/opus_encoder.c-2341-        int err;
+opus_1.5.2/src/opus_encoder.c-2342-        unsigned char dummy[2];
+opus_1.5.2/src/opus_encoder.c-2343-        int N2, N4;
+opus_1.5.2/src/opus_encoder.c-2344-        N2 = st->Fs/200;
+opus_1.5.2/src/opus_encoder.c-2345-        N4 = st->Fs/400;
+--
+opus_1.5.2/src/opus_encoder.c-2356-           nb_compr_bytes = ret;
+opus_1.5.2/src/opus_encoder.c-2357-           ec_enc_shrink(&enc, nb_compr_bytes);
+opus_1.5.2/src/opus_encoder.c-2358-        }
+opus_1.5.2/src/opus_encoder.c-2359-        /* NOTE: We could speed this up slightly (at the expense of code size) by just adding a function that prefills the buffer */
+opus_1.5.2/src/opus_encoder.c-2360-        celt_encode_with_ec(celt_enc, pcm_buf+st->channels*(frame_size-N2-N4), N4, dummy, 2, NULL);
+opus_1.5.2/src/opus_encoder.c-2361-
+opus_1.5.2/src/opus_encoder.c:2362:        err = celt_encode_with_ec(celt_enc, pcm_buf+st->channels*(frame_size-N2), N2, data+nb_compr_bytes, redundancy_bytes, NULL);
+opus_1.5.2/src/opus_encoder.c:2363:        fprintf(stderr, "  -> redundant frame written at offset %d, size %d\n", nb_compr_bytes, redundancy_bytes);
+opus_1.5.2/src/opus_encoder.c-2364-        dbg_red_write_offset = nb_compr_bytes;
+opus_1.5.2/src/opus_encoder.c:2365:        dbg_redundancy_region_start = nb_compr_bytes;
+opus_1.5.2/src/opus_encoder.c:2366:        dbg_redundancy_region_size  = redundancy_bytes;
+opus_1.5.2/src/opus_encoder.c-2367-        if (err < 0)
+opus_1.5.2/src/opus_encoder.c-2368-        {
+opus_1.5.2/src/opus_encoder.c-2369-           RESTORE_STACK;
+opus_1.5.2/src/opus_encoder.c-2370-           return OPUS_INTERNAL_ERROR;
+opus_1.5.2/src/opus_encoder.c-2371-        }
+opus_1.5.2/src/opus_encoder.c-2372-        celt_encoder_ctl(celt_enc, OPUS_GET_FINAL_RANGE(&redundant_rng));
+--
+opus_1.5.2/src/opus_encoder.c-2414-          RESTORE_STACK;
+opus_1.5.2/src/opus_encoder.c-2415-          return OPUS_BUFFER_TOO_SMALL;
+opus_1.5.2/src/opus_encoder.c-2416-       }
+opus_1.5.2/src/opus_encoder.c-2417-       data[1] = 0;
+opus_1.5.2/src/opus_encoder.c-2418-       ret = 1;
+opus_1.5.2/src/opus_encoder.c-2419-       st->rangeFinal = 0;
+opus_1.5.2/src/opus_encoder.c:2420:    } else if (st->mode==MODE_SILK_ONLY&&!redundancy)
+opus_1.5.2/src/opus_encoder.c-2421-    {
+opus_1.5.2/src/opus_encoder.c-2422-       /*When in LPC only mode it's perfectly
+opus_1.5.2/src/opus_encoder.c-2423-         reasonable to strip off trailing zero bytes as
+opus_1.5.2/src/opus_encoder.c-2424-         the required range decoder behavior is to
+opus_1.5.2/src/opus_encoder.c-2425-         fill these in. This can't be done when the MDCT
+opus_1.5.2/src/opus_encoder.c-2426-         modes are used because the decoder needs to know
+opus_1.5.2/src/opus_encoder.c-2427-         the actual length for allocation purposes.*/
+opus_1.5.2/src/opus_encoder.c-2428-       while(ret>2&&data[ret]==0)ret--;
+opus_1.5.2/src/opus_encoder.c-2429-    }
+opus_1.5.2/src/opus_encoder.c:2430:    /* Count ToC and redundancy */
+opus_1.5.2/src/opus_encoder.c:2431:    ret += 1+redundancy_bytes;
+opus_1.5.2/src/opus_encoder.c-2432-    apply_padding = !st->use_vbr;
+opus_1.5.2/src/opus_encoder.c-2433-#ifdef ENABLE_DRED
+opus_1.5.2/src/opus_encoder.c-2434-    if (st->dred_duration > 0 && st->dred_encoder.loaded && first_frame) {
+opus_1.5.2/src/opus_encoder.c-2435-       opus_extension_data extension;
+opus_1.5.2/src/opus_encoder.c-2436-       unsigned char buf[DRED_MAX_DATA_SIZE];
+opus_1.5.2/src/opus_encoder.c-2437-       int dred_chunks;
+opus_1.5.2/src/opus_encoder.c-2438-       int dred_bytes_left;
+opus_1.5.2/src/opus_encoder.c:2439:       dred_chunks = IMIN((st->dred_duration+5)/4, DRED_NUM_REDUNDANCY_FRAMES/2);
+opus_1.5.2/src/opus_encoder.c-2440-       if (st->use_vbr) dred_chunks = IMIN(dred_chunks, st->dred_target_chunks);
+opus_1.5.2/src/opus_encoder.c-2441-       /* Remaining space for DRED, accounting for cost the 3 extra bytes for code 3, padding length, and extension number. */
+opus_1.5.2/src/opus_encoder.c-2442-       dred_bytes_left = IMIN(DRED_MAX_DATA_SIZE, max_data_bytes-ret-3);
+opus_1.5.2/src/opus_encoder.c-2443-       /* Account for the extra bytes required to signal large padding length. */
+opus_1.5.2/src/opus_encoder.c-2444-       dred_bytes_left -= (dred_bytes_left+1+DRED_EXPERIMENTAL_BYTES)/255;
+opus_1.5.2/src/opus_encoder.c-2445-       /* Check whether we actually have something to encode. */
+--
+opus_1.5.2/src/opus_encoder.c-2481-          return OPUS_INTERNAL_ERROR;
+opus_1.5.2/src/opus_encoder.c-2482-       }
+opus_1.5.2/src/opus_encoder.c-2483-       ret = max_data_bytes;
+opus_1.5.2/src/opus_encoder.c-2484-    }
+opus_1.5.2/src/opus_encoder.c-2485-    RESTORE_STACK;
+opus_1.5.2/src/opus_encoder.c-2486-    fprintf(stderr,
+opus_1.5.2/src/opus_encoder.c:2487:      "RED_FINAL: frame=%d mode=%d redundancy=%d "
+opus_1.5.2/src/opus_encoder.c:2488:      "celt_to_silk=%d write_packet_offset=%d "
+opus_1.5.2/src/opus_encoder.c-2489-      "final_packet_offset=%d final_packet_end=%d "
+opus_1.5.2/src/opus_encoder.c:2490:      "redundancy_size=%d packet_return_length=%d moved=%d\n",
+opus_1.5.2/src/opus_encoder.c-2491-
+opus_1.5.2/src/opus_encoder.c-2492-      this_frame_id,
+opus_1.5.2/src/opus_encoder.c-2493-      st->mode,
+opus_1.5.2/src/opus_encoder.c:2494:      redundancy,
+opus_1.5.2/src/opus_encoder.c:2495:      celt_to_silk,
+opus_1.5.2/src/opus_encoder.c-2496-
+opus_1.5.2/src/opus_encoder.c-2497-      dbg_red_write_offset < 0 ?
+opus_1.5.2/src/opus_encoder.c-2498-         -1 : dbg_red_write_offset + 1,
+opus_1.5.2/src/opus_encoder.c-2499-
+opus_1.5.2/src/opus_encoder.c:2500:      dbg_redundancy_region_start < 0 ?
+opus_1.5.2/src/opus_encoder.c:2501:         -1 : dbg_redundancy_region_start + 1,
+opus_1.5.2/src/opus_encoder.c-2502-
+opus_1.5.2/src/opus_encoder.c:2503:      dbg_redundancy_region_start < 0 ?
+opus_1.5.2/src/opus_encoder.c:2504:         -1 : dbg_redundancy_region_start + 1 +
+opus_1.5.2/src/opus_encoder.c:2505:               dbg_redundancy_region_size,
+opus_1.5.2/src/opus_encoder.c-2506-
+opus_1.5.2/src/opus_encoder.c:2507:      dbg_redundancy_region_size,
+opus_1.5.2/src/opus_encoder.c-2508-      ret,
+opus_1.5.2/src/opus_encoder.c-2509-      dbg_red_moved
+opus_1.5.2/src/opus_encoder.c-2510-   );
+opus_1.5.2/src/opus_encoder.c-2511-    return ret;
+opus_1.5.2/src/opus_encoder.c-2512-}
+opus_1.5.2/src/opus_encoder.c-2513-
+--
+opus_1.5.2/src/opus_decoder.c-79-   int          stream_channels;
+opus_1.5.2/src/opus_decoder.c-80-
+opus_1.5.2/src/opus_decoder.c-81-   int          bandwidth;
+opus_1.5.2/src/opus_decoder.c-82-   int          mode;
+opus_1.5.2/src/opus_decoder.c-83-   int          prev_mode;
+opus_1.5.2/src/opus_decoder.c-84-   int          frame_size;
+opus_1.5.2/src/opus_decoder.c:85:   int          prev_redundancy;
+opus_1.5.2/src/opus_decoder.c-86-   int          last_packet_duration;
+opus_1.5.2/src/opus_decoder.c-87-#ifndef FIXED_POINT
+opus_1.5.2/src/opus_decoder.c-88-   opus_val16   softclip_mem[2];
+opus_1.5.2/src/opus_decoder.c-89-#endif
+opus_1.5.2/src/opus_decoder.c-90-
+opus_1.5.2/src/opus_decoder.c-91-   opus_uint32  rangeFinal;
+--
+opus_1.5.2/src/opus_decoder.c-254-
+opus_1.5.2/src/opus_decoder.c-255-   int audiosize;
+opus_1.5.2/src/opus_decoder.c-256-   int mode;
+opus_1.5.2/src/opus_decoder.c-257-   int bandwidth;
+opus_1.5.2/src/opus_decoder.c-258-   int transition=0;
+opus_1.5.2/src/opus_decoder.c-259-   int start_band;
+opus_1.5.2/src/opus_decoder.c:260:   int redundancy=0;
+opus_1.5.2/src/opus_decoder.c:261:   int redundancy_bytes = 0;
+opus_1.5.2/src/opus_decoder.c:262:   int celt_to_silk=0;
+opus_1.5.2/src/opus_decoder.c-263-   int c;
+opus_1.5.2/src/opus_decoder.c-264-   int F2_5, F5, F10, F20;
+opus_1.5.2/src/opus_decoder.c-265-   const opus_val16 *window;
+opus_1.5.2/src/opus_decoder.c-266-   opus_uint32 redundant_rng = 0;
+opus_1.5.2/src/opus_decoder.c-267-   int celt_accum;
+opus_1.5.2/src/opus_decoder.c-268-   ALLOC_STACK;
+--
+opus_1.5.2/src/opus_decoder.c-292-      audiosize = st->frame_size;
+opus_1.5.2/src/opus_decoder.c-293-      mode = st->mode;
+opus_1.5.2/src/opus_decoder.c-294-      bandwidth = st->bandwidth;
+opus_1.5.2/src/opus_decoder.c-295-      ec_dec_init(&dec,(unsigned char*)data,len);
+opus_1.5.2/src/opus_decoder.c-296-   } else {
+opus_1.5.2/src/opus_decoder.c-297-      audiosize = frame_size;
+opus_1.5.2/src/opus_decoder.c:298:      /* Run PLC using last used mode (CELT if we ended with CELT redundancy) */
+opus_1.5.2/src/opus_decoder.c:299:      mode = st->prev_redundancy ? MODE_CELT_ONLY : st->prev_mode;
+opus_1.5.2/src/opus_decoder.c-300-      bandwidth = 0;
+opus_1.5.2/src/opus_decoder.c-301-
+opus_1.5.2/src/opus_decoder.c-302-      if (mode == 0)
+opus_1.5.2/src/opus_decoder.c-303-      {
+opus_1.5.2/src/opus_decoder.c-304-         /* If we haven't got any packet yet, all we can do is return zeros */
+opus_1.5.2/src/opus_decoder.c-305-         for (i=0;i<audiosize*st->channels;i++)
+--
+opus_1.5.2/src/opus_decoder.c-341-   celt_accum = 0;
+opus_1.5.2/src/opus_decoder.c-342-#endif
+opus_1.5.2/src/opus_decoder.c-343-
+opus_1.5.2/src/opus_decoder.c-344-   pcm_transition_silk_size = ALLOC_NONE;
+opus_1.5.2/src/opus_decoder.c-345-   pcm_transition_celt_size = ALLOC_NONE;
+opus_1.5.2/src/opus_decoder.c-346-   if (data!=NULL && st->prev_mode > 0 && (
+opus_1.5.2/src/opus_decoder.c:347:       (mode == MODE_CELT_ONLY && st->prev_mode != MODE_CELT_ONLY && !st->prev_redundancy)
+opus_1.5.2/src/opus_decoder.c-348-    || (mode != MODE_CELT_ONLY && st->prev_mode == MODE_CELT_ONLY) )
+opus_1.5.2/src/opus_decoder.c-349-      )
+opus_1.5.2/src/opus_decoder.c-350-   {
+opus_1.5.2/src/opus_decoder.c-351-      transition = 1;
+opus_1.5.2/src/opus_decoder.c-352-      /* Decide where to allocate the stack memory for pcm_transition */
+opus_1.5.2/src/opus_decoder.c-353-      if (mode == MODE_CELT_ONLY)
+--
+opus_1.5.2/src/opus_decoder.c-452-   start_band = 0;
+opus_1.5.2/src/opus_decoder.c-453-   if (!decode_fec && mode != MODE_CELT_ONLY && data != NULL
+opus_1.5.2/src/opus_decoder.c-454-    && ec_tell(&dec)+17+20*(mode == MODE_HYBRID) <= 8*len)
+opus_1.5.2/src/opus_decoder.c-455-   {
+opus_1.5.2/src/opus_decoder.c-456-      /* Check if we have a redundant 0-8 kHz band */
+opus_1.5.2/src/opus_decoder.c-457-      if (mode == MODE_HYBRID)
+opus_1.5.2/src/opus_decoder.c:458:         redundancy = ec_dec_bit_logp(&dec, 12);
+opus_1.5.2/src/opus_decoder.c-459-      else
+opus_1.5.2/src/opus_decoder.c:460:         redundancy = 1;
+opus_1.5.2/src/opus_decoder.c:461:      if (redundancy)
+opus_1.5.2/src/opus_decoder.c-462-      {
+opus_1.5.2/src/opus_decoder.c:463:         celt_to_silk = ec_dec_bit_logp(&dec, 1);
+opus_1.5.2/src/opus_decoder.c:464:         /* redundancy_bytes will be at least two, in the non-hybrid
+opus_1.5.2/src/opus_decoder.c-465-            case due to the ec_tell() check above */
+opus_1.5.2/src/opus_decoder.c:466:         redundancy_bytes = mode==MODE_HYBRID ?
+opus_1.5.2/src/opus_decoder.c-467-               (opus_int32)ec_dec_uint(&dec, 256)+2 :
+opus_1.5.2/src/opus_decoder.c-468-               len-((ec_tell(&dec)+7)>>3);
+opus_1.5.2/src/opus_decoder.c:469:         len -= redundancy_bytes;
+opus_1.5.2/src/opus_decoder.c-470-         /* This is a sanity check. It should never happen for a valid
+opus_1.5.2/src/opus_decoder.c-471-            packet, so the exact behaviour is not normative. */
+opus_1.5.2/src/opus_decoder.c-472-         if (len*8 < ec_tell(&dec))
+opus_1.5.2/src/opus_decoder.c-473-         {
+opus_1.5.2/src/opus_decoder.c-474-            len = 0;
+opus_1.5.2/src/opus_decoder.c:475:            redundancy_bytes = 0;
+opus_1.5.2/src/opus_decoder.c:476:            redundancy = 0;
+opus_1.5.2/src/opus_decoder.c-477-         }
+opus_1.5.2/src/opus_decoder.c-478-         /* Shrink decoder because of raw bits */
+opus_1.5.2/src/opus_decoder.c:479:         dec.storage -= redundancy_bytes;
+opus_1.5.2/src/opus_decoder.c-480-      }
+opus_1.5.2/src/opus_decoder.c-481-   }
+opus_1.5.2/src/opus_decoder.c-482-   if (mode != MODE_CELT_ONLY)
+opus_1.5.2/src/opus_decoder.c-483-      start_band = 17;
+opus_1.5.2/src/opus_decoder.c-484-
+opus_1.5.2/src/opus_decoder.c:485:   if (redundancy)
+opus_1.5.2/src/opus_decoder.c-486-   {
+opus_1.5.2/src/opus_decoder.c-487-      transition = 0;
+opus_1.5.2/src/opus_decoder.c-488-      pcm_transition_silk_size=ALLOC_NONE;
+opus_1.5.2/src/opus_decoder.c-489-   }
+opus_1.5.2/src/opus_decoder.c-490-
+opus_1.5.2/src/opus_decoder.c-491-   ALLOC(pcm_transition_silk, pcm_transition_silk_size, opus_val16);
+--
+opus_1.5.2/src/opus_decoder.c-521-         break;
+opus_1.5.2/src/opus_decoder.c-522-      }
+opus_1.5.2/src/opus_decoder.c-523-      MUST_SUCCEED(celt_decoder_ctl(celt_dec, CELT_SET_END_BAND(endband)));
+opus_1.5.2/src/opus_decoder.c-524-   }
+opus_1.5.2/src/opus_decoder.c-525-   MUST_SUCCEED(celt_decoder_ctl(celt_dec, CELT_SET_CHANNELS(st->stream_channels)));
+opus_1.5.2/src/opus_decoder.c-526-
+opus_1.5.2/src/opus_decoder.c:527:   /* Only allocation memory for redundancy if/when needed */
+opus_1.5.2/src/opus_decoder.c:528:   redundant_audio_size = redundancy ? F5*st->channels : ALLOC_NONE;
+opus_1.5.2/src/opus_decoder.c-529-   ALLOC(redundant_audio, redundant_audio_size, opus_val16);
+opus_1.5.2/src/opus_decoder.c-530-
+opus_1.5.2/src/opus_decoder.c-531-   /* 5 ms redundant frame for CELT->SILK*/
+opus_1.5.2/src/opus_decoder.c:532:   if (redundancy && celt_to_silk)
+opus_1.5.2/src/opus_decoder.c-533-   {
+opus_1.5.2/src/opus_decoder.c:534:      /* If the previous frame did not use CELT (the first redundancy frame in
+opus_1.5.2/src/opus_decoder.c-535-         a transition from SILK may have been lost) then the CELT decoder is
+opus_1.5.2/src/opus_decoder.c:536:         stale at this point and the redundancy audio is not useful, however
+opus_1.5.2/src/opus_decoder.c:537:         the final range is still needed (for testing), so the redundancy is
+opus_1.5.2/src/opus_decoder.c-538-         always decoded but the decoded audio may not be used */
+opus_1.5.2/src/opus_decoder.c-539-      MUST_SUCCEED(celt_decoder_ctl(celt_dec, CELT_SET_START_BAND(0)));
+opus_1.5.2/src/opus_decoder.c:540:      celt_decode_with_ec(celt_dec, data+len, redundancy_bytes,
+opus_1.5.2/src/opus_decoder.c-541-                          redundant_audio, F5, NULL, 0);
+opus_1.5.2/src/opus_decoder.c-542-      MUST_SUCCEED(celt_decoder_ctl(celt_dec, OPUS_GET_FINAL_RANGE(&redundant_rng)));
+opus_1.5.2/src/opus_decoder.c-543-   }
+opus_1.5.2/src/opus_decoder.c-544-
+opus_1.5.2/src/opus_decoder.c-545-   /* MUST be after PLC */
+opus_1.5.2/src/opus_decoder.c-546-   MUST_SUCCEED(celt_decoder_ctl(celt_dec, CELT_SET_START_BAND(start_band)));
+opus_1.5.2/src/opus_decoder.c-547-
+opus_1.5.2/src/opus_decoder.c-548-   if (mode != MODE_SILK_ONLY)
+opus_1.5.2/src/opus_decoder.c-549-   {
+opus_1.5.2/src/opus_decoder.c-550-      int celt_frame_size = IMIN(F20, frame_size);
+opus_1.5.2/src/opus_decoder.c-551-      /* Make sure to discard any previous CELT state */
+opus_1.5.2/src/opus_decoder.c:552:      if (mode != st->prev_mode && st->prev_mode > 0 && !st->prev_redundancy)
+opus_1.5.2/src/opus_decoder.c-553-         MUST_SUCCEED(celt_decoder_ctl(celt_dec, OPUS_RESET_STATE));
+opus_1.5.2/src/opus_decoder.c-554-      /* Decode CELT */
+opus_1.5.2/src/opus_decoder.c-555-      celt_ret = celt_decode_with_ec_dred(celt_dec, decode_fec ? NULL : data,
+opus_1.5.2/src/opus_decoder.c-556-                                     len, pcm, celt_frame_size, &dec, celt_accum
+opus_1.5.2/src/opus_decoder.c-557-#ifdef ENABLE_DEEP_PLC
+opus_1.5.2/src/opus_decoder.c-558-                                     , &st->lpcnet
+--
+opus_1.5.2/src/opus_decoder.c-564-      {
+opus_1.5.2/src/opus_decoder.c-565-         for (i=0;i<frame_size*st->channels;i++)
+opus_1.5.2/src/opus_decoder.c-566-            pcm[i] = 0;
+opus_1.5.2/src/opus_decoder.c-567-      }
+opus_1.5.2/src/opus_decoder.c-568-      /* For hybrid -> SILK transitions, we let the CELT MDCT
+opus_1.5.2/src/opus_decoder.c-569-         do a fade-out by decoding a silence frame */
+opus_1.5.2/src/opus_decoder.c:570:      if (st->prev_mode == MODE_HYBRID && !(redundancy && celt_to_silk && st->prev_redundancy) )
+opus_1.5.2/src/opus_decoder.c-571-      {
+opus_1.5.2/src/opus_decoder.c-572-         MUST_SUCCEED(celt_decoder_ctl(celt_dec, CELT_SET_START_BAND(0)));
+opus_1.5.2/src/opus_decoder.c-573-         celt_decode_with_ec(celt_dec, silence, 2, pcm, F2_5, NULL, celt_accum);
+opus_1.5.2/src/opus_decoder.c-574-      }
+opus_1.5.2/src/opus_decoder.c-575-   }
+opus_1.5.2/src/opus_decoder.c-576-
+--
+opus_1.5.2/src/opus_decoder.c-589-      const CELTMode *celt_mode;
+opus_1.5.2/src/opus_decoder.c-590-      MUST_SUCCEED(celt_decoder_ctl(celt_dec, CELT_GET_MODE(&celt_mode)));
+opus_1.5.2/src/opus_decoder.c-591-      window = celt_mode->window;
+opus_1.5.2/src/opus_decoder.c-592-   }
+opus_1.5.2/src/opus_decoder.c-593-
+opus_1.5.2/src/opus_decoder.c-594-   /* 5 ms redundant frame for SILK->CELT */
+opus_1.5.2/src/opus_decoder.c:595:   if (redundancy && !celt_to_silk)
+opus_1.5.2/src/opus_decoder.c-596-   {
+opus_1.5.2/src/opus_decoder.c-597-      MUST_SUCCEED(celt_decoder_ctl(celt_dec, OPUS_RESET_STATE));
+opus_1.5.2/src/opus_decoder.c-598-      MUST_SUCCEED(celt_decoder_ctl(celt_dec, CELT_SET_START_BAND(0)));
+opus_1.5.2/src/opus_decoder.c-599-
+opus_1.5.2/src/opus_decoder.c:600:      celt_decode_with_ec(celt_dec, data+len, redundancy_bytes, redundant_audio, F5, NULL, 0);
+opus_1.5.2/src/opus_decoder.c-601-      MUST_SUCCEED(celt_decoder_ctl(celt_dec, OPUS_GET_FINAL_RANGE(&redundant_rng)));
+opus_1.5.2/src/opus_decoder.c-602-      smooth_fade(pcm+st->channels*(frame_size-F2_5), redundant_audio+st->channels*F2_5,
+opus_1.5.2/src/opus_decoder.c-603-                  pcm+st->channels*(frame_size-F2_5), F2_5, st->channels, window, st->Fs);
+opus_1.5.2/src/opus_decoder.c-604-   }
+opus_1.5.2/src/opus_decoder.c-605-   /* 5ms redundant frame for CELT->SILK; ignore if the previous frame did not
+opus_1.5.2/src/opus_decoder.c:606:      use CELT (the first redundancy frame in a transition from SILK may have
+opus_1.5.2/src/opus_decoder.c-607-      been lost) */
+opus_1.5.2/src/opus_decoder.c:608:   if (redundancy && celt_to_silk && (st->prev_mode != MODE_SILK_ONLY || st->prev_redundancy))
+opus_1.5.2/src/opus_decoder.c-609-   {
+opus_1.5.2/src/opus_decoder.c-610-      for (c=0;c<st->channels;c++)
+opus_1.5.2/src/opus_decoder.c-611-      {
+opus_1.5.2/src/opus_decoder.c-612-         for (i=0;i<F2_5;i++)
+opus_1.5.2/src/opus_decoder.c-613-            pcm[st->channels*i+c] = redundant_audio[st->channels*i+c];
+opus_1.5.2/src/opus_decoder.c-614-      }
+--
+opus_1.5.2/src/opus_decoder.c-651-   if (len <= 1)
+opus_1.5.2/src/opus_decoder.c-652-      st->rangeFinal = 0;
+opus_1.5.2/src/opus_decoder.c-653-   else
+opus_1.5.2/src/opus_decoder.c-654-      st->rangeFinal = dec.rng ^ redundant_rng;
+opus_1.5.2/src/opus_decoder.c-655-
+opus_1.5.2/src/opus_decoder.c-656-   st->prev_mode = mode;
+opus_1.5.2/src/opus_decoder.c:657:   st->prev_redundancy = redundancy && !celt_to_silk;
+opus_1.5.2/src/opus_decoder.c-658-
+opus_1.5.2/src/opus_decoder.c-659-   if (celt_ret>=0)
+opus_1.5.2/src/opus_decoder.c-660-   {
+opus_1.5.2/src/opus_decoder.c-661-      if (OPUS_CHECK_ARRAY(pcm, audiosize*st->channels))
+opus_1.5.2/src/opus_decoder.c-662-         OPUS_PRINT_INT(audiosize);
+opus_1.5.2/src/opus_decoder.c-663-   }
+--
+opus_1.5.2/src/opus_decoder.c-1410-      return payload_len;
+opus_1.5.2/src/opus_decoder.c-1411-   if (payload != NULL)
+opus_1.5.2/src/opus_decoder.c-1412-   {
+opus_1.5.2/src/opus_decoder.c-1413-      int offset;
+opus_1.5.2/src/opus_decoder.c-1414-      int min_feature_frames;
+opus_1.5.2/src/opus_decoder.c-1415-      offset = 100*max_dred_samples/sampling_rate;
+opus_1.5.2/src/opus_decoder.c:1416:      min_feature_frames = IMIN(2 + offset, 2*DRED_NUM_REDUNDANCY_FRAMES);
+opus_1.5.2/src/opus_decoder.c-1417-      dred_ec_decode(dred, payload, payload_len, min_feature_frames, dred_frame_offset);
+opus_1.5.2/src/opus_decoder.c-1418-      if (!defer_processing)
+opus_1.5.2/src/opus_decoder.c-1419-         opus_dred_process(dred_dec, dred, dred);
+opus_1.5.2/src/opus_decoder.c-1420-      if (dred_end) *dred_end = IMAX(0, -dred->dred_offset*sampling_rate/400);
+opus_1.5.2/src/opus_decoder.c-1421-      return IMAX(0, dred->nb_latents*sampling_rate/25 - dred->dred_offset* sampling_rate/400);
+opus_1.5.2/src/opus_decoder.c-1422-   }
+--
+opus_1.5.2/src/opus_demo.c-136-    fprintf(stderr, "-dtx                 : enable SILK DTX\n" );
+opus_1.5.2/src/opus_demo.c-137-    fprintf(stderr, "-loss <perc>         : optimize for loss percentage and simulate packet loss, in percent (0-100); default: 0\n" );
+opus_1.5.2/src/opus_demo.c-138-#ifdef ENABLE_LOSSGEN
+opus_1.5.2/src/opus_demo.c-139-    fprintf(stderr, "-sim_loss <perc>     : simulate realistic (bursty) packet loss from percentage, using generative model\n" );
+opus_1.5.2/src/opus_demo.c-140-#endif
+opus_1.5.2/src/opus_demo.c-141-    fprintf(stderr, "-lossfile <file>     : simulate packet loss, reading loss from file\n" );
+opus_1.5.2/src/opus_demo.c:142:    fprintf(stderr, "-dred <frames>       : add Deep REDundancy (in units of 10-ms frames)\n" );
+opus_1.5.2/src/opus_demo.c-143-}
+opus_1.5.2/src/opus_demo.c-144-
+opus_1.5.2/src/opus_demo.c-145-static void int_to_char(opus_uint32 i, unsigned char ch[4])
+opus_1.5.2/src/opus_demo.c-146-{
+opus_1.5.2/src/opus_demo.c-147-    ch[0] = i>>24;
+opus_1.5.2/src/opus_demo.c-148-    ch[1] = (i>>16)&0xFF;
+--
+opus_1.5.2/celt/entdec.c-66-    address="Stanford, CA",
+opus_1.5.2/celt/entdec.c-67-    month=May,
+opus_1.5.2/celt/entdec.c-68-    year=1976
+opus_1.5.2/celt/entdec.c-69-  }
+opus_1.5.2/celt/entdec.c-70-  @INPROCEEDINGS{Mar79,
+opus_1.5.2/celt/entdec.c-71-   author="Martin, G.N.N.",
+opus_1.5.2/celt/entdec.c:72:   title="Range encoding: an algorithm for removing redundancy from a digitised
+opus_1.5.2/celt/entdec.c-73-    message",
+opus_1.5.2/celt/entdec.c-74-   booktitle="Video & Data Recording Conference",
+opus_1.5.2/celt/entdec.c-75-   year=1979,
+opus_1.5.2/celt/entdec.c-76-   address="Southampton",
+opus_1.5.2/celt/entdec.c-77-   month=Jul
+opus_1.5.2/celt/entdec.c-78-  }
+--
+opus_1.5.2/celt/entenc.c-35-
+opus_1.5.2/celt/entenc.c-36-/*A range encoder.
+opus_1.5.2/celt/entenc.c-37-  See entdec.c and the references for implementation details \cite{Mar79,MNW98}.
+opus_1.5.2/celt/entenc.c-38-
+opus_1.5.2/celt/entenc.c-39-  @INPROCEEDINGS{Mar79,
+opus_1.5.2/celt/entenc.c-40-   author="Martin, G.N.N.",
+opus_1.5.2/celt/entenc.c:41:   title="Range encoding: an algorithm for removing redundancy from a digitised
+opus_1.5.2/celt/entenc.c-42-    message",
+opus_1.5.2/celt/entenc.c-43-   booktitle="Video \& Data Recording Conference",
+opus_1.5.2/celt/entenc.c-44-   year=1979,
+opus_1.5.2/celt/entenc.c-45-   address="Southampton",
+opus_1.5.2/celt/entenc.c-46-   month=Jul
+opus_1.5.2/celt/entenc.c-47-  }
+--
+opus_1.5.2/silk/structs.h-231-
+opus_1.5.2/silk/structs.h-232-    /* DTX */
+opus_1.5.2/silk/structs.h-233-    opus_int                     useDTX;                            /* Flag to enable DTX                                               */
+opus_1.5.2/silk/structs.h-234-    opus_int                     inDTX;                             /* Flag to signal DTX period                                        */
+opus_1.5.2/silk/structs.h-235-    opus_int                     noSpeechCounter;                   /* Counts concecutive nonactive frames, used by DTX                 */
+opus_1.5.2/silk/structs.h-236-
+opus_1.5.2/silk/structs.h:237:    /* Inband Low Bitrate Redundancy (LBRR) data */
+opus_1.5.2/silk/structs.h-238-    opus_int                     useInBandFEC;                      /* Saves the API setting for query                                  */
+opus_1.5.2/silk/structs.h-239-    opus_int                     LBRR_enabled;                      /* Depends on useInBandFRC, bitrate and packet loss rate            */
+opus_1.5.2/silk/structs.h-240-    opus_int                     LBRR_GainIncreases;                /* Gains increment for coding LBRR frames                           */
+opus_1.5.2/silk/structs.h-241-    SideInfoIndices              indices_LBRR[ MAX_FRAMES_PER_PACKET ];
+opus_1.5.2/silk/structs.h-242-    opus_int8                    pulses_LBRR[ MAX_FRAMES_PER_PACKET ][ MAX_FRAME_LENGTH ];
+opus_1.5.2/silk/structs.h-243-} silk_encoder_state;
+--
+opus_1.5.2/silk/float/encode_frame_FLP.c-30-#endif
+opus_1.5.2/silk/float/encode_frame_FLP.c-31-
+opus_1.5.2/silk/float/encode_frame_FLP.c-32-#include <stdlib.h>
+opus_1.5.2/silk/float/encode_frame_FLP.c-33-#include "main_FLP.h"
+opus_1.5.2/silk/float/encode_frame_FLP.c-34-#include "tuning_parameters.h"
+opus_1.5.2/silk/float/encode_frame_FLP.c-35-
+opus_1.5.2/silk/float/encode_frame_FLP.c:36:/* Low Bitrate Redundancy (LBRR) encoding. Reuse all parameters but encode with lower bitrate */
+opus_1.5.2/silk/float/encode_frame_FLP.c-37-static OPUS_INLINE void silk_LBRR_encode_FLP(
+opus_1.5.2/silk/float/encode_frame_FLP.c-38-    silk_encoder_state_FLP          *psEnc,                             /* I/O  Encoder state FLP                           */
+opus_1.5.2/silk/float/encode_frame_FLP.c-39-    silk_encoder_control_FLP        *psEncCtrl,                         /* I/O  Encoder control FLP                         */
+opus_1.5.2/silk/float/encode_frame_FLP.c-40-    const silk_float                xfw[],                              /* I    Input signal                                */
+opus_1.5.2/silk/float/encode_frame_FLP.c-41-    opus_int                        condCoding                          /* I    The type of conditional coding used so far for this frame */
+opus_1.5.2/silk/float/encode_frame_FLP.c-42-);
+--
+opus_1.5.2/silk/float/encode_frame_FLP.c-372-    /* Payload size */
+opus_1.5.2/silk/float/encode_frame_FLP.c-373-    *pnBytesOut = silk_RSHIFT( ec_tell( psRangeEnc ) + 7, 3 );
+opus_1.5.2/silk/float/encode_frame_FLP.c-374-
+opus_1.5.2/silk/float/encode_frame_FLP.c-375-    return ret;
+opus_1.5.2/silk/float/encode_frame_FLP.c-376-}
+opus_1.5.2/silk/float/encode_frame_FLP.c-377-
+opus_1.5.2/silk/float/encode_frame_FLP.c:378:/* Low-Bitrate Redundancy (LBRR) encoding. Reuse all parameters but encode excitation at lower bitrate  */
+opus_1.5.2/silk/float/encode_frame_FLP.c-379-static OPUS_INLINE void silk_LBRR_encode_FLP(
+opus_1.5.2/silk/float/encode_frame_FLP.c-380-    silk_encoder_state_FLP          *psEnc,                             /* I/O  Encoder state FLP                           */
+opus_1.5.2/silk/float/encode_frame_FLP.c-381-    silk_encoder_control_FLP        *psEncCtrl,                         /* I/O  Encoder control FLP                         */
+opus_1.5.2/silk/float/encode_frame_FLP.c-382-    const silk_float                xfw[],                              /* I    Input signal                                */
+opus_1.5.2/silk/float/encode_frame_FLP.c-383-    opus_int                        condCoding                          /* I    The type of conditional coding used so far for this frame */
+opus_1.5.2/silk/float/encode_frame_FLP.c-384-)
+--
+opus_1.5.2/silk/control_audio_bandwidth.c-83-
+opus_1.5.2/silk/control_audio_bandwidth.c-84-                    /* Switch to a lower sample frequency */
+opus_1.5.2/silk/control_audio_bandwidth.c-85-                    fs_kHz = orig_kHz == 16 ? 12 : 8;
+opus_1.5.2/silk/control_audio_bandwidth.c-86-                } else {
+opus_1.5.2/silk/control_audio_bandwidth.c-87-                   if( psEncC->sLP.transition_frame_no <= 0 ) {
+opus_1.5.2/silk/control_audio_bandwidth.c-88-                       encControl->switchReady = 1;
+opus_1.5.2/silk/control_audio_bandwidth.c:89:                       /* Make room for redundancy */
+opus_1.5.2/silk/control_audio_bandwidth.c-90-                       encControl->maxBits -= encControl->maxBits * 5 / ( encControl->payloadSize_ms + 5 );
+opus_1.5.2/silk/control_audio_bandwidth.c-91-                   } else {
+opus_1.5.2/silk/control_audio_bandwidth.c-92-                       /* Direction: down (at double speed) */
+opus_1.5.2/silk/control_audio_bandwidth.c-93-                       psEncC->sLP.mode = -2;
+opus_1.5.2/silk/control_audio_bandwidth.c-94-                   }
+opus_1.5.2/silk/control_audio_bandwidth.c-95-                }
+--
+opus_1.5.2/silk/control_audio_bandwidth.c-111-
+opus_1.5.2/silk/control_audio_bandwidth.c-112-                    /* Direction: up */
+opus_1.5.2/silk/control_audio_bandwidth.c-113-                    psEncC->sLP.mode = 1;
+opus_1.5.2/silk/control_audio_bandwidth.c-114-                } else {
+opus_1.5.2/silk/control_audio_bandwidth.c-115-                   if( psEncC->sLP.mode == 0 ) {
+opus_1.5.2/silk/control_audio_bandwidth.c-116-                       encControl->switchReady = 1;
+opus_1.5.2/silk/control_audio_bandwidth.c:117:                       /* Make room for redundancy */
+opus_1.5.2/silk/control_audio_bandwidth.c-118-                       encControl->maxBits -= encControl->maxBits * 5 / ( encControl->payloadSize_ms + 5 );
+opus_1.5.2/silk/control_audio_bandwidth.c-119-                   } else {
+opus_1.5.2/silk/control_audio_bandwidth.c-120-                       /* Direction: up */
+opus_1.5.2/silk/control_audio_bandwidth.c-121-                       psEncC->sLP.mode = 1;
+opus_1.5.2/silk/control_audio_bandwidth.c-122-                   }
+opus_1.5.2/silk/control_audio_bandwidth.c-123-                }
+--
+opus_1.5.2/silk/control.h-74-    /* I:   Complexity mode; 0 is lowest, 10 is highest complexity                          */
+opus_1.5.2/silk/control.h-75-    opus_int complexity;
+opus_1.5.2/silk/control.h-76-
+opus_1.5.2/silk/control.h-77-    /* I:   Flag to enable in-band Forward Error Correction (FEC); 0/1                      */
+opus_1.5.2/silk/control.h-78-    opus_int useInBandFEC;
+opus_1.5.2/silk/control.h-79-
+opus_1.5.2/silk/control.h:80:    /* I:   Flag to enable in-band Deep REDundancy (DRED); 0/1                              */
+opus_1.5.2/silk/control.h-81-    opus_int useDRED;
+opus_1.5.2/silk/control.h-82-
+opus_1.5.2/silk/control.h-83-    /* I:   Flag to actually code in-band Forward Error Correction (FEC) in the current packet; 0/1 */
+opus_1.5.2/silk/control.h-84-    opus_int LBRR_coded;
+opus_1.5.2/silk/control.h-85-
+opus_1.5.2/silk/control.h-86-    /* I:   Flag to enable discontinuous transmission (DTX); 0/1                            */
+--
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-31-
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-32-#include <stdlib.h>
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-33-#include "main_FIX.h"
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-34-#include "stack_alloc.h"
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-35-#include "tuning_parameters.h"
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-36-
+opus_1.5.2/silk/fixed/encode_frame_FIX.c:37:/* Low Bitrate Redundancy (LBRR) encoding. Reuse all parameters but encode with lower bitrate           */
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-38-static OPUS_INLINE void silk_LBRR_encode_FIX(
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-39-    silk_encoder_state_FIX          *psEnc,                                 /* I/O  Pointer to Silk FIX encoder state                                           */
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-40-    silk_encoder_control_FIX        *psEncCtrl,                             /* I/O  Pointer to Silk FIX encoder control struct                                  */
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-41-    const opus_int16                x16[],                                  /* I    Input signal                                                                */
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-42-    opus_int                        condCoding                              /* I    The type of conditional coding used so far for this frame                   */
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-43-);
+--
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-381-    *pnBytesOut = silk_RSHIFT( ec_tell( psRangeEnc ) + 7, 3 );
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-382-
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-383-    RESTORE_STACK;
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-384-    return ret;
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-385-}
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-386-
+opus_1.5.2/silk/fixed/encode_frame_FIX.c:387:/* Low-Bitrate Redundancy (LBRR) encoding. Reuse all parameters but encode excitation at lower bitrate  */
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-388-static OPUS_INLINE void silk_LBRR_encode_FIX(
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-389-    silk_encoder_state_FIX          *psEnc,                                 /* I/O  Pointer to Silk FIX encoder state                                           */
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-390-    silk_encoder_control_FIX        *psEncCtrl,                             /* I/O  Pointer to Silk FIX encoder control struct                                  */
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-391-    const opus_int16                x16[],                                  /* I    Input signal                                                                */
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-392-    opus_int                        condCoding                              /* I    The type of conditional coding used so far for this frame                   */
+opus_1.5.2/silk/fixed/encode_frame_FIX.c-393-)
+====================================
+SOURCE: opus
+====================================
+opus/src/opus_encoder.c-673-   int i;
+opus/src/opus_encoder.c-674-   float bits;
+opus/src/opus_encoder.c-675-   /* Signaling DRED costs 3 bytes. */
+opus/src/opus_encoder.c-676-   bits = 8*(3+DRED_EXPERIMENTAL_BYTES);
+opus/src/opus_encoder.c-677-   /* Approximation for the size of the IS. */
+opus/src/opus_encoder.c-678-   bits += 50.f+dred_bits_table[q0];
+opus/src/opus_encoder.c:679:   dred_chunks = IMIN((duration+5)/4, DRED_NUM_REDUNDANCY_FRAMES/2);
+opus/src/opus_encoder.c-680-   if (target_chunks != NULL) *target_chunks = 0;
+opus/src/opus_encoder.c-681-   for (i=0;i<dred_chunks;i++) {
+opus/src/opus_encoder.c-682-      int q = compute_quantizer(q0, dQ, qmax, i);
+opus/src/opus_encoder.c-683-      bits += dred_bits_table[q];
+opus/src/opus_encoder.c-684-      if (target_chunks != NULL && bits < target_bits) *target_chunks = i+1;
+opus/src/opus_encoder.c-685-   }
+--
+opus/src/opus_encoder.c-703-         dred_frac = MIN16(.8f, .55f + st->silk_mode.packetLossPercentage/100.f);
+opus/src/opus_encoder.c-704-      } else {
+opus/src/opus_encoder.c-705-         dred_frac = 12*st->silk_mode.packetLossPercentage/100.f;
+opus/src/opus_encoder.c-706-      }
+opus/src/opus_encoder.c-707-      bitrate_offset = 12000;
+opus/src/opus_encoder.c-708-   }
+opus/src/opus_encoder.c:709:   /* Account for the fact that longer packets require less redundancy. */
+opus/src/opus_encoder.c-710-   dred_frac = dred_frac/(dred_frac + (1-dred_frac)*(frame_size*50.f)/st->Fs);
+opus/src/opus_encoder.c-711-   /* Approximate fit based on a few experiments. Could probably be improved. */
+opus/src/opus_encoder.c-712-   q0 = IMIN(15, IMAX(4, 51 - 3*EC_ILOG(IMAX(1, bitrate_bps-bitrate_offset))));
+opus/src/opus_encoder.c-713-   dQ = bitrate_bps-bitrate_offset > 36000 ? 3 : 5;
+opus/src/opus_encoder.c-714-   qmax = 15;
+opus/src/opus_encoder.c-715-   target_dred_bitrate = IMAX(0, (int)(dred_frac*(bitrate_bps-bitrate_offset)));
+--
+opus/src/opus_encoder.c-1138-   } else
+opus/src/opus_encoder.c-1139-      (*nb_no_activity_ms_Q1) = 0;
+opus/src/opus_encoder.c-1140-
+opus/src/opus_encoder.c-1141-   return 0;
+opus/src/opus_encoder.c-1142-}
+opus/src/opus_encoder.c-1143-
+opus/src/opus_encoder.c:1144:static int compute_redundancy_bytes(opus_int32 max_data_bytes, opus_int32 bitrate_bps, int frame_rate, int channels)
+opus/src/opus_encoder.c-1145-{
+opus/src/opus_encoder.c:1146:   int redundancy_bytes_cap;
+opus/src/opus_encoder.c:1147:   int redundancy_bytes;
+opus/src/opus_encoder.c:1148:   opus_int32 redundancy_rate;
+opus/src/opus_encoder.c-1149-   int base_bits;
+opus/src/opus_encoder.c-1150-   opus_int32 available_bits;
+opus/src/opus_encoder.c-1151-   base_bits = (40*channels+20);
+opus/src/opus_encoder.c-1152-
+opus/src/opus_encoder.c-1153-   /* Equivalent rate for 5 ms frames. */
+opus/src/opus_encoder.c:1154:   redundancy_rate = bitrate_bps + base_bits*(200 - frame_rate);
+opus/src/opus_encoder.c-1155-   /* For VBR, further increase the bitrate if we can afford it. It's pretty short
+opus/src/opus_encoder.c-1156-      and we'll avoid artefacts. */
+opus/src/opus_encoder.c:1157:   redundancy_rate = 3*redundancy_rate/2;
+opus/src/opus_encoder.c:1158:   redundancy_bytes = redundancy_rate/1600;
+opus/src/opus_encoder.c-1159-
+opus/src/opus_encoder.c-1160-   /* Compute the max rate we can use given CBR or VBR with cap. */
+opus/src/opus_encoder.c-1161-   available_bits = max_data_bytes*8 - 2*base_bits;
+opus/src/opus_encoder.c:1162:   redundancy_bytes_cap = (available_bits*240/(240+48000/frame_rate) + base_bits)/8;
+opus/src/opus_encoder.c:1163:   redundancy_bytes = IMIN(redundancy_bytes, redundancy_bytes_cap);
+opus/src/opus_encoder.c:1164:   /* It we can't get enough bits for redundancy to be worth it, rely on the decoder PLC. */
+opus/src/opus_encoder.c:1165:   if (redundancy_bytes > 4 + 8*channels)
+opus/src/opus_encoder.c:1166:      redundancy_bytes = IMIN(257, redundancy_bytes);
+opus/src/opus_encoder.c-1167-   else
+opus/src/opus_encoder.c:1168:      redundancy_bytes = 0;
+opus/src/opus_encoder.c:1169:   return redundancy_bytes;
+opus/src/opus_encoder.c-1170-}
+opus/src/opus_encoder.c-1171-
+opus/src/opus_encoder.c-1172-static opus_int32 opus_encode_frame_native(OpusEncoder *st, const opus_res *pcm, int frame_size,
+opus/src/opus_encoder.c-1173-                unsigned char *data, opus_int32 max_data_bytes,
+opus/src/opus_encoder.c-1174-                int float_api, int first_frame,
+opus/src/opus_encoder.c-1175-#ifdef ENABLE_DRED
+opus/src/opus_encoder.c-1176-                opus_int32 dred_bitrate_bps,
+opus/src/opus_encoder.c-1177-#endif
+opus/src/opus_encoder.c-1178-#ifndef DISABLE_FLOAT_API
+opus/src/opus_encoder.c-1179-                AnalysisInfo *analysis_info,
+opus/src/opus_encoder.c-1180-#endif
+opus/src/opus_encoder.c:1181:                int is_silence, int redundancy, int celt_to_silk, int prefill,
+opus/src/opus_encoder.c-1182-                opus_int32 equiv_rate, int to_celt);
+opus/src/opus_encoder.c-1183-
+opus/src/opus_encoder.c-1184-opus_int32 opus_encode_native(OpusEncoder *st, const opus_res *pcm, int frame_size,
+opus/src/opus_encoder.c-1185-                unsigned char *data, opus_int32 out_data_bytes, int lsb_depth,
+opus/src/opus_encoder.c-1186-                const void *analysis_pcm, opus_int32 analysis_size, int c1, int c2,
+opus/src/opus_encoder.c-1187-                int analysis_channels, downmix_func downmix, int float_api)
+opus/src/opus_encoder.c-1188-{
+opus/src/opus_encoder.c-1189-    void *silk_enc=NULL;
+opus/src/opus_encoder.c-1190-    CELTEncoder *celt_enc=NULL;
+opus/src/opus_encoder.c-1191-    int i;
+opus/src/opus_encoder.c-1192-    int ret=0;
+opus/src/opus_encoder.c-1193-    int prefill=0;
+opus/src/opus_encoder.c:1194:    int redundancy = 0;
+opus/src/opus_encoder.c:1195:    int celt_to_silk = 0;
+opus/src/opus_encoder.c-1196-    int to_celt = 0;
+opus/src/opus_encoder.c-1197-    int voice_est; /* Probability of voice in Q7 */
+opus/src/opus_encoder.c-1198-    opus_int32 equiv_rate;
+opus/src/opus_encoder.c-1199-    int frame_rate;
+opus/src/opus_encoder.c-1200-    opus_int32 max_rate; /* Max bitrate we're allowed to use */
+opus/src/opus_encoder.c-1201-    int curr_bandwidth;
+--
+opus/src/opus_encoder.c-1541-       st->mode = MODE_CELT_ONLY;
+opus/src/opus_encoder.c-1542-
+opus/src/opus_encoder.c-1543-    if (st->prev_mode > 0 &&
+opus/src/opus_encoder.c-1544-        ((st->mode != MODE_CELT_ONLY && st->prev_mode == MODE_CELT_ONLY) ||
+opus/src/opus_encoder.c-1545-    (st->mode == MODE_CELT_ONLY && st->prev_mode != MODE_CELT_ONLY)))
+opus/src/opus_encoder.c-1546-    {
+opus/src/opus_encoder.c:1547:        redundancy = 1;
+opus/src/opus_encoder.c:1548:        celt_to_silk = (st->mode != MODE_CELT_ONLY);
+opus/src/opus_encoder.c:1549:        if (!celt_to_silk)
+opus/src/opus_encoder.c-1550-        {
+opus/src/opus_encoder.c-1551-            /* Switch to SILK/hybrid if frame size is 10 ms or more*/
+opus/src/opus_encoder.c-1552-            if (frame_size >= st->Fs/100)
+opus/src/opus_encoder.c-1553-            {
+opus/src/opus_encoder.c-1554-                st->mode = st->prev_mode;
+opus/src/opus_encoder.c-1555-                to_celt = 1;
+opus/src/opus_encoder.c-1556-            } else {
+opus/src/opus_encoder.c:1557:                redundancy=0;
+opus/src/opus_encoder.c-1558-            }
+opus/src/opus_encoder.c-1559-        }
+opus/src/opus_encoder.c-1560-    }
+opus/src/opus_encoder.c-1561-
+opus/src/opus_encoder.c-1562-    /* When encoding multiframes, we can ask for a switch to CELT only in the last frame. This switch
+opus/src/opus_encoder.c-1563-     * is processed above as the requested mode shouldn't interrupt stereo->mono transition. */
+--
+opus/src/opus_encoder.c-1655-    if (st->detected_bandwidth && st->user_bandwidth == OPUS_AUTO)
+opus/src/opus_encoder.c-1656-    {
+opus/src/opus_encoder.c-1657-       int min_detected_bandwidth;
+opus/src/opus_encoder.c-1658-       /* Makes bandwidth detection more conservative just in case the detector
+opus/src/opus_encoder.c-1659-          gets it wrong when we could have coded a high bandwidth transparently.
+opus/src/opus_encoder.c-1660-          When operating in SILK/hybrid mode, we don't go below wideband to avoid
+opus/src/opus_encoder.c:1661:          more complicated switches that require redundancy. */
+opus/src/opus_encoder.c-1662-       if (equiv_rate <= 18000*st->stream_channels && st->mode == MODE_CELT_ONLY)
+opus/src/opus_encoder.c-1663-          min_detected_bandwidth = OPUS_BANDWIDTH_NARROWBAND;
+opus/src/opus_encoder.c-1664-       else if (equiv_rate <= 24000*st->stream_channels && st->mode == MODE_CELT_ONLY)
+opus/src/opus_encoder.c-1665-          min_detected_bandwidth = OPUS_BANDWIDTH_MEDIUMBAND;
+opus/src/opus_encoder.c-1666-       else if (equiv_rate <= 30000*st->stream_channels)
+opus/src/opus_encoder.c-1667-          min_detected_bandwidth = OPUS_BANDWIDTH_WIDEBAND;
+--
+opus/src/opus_encoder.c-1769-          st->prev_channels = st->stream_channels;
+opus/src/opus_encoder.c-1770-
+opus/src/opus_encoder.c-1771-       for (i=0;i<nb_frames;i++)
+opus/src/opus_encoder.c-1772-       {
+opus/src/opus_encoder.c-1773-          int first_frame;
+opus/src/opus_encoder.c-1774-          int frame_to_celt;
+opus/src/opus_encoder.c:1775:          int frame_redundancy;
+opus/src/opus_encoder.c-1776-          opus_int32 curr_max;
+opus/src/opus_encoder.c-1777-          /* Attempt DRED encoding until we have a non-DTX frame. In case of DTX refresh,
+opus/src/opus_encoder.c-1778-             that allows for DRED not to be in the first frame. */
+opus/src/opus_encoder.c-1779-          first_frame = (i == 0) || (i == dtx_count);
+opus/src/opus_encoder.c-1780-          st->silk_mode.toMono = 0;
+opus/src/opus_encoder.c-1781-          st->nonfinal_frame = i<(nb_frames-1);
+opus/src/opus_encoder.c-1782-
+opus/src/opus_encoder.c-1783-          /* When switching from SILK/Hybrid to CELT, only ask for a switch at the last frame */
+opus/src/opus_encoder.c-1784-          frame_to_celt = to_celt && i==nb_frames-1;
+opus/src/opus_encoder.c:1785:          frame_redundancy = redundancy && (frame_to_celt || (!to_celt && i==0));
+opus/src/opus_encoder.c-1786-
+opus/src/opus_encoder.c-1787-          curr_max = IMIN(bitrate_to_bits(st->bitrate_bps, st->Fs, enc_frame_size)/8, max_len_sum/nb_frames);
+opus/src/opus_encoder.c-1788-#ifdef ENABLE_DRED
+opus/src/opus_encoder.c-1789-          curr_max = IMIN(curr_max, (max_len_sum-bitrate_to_bits(dred_bitrate_bps, st->Fs, frame_size)/8)/nb_frames);
+opus/src/opus_encoder.c-1790-          if (first_frame) curr_max += bitrate_to_bits(dred_bitrate_bps, st->Fs, frame_size)/8;
+opus/src/opus_encoder.c-1791-#endif
+--
+opus/src/opus_encoder.c-1807-#ifdef ENABLE_DRED
+opus/src/opus_encoder.c-1808-                    dred_bitrate_bps,
+opus/src/opus_encoder.c-1809-#endif
+opus/src/opus_encoder.c-1810-#ifndef DISABLE_FLOAT_API
+opus/src/opus_encoder.c-1811-                    &analysis_info,
+opus/src/opus_encoder.c-1812-#endif
+opus/src/opus_encoder.c:1813:                    is_silence, frame_redundancy, celt_to_silk, prefill,
+opus/src/opus_encoder.c-1814-                    equiv_rate, frame_to_celt
+opus/src/opus_encoder.c-1815-              );
+opus/src/opus_encoder.c-1816-          if (tmp_len<0)
+opus/src/opus_encoder.c-1817-          {
+opus/src/opus_encoder.c-1818-             RESTORE_STACK;
+opus/src/opus_encoder.c-1819-             return OPUS_INTERNAL_ERROR;
+--
+opus/src/opus_encoder.c-1843-#ifdef ENABLE_DRED
+opus/src/opus_encoder.c-1844-                dred_bitrate_bps,
+opus/src/opus_encoder.c-1845-#endif
+opus/src/opus_encoder.c-1846-#ifndef DISABLE_FLOAT_API
+opus/src/opus_encoder.c-1847-                &analysis_info,
+opus/src/opus_encoder.c-1848-#endif
+opus/src/opus_encoder.c:1849:                is_silence, redundancy, celt_to_silk, prefill,
+opus/src/opus_encoder.c-1850-                equiv_rate, to_celt
+opus/src/opus_encoder.c-1851-          );
+opus/src/opus_encoder.c-1852-      RESTORE_STACK;
+opus/src/opus_encoder.c-1853-      return ret;
+opus/src/opus_encoder.c-1854-    }
+opus/src/opus_encoder.c-1855-}
+--
+opus/src/opus_encoder.c-1860-#ifdef ENABLE_DRED
+opus/src/opus_encoder.c-1861-                opus_int32 dred_bitrate_bps,
+opus/src/opus_encoder.c-1862-#endif
+opus/src/opus_encoder.c-1863-#ifndef DISABLE_FLOAT_API
+opus/src/opus_encoder.c-1864-                AnalysisInfo *analysis_info,
+opus/src/opus_encoder.c-1865-#endif
+opus/src/opus_encoder.c:1866:                int is_silence, int redundancy, int celt_to_silk, int prefill,
+opus/src/opus_encoder.c-1867-                opus_int32 equiv_rate, int to_celt)
+opus/src/opus_encoder.c-1868-{
+opus/src/opus_encoder.c-1869-    void *silk_enc=NULL;
+opus/src/opus_encoder.c-1870-    CELTEncoder *celt_enc=NULL;
+opus/src/opus_encoder.c-1871-    const CELTMode *celt_mode=NULL;
+opus/src/opus_encoder.c-1872-    static int dbg_frame_counter = 0;
+--
+opus/src/opus_encoder.c-1880-    int ret=0;
+opus/src/opus_encoder.c-1881-    int max_data_bytes;
+opus/src/opus_encoder.c-1882-    opus_int32 nBytes;
+opus/src/opus_encoder.c-1883-    ec_enc enc;
+opus/src/opus_encoder.c-1884-    int bits_target;
+opus/src/opus_encoder.c-1885-    int start_band = 0;
+opus/src/opus_encoder.c:1886:    int redundancy_bytes = 0; /* Number of bytes to use for redundancy frame */
+opus/src/opus_encoder.c-1887-    int nb_compr_bytes;
+opus/src/opus_encoder.c-1888-    opus_uint32 redundant_rng = 0;
+opus/src/opus_encoder.c-1889-    int cutoff_Hz;
+opus/src/opus_encoder.c-1890-    int hp_freq_smth1;
+opus/src/opus_encoder.c-1891-    opus_val16 HB_gain;
+opus/src/opus_encoder.c-1892-    int apply_padding;
+--
+opus/src/opus_encoder.c-1940-       activity = st->peak_signal_energy < (QCONST16(PSEUDO_SNR_THRESHOLD, 0) * (opus_val64)HALF32(noise_energy));
+opus/src/opus_encoder.c-1941-    }
+opus/src/opus_encoder.c-1942-
+opus/src/opus_encoder.c-1943-    /* For the first frame at a new SILK bandwidth */
+opus/src/opus_encoder.c-1944-    if (st->silk_bw_switch)
+opus/src/opus_encoder.c-1945-    {
+opus/src/opus_encoder.c:1946:       redundancy = 1;
+opus/src/opus_encoder.c:1947:       celt_to_silk = 1;
+opus/src/opus_encoder.c-1948-       st->silk_bw_switch = 0;
+opus/src/opus_encoder.c-1949-       /* Do a prefill without resetting the sampling rate control. */
+opus/src/opus_encoder.c-1950-       prefill=2;
+opus/src/opus_encoder.c-1951-    }
+opus/src/opus_encoder.c-1952-
+opus/src/opus_encoder.c:1953:    /* If we decided to go with CELT, make sure redundancy is off, no matter what
+opus/src/opus_encoder.c-1954-       we decided earlier. */
+opus/src/opus_encoder.c-1955-    if (st->mode == MODE_CELT_ONLY)
+opus/src/opus_encoder.c:1956:        redundancy = 0;
+opus/src/opus_encoder.c-1957-
+opus/src/opus_encoder.c:1958:    if (redundancy)
+opus/src/opus_encoder.c-1959-    {
+opus/src/opus_encoder.c:1960:       redundancy_bytes = compute_redundancy_bytes(max_data_bytes, st->bitrate_bps, frame_rate, st->stream_channels);
+opus/src/opus_encoder.c:1961:       if (redundancy_bytes == 0)
+opus/src/opus_encoder.c:1962:          redundancy = 0;
+opus/src/opus_encoder.c-1963-    }
+opus/src/opus_encoder.c-1964-    if (st->application == OPUS_APPLICATION_RESTRICTED_SILK)
+opus/src/opus_encoder.c-1965-    {
+opus/src/opus_encoder.c:1966:       redundancy = 0;
+opus/src/opus_encoder.c:1967:       redundancy_bytes = 0;
+opus/src/opus_encoder.c-1968-    }
+opus/src/opus_encoder.c-1969-
+opus/src/opus_encoder.c-1970-    /* printf("%d %d %d %d\n", st->bitrate_bps, st->stream_channels, st->mode, curr_bandwidth); */
+opus/src/opus_encoder.c:1971:    bits_target = IMIN(8*(max_data_bytes-redundancy_bytes), bitrate_to_bits(st->bitrate_bps, st->Fs, frame_size)) - 8;
+opus/src/opus_encoder.c-1972-
+opus/src/opus_encoder.c-1973-    data += 1;
+opus/src/opus_encoder.c-1974-
+opus/src/opus_encoder.c-1975-    ec_enc_init(&enc, data, orig_max_data_bytes-1);
+opus/src/opus_encoder.c-1976-
+opus/src/opus_encoder.c-1977-    ALLOC(pcm_buf, (total_buffer+frame_size)*st->channels, opus_res);
+--
+opus/src/opus_encoder.c-2159-        }
+opus/src/opus_encoder.c-2160-
+opus/src/opus_encoder.c-2161-        st->silk_mode.useCBR = !st->use_vbr;
+opus/src/opus_encoder.c-2162-
+opus/src/opus_encoder.c-2163-        /* Call SILK encoder for the low band */
+opus/src/opus_encoder.c-2164-
+opus/src/opus_encoder.c:2165:        /* Max bits for SILK, counting ToC, redundancy bytes, and optionally redundancy. */
+opus/src/opus_encoder.c-2166-        st->silk_mode.maxBits = (max_data_bytes-1)*8;
+opus/src/opus_encoder.c:2167:        if (redundancy && redundancy_bytes >= 2)
+opus/src/opus_encoder.c-2168-        {
+opus/src/opus_encoder.c:2169:           /* Counting 1 bit for redundancy position and 20 bits for flag+size (only for hybrid). */
+opus/src/opus_encoder.c:2170:           st->silk_mode.maxBits -= redundancy_bytes*8 + 1;
+opus/src/opus_encoder.c-2171-           if (st->mode == MODE_HYBRID)
+opus/src/opus_encoder.c-2172-              st->silk_mode.maxBits -= 20;
+opus/src/opus_encoder.c-2173-        }
+opus/src/opus_encoder.c-2174-        if (st->silk_mode.useCBR)
+opus/src/opus_encoder.c-2175-        {
+opus/src/opus_encoder.c-2176-           /* When we're in CBR mode, but we have non-SILK data to encode, switch SILK to VBR with cap to
+--
+opus/src/opus_encoder.c-2255-           st->rangeFinal = 0;
+opus/src/opus_encoder.c-2256-           data[-1] = gen_toc(st->mode, st->Fs/frame_size, curr_bandwidth, st->stream_channels);
+opus/src/opus_encoder.c-2257-           RESTORE_STACK;
+opus/src/opus_encoder.c-2258-           return 1;
+opus/src/opus_encoder.c-2259-        }
+opus/src/opus_encoder.c-2260-
+opus/src/opus_encoder.c:2261:        /* FIXME: How do we allocate the redundancy for CBR? */
+opus/src/opus_encoder.c-2262-        if (st->silk_mode.opusCanSwitch)
+opus/src/opus_encoder.c-2263-        {
+opus/src/opus_encoder.c-2264-           if (st->application != OPUS_APPLICATION_RESTRICTED_SILK)
+opus/src/opus_encoder.c-2265-           {
+opus/src/opus_encoder.c:2266:              redundancy_bytes = compute_redundancy_bytes(max_data_bytes, st->bitrate_bps, frame_rate, st->stream_channels);
+opus/src/opus_encoder.c:2267:              redundancy = (redundancy_bytes != 0);
+opus/src/opus_encoder.c-2268-           }
+opus/src/opus_encoder.c:2269:           celt_to_silk = 0;
+opus/src/opus_encoder.c-2270-           st->silk_bw_switch = 1;
+opus/src/opus_encoder.c-2271-        }
+opus/src/opus_encoder.c-2272-    }
+opus/src/opus_encoder.c-2273-
+opus/src/opus_encoder.c-2274-    /* CELT processing */
+opus/src/opus_encoder.c-2275-    if (st->application != OPUS_APPLICATION_RESTRICTED_SILK)
+--
+opus/src/opus_encoder.c-2358-            st->hybrid_stereo_width_Q14 = st->silk_mode.stereoWidth_Q14;
+opus/src/opus_encoder.c-2359-        }
+opus/src/opus_encoder.c-2360-    }
+opus/src/opus_encoder.c-2361-
+opus/src/opus_encoder.c-2362-    if ( st->mode != MODE_CELT_ONLY && ec_tell(&enc)+17+20*(st->mode == MODE_HYBRID) <= 8*(max_data_bytes-1))
+opus/src/opus_encoder.c-2363-    {
+opus/src/opus_encoder.c:2364:        /* For SILK mode, the redundancy is inferred from the length */
+opus/src/opus_encoder.c-2365-        if (st->mode == MODE_HYBRID)
+opus/src/opus_encoder.c:2366:           ec_enc_bit_logp(&enc, redundancy, 12);
+opus/src/opus_encoder.c:2367:        if (redundancy)
+opus/src/opus_encoder.c-2368-        {
+opus/src/opus_encoder.c:2369:            int max_redundancy;
+opus/src/opus_encoder.c-2370-            dbg_frame_counter++;
+opus/src/opus_encoder.c-2371-            fprintf(stderr,
+opus/src/opus_encoder.c:2372:               "REDUNDANCY: event=%d frame_id=%d mode=%d "
+opus/src/opus_encoder.c:2373:               "celt_to_silk=%d bytes=%d\n",
+opus/src/opus_encoder.c-2374-               dbg_frame_counter,
+opus/src/opus_encoder.c-2375-               this_frame_id,
+opus/src/opus_encoder.c-2376-               st->mode,
+opus/src/opus_encoder.c:2377:               celt_to_silk,
+opus/src/opus_encoder.c:2378:               redundancy_bytes);
+opus/src/opus_encoder.c:2379:            ec_enc_bit_logp(&enc, celt_to_silk, 1);
+opus/src/opus_encoder.c-2380-            if (st->mode == MODE_HYBRID)
+opus/src/opus_encoder.c-2381-            {
+opus/src/opus_encoder.c:2382:               /* Reserve the 8 bits needed for the redundancy length,
+opus/src/opus_encoder.c-2383-                  and at least a few bits for CELT if possible */
+opus/src/opus_encoder.c:2384:               max_redundancy = (max_data_bytes-1)-((ec_tell(&enc)+8+3+7)>>3);
+opus/src/opus_encoder.c-2385-            }
+opus/src/opus_encoder.c-2386-            else
+opus/src/opus_encoder.c:2387:               max_redundancy = (max_data_bytes-1)-((ec_tell(&enc)+7)>>3);
+opus/src/opus_encoder.c:2388:            /* Target the same bit-rate for redundancy as for the rest,
+opus/src/opus_encoder.c-2389-               up to a max of 257 bytes */
+opus/src/opus_encoder.c:2390:            redundancy_bytes = IMIN(max_redundancy, redundancy_bytes);
+opus/src/opus_encoder.c:2391:            redundancy_bytes = IMIN(257, IMAX(2, redundancy_bytes));
+opus/src/opus_encoder.c-2392-            if (st->mode == MODE_HYBRID)
+opus/src/opus_encoder.c:2393:                ec_enc_uint(&enc, redundancy_bytes-2, 256);
+opus/src/opus_encoder.c-2394-        }
+opus/src/opus_encoder.c-2395-    } else {
+opus/src/opus_encoder.c:2396:        redundancy = 0;
+opus/src/opus_encoder.c-2397-    }
+opus/src/opus_encoder.c-2398-
+opus/src/opus_encoder.c:2399:    if (!redundancy)
+opus/src/opus_encoder.c-2400-    {
+opus/src/opus_encoder.c-2401-       st->silk_bw_switch = 0;
+opus/src/opus_encoder.c:2402:       redundancy_bytes = 0;
+opus/src/opus_encoder.c-2403-    }
+opus/src/opus_encoder.c-2404-    if (st->mode != MODE_CELT_ONLY)start_band=17;
+opus/src/opus_encoder.c-2405-
+opus/src/opus_encoder.c-2406-    if (st->mode == MODE_SILK_ONLY)
+opus/src/opus_encoder.c-2407-    {
+opus/src/opus_encoder.c-2408-        ret = (ec_tell(&enc)+7)>>3;
+opus/src/opus_encoder.c-2409-        ec_enc_done(&enc);
+opus/src/opus_encoder.c-2410-        nb_compr_bytes = ret;
+opus/src/opus_encoder.c-2411-    } else {
+opus/src/opus_encoder.c:2412:        nb_compr_bytes = (max_data_bytes-1)-redundancy_bytes;
+opus/src/opus_encoder.c-2413-#ifdef ENABLE_QEXT
+opus/src/opus_encoder.c-2414-        if (st->mode == MODE_CELT_ONLY && st->enable_qext) {
+opus/src/opus_encoder.c:2415:           celt_assert(redundancy_bytes==0);
+opus/src/opus_encoder.c-2416-           nb_compr_bytes = orig_max_data_bytes-1;
+opus/src/opus_encoder.c-2417-        }
+opus/src/opus_encoder.c-2418-#endif
+opus/src/opus_encoder.c-2419-#ifdef ENABLE_DRED
+opus/src/opus_encoder.c-2420-        if (st->dred_duration > 0)
+opus/src/opus_encoder.c-2421-        {
+opus/src/opus_encoder.c-2422-            int max_celt_bytes;
+opus/src/opus_encoder.c-2423-            opus_int32 dred_bytes = bitrate_to_bits(dred_bitrate_bps, st->Fs, frame_size)/8;
+opus/src/opus_encoder.c-2424-            /* Allow CELT to steal up to 25% of the remaining bits. */
+opus/src/opus_encoder.c-2425-            max_celt_bytes = nb_compr_bytes - dred_bytes*3/4;
+opus/src/opus_encoder.c-2426-            /* But try to give CELT at least 5 bytes to prevent a mismatch with
+opus/src/opus_encoder.c:2427:               the redundancy signaling. */
+opus/src/opus_encoder.c-2428-            max_celt_bytes = IMAX((ec_tell(&enc)+7)/8 + 5, max_celt_bytes);
+opus/src/opus_encoder.c-2429-            /* Subject to the original max. */
+opus/src/opus_encoder.c-2430-            nb_compr_bytes = IMIN(nb_compr_bytes, max_celt_bytes);
+opus/src/opus_encoder.c-2431-        }
+opus/src/opus_encoder.c-2432-#endif
+opus/src/opus_encoder.c-2433-        ec_enc_shrink(&enc, nb_compr_bytes);
+opus/src/opus_encoder.c-2434-    }
+opus/src/opus_encoder.c-2435-
+opus/src/opus_encoder.c-2436-#ifndef DISABLE_FLOAT_API
+opus/src/opus_encoder.c:2437:    if (redundancy || st->mode != MODE_SILK_ONLY)
+opus/src/opus_encoder.c-2438-       celt_encoder_ctl(celt_enc, CELT_SET_ANALYSIS(analysis_info));
+opus/src/opus_encoder.c-2439-#endif
+opus/src/opus_encoder.c-2440-    if (st->mode == MODE_HYBRID) {
+opus/src/opus_encoder.c-2441-       SILKInfo info;
+opus/src/opus_encoder.c-2442-       info.signalType = st->silk_mode.signalType;
+opus/src/opus_encoder.c-2443-       info.offset = st->silk_mode.offset;
+opus/src/opus_encoder.c-2444-       celt_encoder_ctl(celt_enc, CELT_SET_SILK_INFO(&info));
+opus/src/opus_encoder.c-2445-    }
+opus/src/opus_encoder.c-2446-
+opus/src/opus_encoder.c-2447-    /* 5 ms redundant frame for CELT->SILK */
+opus/src/opus_encoder.c:2448:    if (redundancy && celt_to_silk)
+opus/src/opus_encoder.c-2449-    {
+opus/src/opus_encoder.c-2450-        int err;
+opus/src/opus_encoder.c-2451-        celt_encoder_ctl(celt_enc, CELT_SET_START_BAND(0));
+opus/src/opus_encoder.c-2452-        celt_encoder_ctl(celt_enc, OPUS_SET_VBR(0));
+opus/src/opus_encoder.c-2453-        celt_encoder_ctl(celt_enc, OPUS_SET_BITRATE(OPUS_BITRATE_MAX));
+opus/src/opus_encoder.c-2454-        /* --- RED_PCM DIAGNOSTIC --- */
+--
+opus/src/opus_encoder.c-2474-                "sample0=%.6f sample1=%.6f sample2=%.6f sample3=%.6f\n",
+opus/src/opus_encoder.c-2475-                _total, _rms, _peak_d,
+opus/src/opus_encoder.c-2476-                (double)pcm_buf[0], (double)pcm_buf[1],
+opus/src/opus_encoder.c-2477-                (double)pcm_buf[2], (double)pcm_buf[3]);
+opus/src/opus_encoder.c-2478-        }
+opus/src/opus_encoder.c-2479-        /* --- END RED_PCM DIAGNOSTIC --- */
+opus/src/opus_encoder.c:2480:        err = celt_encode_with_ec(celt_enc, pcm_buf, st->Fs/200, data+nb_compr_bytes, redundancy_bytes, NULL);
+opus/src/opus_encoder.c-2481-        dbg_red_write_offset = nb_compr_bytes;
+opus/src/opus_encoder.c-2482-        dbg_red_final_offset = nb_compr_bytes;
+opus/src/opus_encoder.c:2483:        dbg_red_size = redundancy_bytes;
+opus/src/opus_encoder.c:2484:        fprintf(stderr, "  -> redundant frame written at offset %d, size %d\n", nb_compr_bytes, redundancy_bytes);
+opus/src/opus_encoder.c-2485-        if (err < 0)
+opus/src/opus_encoder.c-2486-        {
+opus/src/opus_encoder.c-2487-           RESTORE_STACK;
+opus/src/opus_encoder.c-2488-           return OPUS_INTERNAL_ERROR;
+opus/src/opus_encoder.c-2489-        }
+opus/src/opus_encoder.c-2490-        celt_encoder_ctl(celt_enc, OPUS_GET_FINAL_RANGE(&redundant_rng));
+--
+opus/src/opus_encoder.c-2547-           if (ret < 0)
+opus/src/opus_encoder.c-2548-           {
+opus/src/opus_encoder.c-2549-              RESTORE_STACK;
+opus/src/opus_encoder.c-2550-              return OPUS_INTERNAL_ERROR;
+opus/src/opus_encoder.c-2551-           }
+opus/src/opus_encoder.c-2552-           /* --- RELOCATION DIAGNOSTIC --- */
+opus/src/opus_encoder.c:2553:           fprintf(stderr, "  -> PRE_MOVE: ret=%d nb_compr_bytes=%d max_data_bytes=%d redundancy=%d celt_to_silk=%d mode=%d\n",
+opus/src/opus_encoder.c:2554:                   ret, nb_compr_bytes, max_data_bytes, redundancy, celt_to_silk, st->mode);
+opus/src/opus_encoder.c:2555:           /* Put CELT->SILK redundancy data in the right place. */
+opus/src/opus_encoder.c:2556:           if (redundancy && celt_to_silk && st->mode==MODE_HYBRID && nb_compr_bytes != ret)
+opus/src/opus_encoder.c-2557-           {
+opus/src/opus_encoder.c-2558-              fprintf(stderr, "  -> MOVE_ENTERED: from=data+%d to=data+%d size=%d; first8_src: %02x %02x %02x %02x %02x %02x %02x %02x\n",
+opus/src/opus_encoder.c:2559:                      nb_compr_bytes, ret, redundancy_bytes,
+opus/src/opus_encoder.c-2560-                      data[nb_compr_bytes], data[nb_compr_bytes+1], data[nb_compr_bytes+2], data[nb_compr_bytes+3],
+opus/src/opus_encoder.c-2561-                      data[nb_compr_bytes+4], data[nb_compr_bytes+5], data[nb_compr_bytes+6], data[nb_compr_bytes+7]);
+opus/src/opus_encoder.c:2562:              OPUS_MOVE(data+ret, data+nb_compr_bytes, redundancy_bytes);
+opus/src/opus_encoder.c-2563-
+opus/src/opus_encoder.c-2564-              dbg_red_final_offset = ret;
+opus/src/opus_encoder.c-2565-              dbg_red_moved = 1;
+opus/src/opus_encoder.c-2566-
+opus/src/opus_encoder.c:2567:              nb_compr_bytes = ret+redundancy_bytes;
+opus/src/opus_encoder.c-2568-              fprintf(stderr, "  -> POST_MOVE: ret=%d new_nb_compr_bytes=%d; first8_dst: %02x %02x %02x %02x %02x %02x %02x %02x\n",
+opus/src/opus_encoder.c-2569-                      ret, nb_compr_bytes,
+opus/src/opus_encoder.c-2570-                      data[ret], data[ret+1], data[ret+2], data[ret+3],
+opus/src/opus_encoder.c-2571-                      data[ret+4], data[ret+5], data[ret+6], data[ret+7]);
+opus/src/opus_encoder.c-2572-           }
+opus/src/opus_encoder.c-2573-           else
+opus/src/opus_encoder.c-2574-           {
+opus/src/opus_encoder.c:2575:              fprintf(stderr, "  -> MOVE_SKIPPED: redundancy=%d celt_to_silk=%d is_hybrid=%d nb_compr_bytes=%d ret=%d equal=%d\n",
+opus/src/opus_encoder.c:2576:                      redundancy, celt_to_silk, (st->mode==MODE_HYBRID),
+opus/src/opus_encoder.c-2577-                      nb_compr_bytes, ret, (nb_compr_bytes == ret));
+opus/src/opus_encoder.c-2578-           }
+opus/src/opus_encoder.c-2579-           /* --- END RELOCATION DIAGNOSTIC --- */
+opus/src/opus_encoder.c-2580-        }
+opus/src/opus_encoder.c-2581-        celt_encoder_ctl(celt_enc, OPUS_GET_FINAL_RANGE(&st->rangeFinal));
+opus/src/opus_encoder.c-2582-    } else {
+opus/src/opus_encoder.c-2583-       st->rangeFinal = enc.rng;
+opus/src/opus_encoder.c-2584-    }
+opus/src/opus_encoder.c-2585-
+opus/src/opus_encoder.c-2586-    /* 5 ms redundant frame for SILK->CELT */
+opus/src/opus_encoder.c:2587:    if (redundancy && !celt_to_silk)
+opus/src/opus_encoder.c-2588-    {
+opus/src/opus_encoder.c-2589-        int err;
+opus/src/opus_encoder.c-2590-        unsigned char dummy[2];
+opus/src/opus_encoder.c-2591-        int N2, N4;
+opus/src/opus_encoder.c-2592-        N2 = st->Fs/200;
+opus/src/opus_encoder.c-2593-        N4 = st->Fs/400;
+--
+opus/src/opus_encoder.c-2604-           nb_compr_bytes = ret;
+opus/src/opus_encoder.c-2605-           ec_enc_shrink(&enc, nb_compr_bytes);
+opus/src/opus_encoder.c-2606-        }
+opus/src/opus_encoder.c-2607-        /* NOTE: We could speed this up slightly (at the expense of code size) by just adding a function that prefills the buffer */
+opus/src/opus_encoder.c-2608-        celt_encode_with_ec(celt_enc, pcm_buf+st->channels*(frame_size-N2-N4), N4, dummy, 2, NULL);
+opus/src/opus_encoder.c-2609-
+opus/src/opus_encoder.c:2610:        err = celt_encode_with_ec(celt_enc, pcm_buf+st->channels*(frame_size-N2), N2, data+nb_compr_bytes, redundancy_bytes, NULL);
+opus/src/opus_encoder.c-2611-
+opus/src/opus_encoder.c-2612-        dbg_red_write_offset = nb_compr_bytes;
+opus/src/opus_encoder.c-2613-        dbg_red_final_offset = nb_compr_bytes;
+opus/src/opus_encoder.c:2614:        dbg_red_size = redundancy_bytes;
+opus/src/opus_encoder.c-2615-
+opus/src/opus_encoder.c:2616:        fprintf(stderr, "  -> redundant frame written at offset %d, size %d\n", nb_compr_bytes, redundancy_bytes);
+opus/src/opus_encoder.c-2617-        if (err < 0)
+opus/src/opus_encoder.c-2618-        {
+opus/src/opus_encoder.c-2619-           RESTORE_STACK;
+opus/src/opus_encoder.c-2620-           return OPUS_INTERNAL_ERROR;
+opus/src/opus_encoder.c-2621-        }
+opus/src/opus_encoder.c-2622-        celt_encoder_ctl(celt_enc, OPUS_GET_FINAL_RANGE(&redundant_rng));
+--
+opus/src/opus_encoder.c-2662-          RESTORE_STACK;
+opus/src/opus_encoder.c-2663-          return OPUS_BUFFER_TOO_SMALL;
+opus/src/opus_encoder.c-2664-       }
+opus/src/opus_encoder.c-2665-       data[1] = 0;
+opus/src/opus_encoder.c-2666-       ret = 1;
+opus/src/opus_encoder.c-2667-       st->rangeFinal = 0;
+opus/src/opus_encoder.c:2668:    } else if (st->mode==MODE_SILK_ONLY&&!redundancy)
+opus/src/opus_encoder.c-2669-    {
+opus/src/opus_encoder.c-2670-       /*When in LPC only mode it's perfectly
+opus/src/opus_encoder.c-2671-         reasonable to strip off trailing zero bytes as
+opus/src/opus_encoder.c-2672-         the required range decoder behavior is to
+opus/src/opus_encoder.c-2673-         fill these in. This can't be done when the MDCT
+opus/src/opus_encoder.c-2674-         modes are used because the decoder needs to know
+opus/src/opus_encoder.c-2675-         the actual length for allocation purposes.*/
+opus/src/opus_encoder.c-2676-       while(ret>2&&data[ret]==0)ret--;
+opus/src/opus_encoder.c-2677-    }
+opus/src/opus_encoder.c:2678:    /* Count ToC and redundancy */
+opus/src/opus_encoder.c:2679:    ret += 1+redundancy_bytes;
+opus/src/opus_encoder.c-2680-    apply_padding = !st->use_vbr;
+opus/src/opus_encoder.c-2681-#ifdef ENABLE_DRED
+opus/src/opus_encoder.c-2682-    if (st->dred_duration > 0 && st->dred_encoder.loaded && first_frame) {
+opus/src/opus_encoder.c-2683-       opus_extension_data extension;
+opus/src/opus_encoder.c-2684-       unsigned char buf[DRED_MAX_DATA_SIZE];
+opus/src/opus_encoder.c-2685-       int dred_chunks;
+opus/src/opus_encoder.c-2686-       int dred_bytes_left;
+opus/src/opus_encoder.c:2687:       dred_chunks = IMIN((st->dred_duration+5)/4, DRED_NUM_REDUNDANCY_FRAMES/2);
+opus/src/opus_encoder.c-2688-       if (st->use_vbr) dred_chunks = IMIN(dred_chunks, st->dred_target_chunks);
+opus/src/opus_encoder.c-2689-       /* Remaining space for DRED, accounting for cost the 3 extra bytes for code 3, padding length, and extension number. */
+opus/src/opus_encoder.c-2690-       dred_bytes_left = IMIN(DRED_MAX_DATA_SIZE, orig_max_data_bytes-ret-3);
+opus/src/opus_encoder.c-2691-       /* Account for the extra bytes required to signal large padding length. */
+opus/src/opus_encoder.c-2692-       dred_bytes_left -= (dred_bytes_left+1+DRED_EXPERIMENTAL_BYTES)/255;
+opus/src/opus_encoder.c-2693-       /* Check whether we actually have something to encode. */
+--
+opus/src/opus_encoder.c-2729-          return OPUS_INTERNAL_ERROR;
+opus/src/opus_encoder.c-2730-       }
+opus/src/opus_encoder.c-2731-       ret = orig_max_data_bytes;
+opus/src/opus_encoder.c-2732-    }
+opus/src/opus_encoder.c-2733-    RESTORE_STACK;
+opus/src/opus_encoder.c-2734-    fprintf(stderr,
+opus/src/opus_encoder.c:2735:      "RED_FINAL: frame=%d mode=%d redundancy=%d "
+opus/src/opus_encoder.c:2736:      "celt_to_silk=%d write_packet_offset=%d "
+opus/src/opus_encoder.c-2737-      "final_packet_offset=%d final_packet_end=%d "
+opus/src/opus_encoder.c:2738:      "redundancy_size=%d packet_return_length=%d moved=%d\n",
+opus/src/opus_encoder.c-2739-
+opus/src/opus_encoder.c-2740-      this_frame_id,
+opus/src/opus_encoder.c-2741-      st->mode,
+opus/src/opus_encoder.c:2742:      redundancy,
+opus/src/opus_encoder.c:2743:      celt_to_silk,
+opus/src/opus_encoder.c-2744-
+opus/src/opus_encoder.c-2745-      dbg_red_write_offset < 0 ?
+opus/src/opus_encoder.c-2746-         -1 : dbg_red_write_offset + 1,
+opus/src/opus_encoder.c-2747-
+opus/src/opus_encoder.c-2748-      dbg_red_final_offset < 0 ?
+opus/src/opus_encoder.c-2749-         -1 : dbg_red_final_offset + 1,
+--
+opus/src/opus_decoder.c-81-   int          stream_channels;
+opus/src/opus_decoder.c-82-
+opus/src/opus_decoder.c-83-   int          bandwidth;
+opus/src/opus_decoder.c-84-   int          mode;
+opus/src/opus_decoder.c-85-   int          prev_mode;
+opus/src/opus_decoder.c-86-   int          frame_size;
+opus/src/opus_decoder.c:87:   int          prev_redundancy;
+opus/src/opus_decoder.c-88-   int          last_packet_duration;
+opus/src/opus_decoder.c-89-#ifndef FIXED_POINT
+opus/src/opus_decoder.c-90-   opus_val16   softclip_mem[2];
+opus/src/opus_decoder.c-91-#endif
+opus/src/opus_decoder.c-92-
+opus/src/opus_decoder.c-93-   opus_uint32  rangeFinal;
+--
+opus/src/opus_decoder.c-286-
+opus/src/opus_decoder.c-287-   int audiosize;
+opus/src/opus_decoder.c-288-   int mode;
+opus/src/opus_decoder.c-289-   int bandwidth;
+opus/src/opus_decoder.c-290-   int transition=0;
+opus/src/opus_decoder.c-291-   int start_band;
+opus/src/opus_decoder.c:292:   int redundancy=0;
+opus/src/opus_decoder.c:293:   int redundancy_bytes = 0;
+opus/src/opus_decoder.c:294:   int celt_to_silk=0;
+opus/src/opus_decoder.c-295-   int c;
+opus/src/opus_decoder.c-296-   int F2_5, F5, F10, F20;
+opus/src/opus_decoder.c-297-   const celt_coef *window;
+opus/src/opus_decoder.c-298-   opus_uint32 redundant_rng = 0;
+opus/src/opus_decoder.c-299-   int celt_accum;
+opus/src/opus_decoder.c-300-   ALLOC_STACK;
+--
+opus/src/opus_decoder.c-324-      audiosize = st->frame_size;
+opus/src/opus_decoder.c-325-      mode = st->mode;
+opus/src/opus_decoder.c-326-      bandwidth = st->bandwidth;
+opus/src/opus_decoder.c-327-      ec_dec_init(&dec,(unsigned char*)data,len);
+opus/src/opus_decoder.c-328-   } else {
+opus/src/opus_decoder.c-329-      audiosize = frame_size;
+opus/src/opus_decoder.c:330:      /* Run PLC using last used mode (CELT if we ended with CELT redundancy) */
+opus/src/opus_decoder.c:331:      mode = st->prev_redundancy ? MODE_CELT_ONLY : st->prev_mode;
+opus/src/opus_decoder.c-332-      bandwidth = 0;
+opus/src/opus_decoder.c-333-
+opus/src/opus_decoder.c-334-      if (mode == 0)
+opus/src/opus_decoder.c-335-      {
+opus/src/opus_decoder.c-336-         /* If we haven't got any packet yet, all we can do is return zeros */
+opus/src/opus_decoder.c-337-         for (i=0;i<audiosize*st->channels;i++)
+--
+opus/src/opus_decoder.c-369-      SILK PCM buffer. This saves some stack space. */
+opus/src/opus_decoder.c-370-   celt_accum = (mode != MODE_CELT_ONLY);
+opus/src/opus_decoder.c-371-
+opus/src/opus_decoder.c-372-   pcm_transition_silk_size = ALLOC_NONE;
+opus/src/opus_decoder.c-373-   pcm_transition_celt_size = ALLOC_NONE;
+opus/src/opus_decoder.c-374-   if (data!=NULL && st->prev_mode > 0 && (
+opus/src/opus_decoder.c:375:       (mode == MODE_CELT_ONLY && st->prev_mode != MODE_CELT_ONLY && !st->prev_redundancy)
+opus/src/opus_decoder.c-376-    || (mode != MODE_CELT_ONLY && st->prev_mode == MODE_CELT_ONLY) )
+opus/src/opus_decoder.c-377-      )
+opus/src/opus_decoder.c-378-   {
+opus/src/opus_decoder.c-379-      transition = 1;
+opus/src/opus_decoder.c-380-      /* Decide where to allocate the stack memory for pcm_transition */
+opus/src/opus_decoder.c-381-      if (mode == MODE_CELT_ONLY)
+--
+opus/src/opus_decoder.c-508-   start_band = 0;
+opus/src/opus_decoder.c-509-   if (!decode_fec && mode != MODE_CELT_ONLY && data != NULL
+opus/src/opus_decoder.c-510-    && ec_tell(&dec)+17+20*(mode == MODE_HYBRID) <= 8*len)
+opus/src/opus_decoder.c-511-   {
+opus/src/opus_decoder.c-512-      /* Check if we have a redundant 0-8 kHz band */
+opus/src/opus_decoder.c-513-      if (mode == MODE_HYBRID)
+opus/src/opus_decoder.c:514:         redundancy = ec_dec_bit_logp(&dec, 12);
+opus/src/opus_decoder.c-515-      else
+opus/src/opus_decoder.c:516:         redundancy = 1;
+opus/src/opus_decoder.c:517:      if (redundancy)
+opus/src/opus_decoder.c-518-      {
+opus/src/opus_decoder.c:519:         celt_to_silk = ec_dec_bit_logp(&dec, 1);
+opus/src/opus_decoder.c:520:         /* redundancy_bytes will be at least two, in the non-hybrid
+opus/src/opus_decoder.c-521-            case due to the ec_tell() check above */
+opus/src/opus_decoder.c:522:         redundancy_bytes = mode==MODE_HYBRID ?
+opus/src/opus_decoder.c-523-               (opus_int32)ec_dec_uint(&dec, 256)+2 :
+opus/src/opus_decoder.c-524-               len-((ec_tell(&dec)+7)>>3);
+opus/src/opus_decoder.c:525:         len -= redundancy_bytes;
+opus/src/opus_decoder.c-526-         /* This is a sanity check. It should never happen for a valid
+opus/src/opus_decoder.c-527-            packet, so the exact behaviour is not normative. */
+opus/src/opus_decoder.c-528-         if (len*8 < ec_tell(&dec))
+opus/src/opus_decoder.c-529-         {
+opus/src/opus_decoder.c-530-            len = 0;
+opus/src/opus_decoder.c:531:            redundancy_bytes = 0;
+opus/src/opus_decoder.c:532:            redundancy = 0;
+opus/src/opus_decoder.c-533-         }
+opus/src/opus_decoder.c-534-         /* Shrink decoder because of raw bits */
+opus/src/opus_decoder.c:535:         dec.storage -= redundancy_bytes;
+opus/src/opus_decoder.c-536-      }
+opus/src/opus_decoder.c-537-   }
+opus/src/opus_decoder.c-538-   if (mode != MODE_CELT_ONLY)
+opus/src/opus_decoder.c-539-      start_band = 17;
+opus/src/opus_decoder.c-540-
+opus/src/opus_decoder.c:541:   if (redundancy)
+opus/src/opus_decoder.c-542-   {
+opus/src/opus_decoder.c-543-      transition = 0;
+opus/src/opus_decoder.c-544-      pcm_transition_silk_size=ALLOC_NONE;
+opus/src/opus_decoder.c-545-   }
+opus/src/opus_decoder.c-546-
+opus/src/opus_decoder.c-547-   ALLOC(pcm_transition_silk, pcm_transition_silk_size, opus_res);
+--
+opus/src/opus_decoder.c-577-         break;
+opus/src/opus_decoder.c-578-      }
+opus/src/opus_decoder.c-579-      MUST_SUCCEED(celt_decoder_ctl(celt_dec, CELT_SET_END_BAND(endband)));
+opus/src/opus_decoder.c-580-   }
+opus/src/opus_decoder.c-581-   MUST_SUCCEED(celt_decoder_ctl(celt_dec, CELT_SET_CHANNELS(st->stream_channels)));
+opus/src/opus_decoder.c-582-
+opus/src/opus_decoder.c:583:   /* Only allocation memory for redundancy if/when needed */
+opus/src/opus_decoder.c:584:   redundant_audio_size = redundancy ? F5*st->channels : ALLOC_NONE;
+opus/src/opus_decoder.c-585-   ALLOC(redundant_audio, redundant_audio_size, opus_res);
+opus/src/opus_decoder.c-586-
+opus/src/opus_decoder.c-587-   /* 5 ms redundant frame for CELT->SILK*/
+opus/src/opus_decoder.c:588:   if (redundancy && celt_to_silk)
+opus/src/opus_decoder.c-589-   {
+opus/src/opus_decoder.c:590:      /* If the previous frame did not use CELT (the first redundancy frame in
+opus/src/opus_decoder.c-591-         a transition from SILK may have been lost) then the CELT decoder is
+opus/src/opus_decoder.c:592:         stale at this point and the redundancy audio is not useful, however
+opus/src/opus_decoder.c:593:         the final range is still needed (for testing), so the redundancy is
+opus/src/opus_decoder.c-594-         always decoded but the decoded audio may not be used */
+opus/src/opus_decoder.c-595-      MUST_SUCCEED(celt_decoder_ctl(celt_dec, CELT_SET_START_BAND(0)));
+opus/src/opus_decoder.c:596:      celt_decode_with_ec(celt_dec, data+len, redundancy_bytes,
+opus/src/opus_decoder.c-597-                          redundant_audio, F5, NULL, 0);
+opus/src/opus_decoder.c-598-      MUST_SUCCEED(celt_decoder_ctl(celt_dec, OPUS_GET_FINAL_RANGE(&redundant_rng)));
+opus/src/opus_decoder.c-599-   }
+opus/src/opus_decoder.c-600-
+opus/src/opus_decoder.c-601-   /* MUST be after PLC */
+opus/src/opus_decoder.c-602-   MUST_SUCCEED(celt_decoder_ctl(celt_dec, CELT_SET_START_BAND(start_band)));
+--
+opus/src/opus_decoder.c-606-#else
+opus/src/opus_decoder.c-607-   if (mode != MODE_SILK_ONLY)
+opus/src/opus_decoder.c-608-#endif
+opus/src/opus_decoder.c-609-   {
+opus/src/opus_decoder.c-610-      int celt_frame_size = IMIN(F20, frame_size);
+opus/src/opus_decoder.c-611-      /* Make sure to discard any previous CELT state */
+opus/src/opus_decoder.c:612:      if (mode != st->prev_mode && st->prev_mode > 0 && !st->prev_redundancy)
+opus/src/opus_decoder.c-613-         MUST_SUCCEED(celt_decoder_ctl(celt_dec, OPUS_RESET_STATE));
+opus/src/opus_decoder.c-614-      /* Decode CELT */
+opus/src/opus_decoder.c-615-      celt_ret = celt_decode_with_ec_dred(celt_dec, decode_fec ? NULL : data,
+opus/src/opus_decoder.c-616-                                     len, pcm, celt_frame_size, &dec, celt_accum
+opus/src/opus_decoder.c-617-#ifdef ENABLE_DEEP_PLC
+opus/src/opus_decoder.c-618-                                     , &st->lpcnet
+--
+opus/src/opus_decoder.c-625-      {
+opus/src/opus_decoder.c-626-         for (i=0;i<frame_size*st->channels;i++)
+opus/src/opus_decoder.c-627-            pcm[i] = 0;
+opus/src/opus_decoder.c-628-      }
+opus/src/opus_decoder.c-629-      /* For hybrid -> SILK transitions, we let the CELT MDCT
+opus/src/opus_decoder.c-630-         do a fade-out by decoding a silence frame */
+opus/src/opus_decoder.c:631:      if (st->prev_mode == MODE_HYBRID && !(redundancy && celt_to_silk && st->prev_redundancy) )
+opus/src/opus_decoder.c-632-      {
+opus/src/opus_decoder.c-633-         MUST_SUCCEED(celt_decoder_ctl(celt_dec, CELT_SET_START_BAND(0)));
+opus/src/opus_decoder.c-634-         celt_decode_with_ec(celt_dec, silence, 2, pcm, F2_5, NULL, celt_accum);
+opus/src/opus_decoder.c-635-      }
+opus/src/opus_decoder.c-636-      st->rangeFinal = dec.rng;
+opus/src/opus_decoder.c-637-   }
+--
+opus/src/opus_decoder.c-640-      const CELTMode *celt_mode;
+opus/src/opus_decoder.c-641-      MUST_SUCCEED(celt_decoder_ctl(celt_dec, CELT_GET_MODE(&celt_mode)));
+opus/src/opus_decoder.c-642-      window = celt_mode->window;
+opus/src/opus_decoder.c-643-   }
+opus/src/opus_decoder.c-644-
+opus/src/opus_decoder.c-645-   /* 5 ms redundant frame for SILK->CELT */
+opus/src/opus_decoder.c:646:   if (redundancy && !celt_to_silk)
+opus/src/opus_decoder.c-647-   {
+opus/src/opus_decoder.c-648-      MUST_SUCCEED(celt_decoder_ctl(celt_dec, OPUS_RESET_STATE));
+opus/src/opus_decoder.c-649-      MUST_SUCCEED(celt_decoder_ctl(celt_dec, CELT_SET_START_BAND(0)));
+opus/src/opus_decoder.c-650-
+opus/src/opus_decoder.c:651:      celt_decode_with_ec(celt_dec, data+len, redundancy_bytes, redundant_audio, F5, NULL, 0);
+opus/src/opus_decoder.c-652-      MUST_SUCCEED(celt_decoder_ctl(celt_dec, OPUS_GET_FINAL_RANGE(&redundant_rng)));
+opus/src/opus_decoder.c-653-      smooth_fade(pcm+st->channels*(frame_size-F2_5), redundant_audio+st->channels*F2_5,
+opus/src/opus_decoder.c-654-                  pcm+st->channels*(frame_size-F2_5), F2_5, st->channels, window, st->Fs);
+opus/src/opus_decoder.c-655-   }
+opus/src/opus_decoder.c-656-   /* 5ms redundant frame for CELT->SILK; ignore if the previous frame did not
+opus/src/opus_decoder.c:657:      use CELT (the first redundancy frame in a transition from SILK may have
+opus/src/opus_decoder.c-658-      been lost) */
+opus/src/opus_decoder.c:659:   if (redundancy && celt_to_silk && (st->prev_mode != MODE_SILK_ONLY || st->prev_redundancy))
+opus/src/opus_decoder.c-660-   {
+opus/src/opus_decoder.c-661-      for (c=0;c<st->channels;c++)
+opus/src/opus_decoder.c-662-      {
+opus/src/opus_decoder.c-663-         for (i=0;i<F2_5;i++)
+opus/src/opus_decoder.c-664-            pcm[st->channels*i+c] = redundant_audio[st->channels*i+c];
+opus/src/opus_decoder.c-665-      }
+--
+opus/src/opus_decoder.c-706-   if (len <= 1)
+opus/src/opus_decoder.c-707-      st->rangeFinal = 0;
+opus/src/opus_decoder.c-708-   else
+opus/src/opus_decoder.c-709-      st->rangeFinal ^= redundant_rng;
+opus/src/opus_decoder.c-710-
+opus/src/opus_decoder.c-711-   st->prev_mode = mode;
+opus/src/opus_decoder.c:712:   st->prev_redundancy = redundancy && !celt_to_silk;
+opus/src/opus_decoder.c-713-
+opus/src/opus_decoder.c-714-   if (celt_ret>=0)
+opus/src/opus_decoder.c-715-   {
+opus/src/opus_decoder.c-716-      if (OPUS_CHECK_ARRAY(pcm, audiosize*st->channels))
+opus/src/opus_decoder.c-717-         OPUS_PRINT_INT(audiosize);
+opus/src/opus_decoder.c-718-   }
+--
+opus/src/opus_decoder.c-1602-   VALIDATE_DRED_DECODER(dred_dec);
+opus/src/opus_decoder.c-1603-   if (!dred_dec->loaded) return OPUS_UNIMPLEMENTED;
+opus/src/opus_decoder.c-1604-   if (src != dst)
+opus/src/opus_decoder.c-1605-      OPUS_COPY(dst, src, 1);
+opus/src/opus_decoder.c-1606-   if (dst->process_stage == 2)
+opus/src/opus_decoder.c-1607-      return OPUS_OK;
+opus/src/opus_decoder.c:1608:   celt_assert(dst->nb_latents >= 0 && dst->nb_latents <= DRED_NUM_REDUNDANCY_FRAMES/2);
+opus/src/opus_decoder.c-1609-   DRED_rdovae_decode_all(&dred_dec->model, dst->fec_features, dst->state, dst->latents, dst->nb_latents, dred_dec->arch);
+opus/src/opus_decoder.c-1610-   dst->process_stage = 2;
+opus/src/opus_decoder.c-1611-   return OPUS_OK;
+opus/src/opus_decoder.c-1612-#else
+opus/src/opus_decoder.c-1613-   (void)dred_dec;
+opus/src/opus_decoder.c-1614-   (void)src;
+--
+opus/src/opus_demo.c-142-    fprintf(stderr, "-dtx                 : enable SILK DTX\n" );
+opus/src/opus_demo.c-143-    fprintf(stderr, "-loss <perc>         : optimize for loss percentage and simulate packet loss, in percent (0-100); default: 0\n" );
+opus/src/opus_demo.c-144-#ifdef ENABLE_LOSSGEN
+opus/src/opus_demo.c-145-    fprintf(stderr, "-sim_loss <perc>     : simulate realistic (bursty) packet loss from percentage, using generative model\n" );
+opus/src/opus_demo.c-146-#endif
+opus/src/opus_demo.c-147-    fprintf(stderr, "-lossfile <file>     : simulate packet loss, reading loss from file\n" );
+opus/src/opus_demo.c:148:    fprintf(stderr, "-dred <frames>       : add Deep REDundancy (in units of 10-ms frames)\n" );
+opus/src/opus_demo.c-149-    fprintf(stderr, "-enc_loss            : Apply loss on the encoder side (store empty packets)\n" );
+opus/src/opus_demo.c-150-#ifdef ENABLE_OSCE_BWE
+opus/src/opus_demo.c-151-    fprintf(stderr, "-enable_osce_bwe     : enable OSCE bandwidth extension for wideband signals (48 kHz sampling rate only), raises dec_complexity to 4\n");
+opus/src/opus_demo.c-152-#endif
+opus/src/opus_demo.c-153-#ifdef ENABLE_QEXT
+opus/src/opus_demo.c-154-    fprintf(stderr, "-qext                : enable QEXT\n" );
+--
+opus/celt/entdec.c-66-    address="Stanford, CA",
+opus/celt/entdec.c-67-    month=May,
+opus/celt/entdec.c-68-    year=1976
+opus/celt/entdec.c-69-  }
+opus/celt/entdec.c-70-  @INPROCEEDINGS{Mar79,
+opus/celt/entdec.c-71-   author="Martin, G.N.N.",
+opus/celt/entdec.c:72:   title="Range encoding: an algorithm for removing redundancy from a digitised
+opus/celt/entdec.c-73-    message",
+opus/celt/entdec.c-74-   booktitle="Video & Data Recording Conference",
+opus/celt/entdec.c-75-   year=1979,
+opus/celt/entdec.c-76-   address="Southampton",
+opus/celt/entdec.c-77-   month=Jul
+opus/celt/entdec.c-78-  }
+--
+opus/celt/rate.c-659-      ec_enc_icdf(enc, IMIN(sym, 2), last_zero, 7);
+opus/celt/rate.c-660-   } else if (*last == cap) {
+opus/celt/rate.c-661-      ec_enc_icdf(enc, IMIN(sym, 2), last_cap, 7);
+opus/celt/rate.c-662-   } else {
+opus/celt/rate.c-663-      ec_enc_icdf(enc, sym, last_other, 7);
+opus/celt/rate.c-664-   }
+opus/celt/rate.c:665:   /* We accept some redundancy if depth==last (for last different from 0 and cap). */
+opus/celt/rate.c-666-   if (sym == 3) ec_enc_uint(enc, depth-1, cap);
+opus/celt/rate.c-667-   *last = depth;
+opus/celt/rate.c-668-}
+opus/celt/rate.c-669-
+opus/celt/rate.c-670-static int ec_dec_depth(ec_dec *dec, opus_int32 cap, opus_int32 *last) {
+opus/celt/rate.c-671-   int depth, sym;
+--
+opus/celt/entenc.c-35-
+opus/celt/entenc.c-36-/*A range encoder.
+opus/celt/entenc.c-37-  See entdec.c and the references for implementation details \cite{Mar79,MNW98}.
+opus/celt/entenc.c-38-
+opus/celt/entenc.c-39-  @INPROCEEDINGS{Mar79,
+opus/celt/entenc.c-40-   author="Martin, G.N.N.",
+opus/celt/entenc.c:41:   title="Range encoding: an algorithm for removing redundancy from a digitised
+opus/celt/entenc.c-42-    message",
+opus/celt/entenc.c-43-   booktitle="Video \& Data Recording Conference",
+opus/celt/entenc.c-44-   year=1979,
+opus/celt/entenc.c-45-   address="Southampton",
+opus/celt/entenc.c-46-   month=Jul
+opus/celt/entenc.c-47-  }
+--
+opus/silk/structs.h-227-
+opus/silk/structs.h-228-    /* DTX */
+opus/silk/structs.h-229-    opus_int                     useDTX;                            /* Flag to enable DTX                                               */
+opus/silk/structs.h-230-    opus_int                     inDTX;                             /* Flag to signal DTX period                                        */
+opus/silk/structs.h-231-    opus_int                     noSpeechCounter;                   /* Counts concecutive nonactive frames, used by DTX                 */
+opus/silk/structs.h-232-
+opus/silk/structs.h:233:    /* Inband Low Bitrate Redundancy (LBRR) data */
+opus/silk/structs.h-234-    opus_int                     useInBandFEC;                      /* Saves the API setting for query                                  */
+opus/silk/structs.h-235-    opus_int                     LBRR_enabled;                      /* Depends on useInBandFRC, bitrate and packet loss rate            */
+opus/silk/structs.h-236-    opus_int                     LBRR_GainIncreases;                /* Gains increment for coding LBRR frames                           */
+opus/silk/structs.h-237-    SideInfoIndices              indices_LBRR[ MAX_FRAMES_PER_PACKET ];
+opus/silk/structs.h-238-    opus_int8                    pulses_LBRR[ MAX_FRAMES_PER_PACKET ][ MAX_FRAME_LENGTH ];
+opus/silk/structs.h-239-} silk_encoder_state;
+--
+opus/silk/float/encode_frame_FLP.c-31-
+opus/silk/float/encode_frame_FLP.c-32-#include <stdlib.h>
+opus/silk/float/encode_frame_FLP.c-33-#include "main_FLP.h"
+opus/silk/float/encode_frame_FLP.c-34-#include "tuning_parameters.h"
+opus/silk/float/encode_frame_FLP.c-35-#include "stack_alloc.h"
+opus/silk/float/encode_frame_FLP.c-36-
+opus/silk/float/encode_frame_FLP.c:37:/* Low Bitrate Redundancy (LBRR) encoding. Reuse all parameters but encode with lower bitrate */
+opus/silk/float/encode_frame_FLP.c-38-static OPUS_INLINE void silk_LBRR_encode_FLP(
+opus/silk/float/encode_frame_FLP.c-39-    silk_encoder_state_FLP          *psEnc,                             /* I/O  Encoder state FLP                           */
+opus/silk/float/encode_frame_FLP.c-40-    silk_encoder_control_FLP        *psEncCtrl,                         /* I/O  Encoder control FLP                         */
+opus/silk/float/encode_frame_FLP.c-41-    const silk_float                xfw[],                              /* I    Input signal                                */
+opus/silk/float/encode_frame_FLP.c-42-    opus_int                        condCoding                          /* I    The type of conditional coding used so far for this frame */
+opus/silk/float/encode_frame_FLP.c-43-);
+--
+opus/silk/float/encode_frame_FLP.c-381-    *pnBytesOut = silk_RSHIFT( ec_tell( psRangeEnc ) + 7, 3 );
+opus/silk/float/encode_frame_FLP.c-382-
+opus/silk/float/encode_frame_FLP.c-383-    RESTORE_STACK;
+opus/silk/float/encode_frame_FLP.c-384-    return ret;
+opus/silk/float/encode_frame_FLP.c-385-}
+opus/silk/float/encode_frame_FLP.c-386-
+opus/silk/float/encode_frame_FLP.c:387:/* Low-Bitrate Redundancy (LBRR) encoding. Reuse all parameters but encode excitation at lower bitrate  */
+opus/silk/float/encode_frame_FLP.c-388-static OPUS_INLINE void silk_LBRR_encode_FLP(
+opus/silk/float/encode_frame_FLP.c-389-    silk_encoder_state_FLP          *psEnc,                             /* I/O  Encoder state FLP                           */
+opus/silk/float/encode_frame_FLP.c-390-    silk_encoder_control_FLP        *psEncCtrl,                         /* I/O  Encoder control FLP                         */
+opus/silk/float/encode_frame_FLP.c-391-    const silk_float                xfw[],                              /* I    Input signal                                */
+opus/silk/float/encode_frame_FLP.c-392-    opus_int                        condCoding                          /* I    The type of conditional coding used so far for this frame */
+opus/silk/float/encode_frame_FLP.c-393-)
+--
+opus/silk/control_audio_bandwidth.c-83-
+opus/silk/control_audio_bandwidth.c-84-                    /* Switch to a lower sample frequency */
+opus/silk/control_audio_bandwidth.c-85-                    fs_kHz = orig_kHz == 16 ? 12 : 8;
+opus/silk/control_audio_bandwidth.c-86-                } else {
+opus/silk/control_audio_bandwidth.c-87-                   if( psEncC->sLP.transition_frame_no <= 0 ) {
+opus/silk/control_audio_bandwidth.c-88-                       encControl->switchReady = 1;
+opus/silk/control_audio_bandwidth.c:89:                       /* Make room for redundancy */
+opus/silk/control_audio_bandwidth.c-90-                       encControl->maxBits -= encControl->maxBits * 5 / ( encControl->payloadSize_ms + 5 );
+opus/silk/control_audio_bandwidth.c-91-                   } else {
+opus/silk/control_audio_bandwidth.c-92-                       /* Direction: down (at double speed) */
+opus/silk/control_audio_bandwidth.c-93-                       psEncC->sLP.mode = -2;
+opus/silk/control_audio_bandwidth.c-94-                   }
+opus/silk/control_audio_bandwidth.c-95-                }
+--
+opus/silk/control_audio_bandwidth.c-111-
+opus/silk/control_audio_bandwidth.c-112-                    /* Direction: up */
+opus/silk/control_audio_bandwidth.c-113-                    psEncC->sLP.mode = 1;
+opus/silk/control_audio_bandwidth.c-114-                } else {
+opus/silk/control_audio_bandwidth.c-115-                   if( psEncC->sLP.mode == 0 ) {
+opus/silk/control_audio_bandwidth.c-116-                       encControl->switchReady = 1;
+opus/silk/control_audio_bandwidth.c:117:                       /* Make room for redundancy */
+opus/silk/control_audio_bandwidth.c-118-                       encControl->maxBits -= encControl->maxBits * 5 / ( encControl->payloadSize_ms + 5 );
+opus/silk/control_audio_bandwidth.c-119-                   } else {
+opus/silk/control_audio_bandwidth.c-120-                       /* Direction: up */
+opus/silk/control_audio_bandwidth.c-121-                       psEncC->sLP.mode = 1;
+opus/silk/control_audio_bandwidth.c-122-                   }
+opus/silk/control_audio_bandwidth.c-123-                }
+--
+opus/silk/control.h-70-    /* I:   Complexity mode; 0 is lowest, 10 is highest complexity                          */
+opus/silk/control.h-71-    opus_int complexity;
+opus/silk/control.h-72-
+opus/silk/control.h-73-    /* I:   Flag to enable in-band Forward Error Correction (FEC); 0/1                      */
+opus/silk/control.h-74-    opus_int useInBandFEC;
+opus/silk/control.h-75-
+opus/silk/control.h:76:    /* I:   Flag to enable in-band Deep REDundancy (DRED); 0/1                              */
+opus/silk/control.h-77-    opus_int useDRED;
+opus/silk/control.h-78-
+opus/silk/control.h-79-    /* I:   Flag to actually code in-band Forward Error Correction (FEC) in the current packet; 0/1 */
+opus/silk/control.h-80-    opus_int LBRR_coded;
+opus/silk/control.h-81-
+opus/silk/control.h-82-    /* I:   Flag to enable discontinuous transmission (DTX); 0/1                            */
+--
+opus/silk/fixed/encode_frame_FIX.c-31-
+opus/silk/fixed/encode_frame_FIX.c-32-#include <stdlib.h>
+opus/silk/fixed/encode_frame_FIX.c-33-#include "main_FIX.h"
+opus/silk/fixed/encode_frame_FIX.c-34-#include "stack_alloc.h"
+opus/silk/fixed/encode_frame_FIX.c-35-#include "tuning_parameters.h"
+opus/silk/fixed/encode_frame_FIX.c-36-
+opus/silk/fixed/encode_frame_FIX.c:37:/* Low Bitrate Redundancy (LBRR) encoding. Reuse all parameters but encode with lower bitrate           */
+opus/silk/fixed/encode_frame_FIX.c-38-static OPUS_INLINE void silk_LBRR_encode_FIX(
+opus/silk/fixed/encode_frame_FIX.c-39-    silk_encoder_state_FIX          *psEnc,                                 /* I/O  Pointer to Silk FIX encoder state                                           */
+opus/silk/fixed/encode_frame_FIX.c-40-    silk_encoder_control_FIX        *psEncCtrl,                             /* I/O  Pointer to Silk FIX encoder control struct                                  */
+opus/silk/fixed/encode_frame_FIX.c-41-    const opus_int16                x16[],                                  /* I    Input signal                                                                */
+opus/silk/fixed/encode_frame_FIX.c-42-    opus_int                        condCoding                              /* I    The type of conditional coding used so far for this frame                   */
+opus/silk/fixed/encode_frame_FIX.c-43-);
+--
+opus/silk/fixed/encode_frame_FIX.c-385-    *pnBytesOut = silk_RSHIFT( ec_tell( psRangeEnc ) + 7, 3 );
+opus/silk/fixed/encode_frame_FIX.c-386-
+opus/silk/fixed/encode_frame_FIX.c-387-    RESTORE_STACK;
+opus/silk/fixed/encode_frame_FIX.c-388-    return ret;
+opus/silk/fixed/encode_frame_FIX.c-389-}
+opus/silk/fixed/encode_frame_FIX.c-390-
+opus/silk/fixed/encode_frame_FIX.c:391:/* Low-Bitrate Redundancy (LBRR) encoding. Reuse all parameters but encode excitation at lower bitrate  */
+opus/silk/fixed/encode_frame_FIX.c-392-static OPUS_INLINE void silk_LBRR_encode_FIX(
+opus/silk/fixed/encode_frame_FIX.c-393-    silk_encoder_state_FIX          *psEnc,                                 /* I/O  Pointer to Silk FIX encoder state                                           */
+opus/silk/fixed/encode_frame_FIX.c-394-    silk_encoder_control_FIX        *psEncCtrl,                             /* I/O  Pointer to Silk FIX encoder control struct                                  */
+opus/silk/fixed/encode_frame_FIX.c-395-    const opus_int16                x16[],                                  /* I    Input signal                                                                */
+opus/silk/fixed/encode_frame_FIX.c-396-    opus_int                        condCoding                              /* I    The type of conditional coding used so far for this frame                   */
+opus/silk/fixed/encode_frame_FIX.c-397-)

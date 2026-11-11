@@ -65,3 +65,20 @@ snapshots/
 drafts/
 backups/
 gtzan-data/
+
+
+# Private research conversation exports
+/conversation/
+
+# Common Voice source recordings
+/experiments/B9_common_voice/pilot/audio/clips/
+
+# Original dataset metadata
+/experiments/B9_common_voice/metadata/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+/data/
+/gtzan-data/
+/papers/

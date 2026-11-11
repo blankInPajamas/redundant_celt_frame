@@ -1,0 +1,36 @@
+========== B12 INDEPENDENT AUDIT REPORT ==========
+Run directory: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705
+Preflight directory: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/preflight_20261104_015607
+Audit status: PASS
+
+========== RECOMPUTED COUNTS ==========
+Preflight events: 200
+Normal payload manifest rows: 3600
+Corruption manifest rows: 1200
+Baseline rows: 400
+Decoder result rows: 9600
+Capacity rows: 200
+Event summary rows: 200
+Failure rows: 0
+Baseline log blocks: 400
+Decoder log blocks: 9600
+Output checksums verified: 4813/4813
+
+========== CROSS-VERSION SAMPLE OVERLAP ==========
+Recording-ID overlap between encoder groups: 4
+Speaker-ID overlap between encoder groups: 4
+
+========== ERRORS ==========
+None
+
+========== INTERPRETATION WARNINGS ==========
+- The SHA256 integrity check is out-of-band; it is not native Opus authentication.
+- The corruption controls deliberately flip one payload bit; they are not a random-channel-noise or error-correction experiment.
+- PCM equality demonstrates identical decoder output for these tests; it is not a subjective listening test.
+- Payload repetitions are repeated trials within each recording/frame, not 3,600 independent recordings.
+- The two encoder-version event sets are not fully paired. Avoid attributing between-version differences to the encoder alone without a matched-recording design.
+
+The audit validates saved bitstreams, manifests, hashes, decoder logs and result tables.
+It does not establish steganographic undetectability, native Opus authentication,
+error correction, resistance to arbitrary transcoding, or generalization beyond
+the tested Common Voice sample and the two instrumented decoder builds.

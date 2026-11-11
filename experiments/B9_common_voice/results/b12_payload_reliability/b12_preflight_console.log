@@ -1,0 +1,56 @@
+========== B12 PREFLIGHT ==========
+READ-ONLY: source bitstreams will not be modified.
+Source manifest: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b9_full_encoding/payload_roundtrip_100speaker/b9_payload_manifest.csv
+Total source events: 200
+
+========== OPUS 1.5.2 ==========
+Validated 25/100 events
+Validated 50/100 events
+Validated 75/100 events
+Validated 100/100 events
+
+========== OPUS 1.6.1 ==========
+Validated 25/100 events
+Validated 50/100 events
+Validated 75/100 events
+Validated 100/100 events
+
+========== DECODER VALIDATION ==========
+Opus 1.5.2: instrumented decoder verified
+Opus 1.6.1: instrumented decoder verified
+========== B12 PREFLIGHT REPORT ==========
+READ-ONLY VALIDATION: PASS
+Source manifest records: 200
+
+========== SOURCE VALIDATION ==========
+1.5.2: 100/100 events; 100 unique recordings; 100 unique speakers; all source packets validated
+1.6.1: 100/100 events; 100 unique recordings; 100 unique speakers; all source packets validated
+Total validated events: 200
+Target packets with exactly 36 trailing zeros: 200/200
+Original payload SHA256 validation: 200/200
+Historical extraction validation: 200/200
+Historical packet framing validation: 200/200
+
+========== DECODER VALIDATION ==========
+Opus 1.5.2: instrumented decoder verified
+Opus 1.6.1: instrumented decoder verified
+
+========== EXPECTED B12 WORKLOAD ==========
+Normal payload instances: 3600
+One-bit corruption instances: 1200
+Decoder comparisons: 9600
+Baseline decoder runs: 400
+37-byte capacity rejection tests: 200
+
+Source bitstreams modified: NO
+
+B12 PREFLIGHT: PASS
+
+========== SAVED FILES ==========
+b12_event_inventory.csv
+b12_preflight_report.txt
+b12_run_config.json
+b12_source_bitstreams.sha256
+b12_source_manifest.csv
+
+Preflight directory: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/preflight_20261104_015607

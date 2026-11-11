@@ -1,0 +1,46 @@
+{
+  "experiment": "B12 Full-scale Common Voice payload reliability",
+  "preflight_directory": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/preflight_20261104_015607",
+  "preflight_config_sha256": "61b64bfdf43cef96612bec6f5bb5af8754ffefa19d2d4992f42898331fa7c721",
+  "source_manifest_sha256": "98ec88d41e79bd5c9a5c82afbe7f68cf55f06e0e6a3059ec4bbe721f3a5e0f2e",
+  "source_events": 200,
+  "events_per_encoder": 100,
+  "encoder_versions": [
+    "1.5.2",
+    "1.6.1"
+  ],
+  "decoder_versions": [
+    "1.5.2",
+    "1.6.1"
+  ],
+  "payload_sizes_bytes": [
+    4,
+    8,
+    16,
+    24,
+    32,
+    36
+  ],
+  "independent_repetitions": 3,
+  "usable_capacity_bytes": 36,
+  "payload_generator": "SHAKE-256 with B12-CV26-FULL-v1 event-specific seed",
+  "corruption": "One bit flipped at byte index floor(payload_size/2), repetition 1",
+  "integrity": "Out-of-band SHA256 comparison with sender's original payload; not native Opus authentication",
+  "pcm_comparison": "Modified versus baseline PCM within the same decoder version",
+  "expected_normal_payload_instances": 3600,
+  "expected_corruption_instances": 1200,
+  "expected_baseline_decodes": 400,
+  "expected_decoder_comparisons": 9600,
+  "expected_capacity_tests": 200,
+  "timeout_seconds_per_decode": 120,
+  "source_bitstreams_modified": false,
+  "status": "COMPLETED",
+  "overall_pass": true,
+  "actual_normal_payload_instances": 3600,
+  "actual_corruption_instances": 1200,
+  "actual_baseline_decodes": 400,
+  "actual_decoder_comparisons": 9600,
+  "actual_failure_records": 0,
+  "source_bitstreams_unchanged": true,
+  "script_sha256": "7d3bbbd7252302a7561a2f497f024720a8bc9d6b419402b9f1da163bd613028f"
+}

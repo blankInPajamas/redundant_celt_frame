@@ -47,13 +47,18 @@ def trailing_zeros(pkt):
 
 
 def find_transition_frame(packets, min_tail=20):
-    for i, pkt in enumerate(packets):
-        if trailing_zeros(pkt) >= min_tail:
-            return i, len(pkt)
-    for i, pkt in enumerate(packets):
-        if len(pkt) >= 80:
-            return i, len(pkt)
-    return -1, 0
+
+    candidates = [
+        i for i, pkt in enumerate(packets)
+        if trailing_zeros(pkt) >= min_tail
+    ]
+
+    if len(candidates) != 1:
+        return -1, 0
+
+    idx = candidates[0]
+
+    return idx, len(packets[idx])
 
 
 # --- Detector 1: trailing-zero count ---
@@ -70,7 +75,7 @@ def detector_trailing_zero_count(packets, expected_min_tail=35):
 
 # --- Detector 2: chi-squared on tail bytes ---
 
-def detector_chi_squared(packets, threshold=5.0):
+def tail_nonzero_count(packets, threshold=5.0):
     """Chi-squared-like statistic on the largest packet's tail.
 
     Null: all tail bytes are zero. We use sum(b*b) as a simple statistic
@@ -116,9 +121,55 @@ def detector_entropy(packets, threshold=0.8):
     return label, H
 
 
+
+def blind_structural_scan(packets, tail_size=36, max_payload=32):
+
+    hits = []
+
+    for idx, pkt in enumerate(packets):
+
+        if len(pkt) < tail_size:
+            continue
+
+        region = pkt[-tail_size:]
+
+        # First byte stores payload length.
+        msg_len = region[0]
+
+        if not (1 <= msg_len <= max_payload):
+            continue
+
+        if msg_len + 1 > tail_size:
+            continue
+
+        payload = region[1:1 + msg_len]
+        padding = region[1 + msg_len:]
+
+        # Current B6 payloads use printable ASCII.
+        printable = all(32 <= b < 127 for b in payload)
+
+        # Remaining bytes should retain zero padding.
+        zero_padding = all(b == 0 for b in padding)
+
+        if printable and zero_padding:
+
+            hits.append({
+                "packet_index": idx,
+                "payload_length": msg_len,
+                "payload": payload.decode("ascii"),
+                "zero_padding": len(padding)
+            })
+
+    return {
+        "label": "stego" if hits else "clean",
+        "hit_count": len(hits),
+        "hits": hits
+    }
+
+
 # --- Detector 4: blind outlier ---
 
-def detector_blind_tail_outlier(packets, sigma=3.0):
+def packet_size_baseline(packets, sigma=3.0):
     """Flag any stream whose packet sizes deviate from the baseline.
 
     Note: this detector does not distinguish clean from stego streams.
@@ -139,15 +190,66 @@ def detector_blind_tail_outlier(packets, sigma=3.0):
     return label, z
 
 
+def get_transition_features(packets, target_idx, tail_size=36):
+
+    if target_idx < 0 or target_idx >= len(packets):
+        raise ValueError("Invalid transition frame index")
+
+    pkt = packets[target_idx]
+
+    if len(pkt) < tail_size:
+        raise ValueError("Packet shorter than expected tail")
+
+    region = pkt[-tail_size:]
+
+    zero_run = trailing_zeros(pkt)
+
+    nonzero_count = sum(
+        1 for b in region if b != 0
+    )
+
+    entropy = shannon_entropy(region)
+
+    return {
+        "trailing_zero_count": zero_run,
+        "tail_nonzero_count": nonzero_count,
+        "tail_entropy": entropy
+    }
+
+def run_known_detectors(packets, target_idx):
+
+    f = get_transition_features(
+        packets, target_idx, tail_size=36
+    )
+
+    return {
+        "trailing_zero_count": (
+            "stego" if f["trailing_zero_count"] < 36
+            else "clean",
+            float(f["trailing_zero_count"])
+        ),
+
+        "tail_nonzero_count": (
+            "stego" if f["tail_nonzero_count"] > 0
+            else "clean",
+            float(f["tail_nonzero_count"])
+        ),
+
+        "entropy": (
+            "stego" if f["tail_entropy"] > 0
+            else "clean",
+            f["tail_entropy"]
+        )
+    }
+
 # --- Convenience ---
 
 DETECTORS = {
     "trailing_zero_count": detector_trailing_zero_count,
-    "chi_squared":         detector_chi_squared,
-    "entropy":             detector_entropy,
-    "blind_outlier":       detector_blind_tail_outlier,
+    "tail_nonzero_count": tail_nonzero_count,
+    "entropy_tail": detector_entropy,
+    "packet_size_baseline": packet_size_baseline,
 }
-
 
 def run_all_detectors(path):
     packets = load_packets(path)

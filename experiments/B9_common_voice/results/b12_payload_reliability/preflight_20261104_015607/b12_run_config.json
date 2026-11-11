@@ -1,0 +1,34 @@
+{
+  "experiment": "B12 Full-scale payload reliability",
+  "source_manifest": "experiments/B9_common_voice/results/b9_full_encoding/payload_roundtrip_100speaker/b9_payload_manifest.csv",
+  "source_manifest_sha256": "98ec88d41e79bd5c9a5c82afbe7f68cf55f06e0e6a3059ec4bbe721f3a5e0f2e",
+  "source_events": 200,
+  "events_per_encoder": 100,
+  "encoder_versions": [
+    "1.5.2",
+    "1.6.1"
+  ],
+  "decoder_versions": [
+    "1.5.2",
+    "1.6.1"
+  ],
+  "payload_sizes_bytes": [
+    4,
+    8,
+    16,
+    24,
+    32,
+    36
+  ],
+  "independent_repetitions": 3,
+  "capacity_bytes": 36,
+  "corruption_design": "One bit flipped in repetition 1 for every event-size pair",
+  "integrity_method": "Out-of-band SHA256 verification",
+  "pcm_comparison": "Modified versus baseline within the same decoder",
+  "expected_normal_payload_instances": 3600,
+  "expected_corruption_instances": 1200,
+  "expected_decoder_comparisons": 9600,
+  "expected_baseline_decodes": 400,
+  "expected_capacity_rejections": 200,
+  "source_bitstreams_modified": false
+}

@@ -17,6 +17,6 @@ for detector in sorted(set(k[0] for k in stats)):
     for psize in sorted(set(k[1] for k in stats if k[0] == detector)):
         s = stats[(detector, psize)]
         tpr = s["stego_ok"] / s["stego"] if s["stego"] else 0
-        if tpr >= 0.9:
+        if tpr >= 0.9 and fpr <= 0.05:
             print(f"  {detector:25s} threshold = {psize} bytes")
             break

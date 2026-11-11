@@ -1,0 +1,20 @@
+{
+  "experiment": "B15 natural-cover false-positive audit",
+  "b7_run": "/home/ishu/research/redundant_celt_frame_steganography/logs/phase_b/B7_official_20261103_020241",
+  "detector_source": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B6_steganalysis/detectors.py",
+  "detector_sha256": "9dd4326387ee3fd5ddfbe8fed3cdbf08fb2bdbb06917712716428668c32b563a",
+  "versions": [
+    "1.5.2",
+    "1.6.1"
+  ],
+  "clean_recordings_per_version": 999,
+  "positive_controls_per_version": 10,
+  "tail_size": 36,
+  "max_payload": 35,
+  "detector": "blind_structural_scan",
+  "blind_packet_scan": true,
+  "source_bitstreams_modified": false,
+  "packet_length_prefix_bytes": 4,
+  "packet_length_byte_order": "native",
+  "positive_frame_numbering": "both conventions reported"
+}

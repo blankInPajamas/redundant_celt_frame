@@ -1,0 +1,4 @@
+detector,clean_samples,observed_FP,observed_FPR,FPR_Wilson95_upper,empirical_threshold,strict_threshold
+entropy,20,0,0.0,0.16112515805281938,1,NONE
+tail_nonzero_count,20,0,0.0,0.16112515805281938,1,NONE
+trailing_zero_count,20,0,0.0,0.16112515805281938,1,NONE

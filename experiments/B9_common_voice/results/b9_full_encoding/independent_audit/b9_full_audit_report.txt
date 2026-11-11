@@ -1,0 +1,44 @@
+========== B9 INDEPENDENT AUDIT ==========
+Manifest recordings: 5000
+Unique speakers: 1745
+
+----- OPUS 1.5.2 -----
+Diagnostic files: 5000
+Missing logs: 0
+Extra logs: 0
+Total redundancy events: 6060
+CELT-to-SILK events: 5050
+Successful relocations: 5050
+Recordings with CELT-to-SILK events: 4467
+Frame validation failures: 0
+Redundancy count failures: 0
+Orphan final records: 0
+Event consistency failures: 0
+Relocation failures: 0
+Version audit: PASS
+
+----- OPUS 1.6.1 -----
+Diagnostic files: 5000
+Missing logs: 0
+Extra logs: 0
+Total redundancy events: 5951
+CELT-to-SILK events: 4929
+Successful relocations: 4929
+Recordings with CELT-to-SILK events: 4357
+Frame validation failures: 0
+Redundancy count failures: 0
+Orphan final records: 0
+Event consistency failures: 0
+Relocation failures: 0
+Version audit: PASS
+
+========== CROSS-VERSION COMPARISON ==========
+Paired recordings: 5000
+Exact all-event signature matches: 4777
+Exact CELT-to-SILK signature matches: 4807
+Shared CELT-to-SILK events: 4848
+Opus 1.5.2-only CELT-to-SILK events: 202
+Opus 1.6.1-only CELT-to-SILK events: 81
+
+========== FINAL RESULT ==========
+B9 INDEPENDENT AUDIT: PASS

@@ -1,0 +1,22 @@
+{
+  "dataset": "Common Voice 26.0 American English Male",
+  "recordings": 5000,
+  "sample_rate": 48000,
+  "channels": 1,
+  "sample_format": "S16LE",
+  "frame_samples": 960,
+  "frame_duration_ms": 20,
+  "encoder_config": {
+    "mode": "audio",
+    "bitrate": 32000,
+    "complexity": 10,
+    "fec": 0,
+    "loss_pct": 0
+  },
+  "encoder_hashes": {
+    "1.5.2": "e1d2041039b8c318595e83a4ed04b8dbfec6afc7ba280c9ddf59c16d7496ba1b",
+    "1.6.1": "700be2a3f50f1e7e91aea425229626c0aeff36151386f5272510cedfc86ef9a3"
+  },
+  "random_seed": 20261103,
+  "input_manifest_sha256": "590296e3ea3f9a679aaf541f36d8bbb475ded433b6b60f711c01cdbe68f2a07a"
+}

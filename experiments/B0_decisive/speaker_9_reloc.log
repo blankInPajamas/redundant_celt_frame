@@ -1,0 +1,773 @@
+CONFIG: mode=audio bitrate=32000 complexity=10 fec=0 loss_pct=0
+  -> PRE_MOVE: ret=2 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=2 equal=0
+  -> FINAL packet: ret=3, mode=1002
+FRAME 0: len=3
+  -> PRE_MOVE: ret=2 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=2 equal=0
+  -> FINAL packet: ret=3, mode=1002
+FRAME 1: len=3
+  -> PRE_MOVE: ret=2 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=2 equal=0
+  -> FINAL packet: ret=3, mode=1002
+FRAME 2: len=3
+  -> PRE_MOVE: ret=2 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=2 equal=0
+  -> FINAL packet: ret=3, mode=1002
+FRAME 3: len=3
+  -> PRE_MOVE: ret=2 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1002
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=0 nb_compr_bytes=1275 ret=2 equal=0
+  -> FINAL packet: ret=3, mode=1002
+FRAME 4: len=3
+REDUNDANCY: frame=1 mode=1001 celt_to_silk=1 bytes=38
+  -> redundant frame written at offset 1237, size 38
+  -> PRE_MOVE: ret=44 nb_compr_bytes=1237 max_data_bytes=1276 redundancy=1 celt_to_silk=1 mode=1001
+  -> MOVE_ENTERED: from=data+1237 to=data+44 size=38; first8_src: ff fe 00 00 00 00 00 00
+  -> POST_MOVE: ret=44 new_nb_compr_bytes=82; first8_dst: ff fe 00 00 00 00 00 00
+  -> FINAL packet: ret=83, mode=1001
+FRAME 5: len=83
+  -> PRE_MOVE: ret=38 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=38 equal=0
+  -> FINAL packet: ret=39, mode=1001
+FRAME 6: len=39
+  -> PRE_MOVE: ret=44 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=44 equal=0
+  -> FINAL packet: ret=45, mode=1001
+FRAME 7: len=45
+  -> PRE_MOVE: ret=64 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=64 equal=0
+  -> FINAL packet: ret=65, mode=1001
+FRAME 8: len=65
+  -> PRE_MOVE: ret=72 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=72 equal=0
+  -> FINAL packet: ret=73, mode=1001
+FRAME 9: len=73
+  -> PRE_MOVE: ret=75 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=75 equal=0
+  -> FINAL packet: ret=76, mode=1001
+FRAME 10: len=76
+  -> PRE_MOVE: ret=74 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=74 equal=0
+  -> FINAL packet: ret=75, mode=1001
+FRAME 11: len=75
+  -> PRE_MOVE: ret=72 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=72 equal=0
+  -> FINAL packet: ret=73, mode=1001
+FRAME 12: len=73
+  -> PRE_MOVE: ret=75 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=75 equal=0
+  -> FINAL packet: ret=76, mode=1001
+FRAME 13: len=76
+  -> PRE_MOVE: ret=68 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=68 equal=0
+  -> FINAL packet: ret=69, mode=1001
+FRAME 14: len=69
+  -> PRE_MOVE: ret=68 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=68 equal=0
+  -> FINAL packet: ret=69, mode=1001
+FRAME 15: len=69
+  -> PRE_MOVE: ret=70 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=70 equal=0
+  -> FINAL packet: ret=71, mode=1001
+FRAME 16: len=71
+  -> PRE_MOVE: ret=62 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=62 equal=0
+  -> FINAL packet: ret=63, mode=1001
+FRAME 17: len=63
+  -> PRE_MOVE: ret=71 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=71 equal=0
+  -> FINAL packet: ret=72, mode=1001
+FRAME 18: len=72
+  -> PRE_MOVE: ret=81 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=81 equal=0
+  -> FINAL packet: ret=82, mode=1001
+FRAME 19: len=82
+  -> PRE_MOVE: ret=68 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=68 equal=0
+  -> FINAL packet: ret=69, mode=1001
+FRAME 20: len=69
+  -> PRE_MOVE: ret=84 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=84 equal=0
+  -> FINAL packet: ret=85, mode=1001
+FRAME 21: len=85
+  -> PRE_MOVE: ret=65 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=65 equal=0
+  -> FINAL packet: ret=66, mode=1001
+FRAME 22: len=66
+  -> PRE_MOVE: ret=72 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=72 equal=0
+  -> FINAL packet: ret=73, mode=1001
+FRAME 23: len=73
+  -> PRE_MOVE: ret=72 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=72 equal=0
+  -> FINAL packet: ret=73, mode=1001
+FRAME 24: len=73
+  -> PRE_MOVE: ret=90 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=90 equal=0
+  -> FINAL packet: ret=91, mode=1001
+FRAME 25: len=91
+  -> PRE_MOVE: ret=104 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=104 equal=0
+  -> FINAL packet: ret=105, mode=1001
+FRAME 26: len=105
+  -> PRE_MOVE: ret=93 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=93 equal=0
+  -> FINAL packet: ret=94, mode=1001
+FRAME 27: len=94
+  -> PRE_MOVE: ret=86 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=86 equal=0
+  -> FINAL packet: ret=87, mode=1001
+FRAME 28: len=87
+  -> PRE_MOVE: ret=99 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=99 equal=0
+  -> FINAL packet: ret=100, mode=1001
+FRAME 29: len=100
+  -> PRE_MOVE: ret=84 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=84 equal=0
+  -> FINAL packet: ret=85, mode=1001
+FRAME 30: len=85
+  -> PRE_MOVE: ret=83 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=83 equal=0
+  -> FINAL packet: ret=84, mode=1001
+FRAME 31: len=84
+  -> PRE_MOVE: ret=84 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=84 equal=0
+  -> FINAL packet: ret=85, mode=1001
+FRAME 32: len=85
+  -> PRE_MOVE: ret=94 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=94 equal=0
+  -> FINAL packet: ret=95, mode=1001
+FRAME 33: len=95
+  -> PRE_MOVE: ret=87 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=87 equal=0
+  -> FINAL packet: ret=88, mode=1001
+FRAME 34: len=88
+  -> PRE_MOVE: ret=89 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=89 equal=0
+  -> FINAL packet: ret=90, mode=1001
+FRAME 35: len=90
+  -> PRE_MOVE: ret=87 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=87 equal=0
+  -> FINAL packet: ret=88, mode=1001
+FRAME 36: len=88
+  -> PRE_MOVE: ret=98 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=98 equal=0
+  -> FINAL packet: ret=99, mode=1001
+FRAME 37: len=99
+  -> PRE_MOVE: ret=91 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=91 equal=0
+  -> FINAL packet: ret=92, mode=1001
+FRAME 38: len=92
+  -> PRE_MOVE: ret=86 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=86 equal=0
+  -> FINAL packet: ret=87, mode=1001
+FRAME 39: len=87
+  -> PRE_MOVE: ret=88 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=88 equal=0
+  -> FINAL packet: ret=89, mode=1001
+FRAME 40: len=89
+  -> PRE_MOVE: ret=88 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=88 equal=0
+  -> FINAL packet: ret=89, mode=1001
+FRAME 41: len=89
+  -> PRE_MOVE: ret=84 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=84 equal=0
+  -> FINAL packet: ret=85, mode=1001
+FRAME 42: len=85
+  -> PRE_MOVE: ret=86 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=86 equal=0
+  -> FINAL packet: ret=87, mode=1001
+FRAME 43: len=87
+  -> PRE_MOVE: ret=85 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=85 equal=0
+  -> FINAL packet: ret=86, mode=1001
+FRAME 44: len=86
+  -> PRE_MOVE: ret=89 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=89 equal=0
+  -> FINAL packet: ret=90, mode=1001
+FRAME 45: len=90
+  -> PRE_MOVE: ret=77 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=77 equal=0
+  -> FINAL packet: ret=78, mode=1001
+FRAME 46: len=78
+  -> PRE_MOVE: ret=82 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=82 equal=0
+  -> FINAL packet: ret=83, mode=1001
+FRAME 47: len=83
+  -> PRE_MOVE: ret=79 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=79 equal=0
+  -> FINAL packet: ret=80, mode=1001
+FRAME 48: len=80
+  -> PRE_MOVE: ret=70 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=70 equal=0
+  -> FINAL packet: ret=71, mode=1001
+FRAME 49: len=71
+  -> PRE_MOVE: ret=67 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=67 equal=0
+  -> FINAL packet: ret=68, mode=1001
+FRAME 50: len=68
+  -> PRE_MOVE: ret=71 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=71 equal=0
+  -> FINAL packet: ret=72, mode=1001
+FRAME 51: len=72
+  -> PRE_MOVE: ret=73 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=73 equal=0
+  -> FINAL packet: ret=74, mode=1001
+FRAME 52: len=74
+  -> PRE_MOVE: ret=82 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=82 equal=0
+  -> FINAL packet: ret=83, mode=1001
+FRAME 53: len=83
+  -> PRE_MOVE: ret=74 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=74 equal=0
+  -> FINAL packet: ret=75, mode=1001
+FRAME 54: len=75
+  -> PRE_MOVE: ret=79 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=79 equal=0
+  -> FINAL packet: ret=80, mode=1001
+FRAME 55: len=80
+  -> PRE_MOVE: ret=81 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=81 equal=0
+  -> FINAL packet: ret=82, mode=1001
+FRAME 56: len=82
+  -> PRE_MOVE: ret=94 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=94 equal=0
+  -> FINAL packet: ret=95, mode=1001
+FRAME 57: len=95
+  -> PRE_MOVE: ret=88 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=88 equal=0
+  -> FINAL packet: ret=89, mode=1001
+FRAME 58: len=89
+  -> PRE_MOVE: ret=85 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=85 equal=0
+  -> FINAL packet: ret=86, mode=1001
+FRAME 59: len=86
+  -> PRE_MOVE: ret=85 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=85 equal=0
+  -> FINAL packet: ret=86, mode=1001
+FRAME 60: len=86
+  -> PRE_MOVE: ret=75 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=75 equal=0
+  -> FINAL packet: ret=76, mode=1001
+FRAME 61: len=76
+  -> PRE_MOVE: ret=86 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=86 equal=0
+  -> FINAL packet: ret=87, mode=1001
+FRAME 62: len=87
+  -> PRE_MOVE: ret=89 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=89 equal=0
+  -> FINAL packet: ret=90, mode=1001
+FRAME 63: len=90
+  -> PRE_MOVE: ret=87 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=87 equal=0
+  -> FINAL packet: ret=88, mode=1001
+FRAME 64: len=88
+  -> PRE_MOVE: ret=85 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=85 equal=0
+  -> FINAL packet: ret=86, mode=1001
+FRAME 65: len=86
+  -> PRE_MOVE: ret=83 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=83 equal=0
+  -> FINAL packet: ret=84, mode=1001
+FRAME 66: len=84
+  -> PRE_MOVE: ret=84 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=84 equal=0
+  -> FINAL packet: ret=85, mode=1001
+FRAME 67: len=85
+  -> PRE_MOVE: ret=86 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=86 equal=0
+  -> FINAL packet: ret=87, mode=1001
+FRAME 68: len=87
+  -> PRE_MOVE: ret=86 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=86 equal=0
+  -> FINAL packet: ret=87, mode=1001
+FRAME 69: len=87
+  -> PRE_MOVE: ret=82 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=82 equal=0
+  -> FINAL packet: ret=83, mode=1001
+FRAME 70: len=83
+  -> PRE_MOVE: ret=84 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=84 equal=0
+  -> FINAL packet: ret=85, mode=1001
+FRAME 71: len=85
+  -> PRE_MOVE: ret=65 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=65 equal=0
+  -> FINAL packet: ret=66, mode=1001
+FRAME 72: len=66
+  -> PRE_MOVE: ret=60 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=60 equal=0
+  -> FINAL packet: ret=61, mode=1001
+FRAME 73: len=61
+  -> PRE_MOVE: ret=83 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=83 equal=0
+  -> FINAL packet: ret=84, mode=1001
+FRAME 74: len=84
+  -> PRE_MOVE: ret=62 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=62 equal=0
+  -> FINAL packet: ret=63, mode=1001
+FRAME 75: len=63
+  -> PRE_MOVE: ret=62 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=62 equal=0
+  -> FINAL packet: ret=63, mode=1001
+FRAME 76: len=63
+  -> PRE_MOVE: ret=87 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=87 equal=0
+  -> FINAL packet: ret=88, mode=1001
+FRAME 77: len=88
+  -> PRE_MOVE: ret=70 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=70 equal=0
+  -> FINAL packet: ret=71, mode=1001
+FRAME 78: len=71
+  -> PRE_MOVE: ret=73 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=73 equal=0
+  -> FINAL packet: ret=74, mode=1001
+FRAME 79: len=74
+  -> PRE_MOVE: ret=71 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=71 equal=0
+  -> FINAL packet: ret=72, mode=1001
+FRAME 80: len=72
+  -> PRE_MOVE: ret=68 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=68 equal=0
+  -> FINAL packet: ret=69, mode=1001
+FRAME 81: len=69
+  -> PRE_MOVE: ret=69 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=69 equal=0
+  -> FINAL packet: ret=70, mode=1001
+FRAME 82: len=70
+  -> PRE_MOVE: ret=75 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=75 equal=0
+  -> FINAL packet: ret=76, mode=1001
+FRAME 83: len=76
+  -> PRE_MOVE: ret=80 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=80 equal=0
+  -> FINAL packet: ret=81, mode=1001
+FRAME 84: len=81
+  -> PRE_MOVE: ret=90 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=90 equal=0
+  -> FINAL packet: ret=91, mode=1001
+FRAME 85: len=91
+  -> PRE_MOVE: ret=83 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=83 equal=0
+  -> FINAL packet: ret=84, mode=1001
+FRAME 86: len=84
+  -> PRE_MOVE: ret=87 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=87 equal=0
+  -> FINAL packet: ret=88, mode=1001
+FRAME 87: len=88
+  -> PRE_MOVE: ret=84 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=84 equal=0
+  -> FINAL packet: ret=85, mode=1001
+FRAME 88: len=85
+  -> PRE_MOVE: ret=77 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=77 equal=0
+  -> FINAL packet: ret=78, mode=1001
+FRAME 89: len=78
+  -> PRE_MOVE: ret=86 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=86 equal=0
+  -> FINAL packet: ret=87, mode=1001
+FRAME 90: len=87
+  -> PRE_MOVE: ret=84 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=84 equal=0
+  -> FINAL packet: ret=85, mode=1001
+FRAME 91: len=85
+  -> PRE_MOVE: ret=99 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=99 equal=0
+  -> FINAL packet: ret=100, mode=1001
+FRAME 92: len=100
+  -> PRE_MOVE: ret=87 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=87 equal=0
+  -> FINAL packet: ret=88, mode=1001
+FRAME 93: len=88
+  -> PRE_MOVE: ret=88 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=88 equal=0
+  -> FINAL packet: ret=89, mode=1001
+FRAME 94: len=89
+  -> PRE_MOVE: ret=72 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=72 equal=0
+  -> FINAL packet: ret=73, mode=1001
+FRAME 95: len=73
+  -> PRE_MOVE: ret=75 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=75 equal=0
+  -> FINAL packet: ret=76, mode=1001
+FRAME 96: len=76
+  -> PRE_MOVE: ret=69 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=69 equal=0
+  -> FINAL packet: ret=70, mode=1001
+FRAME 97: len=70
+  -> PRE_MOVE: ret=81 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=81 equal=0
+  -> FINAL packet: ret=82, mode=1001
+FRAME 98: len=82
+  -> PRE_MOVE: ret=87 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=87 equal=0
+  -> FINAL packet: ret=88, mode=1001
+FRAME 99: len=88
+  -> PRE_MOVE: ret=79 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=79 equal=0
+  -> FINAL packet: ret=80, mode=1001
+FRAME 100: len=80
+  -> PRE_MOVE: ret=78 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=78 equal=0
+  -> FINAL packet: ret=79, mode=1001
+FRAME 101: len=79
+  -> PRE_MOVE: ret=74 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=74 equal=0
+  -> FINAL packet: ret=75, mode=1001
+FRAME 102: len=75
+  -> PRE_MOVE: ret=76 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=76 equal=0
+  -> FINAL packet: ret=77, mode=1001
+FRAME 103: len=77
+  -> PRE_MOVE: ret=75 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=75 equal=0
+  -> FINAL packet: ret=76, mode=1001
+FRAME 104: len=76
+  -> PRE_MOVE: ret=85 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=85 equal=0
+  -> FINAL packet: ret=86, mode=1001
+FRAME 105: len=86
+  -> PRE_MOVE: ret=74 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=74 equal=0
+  -> FINAL packet: ret=75, mode=1001
+FRAME 106: len=75
+  -> PRE_MOVE: ret=82 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=82 equal=0
+  -> FINAL packet: ret=83, mode=1001
+FRAME 107: len=83
+  -> PRE_MOVE: ret=71 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=71 equal=0
+  -> FINAL packet: ret=72, mode=1001
+FRAME 108: len=72
+  -> PRE_MOVE: ret=71 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=71 equal=0
+  -> FINAL packet: ret=72, mode=1001
+FRAME 109: len=72
+  -> PRE_MOVE: ret=80 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=80 equal=0
+  -> FINAL packet: ret=81, mode=1001
+FRAME 110: len=81
+  -> PRE_MOVE: ret=68 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=68 equal=0
+  -> FINAL packet: ret=69, mode=1001
+FRAME 111: len=69
+  -> PRE_MOVE: ret=72 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=72 equal=0
+  -> FINAL packet: ret=73, mode=1001
+FRAME 112: len=73
+  -> PRE_MOVE: ret=72 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=72 equal=0
+  -> FINAL packet: ret=73, mode=1001
+FRAME 113: len=73
+  -> PRE_MOVE: ret=84 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=84 equal=0
+  -> FINAL packet: ret=85, mode=1001
+FRAME 114: len=85
+  -> PRE_MOVE: ret=91 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=91 equal=0
+  -> FINAL packet: ret=92, mode=1001
+FRAME 115: len=92
+  -> PRE_MOVE: ret=83 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=83 equal=0
+  -> FINAL packet: ret=84, mode=1001
+FRAME 116: len=84
+  -> PRE_MOVE: ret=79 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=79 equal=0
+  -> FINAL packet: ret=80, mode=1001
+FRAME 117: len=80
+  -> PRE_MOVE: ret=72 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=72 equal=0
+  -> FINAL packet: ret=73, mode=1001
+FRAME 118: len=73
+  -> PRE_MOVE: ret=72 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=72 equal=0
+  -> FINAL packet: ret=73, mode=1001
+FRAME 119: len=73
+  -> PRE_MOVE: ret=74 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=74 equal=0
+  -> FINAL packet: ret=75, mode=1001
+FRAME 120: len=75
+  -> PRE_MOVE: ret=75 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=75 equal=0
+  -> FINAL packet: ret=76, mode=1001
+FRAME 121: len=76
+  -> PRE_MOVE: ret=85 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=85 equal=0
+  -> FINAL packet: ret=86, mode=1001
+FRAME 122: len=86
+  -> PRE_MOVE: ret=83 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=83 equal=0
+  -> FINAL packet: ret=84, mode=1001
+FRAME 123: len=84
+  -> PRE_MOVE: ret=93 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=93 equal=0
+  -> FINAL packet: ret=94, mode=1001
+FRAME 124: len=94
+  -> PRE_MOVE: ret=88 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=88 equal=0
+  -> FINAL packet: ret=89, mode=1001
+FRAME 125: len=89
+  -> PRE_MOVE: ret=86 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=86 equal=0
+  -> FINAL packet: ret=87, mode=1001
+FRAME 126: len=87
+  -> PRE_MOVE: ret=77 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=77 equal=0
+  -> FINAL packet: ret=78, mode=1001
+FRAME 127: len=78
+  -> PRE_MOVE: ret=70 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=70 equal=0
+  -> FINAL packet: ret=71, mode=1001
+FRAME 128: len=71
+  -> PRE_MOVE: ret=71 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=71 equal=0
+  -> FINAL packet: ret=72, mode=1001
+FRAME 129: len=72
+  -> PRE_MOVE: ret=76 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=76 equal=0
+  -> FINAL packet: ret=77, mode=1001
+FRAME 130: len=77
+  -> PRE_MOVE: ret=69 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=69 equal=0
+  -> FINAL packet: ret=70, mode=1001
+FRAME 131: len=70
+  -> PRE_MOVE: ret=76 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=76 equal=0
+  -> FINAL packet: ret=77, mode=1001
+FRAME 132: len=77
+  -> PRE_MOVE: ret=92 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=92 equal=0
+  -> FINAL packet: ret=93, mode=1001
+FRAME 133: len=93
+  -> PRE_MOVE: ret=84 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=84 equal=0
+  -> FINAL packet: ret=85, mode=1001
+FRAME 134: len=85
+  -> PRE_MOVE: ret=83 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=83 equal=0
+  -> FINAL packet: ret=84, mode=1001
+FRAME 135: len=84
+  -> PRE_MOVE: ret=84 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=84 equal=0
+  -> FINAL packet: ret=85, mode=1001
+FRAME 136: len=85
+  -> PRE_MOVE: ret=73 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=73 equal=0
+  -> FINAL packet: ret=74, mode=1001
+FRAME 137: len=74
+  -> PRE_MOVE: ret=77 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=77 equal=0
+  -> FINAL packet: ret=78, mode=1001
+FRAME 138: len=78
+  -> PRE_MOVE: ret=77 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=77 equal=0
+  -> FINAL packet: ret=78, mode=1001
+FRAME 139: len=78
+  -> PRE_MOVE: ret=75 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=75 equal=0
+  -> FINAL packet: ret=76, mode=1001
+FRAME 140: len=76
+  -> PRE_MOVE: ret=76 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=76 equal=0
+  -> FINAL packet: ret=77, mode=1001
+FRAME 141: len=77
+  -> PRE_MOVE: ret=77 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=77 equal=0
+  -> FINAL packet: ret=78, mode=1001
+FRAME 142: len=78
+  -> PRE_MOVE: ret=72 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=72 equal=0
+  -> FINAL packet: ret=73, mode=1001
+FRAME 143: len=73
+  -> PRE_MOVE: ret=72 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=72 equal=0
+  -> FINAL packet: ret=73, mode=1001
+FRAME 144: len=73
+  -> PRE_MOVE: ret=75 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=75 equal=0
+  -> FINAL packet: ret=76, mode=1001
+FRAME 145: len=76
+  -> PRE_MOVE: ret=82 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=82 equal=0
+  -> FINAL packet: ret=83, mode=1001
+FRAME 146: len=83
+  -> PRE_MOVE: ret=73 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=73 equal=0
+  -> FINAL packet: ret=74, mode=1001
+FRAME 147: len=74
+  -> PRE_MOVE: ret=80 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=80 equal=0
+  -> FINAL packet: ret=81, mode=1001
+FRAME 148: len=81
+  -> PRE_MOVE: ret=93 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=93 equal=0
+  -> FINAL packet: ret=94, mode=1001
+FRAME 149: len=94
+  -> PRE_MOVE: ret=90 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=90 equal=0
+  -> FINAL packet: ret=91, mode=1001
+FRAME 150: len=91
+  -> PRE_MOVE: ret=87 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=87 equal=0
+  -> FINAL packet: ret=88, mode=1001
+FRAME 151: len=88
+  -> PRE_MOVE: ret=82 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=82 equal=0
+  -> FINAL packet: ret=83, mode=1001
+FRAME 152: len=83
+  -> PRE_MOVE: ret=79 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=79 equal=0
+  -> FINAL packet: ret=80, mode=1001
+FRAME 153: len=80
+  -> PRE_MOVE: ret=73 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=73 equal=0
+  -> FINAL packet: ret=74, mode=1001
+FRAME 154: len=74
+  -> PRE_MOVE: ret=75 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=75 equal=0
+  -> FINAL packet: ret=76, mode=1001
+FRAME 155: len=76
+  -> PRE_MOVE: ret=64 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=64 equal=0
+  -> FINAL packet: ret=65, mode=1001
+FRAME 156: len=65
+  -> PRE_MOVE: ret=85 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=85 equal=0
+  -> FINAL packet: ret=86, mode=1001
+FRAME 157: len=86
+  -> PRE_MOVE: ret=77 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=77 equal=0
+  -> FINAL packet: ret=78, mode=1001
+FRAME 158: len=78
+  -> PRE_MOVE: ret=74 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=74 equal=0
+  -> FINAL packet: ret=75, mode=1001
+FRAME 159: len=75
+  -> PRE_MOVE: ret=77 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=77 equal=0
+  -> FINAL packet: ret=78, mode=1001
+FRAME 160: len=78
+  -> PRE_MOVE: ret=82 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=82 equal=0
+  -> FINAL packet: ret=83, mode=1001
+FRAME 161: len=83
+  -> PRE_MOVE: ret=80 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=80 equal=0
+  -> FINAL packet: ret=81, mode=1001
+FRAME 162: len=81
+  -> PRE_MOVE: ret=78 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=78 equal=0
+  -> FINAL packet: ret=79, mode=1001
+FRAME 163: len=79
+  -> PRE_MOVE: ret=79 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=79 equal=0
+  -> FINAL packet: ret=80, mode=1001
+FRAME 164: len=80
+  -> PRE_MOVE: ret=81 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=81 equal=0
+  -> FINAL packet: ret=82, mode=1001
+FRAME 165: len=82
+  -> PRE_MOVE: ret=84 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=84 equal=0
+  -> FINAL packet: ret=85, mode=1001
+FRAME 166: len=85
+  -> PRE_MOVE: ret=77 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=77 equal=0
+  -> FINAL packet: ret=78, mode=1001
+FRAME 167: len=78
+  -> PRE_MOVE: ret=92 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=92 equal=0
+  -> FINAL packet: ret=93, mode=1001
+FRAME 168: len=93
+  -> PRE_MOVE: ret=88 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=88 equal=0
+  -> FINAL packet: ret=89, mode=1001
+FRAME 169: len=89
+  -> PRE_MOVE: ret=86 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=86 equal=0
+  -> FINAL packet: ret=87, mode=1001
+FRAME 170: len=87
+  -> PRE_MOVE: ret=74 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=74 equal=0
+  -> FINAL packet: ret=75, mode=1001
+FRAME 171: len=75
+  -> PRE_MOVE: ret=70 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=70 equal=0
+  -> FINAL packet: ret=71, mode=1001
+FRAME 172: len=71
+  -> PRE_MOVE: ret=74 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=74 equal=0
+  -> FINAL packet: ret=75, mode=1001
+FRAME 173: len=75
+  -> PRE_MOVE: ret=68 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=68 equal=0
+  -> FINAL packet: ret=69, mode=1001
+FRAME 174: len=69
+  -> PRE_MOVE: ret=62 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=62 equal=0
+  -> FINAL packet: ret=63, mode=1001
+FRAME 175: len=63
+  -> PRE_MOVE: ret=63 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=63 equal=0
+  -> FINAL packet: ret=64, mode=1001
+FRAME 176: len=64
+  -> PRE_MOVE: ret=83 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=83 equal=0
+  -> FINAL packet: ret=84, mode=1001
+FRAME 177: len=84
+  -> PRE_MOVE: ret=67 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=67 equal=0
+  -> FINAL packet: ret=68, mode=1001
+FRAME 178: len=68
+  -> PRE_MOVE: ret=62 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=62 equal=0
+  -> FINAL packet: ret=63, mode=1001
+FRAME 179: len=63
+  -> PRE_MOVE: ret=68 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=68 equal=0
+  -> FINAL packet: ret=69, mode=1001
+FRAME 180: len=69
+  -> PRE_MOVE: ret=79 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=79 equal=0
+  -> FINAL packet: ret=80, mode=1001
+FRAME 181: len=80
+  -> PRE_MOVE: ret=61 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=61 equal=0
+  -> FINAL packet: ret=62, mode=1001
+FRAME 182: len=62
+  -> PRE_MOVE: ret=61 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=61 equal=0
+  -> FINAL packet: ret=62, mode=1001
+FRAME 183: len=62
+  -> PRE_MOVE: ret=64 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=64 equal=0
+  -> FINAL packet: ret=65, mode=1001
+FRAME 184: len=65
+  -> PRE_MOVE: ret=64 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=64 equal=0
+  -> FINAL packet: ret=65, mode=1001
+FRAME 185: len=65
+  -> PRE_MOVE: ret=64 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=64 equal=0
+  -> FINAL packet: ret=65, mode=1001
+FRAME 186: len=65
+  -> PRE_MOVE: ret=62 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=62 equal=0
+  -> FINAL packet: ret=63, mode=1001
+FRAME 187: len=63
+  -> PRE_MOVE: ret=85 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=85 equal=0
+  -> FINAL packet: ret=86, mode=1001
+FRAME 188: len=86
+  -> PRE_MOVE: ret=66 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=66 equal=0
+  -> FINAL packet: ret=67, mode=1001
+FRAME 189: len=67
+  -> PRE_MOVE: ret=62 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=62 equal=0
+  -> FINAL packet: ret=63, mode=1001
+FRAME 190: len=63
+  -> PRE_MOVE: ret=47 nb_compr_bytes=1275 max_data_bytes=1276 redundancy=0 celt_to_silk=0 mode=1001
+  -> MOVE_SKIPPED: redundancy=0 celt_to_silk=0 is_hybrid=1 nb_compr_bytes=1275 ret=47 equal=0
+  -> FINAL packet: ret=48, mode=1001
+FRAME 191: len=48
+Encoded 192 packets

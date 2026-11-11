@@ -1,0 +1,27 @@
+========== B12 PREFLIGHT REPORT ==========
+READ-ONLY VALIDATION: PASS
+Source manifest records: 200
+
+========== SOURCE VALIDATION ==========
+1.5.2: 100/100 events; 100 unique recordings; 100 unique speakers; all source packets validated
+1.6.1: 100/100 events; 100 unique recordings; 100 unique speakers; all source packets validated
+Total validated events: 200
+Target packets with exactly 36 trailing zeros: 200/200
+Original payload SHA256 validation: 200/200
+Historical extraction validation: 200/200
+Historical packet framing validation: 200/200
+
+========== DECODER VALIDATION ==========
+Opus 1.5.2: instrumented decoder verified
+Opus 1.6.1: instrumented decoder verified
+
+========== EXPECTED B12 WORKLOAD ==========
+Normal payload instances: 3600
+One-bit corruption instances: 1200
+Decoder comparisons: 9600
+Baseline decoder runs: 400
+37-byte capacity rejection tests: 200
+
+Source bitstreams modified: NO
+
+B12 PREFLIGHT: PASS

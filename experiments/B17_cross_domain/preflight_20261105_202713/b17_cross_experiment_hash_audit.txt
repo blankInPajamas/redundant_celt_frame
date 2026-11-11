@@ -1,0 +1,23 @@
+========== B17 CROSS-EXPERIMENT HASH AUDIT ==========
+Date: 2026-11-05T20:33:06.056405
+Project: /home/ishu/research/redundant_celt_frame_steganography
+
+B12 manifest
+Path: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705/b12_payload_manifest.csv
+Expected: e993cd21001ff1d16467f8bab65ef5fb4dbaa2138a3b8aeb95cc0084b9e8c9b8
+Actual: e993cd21001ff1d16467f8bab65ef5fb4dbaa2138a3b8aeb95cc0084b9e8c9b8
+Status: PASS
+
+B14 source script
+Path: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/run_b14_feature_attribution.py
+Expected: 4205c3d6864dea29653ec304bd8387680e01a82ae67917a0c0640a9765e756db
+Actual: 4205c3d6864dea29653ec304bd8387680e01a82ae67917a0c0640a9765e756db
+Status: PASS
+
+B14 configuration
+Path: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_run_config.json
+Expected: 64a2b78c27f985124d5aa9e65f4c860bcf897cf87f091aefdb0ae9f086fc6af0
+Actual: 64a2b78c27f985124d5aa9e65f4c860bcf897cf87f091aefdb0ae9f086fc6af0
+Status: PASS
+
+B17 HASH AUDIT: PASS

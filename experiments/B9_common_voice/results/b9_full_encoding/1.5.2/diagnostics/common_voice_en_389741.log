@@ -1,0 +1,306 @@
+CONFIG: mode=audio bitrate=32000 complexity=10 fec=0 loss_pct=0
+RED_FINAL: frame=0 mode=1002 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=3 moved=0
+FRAME 0: len=3
+REDUNDANCY: event=1 frame_id=1 mode=1001 celt_to_silk=1 bytes=38
+  -> redundant frame written at offset 1237, size 38
+RED_FINAL: frame=1 mode=1001 redundancy=1 celt_to_silk=1 write_packet_offset=1238 final_packet_offset=69 final_packet_end=107 redundancy_size=38 packet_return_length=107 moved=1
+FRAME 1: len=107
+RED_FINAL: frame=2 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=71 moved=0
+FRAME 2: len=71
+RED_FINAL: frame=3 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=70 moved=0
+FRAME 3: len=70
+RED_FINAL: frame=4 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=72 moved=0
+FRAME 4: len=72
+RED_FINAL: frame=5 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=74 moved=0
+FRAME 5: len=74
+RED_FINAL: frame=6 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=65 moved=0
+FRAME 6: len=65
+RED_FINAL: frame=7 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=63 moved=0
+FRAME 7: len=63
+RED_FINAL: frame=8 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=58 moved=0
+FRAME 8: len=58
+RED_FINAL: frame=9 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=63 moved=0
+FRAME 9: len=63
+RED_FINAL: frame=10 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=59 moved=0
+FRAME 10: len=59
+RED_FINAL: frame=11 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=64 moved=0
+FRAME 11: len=64
+RED_FINAL: frame=12 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=69 moved=0
+FRAME 12: len=69
+RED_FINAL: frame=13 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=60 moved=0
+FRAME 13: len=60
+RED_FINAL: frame=14 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=61 moved=0
+FRAME 14: len=61
+RED_FINAL: frame=15 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=61 moved=0
+FRAME 15: len=61
+RED_FINAL: frame=16 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=68 moved=0
+FRAME 16: len=68
+RED_FINAL: frame=17 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=69 moved=0
+FRAME 17: len=69
+RED_FINAL: frame=18 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=75 moved=0
+FRAME 18: len=75
+RED_FINAL: frame=19 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=66 moved=0
+FRAME 19: len=66
+RED_FINAL: frame=20 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=62 moved=0
+FRAME 20: len=62
+RED_FINAL: frame=21 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=65 moved=0
+FRAME 21: len=65
+RED_FINAL: frame=22 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=69 moved=0
+FRAME 22: len=69
+RED_FINAL: frame=23 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=65 moved=0
+FRAME 23: len=65
+RED_FINAL: frame=24 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=66 moved=0
+FRAME 24: len=66
+RED_FINAL: frame=25 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=60 moved=0
+FRAME 25: len=60
+RED_FINAL: frame=26 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=64 moved=0
+FRAME 26: len=64
+RED_FINAL: frame=27 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=61 moved=0
+FRAME 27: len=61
+RED_FINAL: frame=28 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=59 moved=0
+FRAME 28: len=59
+RED_FINAL: frame=29 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=66 moved=0
+FRAME 29: len=66
+RED_FINAL: frame=30 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=67 moved=0
+FRAME 30: len=67
+RED_FINAL: frame=31 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=69 moved=0
+FRAME 31: len=69
+RED_FINAL: frame=32 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=67 moved=0
+FRAME 32: len=67
+RED_FINAL: frame=33 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=68 moved=0
+FRAME 33: len=68
+RED_FINAL: frame=34 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=68 moved=0
+FRAME 34: len=68
+RED_FINAL: frame=35 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=66 moved=0
+FRAME 35: len=66
+RED_FINAL: frame=36 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=64 moved=0
+FRAME 36: len=64
+RED_FINAL: frame=37 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=66 moved=0
+FRAME 37: len=66
+RED_FINAL: frame=38 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=57 moved=0
+FRAME 38: len=57
+RED_FINAL: frame=39 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=62 moved=0
+FRAME 39: len=62
+RED_FINAL: frame=40 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=59 moved=0
+FRAME 40: len=59
+RED_FINAL: frame=41 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=56 moved=0
+FRAME 41: len=56
+RED_FINAL: frame=42 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=55 moved=0
+FRAME 42: len=55
+RED_FINAL: frame=43 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=57 moved=0
+FRAME 43: len=57
+RED_FINAL: frame=44 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=65 moved=0
+FRAME 44: len=65
+RED_FINAL: frame=45 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=61 moved=0
+FRAME 45: len=61
+RED_FINAL: frame=46 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=61 moved=0
+FRAME 46: len=61
+RED_FINAL: frame=47 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=60 moved=0
+FRAME 47: len=60
+RED_FINAL: frame=48 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=61 moved=0
+FRAME 48: len=61
+RED_FINAL: frame=49 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=77 moved=0
+FRAME 49: len=77
+RED_FINAL: frame=50 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=80 moved=0
+FRAME 50: len=80
+RED_FINAL: frame=51 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=91 moved=0
+FRAME 51: len=91
+RED_FINAL: frame=52 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=80 moved=0
+FRAME 52: len=80
+RED_FINAL: frame=53 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=82 moved=0
+FRAME 53: len=82
+RED_FINAL: frame=54 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=84 moved=0
+FRAME 54: len=84
+RED_FINAL: frame=55 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=86 moved=0
+FRAME 55: len=86
+RED_FINAL: frame=56 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=85 moved=0
+FRAME 56: len=85
+RED_FINAL: frame=57 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=94 moved=0
+FRAME 57: len=94
+RED_FINAL: frame=58 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=99 moved=0
+FRAME 58: len=99
+RED_FINAL: frame=59 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=92 moved=0
+FRAME 59: len=92
+RED_FINAL: frame=60 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=82 moved=0
+FRAME 60: len=82
+RED_FINAL: frame=61 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=91 moved=0
+FRAME 61: len=91
+RED_FINAL: frame=62 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=92 moved=0
+FRAME 62: len=92
+RED_FINAL: frame=63 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=108 moved=0
+FRAME 63: len=108
+RED_FINAL: frame=64 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=84 moved=0
+FRAME 64: len=84
+RED_FINAL: frame=65 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=85 moved=0
+FRAME 65: len=85
+RED_FINAL: frame=66 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=80 moved=0
+FRAME 66: len=80
+RED_FINAL: frame=67 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=69 moved=0
+FRAME 67: len=69
+RED_FINAL: frame=68 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=75 moved=0
+FRAME 68: len=75
+RED_FINAL: frame=69 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=81 moved=0
+FRAME 69: len=81
+RED_FINAL: frame=70 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=81 moved=0
+FRAME 70: len=81
+RED_FINAL: frame=71 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=77 moved=0
+FRAME 71: len=77
+RED_FINAL: frame=72 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=82 moved=0
+FRAME 72: len=82
+RED_FINAL: frame=73 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=72 moved=0
+FRAME 73: len=72
+RED_FINAL: frame=74 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=83 moved=0
+FRAME 74: len=83
+RED_FINAL: frame=75 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=90 moved=0
+FRAME 75: len=90
+RED_FINAL: frame=76 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=73 moved=0
+FRAME 76: len=73
+RED_FINAL: frame=77 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=79 moved=0
+FRAME 77: len=79
+RED_FINAL: frame=78 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=76 moved=0
+FRAME 78: len=76
+RED_FINAL: frame=79 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=98 moved=0
+FRAME 79: len=98
+RED_FINAL: frame=80 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=95 moved=0
+FRAME 80: len=95
+RED_FINAL: frame=81 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=99 moved=0
+FRAME 81: len=99
+RED_FINAL: frame=82 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=87 moved=0
+FRAME 82: len=87
+RED_FINAL: frame=83 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=78 moved=0
+FRAME 83: len=78
+RED_FINAL: frame=84 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=66 moved=0
+FRAME 84: len=66
+RED_FINAL: frame=85 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=79 moved=0
+FRAME 85: len=79
+RED_FINAL: frame=86 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=86 moved=0
+FRAME 86: len=86
+RED_FINAL: frame=87 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=86 moved=0
+FRAME 87: len=86
+RED_FINAL: frame=88 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=77 moved=0
+FRAME 88: len=77
+RED_FINAL: frame=89 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=83 moved=0
+FRAME 89: len=83
+RED_FINAL: frame=90 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=95 moved=0
+FRAME 90: len=95
+RED_FINAL: frame=91 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=89 moved=0
+FRAME 91: len=89
+RED_FINAL: frame=92 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=89 moved=0
+FRAME 92: len=89
+RED_FINAL: frame=93 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=93 moved=0
+FRAME 93: len=93
+RED_FINAL: frame=94 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=79 moved=0
+FRAME 94: len=79
+RED_FINAL: frame=95 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=88 moved=0
+FRAME 95: len=88
+RED_FINAL: frame=96 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=97 moved=0
+FRAME 96: len=97
+RED_FINAL: frame=97 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=85 moved=0
+FRAME 97: len=85
+RED_FINAL: frame=98 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=81 moved=0
+FRAME 98: len=81
+RED_FINAL: frame=99 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=88 moved=0
+FRAME 99: len=88
+RED_FINAL: frame=100 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=80 moved=0
+FRAME 100: len=80
+RED_FINAL: frame=101 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=84 moved=0
+FRAME 101: len=84
+RED_FINAL: frame=102 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=86 moved=0
+FRAME 102: len=86
+RED_FINAL: frame=103 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=79 moved=0
+FRAME 103: len=79
+RED_FINAL: frame=104 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=81 moved=0
+FRAME 104: len=81
+RED_FINAL: frame=105 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=81 moved=0
+FRAME 105: len=81
+RED_FINAL: frame=106 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=98 moved=0
+FRAME 106: len=98
+RED_FINAL: frame=107 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=85 moved=0
+FRAME 107: len=85
+RED_FINAL: frame=108 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=84 moved=0
+FRAME 108: len=84
+RED_FINAL: frame=109 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=79 moved=0
+FRAME 109: len=79
+RED_FINAL: frame=110 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=78 moved=0
+FRAME 110: len=78
+RED_FINAL: frame=111 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=78 moved=0
+FRAME 111: len=78
+RED_FINAL: frame=112 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=79 moved=0
+FRAME 112: len=79
+RED_FINAL: frame=113 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=71 moved=0
+FRAME 113: len=71
+RED_FINAL: frame=114 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=70 moved=0
+FRAME 114: len=70
+RED_FINAL: frame=115 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=74 moved=0
+FRAME 115: len=74
+RED_FINAL: frame=116 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=68 moved=0
+FRAME 116: len=68
+RED_FINAL: frame=117 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=69 moved=0
+FRAME 117: len=69
+RED_FINAL: frame=118 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=59 moved=0
+FRAME 118: len=59
+RED_FINAL: frame=119 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=62 moved=0
+FRAME 119: len=62
+RED_FINAL: frame=120 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=62 moved=0
+FRAME 120: len=62
+RED_FINAL: frame=121 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=65 moved=0
+FRAME 121: len=65
+RED_FINAL: frame=122 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=64 moved=0
+FRAME 122: len=64
+RED_FINAL: frame=123 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=64 moved=0
+FRAME 123: len=64
+RED_FINAL: frame=124 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=60 moved=0
+FRAME 124: len=60
+RED_FINAL: frame=125 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=62 moved=0
+FRAME 125: len=62
+RED_FINAL: frame=126 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=65 moved=0
+FRAME 126: len=65
+RED_FINAL: frame=127 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=64 moved=0
+FRAME 127: len=64
+RED_FINAL: frame=128 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=64 moved=0
+FRAME 128: len=64
+RED_FINAL: frame=129 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=65 moved=0
+FRAME 129: len=65
+RED_FINAL: frame=130 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=65 moved=0
+FRAME 130: len=65
+RED_FINAL: frame=131 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=64 moved=0
+FRAME 131: len=64
+RED_FINAL: frame=132 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=64 moved=0
+FRAME 132: len=64
+RED_FINAL: frame=133 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=60 moved=0
+FRAME 133: len=60
+RED_FINAL: frame=134 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=57 moved=0
+FRAME 134: len=57
+RED_FINAL: frame=135 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=66 moved=0
+FRAME 135: len=66
+RED_FINAL: frame=136 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=59 moved=0
+FRAME 136: len=59
+RED_FINAL: frame=137 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=61 moved=0
+FRAME 137: len=61
+RED_FINAL: frame=138 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=67 moved=0
+FRAME 138: len=67
+RED_FINAL: frame=139 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=66 moved=0
+FRAME 139: len=66
+RED_FINAL: frame=140 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=69 moved=0
+FRAME 140: len=69
+RED_FINAL: frame=141 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=65 moved=0
+FRAME 141: len=65
+RED_FINAL: frame=142 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=63 moved=0
+FRAME 142: len=63
+RED_FINAL: frame=143 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=64 moved=0
+FRAME 143: len=64
+RED_FINAL: frame=144 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=60 moved=0
+FRAME 144: len=60
+RED_FINAL: frame=145 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=63 moved=0
+FRAME 145: len=63
+RED_FINAL: frame=146 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=64 moved=0
+FRAME 146: len=64
+RED_FINAL: frame=147 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=64 moved=0
+FRAME 147: len=64
+RED_FINAL: frame=148 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=61 moved=0
+FRAME 148: len=61
+RED_FINAL: frame=149 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=64 moved=0
+FRAME 149: len=64
+RED_FINAL: frame=150 mode=1001 redundancy=0 celt_to_silk=0 write_packet_offset=-1 final_packet_offset=-1 final_packet_end=-1 redundancy_size=-1 packet_return_length=54 moved=0
+FRAME 150: len=54
+Encoded 151 packets

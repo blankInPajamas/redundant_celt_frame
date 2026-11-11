@@ -1,0 +1,79 @@
+========== B15 NATURAL-COVER AUDIT ==========
+Detector: /home/ishu/research/redundant_celt_frame_steganography/experiments/B6_steganalysis/detectors.py
+Detector SHA256: 9dd4326387ee3fd5ddfbe8fed3cdbf08fb2bdbb06917712716428668c32b563a
+Packet format: 4-byte native-endian integer + packet
+Tail size: 36
+Maximum payload: 35
+
+========== INPUT VALIDATION ==========
+GTZAN manifest: 999
+Positive-control records: 20
+Independent packet audits: 20
+Positive-control functional validation: PASS
+Independent packet validation: PASS
+
+========== VERSION 1.5.2 ==========
+Clean scanned: 100/999
+Clean scanned: 200/999
+Clean scanned: 300/999
+Clean scanned: 400/999
+Clean scanned: 500/999
+Clean scanned: 600/999
+Clean scanned: 700/999
+Clean scanned: 800/999
+Clean scanned: 900/999
+
+CLEAN NATURAL MUSIC
+Total: 999
+False positives: 0
+FPR: 0.000000
+Wilson 95% CI: [0.000000, 0.003831]
+
+POSITIVE CONTROLS
+Total: 10
+Detected: 10
+TPR: 1.000000
+Wilson 95% CI: [0.722467, 1.000000]
+Target localization, zero-based: 10 / 10
+Target localization, one-based: 0 / 10
+
+========== VERSION 1.6.1 ==========
+Clean scanned: 100/999
+Clean scanned: 200/999
+Clean scanned: 300/999
+Clean scanned: 400/999
+Clean scanned: 500/999
+Clean scanned: 600/999
+Clean scanned: 700/999
+Clean scanned: 800/999
+Clean scanned: 900/999
+
+CLEAN NATURAL MUSIC
+Total: 999
+False positives: 0
+FPR: 0.000000
+Wilson 95% CI: [0.000000, 0.003831]
+
+POSITIVE CONTROLS
+Total: 10
+Detected: 10
+TPR: 1.000000
+Wilson 95% CI: [0.722467, 1.000000]
+Target localization, zero-based: 10 / 10
+Target localization, one-based: 0 / 10
+
+========== B15 FINAL SUMMARY ==========
+{'version': '1.5.2', 'clean_recordings': 999, 'false_positives': 0, 'fpr': 0.0, 'fpr_wilson_95_low': 0, 'fpr_wilson_95_high': 0.0038305744012733026, 'positive_controls': 10, 'positive_detected': 10, 'tpr': 1.0, 'tpr_wilson_95_low': 0.7224672001371107, 'tpr_wilson_95_high': 0.9999999999999999}
+{'version': '1.6.1', 'clean_recordings': 999, 'false_positives': 0, 'fpr': 0.0, 'fpr_wilson_95_low': 0, 'fpr_wilson_95_high': 0.0038305744012733026, 'positive_controls': 10, 'positive_detected': 10, 'tpr': 1.0, 'tpr_wilson_95_low': 0.7224672001371107, 'tpr_wilson_95_high': 0.9999999999999999}
+
+Cross-version agreement:
+{'class': 'cover', 'paired_recordings': 999, 'both_detected': 0, 'only_1_5_2_detected': 0, 'only_1_6_1_detected': 0, 'neither_detected': 999}
+{'class': 'positive_control', 'paired_recordings': 10, 'both_detected': 10, 'only_1_5_2_detected': 0, 'only_1_6_1_detected': 0, 'neither_detected': 0}
+
+Output directory: /home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/results/b15_natural_cover_audit/run_20261104_132107
+Recording rows: 2018
+Positive-control rows: 20
+Input hashes: 2018
+Checksums: /home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/results/b15_natural_cover_audit/run_20261104_132107/b15_checksums.sha256
+
+B15 NATURAL-COVER AUDIT: COMPLETE

@@ -1,0 +1,341 @@
+========== FINALIZATION INVENTORY ==========
+Project: /home/ishu/research/redundant_celt_frame_steganography
+Inventory: /home/ishu/research/redundant_celt_frame_steganography/experiments/finalization/inventory_20261105_161951
+
+========== B16 PREFLIGHT ==========
+========== B16 INPUT PREFLIGHT ==========
+Project: /home/ishu/research/redundant_celt_frame_steganography
+B12: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705
+B13: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849
+B14: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705/b12_payload_manifest.csv
+Rows: 3600
+Columns: ['encoder', 'recording', 'speaker_sha256', 'frame', 'payload_size_bytes', 'repetition', 'payload_seed', 'payload_hex', 'payload_sha256', 'source_bitstream_sha256', 'modified_bitstream_sha256', 'packet_count_preserved', 'packet_lengths_preserved', 'target_packet_prefix_preserved', 'reserved_zero_padding_preserved', 'payload_bytes_match', 'packet_structure_pass', 'modified_bitstream', 'corrupted_bitstream', 'corrupted_bitstream_sha256']
+Sample: {'encoder': '1.5.2', 'recording': 'common_voice_en_10143', 'speaker_sha256': 'ac5fea9cacdfa4a2d6291c780b0a0ee1c0f2c5d2389cc0357a477fdac75a87c74638f69f3d7a1ac89af0f2824d9a930ddfceac2b52d7e4f91990994b77044841', 'frame': '1', 'payload_size_bytes': '4', 'repetition': '1', 'payload_seed': 'B12-CV26-FULL-v1|1.5.2|common_voice_en_10143|1|4|1', 'payload_hex': '92bc0397', 'payload_sha256': '2f404600d4ec6d1e09eb3230c2c65d4c95cfbe1aa7ca6078482c5c10ef2e52af', 'source_bitstream_sha256': '9d8c4d7e8aa56b83d3627e22f1367219b94b1cdf8e2b0678f62e61af44dc2999', 'modified_bitstream_sha256': 'fb019478341ecaa75c1d8cb6381f018c7bef821ff34e1075185f44b97c8bf6f3', 'packet_count_preserved': 'True', 'packet_lengths_preserved': 'True', 'target_packet_prefix_preserved': 'True', 'reserved_zero_padding_preserved': 'True', 'payload_bytes_match': 'True', 'packet_structure_pass': 'True', 'modified_bitstream': 'bitstreams/1.5.2/common_voice_en_10143/payload_04B_rep1.bin', 'corrupted_bitstream': 'corrupted_bitstreams/1.5.2/common_voice_en_10143/corrupt_04B_rep1.bin', 'corrupted_bitstream_sha256': '50d1a7d11ae9da54d1af2d29a623598de01aa9c720b4e03579b0f3510cb4b105'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849/b13_feature_summary.csv
+Rows: 7200
+Columns: ['encoder', 'recording', 'speaker_sha256', 'frame', 'payload_size_bytes', 'repetition', 'class', 'stream_entropy', 'stream_zero_fraction', 'target_packet_entropy', 'tail36_entropy', 'tail36_zero_fraction', 'tail36_nonzero_count', 'tail36_trailing_zero_bytes']
+Sample: {'encoder': '1.5.2', 'recording': 'common_voice_en_10143', 'speaker_sha256': 'ac5fea9cacdfa4a2d6291c780b0a0ee1c0f2c5d2389cc0357a477fdac75a87c74638f69f3d7a1ac89af0f2824d9a930ddfceac2b52d7e4f91990994b77044841', 'frame': '1', 'payload_size_bytes': '4', 'repetition': '1', 'class': 'cover', 'stream_entropy': '7.842209504419663', 'stream_zero_fraction': '0.05031577486293289', 'target_packet_entropy': '4.294640171956025', 'tail36_entropy': '-0.0', 'tail36_zero_fraction': '1.0', 'tail36_nonzero_count': '0.0', 'tail36_trailing_zero_bytes': '36.0'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849/b13_oof_predictions.csv
+Rows: 28800
+Columns: ['scope', 'payload_size_bytes', 'repetition', 'feature_set', 'model', 'encoder', 'recording', 'speaker_sha256', 'class', 'y_true', 'y_score', 'y_pred', 'fold']
+Sample: {'scope': 'pooled', 'payload_size_bytes': '4', 'repetition': '1', 'feature_set': 'global', 'model': 'logistic_regression', 'encoder': '1.5.2', 'recording': 'common_voice_en_10143', 'speaker_sha256': 'ac5fea9cacdfa4a2d6291c780b0a0ee1c0f2c5d2389cc0357a477fdac75a87c74638f69f3d7a1ac89af0f2824d9a930ddfceac2b52d7e4f91990994b77044841', 'class': 'cover', 'y_true': '0', 'y_score': '0.014630154734592402', 'y_pred': '0', 'fold': '3'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849/b13_ml_metrics.csv
+Rows: 108
+Columns: ['accuracy', 'balanced_accuracy', 'precision', 'tpr', 'f1', 'roc_auc', 'tn', 'fp', 'fn', 'tp', 'fpr', 'scope', 'payload_size_bytes', 'repetition', 'feature_set', 'model', 'n_samples', 'n_events', 'n_speaker_groups', 'cv_folds', 'split_unit', 'decision_threshold']
+Sample: {'accuracy': '0.995', 'balanced_accuracy': '0.995', 'precision': '1.0', 'tpr': '0.99', 'f1': '0.9949748743718593', 'roc_auc': '0.992925', 'tn': '200', 'fp': '0', 'fn': '2', 'tp': '198', 'fpr': '0.0', 'scope': 'pooled', 'payload_size_bytes': '4', 'repetition': '1', 'feature_set': 'global', 'model': 'logistic_regression', 'n_samples': '400', 'n_events': '200', 'n_speaker_groups': '196', 'cv_folds': '5', 'split_unit': 'speaker_sha256', 'decision_threshold': '0.5'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_paired_feature_effects.csv
+Rows: 6414
+Columns: ['payload_size_bytes', 'feature', 'feature_family', 'n_events', 'mean_delta_stego_minus_cover', 'mean_absolute_delta', 'median_absolute_delta', 'std_delta', 'n_changed', 'percent_changed']
+Sample: {'payload_size_bytes': '4', 'feature': 'g_packet_count', 'feature_family': 'g', 'n_events': '200', 'mean_delta_stego_minus_cover': '0.0', 'mean_absolute_delta': '0.0', 'median_absolute_delta': '0.0', 'std_delta': '0.0', 'n_changed': '0', 'percent_changed': '0.0'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_oof_predictions.csv
+Rows: 76800
+Columns: ['scope', 'payload_size_bytes', 'feature_group', 'model', 'encoder', 'recording', 'speaker_sha256', 'class', 'y_true', 'y_score', 'y_pred', 'fold']
+Sample: {'scope': 'pooled', 'payload_size_bytes': '4', 'feature_group': 'global_all', 'model': 'logistic_regression', 'encoder': '1.5.2', 'recording': 'common_voice_en_10143', 'speaker_sha256': 'ac5fea9cacdfa4a2d6291c780b0a0ee1c0f2c5d2389cc0357a477fdac75a87c74638f69f3d7a1ac89af0f2824d9a930ddfceac2b52d7e4f91990994b77044841', 'class': 'cover', 'y_true': '0', 'y_score': '0.014630154734592402', 'y_pred': '0', 'fold': '3'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_feature_group_metrics.csv
+Rows: 252
+Columns: ['accuracy', 'balanced_accuracy', 'precision', 'tpr', 'f1', 'roc_auc', 'tn', 'fp', 'fn', 'tp', 'fpr', 'scope', 'payload_size_bytes', 'feature_group', 'model', 'n_features', 'n_samples', 'n_events', 'n_speaker_groups', 'cv_folds', 'split_unit', 'decision_threshold']
+Sample: {'accuracy': '0.995', 'balanced_accuracy': '0.995', 'precision': '1.0', 'tpr': '0.99', 'f1': '0.9949748743718593', 'roc_auc': '0.992925', 'tn': '200', 'fp': '0', 'fn': '2', 'tp': '198', 'fpr': '0.0', 'scope': 'pooled', 'payload_size_bytes': '4', 'feature_group': 'global_all', 'model': 'logistic_regression', 'n_features': '271', 'n_samples': '400', 'n_events': '200', 'n_speaker_groups': '196', 'cv_folds': '5', 'split_unit': 'speaker_sha256', 'decision_threshold': '0.5'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_permutation_importance_summary.csv
+Rows: 1611
+Columns: ['payload_size_bytes', 'feature_group', 'feature', 'mean_importance', 'std_across_folds', 'positive_folds', 'n_folds']
+Sample: {'payload_size_bytes': '4', 'feature_group': 'global_all', 'feature': 'g_packet_count', 'mean_importance': '-0.00029166666666668263', 'std_across_folds': '0.0006521864934374744', 'positive_folds': '0', 'n_folds': '5'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_permutation_importance_by_fold.csv
+Rows: 8055
+Columns: ['payload_size_bytes', 'feature_group', 'feature', 'fold', 'importance_mean', 'importance_std']
+Sample: {'payload_size_bytes': '4', 'feature_group': 'global_all', 'feature': 'g_packet_count', 'fold': '1', 'importance_mean': '0.0', 'importance_std': '0.0'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_run_config.json
+Size: 1074
+{
+  "stage": "B14",
+  "b12_run": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705",
+  "manifest_sha256": "e993cd21001ff1d16467f8bab65ef5fb4dbaa2138a3b8aeb95cc0084b9e8c9b8",
+  "events": 200,
+  "speaker_groups": 196,
+  "encoders": [
+    "1.5.2",
+    "1.6.1"
+  ],
+  "payload_sizes": [
+    4,
+    8,
+    16,
+    24,
+    32,
+    36
+  ],
+  "primary_repetition": 1,
+  "folds": 5,
+  "seed": 42,
+  "bootstrap_repetitions": 1000,
+  "permutation_repeats": 3,
+  "cross_validation": "StratifiedGroupKFold",
+  "group_unit": "speaker_sha256",
+  "models": [
+    "logistic_regression",
+    "random_forest"
+  ],
+  "feature_group_sizes": {
+    "global_all": 271,
+    "stream_scalar": 10,
+    "stream_histogram": 256,
+    "packet_geometry": 5,
+    "global_without_histogram": 15,
+    "global_without_stream_scalars": 261,
+    "global_without_packet_geometry": 266,
+    "target_packet": 266,
+    "target_tail36": 266,
+    "target_prefix_control": 266,
+    "global_plus_tail36": 537
+  },
+  "read_only": true
+}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_report.txt
+Size: 8388
+
+========== SPEAKER OVERLAP ==========
+1.5.2 events: 100
+1.6.1 events: 100
+1.5.2 speaker groups: 100
+1.6.1 speaker groups: 100
+Shared speakers: 4
+Shared recording IDs: 4
+1.5.2: retained=96; excluded=4
+1.6.1: retained=96; excluded=4
+
+========== B14 SOURCE SCRIPTS ==========
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/audit_b14_outputs.py
+SHA256: ad68451189feb3b06614667963f5f9bb201f095b6565a2ba9dbe003846a1d461
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/run_b14_feature_attribution.py
+SHA256: 4205c3d6864dea29653ec304bd8387680e01a82ae67917a0c0640a9765e756db
+
+========== B13 SOURCE SCRIPT ==========
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/run_b13_steganalysis.py
+SHA256: a9d645b3445c63dcbb753ee4ebba3df464d0b51a12e850ac8c9e507a37668d0a
+
+========== PREFLIGHT COMPLETE ==========
+Output: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b16_cross_version_transfer/preflight_20261105_161055
+Source data modified: NO
+
+========== SOURCE SCRIPT INVENTORY ==========
+
+FILE: experiments/B9_common_voice/run_b12_full.py
+7d3bbbd7252302a7561a2f497f024720a8bc9d6b419402b9f1da163bd613028f  /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/run_b12_full.py
+--- Functions, classes and important constants ---
+36:CAPACITY = 36
+48:def sha(data):
+52:def file_sha(path):
+60:def read_csv(path):
+65:def write_csv(path, rows, fieldnames=None):
+76:def append_csv(path, rows):
+87:def read_packets(path):
+105:def write_packets(path, packets):
+114:def zero_tail(packet):
+123:def embed(packets, frame, payload):
+124:    if len(payload) > CAPACITY:
+126:            f"Payload {len(payload)} exceeds {CAPACITY}-byte capacity"
+128:    if not 0 < len(payload) <= CAPACITY:
+132:    if zero_tail(packets[frame]) != CAPACITY:
+142:def validate_modified(original, modified, frame, payload):
+150:        and modified[frame][:-CAPACITY] == original[frame][:-CAPACITY]
+153:        modified[frame][-CAPACITY:-len(payload)]
+154:        == bytes(CAPACITY - len(payload))
+170:def make_payload(enc, rec, frame, size, repetition):
+178:def as_text(value):
+186:def decode(decoder, bitstream, pcm_path, expected_frames):
+215:def extract_tail(log, wire_payload):
+222:            tail[:CAPACITY - size] == bytes(CAPACITY - size)
+223:            and tail[CAPACITY - size:] == wire_payload
+230:def locate_preflight(requested):
+248:def load_and_validate_inputs(preflight):
+346:        if len(original_payload) != CAPACITY:
+380:        if zero_tail(packets[frame]) != CAPACITY:
+417:def main():
+418:    parser = argparse.ArgumentParser(
+421:    parser.add_argument(
+463:        "usable_capacity_bytes": CAPACITY,
+559:                max_payload_packets = embed(packets, frame, bytes(CAPACITY))
+561:                    max_payload_packets[frame][-CAPACITY:] == bytes(CAPACITY)
+567:                embed(packets, frame, bytes(CAPACITY + 1))
+576:                "capacity_bytes": CAPACITY,
+
+FILE: experiments/B9_common_voice/run_b13_steganalysis.py
+a9d645b3445c63dcbb753ee4ebba3df464d0b51a12e850ac8c9e507a37668d0a  /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/run_b13_steganalysis.py
+--- Functions, classes and important constants ---
+27:from sklearn.model_selection import StratifiedGroupKFold
+33:CAPACITY = 36
+37:def sha_bytes(data):
+41:def sha_file(path):
+49:def read_packets(raw, label):
+65:def add_region_features(out, prefix, raw):
+99:def extract_features(raw, packets, frame):
+103:    if len(target) < CAPACITY:
+108:    add_region_features(out, "t_tail36", target[-CAPACITY:])
+118:def read_manifest(path):
+135:def write_csv(path, rows):
+144:def build_records(root, b9, b12_run, manifest):
+175:            if frame >= len(packets) or packets[frame][-CAPACITY:] != bytes(CAPACITY):
+179:                "features": extract_features(raw, packets, frame),
+205:        expected_tail = bytes(CAPACITY - size) + payload
+206:        if stego_packets[frame][-CAPACITY:] != expected_tail:
+208:        if stego_packets[frame][:-CAPACITY] != cover["packets"][frame][:-CAPACITY]:
+211:        tail = stego_packets[frame][-CAPACITY:]
+216:            "stego_features": extract_features(stego_raw, stego_packets, frame),
+234:def metric_dict(y, pred, score):
+248:def evaluate_ml(records, size, scope, feature_set, cols, model_name, model, seed, folds):
+266:    cv = StratifiedGroupKFold(n_splits=folds, shuffle=True, random_state=seed)
+312:def tail_rule_metrics(records):
+338:def save_figures(out_dir, metrics, tail_rows, roc_data):
+390:def main():
+391:    p = argparse.ArgumentParser()
+392:    p.add_argument("--b12-run", required=True, help="Exact B12 run directory")
+393:    p.add_argument("--folds", type=int, default=5)
+394:    p.add_argument("--seed", type=int, default=42)
+502:        "cross_validation": "StratifiedGroupKFold",
+525:        f"Cross-validation: {args.folds}-fold StratifiedGroupKFold",
+
+FILE: experiments/B9_common_voice/run_b14_feature_attribution.py
+4205c3d6864dea29653ec304bd8387680e01a82ae67917a0c0640a9765e756db  /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/run_b14_feature_attribution.py
+--- Functions, classes and important constants ---
+41:from sklearn.model_selection import StratifiedGroupKFold
+49:CAPACITY = 36
+102:def sha_bytes(data):
+106:def sha_file(path):
+114:def read_packets(raw, label):
+137:def add_region_features(out, prefix, raw):
+185:def extract_features(raw, packets, frame):
+191:    if len(target) <= CAPACITY:
+203:    add_region_features(out, "t_tail36", target[-CAPACITY:])
+206:    add_region_features(out, "t_prefix36", target[:-CAPACITY])
+221:def read_manifest(path):
+255:def write_csv(path, rows):
+269:def build_records(root, b9, b12_run, manifest):
+326:            if cover_target[-CAPACITY:] != bytes(CAPACITY):
+333:                "features": extract_features(
+385:        expected_tail = bytes(CAPACITY-size) + payload
+387:        if stego_packets[frame][-CAPACITY:] != expected_tail:
+391:            stego_packets[frame][:-CAPACITY]
+392:            != cover["packets"][frame][:-CAPACITY]
+404:            "stego_features": extract_features(
+448:def define_feature_groups(keys):
+515:def make_model(name, seed):
+541:def make_dataset(records, size, scope, cols):
+585:def calculate_metrics(y, pred, score):
+614:def evaluate_group(
+626:    cv = StratifiedGroupKFold(
+699:def calculate_feature_effects(records, keys):
+749:def cluster_bootstrap_effects(
+823:def calculate_permutation_importance(
+844:            cv = StratifiedGroupKFold(
+891:def summarize_importance(rows):
+921:def save_figures(out, metrics, importance):
+1005:def main():
+1007:    parser = argparse.ArgumentParser()
+1009:    parser.add_argument(
+1015:    parser.add_argument("--folds", type=int, default=5)
+1016:    parser.add_argument("--seed", type=int, default=42)
+1017:    parser.add_argument("--bootstrap", type=int, default=1000)
+1018:    parser.add_argument("--permutation-repeats", type=int, default=3)
+1214:        "cross_validation": "StratifiedGroupKFold",
+
+FILE: experiments/B9_common_voice/preflight_b16.py
+ecaa4229c4be74e191be1504b90af05155cb4145fa80604ec06d14f98e648517  /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/preflight_b16.py
+--- Functions, classes and important constants ---
+37:def read_csv(path):
+43:def sha256(path):
+50:def show_file(path, report, inventory):
+98:def main():
+
+FILE: experiments/B6_steganalysis/detectors.py
+9dd4326387ee3fd5ddfbe8fed3cdbf08fb2bdbb06917712716428668c32b563a  /home/ishu/research/redundant_celt_frame_steganography/experiments/B6_steganalysis/detectors.py
+--- Functions, classes and important constants ---
+23:def load_packets(path):
+39:def trailing_zeros(pkt):
+49:def find_transition_frame(packets, min_tail=20):
+66:def detector_trailing_zero_count(packets, expected_min_tail=35):
+78:def tail_nonzero_count(packets, threshold=5.0):
+103:def shannon_entropy(byte_seq):
+111:def detector_entropy(packets, threshold=0.8):
+125:def blind_structural_scan(packets, tail_size=36, max_payload=32):
+172:def packet_size_baseline(packets, sigma=3.0):
+193:def get_transition_features(packets, target_idx, tail_size=36):
+219:def run_known_detectors(packets, target_idx):
+254:def run_all_detectors(path):
+
+FILE: experiments/B7_music/results/b15_natural_cover_audit/run_20261104_132107/b15_run.py
+45da3d0ead3502acaeef9fff7685981b6738a1d51412b16b9cfba52c76dced77  /home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/results/b15_natural_cover_audit/run_20261104_132107/b15_run.py
+--- Functions, classes and important constants ---
+33:TAIL_SIZE = 36
+34:MAX_PAYLOAD = 35
+48:def read_csv(path):
+55:def write_csv(path, rows):
+70:def sha256(path):
+83:def parse_bitstream(path):
+123:def load_exact_detector():
+169:def wilson(successes, total, z=1.959963984540054):
+191:def truth(value):
+198:def main():
+214:    print("Tail size:", TAIL_SIZE)
+215:    print("Maximum payload:", MAX_PAYLOAD)
+383:                tail_size=TAIL_SIZE,
+384:                max_payload=MAX_PAYLOAD
+444:                tail_size=TAIL_SIZE,
+445:                max_payload=MAX_PAYLOAD
+713:        "tail_size": TAIL_SIZE,
+714:        "max_payload": MAX_PAYLOAD,
+742:        f"Tail size: {TAIL_SIZE}",
+743:        f"Maximum payload: {MAX_PAYLOAD}",
+
+========== EXISTING B16-B19 SCRIPTS ==========
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/preflight_b16.py
+
+========== LEGACY EXPERIMENT INVENTORY ==========
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/audit_b7_packet_lengths.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/test_b7_zero_tail_payload.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/analyze_official_b7.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/audit_b7_regions.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/run_b15_natural_cover_audit.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/test_b7_cross_decoder.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/audit_natural_music_detector.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/audit_b13.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/audit_pilot_events.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/audit_pilot_speakers.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/audit_b9_payload_candidates.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/audit_b14_outputs.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/audit_b11_pilot.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/b12_independent_audit.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/audit_b9_full.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/audit_redundancy_log.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B6_steganalysis/evaluate_b6_v2.py
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B8_librispeech/b8_cross_decoder_audit.py
+
+========== EXISTING CHECKSUM FILES ==========
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B7_music/results/b15_natural_cover_audit/run_20261104_132107/b15_checksums.sha256
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b16_cross_version_transfer/preflight_20261104_142641/b16_preflight_checksums.sha256
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b16_cross_version_transfer/preflight_20261105_161055/b16_preflight_checksums.sha256
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b11_payload_reliability/pilot_20261104_013941/b11_checksums.sha256
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b11_payload_reliability/pilot_20261104_013941/b11_postrun_audit_checksums.sha256
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_checksums.sha256
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849/b13_checksums.sha256
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705/b12_checksums.sha256
+
+========== PYTHON PACKAGE VERSIONS ==========
+NumPy: 2.5.3
+Pandas: 3.1.1
+Scikit-learn: 1.9.1
+SciPy: 1.18.1
+Matplotlib: 3.11.2
+
+========== INVENTORY COMPLETE ==========
+Report: /home/ishu/research/redundant_celt_frame_steganography/experiments/finalization/inventory_20261105_161951/finalization_inventory.txt

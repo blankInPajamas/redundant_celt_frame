@@ -1,0 +1,49 @@
+{
+  "experiment": "B18 controlled robustness and failure-mode evaluation",
+  "b12_run": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705",
+  "b12_manifest_sha256": "e993cd21001ff1d16467f8bab65ef5fb4dbaa2138a3b8aeb95cc0084b9e8c9b8",
+  "payload_sizes_bytes": [
+    32,
+    36
+  ],
+  "repetition": 1,
+  "unique_events": 200,
+  "events_per_encoder": 100,
+  "transformation_types": [
+    "payload_bitflip",
+    "target_marker_bitflip",
+    "noncarrier_packet_bitflip",
+    "drop_carrier_packet",
+    "drop_preceding_packet",
+    "swap_carrier_adjacent",
+    "truncate_carrier_packet",
+    "malformed_target_length"
+  ],
+  "transformation_cases": 3200,
+  "decoder_sample_per_encoder": 10,
+  "decoder_versions": [
+    "1.5.2",
+    "1.6.1"
+  ],
+  "codec_reencode_sample_per_encoder": 10,
+  "codec_reencode_bitrates": [
+    16000,
+    32000,
+    64000
+  ],
+  "codec_reencode_mode": "audio",
+  "codec_reencode_complexity": 10,
+  "codec_reencode_fec": 0,
+  "codec_reencode_packet_loss_percent": 0,
+  "source_bitstreams_modified": false,
+  "frozen_b12_modified_bitstreams_modified": false,
+  "new_transformed_copies_only": true,
+  "encoder_binary_sha256": {
+    "1.5.2": "e1d2041039b8c318595e83a4ed04b8dbfec6afc7ba280c9ddf59c16d7496ba1b",
+    "1.6.1": "700be2a3f50f1e7e91aea425229626c0aeff36151386f5272510cedfc86ef9a3"
+  },
+  "decoder_binary_sha256": {
+    "1.5.2": "c1917dfe60ace63fb5180439b29a930792999da3d996acba02d8293228a62ba0",
+    "1.6.1": "fd44738bcf556333ec2c3cca7babe1dd703e09c54563748476a3dddbeb1a928d"
+  }
+}

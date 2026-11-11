@@ -1,0 +1,312 @@
+========== B16 INPUT VALIDATION ==========
+Project: /home/ishu/research/redundant_celt_frame_steganography
+B12 run: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705
+B12 manifest SHA256: e993cd21001ff1d16467f8bab65ef5fb4dbaa2138a3b8aeb95cc0084b9e8c9b8
+B14 script SHA256: 4205c3d6864dea29653ec304bd8387680e01a82ae67917a0c0640a9765e756db
+B14 config SHA256: 64a2b78c27f985124d5aa9e65f4c860bcf897cf87f091aefdb0ae9f086fc6af0
+1.5.2: events=100; speakers=100; recordings=100
+1.6.1: events=100; speakers=100; recordings=100
+Shared speakers: 4
+Shared recording IDs: 4
+1.5.2: retained_events=96; retained_speakers=96; retained_recordings=96
+1.6.1: retained_events=96; retained_speakers=96; retained_recordings=96
+
+========== BUILDING VALIDATED FEATURE RECORDS ==========
+Validated 300/3600 rows
+Validated 600/3600 rows
+Validated 900/3600 rows
+Validated 1200/3600 rows
+Validated 1500/3600 rows
+Validated 1800/3600 rows
+Validated 2100/3600 rows
+Validated 2400/3600 rows
+Validated 2700/3600 rows
+Validated 3000/3600 rows
+Validated 3300/3600 rows
+Validated 3600/3600 rows
+Validated B12 manifest records: 3600
+Feature groups: {'global_all': 271, 'stream_scalar': 10, 'stream_histogram': 256, 'packet_geometry': 5, 'global_without_histogram': 15, 'global_without_stream_scalars': 261, 'global_without_packet_geometry': 266, 'target_packet': 266, 'target_tail36': 266, 'target_prefix_control': 266, 'global_plus_tail36': 537}
+
+========== B16 CROSS-VERSION MODEL EVALUATION ==========
+[1/264] 4B | global_all | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[2/264] 4B | global_all | logistic_regression | 1.6.1->1.5.2 | AUC=0.9893 | BA=0.9896
+[3/264] 4B | global_all | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[4/264] 4B | global_all | random_forest | 1.6.1->1.5.2 | AUC=0.9922 | BA=0.9896
+[5/264] 4B | stream_scalar | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[6/264] 4B | stream_scalar | logistic_regression | 1.6.1->1.5.2 | AUC=0.9799 | BA=0.9896
+[7/264] 4B | stream_scalar | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[8/264] 4B | stream_scalar | random_forest | 1.6.1->1.5.2 | AUC=0.9937 | BA=0.9896
+[9/264] 4B | stream_histogram | logistic_regression | 1.5.2->1.6.1 | AUC=0.5315 | BA=0.5156
+[10/264] 4B | stream_histogram | logistic_regression | 1.6.1->1.5.2 | AUC=0.5276 | BA=0.5208
+[11/264] 4B | stream_histogram | random_forest | 1.5.2->1.6.1 | AUC=0.5280 | BA=0.5260
+[12/264] 4B | stream_histogram | random_forest | 1.6.1->1.5.2 | AUC=0.5168 | BA=0.5104
+[13/264] 4B | packet_geometry | logistic_regression | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[14/264] 4B | packet_geometry | logistic_regression | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[15/264] 4B | packet_geometry | random_forest | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[16/264] 4B | packet_geometry | random_forest | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[17/264] 4B | global_without_histogram | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[18/264] 4B | global_without_histogram | logistic_regression | 1.6.1->1.5.2 | AUC=0.9822 | BA=0.9896
+[19/264] 4B | global_without_histogram | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[20/264] 4B | global_without_histogram | random_forest | 1.6.1->1.5.2 | AUC=0.9901 | BA=0.9896
+[21/264] 4B | global_without_stream_scalars | logistic_regression | 1.5.2->1.6.1 | AUC=0.5348 | BA=0.5104
+[22/264] 4B | global_without_stream_scalars | logistic_regression | 1.6.1->1.5.2 | AUC=0.5320 | BA=0.5104
+[23/264] 4B | global_without_stream_scalars | random_forest | 1.5.2->1.6.1 | AUC=0.5175 | BA=0.5208
+[24/264] 4B | global_without_stream_scalars | random_forest | 1.6.1->1.5.2 | AUC=0.5152 | BA=0.5156
+[25/264] 4B | global_without_packet_geometry | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[26/264] 4B | global_without_packet_geometry | logistic_regression | 1.6.1->1.5.2 | AUC=0.9883 | BA=0.9896
+[27/264] 4B | global_without_packet_geometry | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[28/264] 4B | global_without_packet_geometry | random_forest | 1.6.1->1.5.2 | AUC=0.9858 | BA=0.9896
+[29/264] 4B | target_packet | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=0.9792
+[30/264] 4B | target_packet | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=0.9896
+[31/264] 4B | target_packet | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=0.9896
+[32/264] 4B | target_packet | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[33/264] 4B | target_tail36 | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[34/264] 4B | target_tail36 | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[35/264] 4B | target_tail36 | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[36/264] 4B | target_tail36 | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[37/264] 4B | target_prefix_control | logistic_regression | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[38/264] 4B | target_prefix_control | logistic_regression | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[39/264] 4B | target_prefix_control | random_forest | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[40/264] 4B | target_prefix_control | random_forest | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[41/264] 4B | global_plus_tail36 | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[42/264] 4B | global_plus_tail36 | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[43/264] 4B | global_plus_tail36 | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[44/264] 4B | global_plus_tail36 | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[45/264] 8B | global_all | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[46/264] 8B | global_all | logistic_regression | 1.6.1->1.5.2 | AUC=0.9895 | BA=0.9896
+[47/264] 8B | global_all | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=0.9948
+[48/264] 8B | global_all | random_forest | 1.6.1->1.5.2 | AUC=0.9864 | BA=0.9896
+[49/264] 8B | stream_scalar | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[50/264] 8B | stream_scalar | logistic_regression | 1.6.1->1.5.2 | AUC=0.9801 | BA=0.9896
+[51/264] 8B | stream_scalar | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[52/264] 8B | stream_scalar | random_forest | 1.6.1->1.5.2 | AUC=0.9927 | BA=0.9896
+[53/264] 8B | stream_histogram | logistic_regression | 1.5.2->1.6.1 | AUC=0.5534 | BA=0.5365
+[54/264] 8B | stream_histogram | logistic_regression | 1.6.1->1.5.2 | AUC=0.5589 | BA=0.5260
+[55/264] 8B | stream_histogram | random_forest | 1.5.2->1.6.1 | AUC=0.5586 | BA=0.5312
+[56/264] 8B | stream_histogram | random_forest | 1.6.1->1.5.2 | AUC=0.5439 | BA=0.5260
+[57/264] 8B | packet_geometry | logistic_regression | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[58/264] 8B | packet_geometry | logistic_regression | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[59/264] 8B | packet_geometry | random_forest | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[60/264] 8B | packet_geometry | random_forest | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[61/264] 8B | global_without_histogram | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[62/264] 8B | global_without_histogram | logistic_regression | 1.6.1->1.5.2 | AUC=0.9814 | BA=0.9896
+[63/264] 8B | global_without_histogram | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[64/264] 8B | global_without_histogram | random_forest | 1.6.1->1.5.2 | AUC=0.9933 | BA=0.9896
+[65/264] 8B | global_without_stream_scalars | logistic_regression | 1.5.2->1.6.1 | AUC=0.5645 | BA=0.5312
+[66/264] 8B | global_without_stream_scalars | logistic_regression | 1.6.1->1.5.2 | AUC=0.5710 | BA=0.5469
+[67/264] 8B | global_without_stream_scalars | random_forest | 1.5.2->1.6.1 | AUC=0.5620 | BA=0.5156
+[68/264] 8B | global_without_stream_scalars | random_forest | 1.6.1->1.5.2 | AUC=0.5509 | BA=0.5312
+[69/264] 8B | global_without_packet_geometry | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[70/264] 8B | global_without_packet_geometry | logistic_regression | 1.6.1->1.5.2 | AUC=0.9888 | BA=0.9896
+[71/264] 8B | global_without_packet_geometry | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=0.9844
+[72/264] 8B | global_without_packet_geometry | random_forest | 1.6.1->1.5.2 | AUC=0.9822 | BA=0.9896
+[73/264] 8B | target_packet | logistic_regression | 1.5.2->1.6.1 | AUC=0.9992 | BA=0.9792
+[74/264] 8B | target_packet | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=0.9896
+[75/264] 8B | target_packet | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=0.9896
+[76/264] 8B | target_packet | random_forest | 1.6.1->1.5.2 | AUC=0.9999 | BA=0.9896
+[77/264] 8B | target_tail36 | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[78/264] 8B | target_tail36 | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[79/264] 8B | target_tail36 | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[80/264] 8B | target_tail36 | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[81/264] 8B | target_prefix_control | logistic_regression | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[82/264] 8B | target_prefix_control | logistic_regression | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[83/264] 8B | target_prefix_control | random_forest | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[84/264] 8B | target_prefix_control | random_forest | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[85/264] 8B | global_plus_tail36 | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[86/264] 8B | global_plus_tail36 | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[87/264] 8B | global_plus_tail36 | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[88/264] 8B | global_plus_tail36 | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[89/264] 16B | global_all | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[90/264] 16B | global_all | logistic_regression | 1.6.1->1.5.2 | AUC=0.9895 | BA=0.9896
+[91/264] 16B | global_all | random_forest | 1.5.2->1.6.1 | AUC=0.9969 | BA=0.9792
+[92/264] 16B | global_all | random_forest | 1.6.1->1.5.2 | AUC=0.9884 | BA=0.9844
+[93/264] 16B | stream_scalar | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[94/264] 16B | stream_scalar | logistic_regression | 1.6.1->1.5.2 | AUC=0.9805 | BA=0.9896
+[95/264] 16B | stream_scalar | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[96/264] 16B | stream_scalar | random_forest | 1.6.1->1.5.2 | AUC=0.9864 | BA=0.9896
+[97/264] 16B | stream_histogram | logistic_regression | 1.5.2->1.6.1 | AUC=0.6120 | BA=0.5573
+[98/264] 16B | stream_histogram | logistic_regression | 1.6.1->1.5.2 | AUC=0.6122 | BA=0.5469
+[99/264] 16B | stream_histogram | random_forest | 1.5.2->1.6.1 | AUC=0.6179 | BA=0.5833
+[100/264] 16B | stream_histogram | random_forest | 1.6.1->1.5.2 | AUC=0.6050 | BA=0.5990
+[101/264] 16B | packet_geometry | logistic_regression | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[102/264] 16B | packet_geometry | logistic_regression | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[103/264] 16B | packet_geometry | random_forest | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[104/264] 16B | packet_geometry | random_forest | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[105/264] 16B | global_without_histogram | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[106/264] 16B | global_without_histogram | logistic_regression | 1.6.1->1.5.2 | AUC=0.9839 | BA=0.9896
+[107/264] 16B | global_without_histogram | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[108/264] 16B | global_without_histogram | random_forest | 1.6.1->1.5.2 | AUC=0.9906 | BA=0.9896
+[109/264] 16B | global_without_stream_scalars | logistic_regression | 1.5.2->1.6.1 | AUC=0.6434 | BA=0.6094
+[110/264] 16B | global_without_stream_scalars | logistic_regression | 1.6.1->1.5.2 | AUC=0.6438 | BA=0.5625
+[111/264] 16B | global_without_stream_scalars | random_forest | 1.5.2->1.6.1 | AUC=0.6222 | BA=0.5990
+[112/264] 16B | global_without_stream_scalars | random_forest | 1.6.1->1.5.2 | AUC=0.5932 | BA=0.6042
+[113/264] 16B | global_without_packet_geometry | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[114/264] 16B | global_without_packet_geometry | logistic_regression | 1.6.1->1.5.2 | AUC=0.9894 | BA=0.9844
+[115/264] 16B | global_without_packet_geometry | random_forest | 1.5.2->1.6.1 | AUC=0.9958 | BA=0.9740
+[116/264] 16B | global_without_packet_geometry | random_forest | 1.6.1->1.5.2 | AUC=0.9846 | BA=0.9740
+[117/264] 16B | target_packet | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=0.9844
+[118/264] 16B | target_packet | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=0.9948
+[119/264] 16B | target_packet | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=0.9844
+[120/264] 16B | target_packet | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[121/264] 16B | target_tail36 | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[122/264] 16B | target_tail36 | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[123/264] 16B | target_tail36 | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[124/264] 16B | target_tail36 | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[125/264] 16B | target_prefix_control | logistic_regression | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[126/264] 16B | target_prefix_control | logistic_regression | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[127/264] 16B | target_prefix_control | random_forest | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[128/264] 16B | target_prefix_control | random_forest | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[129/264] 16B | global_plus_tail36 | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[130/264] 16B | global_plus_tail36 | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[131/264] 16B | global_plus_tail36 | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[132/264] 16B | global_plus_tail36 | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[133/264] 24B | global_all | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=0.9948
+[134/264] 24B | global_all | logistic_regression | 1.6.1->1.5.2 | AUC=0.9895 | BA=0.9844
+[135/264] 24B | global_all | random_forest | 1.5.2->1.6.1 | AUC=0.9935 | BA=0.9792
+[136/264] 24B | global_all | random_forest | 1.6.1->1.5.2 | AUC=0.9888 | BA=0.9688
+[137/264] 24B | stream_scalar | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[138/264] 24B | stream_scalar | logistic_regression | 1.6.1->1.5.2 | AUC=0.9805 | BA=0.9896
+[139/264] 24B | stream_scalar | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[140/264] 24B | stream_scalar | random_forest | 1.6.1->1.5.2 | AUC=0.9893 | BA=0.9896
+[141/264] 24B | stream_histogram | logistic_regression | 1.5.2->1.6.1 | AUC=0.6627 | BA=0.5990
+[142/264] 24B | stream_histogram | logistic_regression | 1.6.1->1.5.2 | AUC=0.6786 | BA=0.6094
+[143/264] 24B | stream_histogram | random_forest | 1.5.2->1.6.1 | AUC=0.6861 | BA=0.6198
+[144/264] 24B | stream_histogram | random_forest | 1.6.1->1.5.2 | AUC=0.6301 | BA=0.5990
+[145/264] 24B | packet_geometry | logistic_regression | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[146/264] 24B | packet_geometry | logistic_regression | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[147/264] 24B | packet_geometry | random_forest | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[148/264] 24B | packet_geometry | random_forest | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[149/264] 24B | global_without_histogram | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[150/264] 24B | global_without_histogram | logistic_regression | 1.6.1->1.5.2 | AUC=0.9854 | BA=0.9896
+[151/264] 24B | global_without_histogram | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[152/264] 24B | global_without_histogram | random_forest | 1.6.1->1.5.2 | AUC=0.9896 | BA=0.9896
+[153/264] 24B | global_without_stream_scalars | logistic_regression | 1.5.2->1.6.1 | AUC=0.7182 | BA=0.6458
+[154/264] 24B | global_without_stream_scalars | logistic_regression | 1.6.1->1.5.2 | AUC=0.7280 | BA=0.6510
+[155/264] 24B | global_without_stream_scalars | random_forest | 1.5.2->1.6.1 | AUC=0.7064 | BA=0.6771
+[156/264] 24B | global_without_stream_scalars | random_forest | 1.6.1->1.5.2 | AUC=0.6579 | BA=0.6250
+[157/264] 24B | global_without_packet_geometry | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[158/264] 24B | global_without_packet_geometry | logistic_regression | 1.6.1->1.5.2 | AUC=0.9894 | BA=0.9844
+[159/264] 24B | global_without_packet_geometry | random_forest | 1.5.2->1.6.1 | AUC=0.9819 | BA=0.9740
+[160/264] 24B | global_without_packet_geometry | random_forest | 1.6.1->1.5.2 | AUC=0.9833 | BA=0.9479
+[161/264] 24B | target_packet | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[162/264] 24B | target_packet | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[163/264] 24B | target_packet | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[164/264] 24B | target_packet | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[165/264] 24B | target_tail36 | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[166/264] 24B | target_tail36 | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[167/264] 24B | target_tail36 | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[168/264] 24B | target_tail36 | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[169/264] 24B | target_prefix_control | logistic_regression | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[170/264] 24B | target_prefix_control | logistic_regression | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[171/264] 24B | target_prefix_control | random_forest | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[172/264] 24B | target_prefix_control | random_forest | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[173/264] 24B | global_plus_tail36 | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[174/264] 24B | global_plus_tail36 | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[175/264] 24B | global_plus_tail36 | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[176/264] 24B | global_plus_tail36 | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[177/264] 32B | global_all | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[178/264] 32B | global_all | logistic_regression | 1.6.1->1.5.2 | AUC=0.9897 | BA=0.9844
+[179/264] 32B | global_all | random_forest | 1.5.2->1.6.1 | AUC=0.9859 | BA=0.9792
+[180/264] 32B | global_all | random_forest | 1.6.1->1.5.2 | AUC=0.9796 | BA=0.9479
+[181/264] 32B | stream_scalar | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[182/264] 32B | stream_scalar | logistic_regression | 1.6.1->1.5.2 | AUC=0.9808 | BA=0.9896
+[183/264] 32B | stream_scalar | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[184/264] 32B | stream_scalar | random_forest | 1.6.1->1.5.2 | AUC=0.9908 | BA=0.9896
+[185/264] 32B | stream_histogram | logistic_regression | 1.5.2->1.6.1 | AUC=0.7119 | BA=0.6302
+[186/264] 32B | stream_histogram | logistic_regression | 1.6.1->1.5.2 | AUC=0.7274 | BA=0.6198
+[187/264] 32B | stream_histogram | random_forest | 1.5.2->1.6.1 | AUC=0.7394 | BA=0.7031
+[188/264] 32B | stream_histogram | random_forest | 1.6.1->1.5.2 | AUC=0.6899 | BA=0.6562
+[189/264] 32B | packet_geometry | logistic_regression | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[190/264] 32B | packet_geometry | logistic_regression | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[191/264] 32B | packet_geometry | random_forest | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[192/264] 32B | packet_geometry | random_forest | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[193/264] 32B | global_without_histogram | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[194/264] 32B | global_without_histogram | logistic_regression | 1.6.1->1.5.2 | AUC=0.9891 | BA=0.9896
+[195/264] 32B | global_without_histogram | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[196/264] 32B | global_without_histogram | random_forest | 1.6.1->1.5.2 | AUC=0.9956 | BA=0.9896
+[197/264] 32B | global_without_stream_scalars | logistic_regression | 1.5.2->1.6.1 | AUC=0.7796 | BA=0.6771
+[198/264] 32B | global_without_stream_scalars | logistic_regression | 1.6.1->1.5.2 | AUC=0.7837 | BA=0.6979
+[199/264] 32B | global_without_stream_scalars | random_forest | 1.5.2->1.6.1 | AUC=0.7688 | BA=0.7344
+[200/264] 32B | global_without_stream_scalars | random_forest | 1.6.1->1.5.2 | AUC=0.6885 | BA=0.6615
+[201/264] 32B | global_without_packet_geometry | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[202/264] 32B | global_without_packet_geometry | logistic_regression | 1.6.1->1.5.2 | AUC=0.9894 | BA=0.9844
+[203/264] 32B | global_without_packet_geometry | random_forest | 1.5.2->1.6.1 | AUC=0.9876 | BA=0.9583
+[204/264] 32B | global_without_packet_geometry | random_forest | 1.6.1->1.5.2 | AUC=0.9805 | BA=0.9479
+[205/264] 32B | target_packet | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[206/264] 32B | target_packet | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[207/264] 32B | target_packet | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[208/264] 32B | target_packet | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[209/264] 32B | target_tail36 | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[210/264] 32B | target_tail36 | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[211/264] 32B | target_tail36 | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[212/264] 32B | target_tail36 | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[213/264] 32B | target_prefix_control | logistic_regression | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[214/264] 32B | target_prefix_control | logistic_regression | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[215/264] 32B | target_prefix_control | random_forest | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[216/264] 32B | target_prefix_control | random_forest | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[217/264] 32B | global_plus_tail36 | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[218/264] 32B | global_plus_tail36 | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[219/264] 32B | global_plus_tail36 | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[220/264] 32B | global_plus_tail36 | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[221/264] 36B | global_all | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=0.9948
+[222/264] 36B | global_all | logistic_regression | 1.6.1->1.5.2 | AUC=0.9898 | BA=0.9844
+[223/264] 36B | global_all | random_forest | 1.5.2->1.6.1 | AUC=0.9881 | BA=0.9479
+[224/264] 36B | global_all | random_forest | 1.6.1->1.5.2 | AUC=0.9826 | BA=0.9427
+[225/264] 36B | stream_scalar | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[226/264] 36B | stream_scalar | logistic_regression | 1.6.1->1.5.2 | AUC=0.9811 | BA=0.9896
+[227/264] 36B | stream_scalar | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[228/264] 36B | stream_scalar | random_forest | 1.6.1->1.5.2 | AUC=0.9934 | BA=0.9896
+[229/264] 36B | stream_histogram | logistic_regression | 1.5.2->1.6.1 | AUC=0.7407 | BA=0.6615
+[230/264] 36B | stream_histogram | logistic_regression | 1.6.1->1.5.2 | AUC=0.7541 | BA=0.6458
+[231/264] 36B | stream_histogram | random_forest | 1.5.2->1.6.1 | AUC=0.7467 | BA=0.7292
+[232/264] 36B | stream_histogram | random_forest | 1.6.1->1.5.2 | AUC=0.7260 | BA=0.6979
+[233/264] 36B | packet_geometry | logistic_regression | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[234/264] 36B | packet_geometry | logistic_regression | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[235/264] 36B | packet_geometry | random_forest | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[236/264] 36B | packet_geometry | random_forest | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[237/264] 36B | global_without_histogram | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[238/264] 36B | global_without_histogram | logistic_regression | 1.6.1->1.5.2 | AUC=0.9900 | BA=0.9896
+[239/264] 36B | global_without_histogram | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[240/264] 36B | global_without_histogram | random_forest | 1.6.1->1.5.2 | AUC=0.9954 | BA=0.9896
+[241/264] 36B | global_without_stream_scalars | logistic_regression | 1.5.2->1.6.1 | AUC=0.8097 | BA=0.7292
+[242/264] 36B | global_without_stream_scalars | logistic_regression | 1.6.1->1.5.2 | AUC=0.8099 | BA=0.7396
+[243/264] 36B | global_without_stream_scalars | random_forest | 1.5.2->1.6.1 | AUC=0.7979 | BA=0.7656
+[244/264] 36B | global_without_stream_scalars | random_forest | 1.6.1->1.5.2 | AUC=0.7323 | BA=0.6667
+[245/264] 36B | global_without_packet_geometry | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[246/264] 36B | global_without_packet_geometry | logistic_regression | 1.6.1->1.5.2 | AUC=0.9894 | BA=0.9844
+[247/264] 36B | global_without_packet_geometry | random_forest | 1.5.2->1.6.1 | AUC=0.9827 | BA=0.9427
+[248/264] 36B | global_without_packet_geometry | random_forest | 1.6.1->1.5.2 | AUC=0.9737 | BA=0.9427
+[249/264] 36B | target_packet | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[250/264] 36B | target_packet | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[251/264] 36B | target_packet | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[252/264] 36B | target_packet | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[253/264] 36B | target_tail36 | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[254/264] 36B | target_tail36 | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[255/264] 36B | target_tail36 | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[256/264] 36B | target_tail36 | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[257/264] 36B | target_prefix_control | logistic_regression | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[258/264] 36B | target_prefix_control | logistic_regression | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[259/264] 36B | target_prefix_control | random_forest | 1.5.2->1.6.1 | AUC=0.5000 | BA=0.5000
+[260/264] 36B | target_prefix_control | random_forest | 1.6.1->1.5.2 | AUC=0.5000 | BA=0.5000
+[261/264] 36B | global_plus_tail36 | logistic_regression | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[262/264] 36B | global_plus_tail36 | logistic_regression | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+[263/264] 36B | global_plus_tail36 | random_forest | 1.5.2->1.6.1 | AUC=1.0000 | BA=1.0000
+[264/264] 36B | global_plus_tail36 | random_forest | 1.6.1->1.5.2 | AUC=1.0000 | BA=1.0000
+
+========== B16 FINAL SUMMARY ==========
+Run directory: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b16_cross_version_transfer/run_20261105_163028
+Metric rows: 264
+Prediction rows: 50688
+Negative-control audit rows: 24
+Source data modified: NO
+B16 CROSS-VERSION TRANSFER: COMPLETE
+
+========== CHECKSUM VERIFICATION ==========
+b16_event_exclusion_audit.csv: OK
+b16_negative_control_audit.csv: OK
+b16_report.txt: OK
+b16_run.py: OK
+b16_run_config.json: OK
+b16_transfer_auc_heatmap.png: OK
+b16_transfer_metrics.csv: OK
+b16_transfer_predictions.csv: OK

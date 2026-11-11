@@ -1,0 +1,44 @@
+ M experiments/B4_payload/embed.py
+ M experiments/B4_payload/reproduce.sh
+ M experiments/B6_steganalysis/detection_accuracy.csv
+ M experiments/B6_steganalysis/detectors.py
+ M experiments/B6_steganalysis/reproduce_s2.sh
+ M experiments/B6_steganalysis/reproduce_s3.sh
+ M experiments/B6_steganalysis/reproduce_s4.sh
+?? experiments/B0_decisive/b0_results.csv
+?? experiments/B0_decisive/encoder_with_relocation_diagnostic.log
+?? experiments/B0_decisive/speaker_10_reloc.log
+?? experiments/B0_decisive/speaker_2_reloc.log
+?? experiments/B0_decisive/speaker_3_reloc.log
+?? experiments/B0_decisive/speaker_4_reloc.log
+?? experiments/B0_decisive/speaker_5_reloc.log
+?? experiments/B0_decisive/speaker_6_reloc.log
+?? experiments/B0_decisive/speaker_7_reloc.log
+?? experiments/B0_decisive/speaker_8_reloc.log
+?? experiments/B0_decisive/speaker_9_reloc.log
+?? experiments/B0b_silence_measurement/
+?? experiments/B1_multitransition/b1_results.csv
+?? experiments/B1_multitransition/b1_script.sh
+?? experiments/B2_oneshot_sweep/b2_results.csv
+?? experiments/B3_tail_scaling/b3_results.csv
+?? experiments/B4_payload/b4_results.csv
+?? experiments/B4_payload/extract_verified.py
+?? experiments/B4_payload/reproduce_verified.sh
+?? experiments/B4_payload/reproduce_verified_1.5.2.sh
+?? experiments/B6_steganalysis/analyze_s4_v2.py
+?? experiments/B6_steganalysis/blind_structural_results.csv
+?? experiments/B6_steganalysis/evaluate_b6_v2.py
+?? experiments/B6_steganalysis/evaluate_blind_s2.py
+?? experiments/B6_steganalysis/packet_length_verification.csv
+?? experiments/B6_steganalysis/payload_verification.csv
+?? experiments/B6_steganalysis/verify_packet_lengths.py
+?? experiments/B6_steganalysis/verify_s2_payloads.sh
+?? experiments/B7_music/b7_music_results.csv
+?? experiments/B8_librispeech/b8_results.csv
+?? experiments/audit_redundancy_log.py
+?? results/phase_b/
+?? scripts/decode_raw_1.5.2
+?? scripts/decode_raw_1.6.1
+?? scripts/encode_raw_1.5.2
+?? scripts/encode_raw_1.6.1
+?? tmp/

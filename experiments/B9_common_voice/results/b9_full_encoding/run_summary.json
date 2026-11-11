@@ -1,0 +1,7 @@
+{
+  "total_jobs": 10000,
+  "workers": 4,
+  "completed": 10000,
+  "skipped": 0,
+  "failed": 0
+}

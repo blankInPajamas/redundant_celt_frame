@@ -1,0 +1,30 @@
+========== B12 FULL-SCALE PAYLOAD RELIABILITY REPORT ==========
+Run directory: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705
+Preflight directory: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/preflight_20261104_015607
+Source manifest SHA256: 98ec88d41e79bd5c9a5c82afbe7f68cf55f06e0e6a3059ec4bbe721f3a5e0f2e
+
+========== DESIGN ==========
+Events: 200 (100 per encoder version)
+Encoders: Opus 1.5.2 and 1.6.1
+Decoders: Opus 1.5.2 and 1.6.1 (cross-version matrix)
+Payload sizes: 4, 8, 16, 24, 32, 36 bytes
+Independent repetitions: 3 per event-size pair
+Normal payload instances: 3600
+One-bit corruption instances: 1200
+Integrity check: out-of-band sender SHA256; not native Opus authentication
+PCM comparison: modified stream against same-decoder baseline
+
+========== RESULTS ==========
+Baseline decodes: 400/400
+Uncorrupted extraction: 7200/7200
+Corrupted extraction: 2400/2400
+Corruption SHA256 integrity controls: 2400/2400
+Successful modified decoder runs: 9600/9600
+Exact PCM matches against same-decoder baseline: 9600/9600
+Packet lengths preserved: 9600/9600
+Complete packet/target-region checks passed: 9600/9600
+36-byte accepted and 37-byte rejected: 200/200
+Source bitstreams unchanged: True
+Failure records: 0
+
+OVERALL B12 FULL-SCALE: PASS

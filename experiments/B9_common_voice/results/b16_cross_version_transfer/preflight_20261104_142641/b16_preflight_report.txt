@@ -1,0 +1,124 @@
+========== B16 INPUT PREFLIGHT ==========
+Project: /home/ishu/research/redundant_celt_frame_steganography
+B12: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705
+B13: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849
+B14: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705/b12_payload_manifest.csv
+Rows: 3600
+Columns: ['encoder', 'recording', 'speaker_sha256', 'frame', 'payload_size_bytes', 'repetition', 'payload_seed', 'payload_hex', 'payload_sha256', 'source_bitstream_sha256', 'modified_bitstream_sha256', 'packet_count_preserved', 'packet_lengths_preserved', 'target_packet_prefix_preserved', 'reserved_zero_padding_preserved', 'payload_bytes_match', 'packet_structure_pass', 'modified_bitstream', 'corrupted_bitstream', 'corrupted_bitstream_sha256']
+Sample: {'encoder': '1.5.2', 'recording': 'common_voice_en_10143', 'speaker_sha256': 'ac5fea9cacdfa4a2d6291c780b0a0ee1c0f2c5d2389cc0357a477fdac75a87c74638f69f3d7a1ac89af0f2824d9a930ddfceac2b52d7e4f91990994b77044841', 'frame': '1', 'payload_size_bytes': '4', 'repetition': '1', 'payload_seed': 'B12-CV26-FULL-v1|1.5.2|common_voice_en_10143|1|4|1', 'payload_hex': '92bc0397', 'payload_sha256': '2f404600d4ec6d1e09eb3230c2c65d4c95cfbe1aa7ca6078482c5c10ef2e52af', 'source_bitstream_sha256': '9d8c4d7e8aa56b83d3627e22f1367219b94b1cdf8e2b0678f62e61af44dc2999', 'modified_bitstream_sha256': 'fb019478341ecaa75c1d8cb6381f018c7bef821ff34e1075185f44b97c8bf6f3', 'packet_count_preserved': 'True', 'packet_lengths_preserved': 'True', 'target_packet_prefix_preserved': 'True', 'reserved_zero_padding_preserved': 'True', 'payload_bytes_match': 'True', 'packet_structure_pass': 'True', 'modified_bitstream': 'bitstreams/1.5.2/common_voice_en_10143/payload_04B_rep1.bin', 'corrupted_bitstream': 'corrupted_bitstreams/1.5.2/common_voice_en_10143/corrupt_04B_rep1.bin', 'corrupted_bitstream_sha256': '50d1a7d11ae9da54d1af2d29a623598de01aa9c720b4e03579b0f3510cb4b105'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849/b13_feature_summary.csv
+Rows: 7200
+Columns: ['encoder', 'recording', 'speaker_sha256', 'frame', 'payload_size_bytes', 'repetition', 'class', 'stream_entropy', 'stream_zero_fraction', 'target_packet_entropy', 'tail36_entropy', 'tail36_zero_fraction', 'tail36_nonzero_count', 'tail36_trailing_zero_bytes']
+Sample: {'encoder': '1.5.2', 'recording': 'common_voice_en_10143', 'speaker_sha256': 'ac5fea9cacdfa4a2d6291c780b0a0ee1c0f2c5d2389cc0357a477fdac75a87c74638f69f3d7a1ac89af0f2824d9a930ddfceac2b52d7e4f91990994b77044841', 'frame': '1', 'payload_size_bytes': '4', 'repetition': '1', 'class': 'cover', 'stream_entropy': '7.842209504419663', 'stream_zero_fraction': '0.05031577486293289', 'target_packet_entropy': '4.294640171956025', 'tail36_entropy': '-0.0', 'tail36_zero_fraction': '1.0', 'tail36_nonzero_count': '0.0', 'tail36_trailing_zero_bytes': '36.0'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849/b13_oof_predictions.csv
+Rows: 28800
+Columns: ['scope', 'payload_size_bytes', 'repetition', 'feature_set', 'model', 'encoder', 'recording', 'speaker_sha256', 'class', 'y_true', 'y_score', 'y_pred', 'fold']
+Sample: {'scope': 'pooled', 'payload_size_bytes': '4', 'repetition': '1', 'feature_set': 'global', 'model': 'logistic_regression', 'encoder': '1.5.2', 'recording': 'common_voice_en_10143', 'speaker_sha256': 'ac5fea9cacdfa4a2d6291c780b0a0ee1c0f2c5d2389cc0357a477fdac75a87c74638f69f3d7a1ac89af0f2824d9a930ddfceac2b52d7e4f91990994b77044841', 'class': 'cover', 'y_true': '0', 'y_score': '0.014630154734592402', 'y_pred': '0', 'fold': '3'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b13_steganalysis/run_20261104_103849/b13_ml_metrics.csv
+Rows: 108
+Columns: ['accuracy', 'balanced_accuracy', 'precision', 'tpr', 'f1', 'roc_auc', 'tn', 'fp', 'fn', 'tp', 'fpr', 'scope', 'payload_size_bytes', 'repetition', 'feature_set', 'model', 'n_samples', 'n_events', 'n_speaker_groups', 'cv_folds', 'split_unit', 'decision_threshold']
+Sample: {'accuracy': '0.995', 'balanced_accuracy': '0.995', 'precision': '1.0', 'tpr': '0.99', 'f1': '0.9949748743718593', 'roc_auc': '0.992925', 'tn': '200', 'fp': '0', 'fn': '2', 'tp': '198', 'fpr': '0.0', 'scope': 'pooled', 'payload_size_bytes': '4', 'repetition': '1', 'feature_set': 'global', 'model': 'logistic_regression', 'n_samples': '400', 'n_events': '200', 'n_speaker_groups': '196', 'cv_folds': '5', 'split_unit': 'speaker_sha256', 'decision_threshold': '0.5'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_paired_feature_effects.csv
+Rows: 6414
+Columns: ['payload_size_bytes', 'feature', 'feature_family', 'n_events', 'mean_delta_stego_minus_cover', 'mean_absolute_delta', 'median_absolute_delta', 'std_delta', 'n_changed', 'percent_changed']
+Sample: {'payload_size_bytes': '4', 'feature': 'g_packet_count', 'feature_family': 'g', 'n_events': '200', 'mean_delta_stego_minus_cover': '0.0', 'mean_absolute_delta': '0.0', 'median_absolute_delta': '0.0', 'std_delta': '0.0', 'n_changed': '0', 'percent_changed': '0.0'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_oof_predictions.csv
+Rows: 76800
+Columns: ['scope', 'payload_size_bytes', 'feature_group', 'model', 'encoder', 'recording', 'speaker_sha256', 'class', 'y_true', 'y_score', 'y_pred', 'fold']
+Sample: {'scope': 'pooled', 'payload_size_bytes': '4', 'feature_group': 'global_all', 'model': 'logistic_regression', 'encoder': '1.5.2', 'recording': 'common_voice_en_10143', 'speaker_sha256': 'ac5fea9cacdfa4a2d6291c780b0a0ee1c0f2c5d2389cc0357a477fdac75a87c74638f69f3d7a1ac89af0f2824d9a930ddfceac2b52d7e4f91990994b77044841', 'class': 'cover', 'y_true': '0', 'y_score': '0.014630154734592402', 'y_pred': '0', 'fold': '3'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_feature_group_metrics.csv
+Rows: 252
+Columns: ['accuracy', 'balanced_accuracy', 'precision', 'tpr', 'f1', 'roc_auc', 'tn', 'fp', 'fn', 'tp', 'fpr', 'scope', 'payload_size_bytes', 'feature_group', 'model', 'n_features', 'n_samples', 'n_events', 'n_speaker_groups', 'cv_folds', 'split_unit', 'decision_threshold']
+Sample: {'accuracy': '0.995', 'balanced_accuracy': '0.995', 'precision': '1.0', 'tpr': '0.99', 'f1': '0.9949748743718593', 'roc_auc': '0.992925', 'tn': '200', 'fp': '0', 'fn': '2', 'tp': '198', 'fpr': '0.0', 'scope': 'pooled', 'payload_size_bytes': '4', 'feature_group': 'global_all', 'model': 'logistic_regression', 'n_features': '271', 'n_samples': '400', 'n_events': '200', 'n_speaker_groups': '196', 'cv_folds': '5', 'split_unit': 'speaker_sha256', 'decision_threshold': '0.5'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_permutation_importance_summary.csv
+Rows: 1611
+Columns: ['payload_size_bytes', 'feature_group', 'feature', 'mean_importance', 'std_across_folds', 'positive_folds', 'n_folds']
+Sample: {'payload_size_bytes': '4', 'feature_group': 'global_all', 'feature': 'g_packet_count', 'mean_importance': '-0.00029166666666668263', 'std_across_folds': '0.0006521864934374744', 'positive_folds': '0', 'n_folds': '5'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_permutation_importance_by_fold.csv
+Rows: 8055
+Columns: ['payload_size_bytes', 'feature_group', 'feature', 'fold', 'importance_mean', 'importance_std']
+Sample: {'payload_size_bytes': '4', 'feature_group': 'global_all', 'feature': 'g_packet_count', 'fold': '1', 'importance_mean': '0.0', 'importance_std': '0.0'}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_run_config.json
+Size: 1074
+{
+  "stage": "B14",
+  "b12_run": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705",
+  "manifest_sha256": "e993cd21001ff1d16467f8bab65ef5fb4dbaa2138a3b8aeb95cc0084b9e8c9b8",
+  "events": 200,
+  "speaker_groups": 196,
+  "encoders": [
+    "1.5.2",
+    "1.6.1"
+  ],
+  "payload_sizes": [
+    4,
+    8,
+    16,
+    24,
+    32,
+    36
+  ],
+  "primary_repetition": 1,
+  "folds": 5,
+  "seed": 42,
+  "bootstrap_repetitions": 1000,
+  "permutation_repeats": 3,
+  "cross_validation": "StratifiedGroupKFold",
+  "group_unit": "speaker_sha256",
+  "models": [
+    "logistic_regression",
+    "random_forest"
+  ],
+  "feature_group_sizes": {
+    "global_all": 271,
+    "stream_scalar": 10,
+    "stream_histogram": 256,
+    "packet_geometry": 5,
+    "global_without_histogram": 15,
+    "global_without_stream_scalars": 261,
+    "global_without_packet_geometry": 266,
+    "target_packet": 266,
+    "target_tail36": 266,
+    "target_prefix_control": 266,
+    "global_plus_tail36": 537
+  },
+  "read_only": true
+}
+
+FILE: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548/b14_report.txt
+Size: 8388
+
+========== SPEAKER OVERLAP ==========
+1.5.2 events: 100
+1.6.1 events: 100
+1.5.2 speaker groups: 100
+1.6.1 speaker groups: 100
+Shared speakers: 4
+Shared recording IDs: 4
+1.5.2: retained=96; excluded=4
+1.6.1: retained=96; excluded=4
+
+========== B14 SOURCE SCRIPTS ==========
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/audit_b14_outputs.py
+SHA256: ad68451189feb3b06614667963f5f9bb201f095b6565a2ba9dbe003846a1d461
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/run_b14_feature_attribution.py
+SHA256: 4205c3d6864dea29653ec304bd8387680e01a82ae67917a0c0640a9765e756db
+
+========== B13 SOURCE SCRIPT ==========
+/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/run_b13_steganalysis.py
+SHA256: a9d645b3445c63dcbb753ee4ebba3df464d0b51a12e850ac8c9e507a37668d0a
+
+========== PREFLIGHT COMPLETE ==========
+Output: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b16_cross_version_transfer/preflight_20261104_142641
+Source data modified: NO

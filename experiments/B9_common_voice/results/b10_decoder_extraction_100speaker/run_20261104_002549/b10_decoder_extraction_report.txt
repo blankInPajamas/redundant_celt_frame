@@ -1,0 +1,21 @@
+========== B10 DECODER EXTRACTION REPORT ==========
+Manifest events: 200
+Decoder runs: 400
+
+Encoder 1.5.2 / Decoder 1.5.2: 100
+Encoder 1.5.2 / Decoder 1.6.1: 100
+Encoder 1.6.1 / Decoder 1.5.2: 100
+Encoder 1.6.1 / Decoder 1.6.1: 100
+
+PASS: 0
+NO_MATCH: 400
+MULTIPLE_MATCHES: 0
+DECODE_FAIL: 0
+HASH_MISMATCH: 0
+
+Extraction exact: 0 / 400
+CSV: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b10_decoder_extraction_100speaker/run_20261104_002549/b10_decoder_extraction_results.csv
+1.5.2 log: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b10_decoder_extraction_100speaker/run_20261104_002549/opus_1.5.2_candidates.log
+1.6.1 log: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b10_decoder_extraction_100speaker/run_20261104_002549/opus_1.6.1_candidates.log
+
+B10 DECODER EXTRACTION: REVIEW REQUIRED

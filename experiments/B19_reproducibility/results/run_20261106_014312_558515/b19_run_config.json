@@ -1,0 +1,15 @@
+{
+  "experiment": "B19 independent reproducibility and evidence-integrity audit",
+  "b12_run": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705",
+  "b17_run": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B17_cross_domain/results/b17_music_cross_domain/run_20261106_005837",
+  "b17_supplementary_run": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B17_cross_domain/results/b17_supplementary_audit/run_20261106_012816",
+  "b18_run": "/home/ishu/research/redundant_celt_frame_steganography/experiments/B18_robustness/results/run_20261106_012823_895999",
+  "checks_total": 22,
+  "checks_passed": 22,
+  "checks_failed": 0,
+  "malformed_length_decoder_tests": 40,
+  "malformed_length_decoder_completed": 0,
+  "models_retrained": false,
+  "thresholds_retuned": false,
+  "source_artifacts_modified": false
+}

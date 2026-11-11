@@ -1,0 +1,138 @@
+========== B14 FEATURE ATTRIBUTION REPORT ==========
+Output: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b14_feature_attribution/run_20261104_110548
+B12 run: /home/ishu/research/redundant_celt_frame_steganography/experiments/B9_common_voice/results/b12_payload_reliability/run_20261104_020705
+Manifest records: 3600
+Unique events: 200
+Speaker groups: 196
+Primary repetition: 1
+Grouped CV folds: 5
+Grouping: speaker_sha256
+Models: Logistic Regression and Random Forest
+
+========== FEATURE GROUP SIZES ==========
+global_all: 271 features
+stream_scalar: 10 features
+stream_histogram: 256 features
+packet_geometry: 5 features
+global_without_histogram: 15 features
+global_without_stream_scalars: 261 features
+global_without_packet_geometry: 266 features
+target_packet: 266 features
+target_tail36: 266 features
+target_prefix_control: 266 features
+global_plus_tail36: 537 features
+
+========== POOLED LOGISTIC REGRESSION ==========
+
+PAYLOAD SIZE: 4 bytes
+global_all                          AUC=0.9929 BA=0.9950 TPR=0.9900 FPR=0.0000
+stream_scalar                       AUC=0.9997 BA=0.9950 TPR=0.9900 FPR=0.0000
+stream_histogram                    AUC=0.5279 BA=0.5150 TPR=0.4650 FPR=0.4350
+packet_geometry                     AUC=0.5000 BA=0.5000 TPR=1.0000 FPR=1.0000
+global_without_histogram            AUC=0.9997 BA=0.9950 TPR=0.9900 FPR=0.0000
+global_without_stream_scalars       AUC=0.5395 BA=0.5200 TPR=0.4850 FPR=0.4450
+global_without_packet_geometry      AUC=0.9926 BA=0.9950 TPR=0.9900 FPR=0.0000
+target_packet                       AUC=1.0000 BA=0.9950 TPR=0.9900 FPR=0.0000
+target_tail36                       AUC=1.0000 BA=1.0000 TPR=1.0000 FPR=0.0000
+target_prefix_control               AUC=0.5000 BA=0.5000 TPR=1.0000 FPR=1.0000
+
+PAYLOAD SIZE: 8 bytes
+global_all                          AUC=0.9941 BA=0.9950 TPR=0.9900 FPR=0.0000
+stream_scalar                       AUC=0.9997 BA=0.9950 TPR=0.9900 FPR=0.0000
+stream_histogram                    AUC=0.5538 BA=0.5325 TPR=0.5150 FPR=0.4500
+packet_geometry                     AUC=0.5000 BA=0.5000 TPR=1.0000 FPR=1.0000
+global_without_histogram            AUC=0.9998 BA=0.9950 TPR=0.9900 FPR=0.0000
+global_without_stream_scalars       AUC=0.5833 BA=0.5700 TPR=0.5900 FPR=0.4500
+global_without_packet_geometry      AUC=0.9936 BA=0.9950 TPR=0.9900 FPR=0.0000
+target_packet                       AUC=1.0000 BA=0.9925 TPR=0.9850 FPR=0.0000
+target_tail36                       AUC=1.0000 BA=1.0000 TPR=1.0000 FPR=0.0000
+target_prefix_control               AUC=0.5000 BA=0.5000 TPR=1.0000 FPR=1.0000
+
+PAYLOAD SIZE: 16 bytes
+global_all                          AUC=0.9945 BA=0.9950 TPR=0.9900 FPR=0.0000
+stream_scalar                       AUC=0.9996 BA=0.9950 TPR=0.9900 FPR=0.0000
+stream_histogram                    AUC=0.6088 BA=0.5700 TPR=0.5150 FPR=0.3750
+packet_geometry                     AUC=0.5000 BA=0.5000 TPR=1.0000 FPR=1.0000
+global_without_histogram            AUC=0.9998 BA=0.9925 TPR=0.9900 FPR=0.0050
+global_without_stream_scalars       AUC=0.6590 BA=0.6000 TPR=0.5700 FPR=0.3700
+global_without_packet_geometry      AUC=0.9939 BA=0.9950 TPR=0.9900 FPR=0.0000
+target_packet                       AUC=1.0000 BA=1.0000 TPR=1.0000 FPR=0.0000
+target_tail36                       AUC=1.0000 BA=1.0000 TPR=1.0000 FPR=0.0000
+target_prefix_control               AUC=0.5000 BA=0.5000 TPR=1.0000 FPR=1.0000
+
+PAYLOAD SIZE: 24 bytes
+global_all                          AUC=0.9948 BA=0.9950 TPR=0.9900 FPR=0.0000
+stream_scalar                       AUC=0.9996 BA=0.9950 TPR=0.9900 FPR=0.0000
+stream_histogram                    AUC=0.6689 BA=0.6150 TPR=0.5900 FPR=0.3600
+packet_geometry                     AUC=0.5000 BA=0.5000 TPR=1.0000 FPR=1.0000
+global_without_histogram            AUC=0.9998 BA=0.9925 TPR=0.9900 FPR=0.0050
+global_without_stream_scalars       AUC=0.7452 BA=0.6600 TPR=0.6450 FPR=0.3250
+global_without_packet_geometry      AUC=0.9942 BA=0.9925 TPR=0.9850 FPR=0.0000
+target_packet                       AUC=1.0000 BA=1.0000 TPR=1.0000 FPR=0.0000
+target_tail36                       AUC=1.0000 BA=1.0000 TPR=1.0000 FPR=0.0000
+target_prefix_control               AUC=0.5000 BA=0.5000 TPR=1.0000 FPR=1.0000
+
+PAYLOAD SIZE: 32 bytes
+global_all                          AUC=0.9950 BA=0.9925 TPR=0.9850 FPR=0.0000
+stream_scalar                       AUC=0.9996 BA=0.9950 TPR=0.9900 FPR=0.0000
+stream_histogram                    AUC=0.7197 BA=0.6550 TPR=0.6300 FPR=0.3200
+packet_geometry                     AUC=0.5000 BA=0.5000 TPR=1.0000 FPR=1.0000
+global_without_histogram            AUC=0.9999 BA=0.9925 TPR=0.9900 FPR=0.0050
+global_without_stream_scalars       AUC=0.8074 BA=0.7300 TPR=0.7050 FPR=0.2450
+global_without_packet_geometry      AUC=0.9944 BA=0.9925 TPR=0.9850 FPR=0.0000
+target_packet                       AUC=1.0000 BA=1.0000 TPR=1.0000 FPR=0.0000
+target_tail36                       AUC=1.0000 BA=1.0000 TPR=1.0000 FPR=0.0000
+target_prefix_control               AUC=0.5000 BA=0.5000 TPR=1.0000 FPR=1.0000
+
+PAYLOAD SIZE: 36 bytes
+global_all                          AUC=0.9950 BA=0.9925 TPR=0.9850 FPR=0.0000
+stream_scalar                       AUC=0.9996 BA=0.9950 TPR=0.9900 FPR=0.0000
+stream_histogram                    AUC=0.7503 BA=0.6750 TPR=0.6650 FPR=0.3150
+packet_geometry                     AUC=0.5000 BA=0.5000 TPR=1.0000 FPR=1.0000
+global_without_histogram            AUC=0.9999 BA=0.9925 TPR=0.9900 FPR=0.0050
+global_without_stream_scalars       AUC=0.8425 BA=0.7425 TPR=0.7400 FPR=0.2550
+global_without_packet_geometry      AUC=0.9947 BA=0.9925 TPR=0.9850 FPR=0.0000
+target_packet                       AUC=1.0000 BA=1.0000 TPR=1.0000 FPR=0.0000
+target_tail36                       AUC=1.0000 BA=1.0000 TPR=1.0000 FPR=0.0000
+target_prefix_control               AUC=0.5000 BA=0.5000 TPR=1.0000 FPR=1.0000
+
+========== NEGATIVE CONTROLS ==========
+Packet geometry should be unchanged by payload replacement.
+Target prefix control should be unchanged by payload replacement.
+A materially above-chance negative-control result requires investigation.
+
+========== TOP GLOBAL PERMUTATION FEATURES: 36B ==========
+g_stream_longest_zero_run           importance=0.329292 positive_folds=5/5
+g_stream_transition_rate            importance=0.004208 positive_folds=2/5
+g_packet_length_mean                importance=0.001750 positive_folds=3/5
+g_packet_length_std                 importance=0.000458 positive_folds=2/5
+g_stream_hist_254                   importance=0.000167 positive_folds=2/5
+g_stream_hist_216                   importance=0.000125 positive_folds=1/5
+g_stream_hist_245                   importance=0.000125 positive_folds=1/5
+g_stream_hist_000                   importance=0.000042 positive_folds=1/5
+g_stream_hist_003                   importance=0.000042 positive_folds=1/5
+g_stream_hist_009                   importance=0.000042 positive_folds=1/5
+g_stream_hist_057                   importance=0.000042 positive_folds=1/5
+g_stream_hist_104                   importance=0.000042 positive_folds=1/5
+g_stream_hist_124                   importance=0.000042 positive_folds=1/5
+g_stream_hist_234                   importance=0.000042 positive_folds=1/5
+g_stream_zero_fraction              importance=0.000042 positive_folds=1/5
+g_packet_count                      importance=0.000000 positive_folds=0/5
+g_packet_length_max                 importance=0.000000 positive_folds=0/5
+g_packet_length_min                 importance=0.000000 positive_folds=0/5
+g_stream_entropy                    importance=0.000000 positive_folds=0/5
+g_stream_hist_001                   importance=0.000000 positive_folds=0/5
+
+========== INTERPRETATION LIMITS ==========
+- Global stream features are computed over the entire serialized bitstream.
+- They do not require knowing the target packet, but include the modified bytes.
+- Target-tail features are informed because the embedding location is known.
+- The target-prefix control is unchanged by construction.
+- Packet geometry is a structural negative control.
+- Cover events were preselected for 36 trailing zero bytes.
+- Results do not establish universal detectability or undetectability.
+- Permutation importance can be distributed across correlated features.
+- The sample contains 200 events and 196 speaker groups.
+- B14 does not modify source or stego bitstreams.
+
+B14 FEATURE ATTRIBUTION: COMPLETE

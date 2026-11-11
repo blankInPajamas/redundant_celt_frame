@@ -8,7 +8,7 @@ OUT="$ROOT/logs/phase_b/B4"
 mkdir -p "$OUT"
 
 MESSAGE="HybridModeOfOpus:CELT+SILK"
-TARGET_FRAME=3
+# TARGET_FRAME=3
 
 # 1. Encode
 LD_LIBRARY_PATH="$ROOT/opus/.libs" scripts/encode_raw \
@@ -33,7 +33,13 @@ else
 fi
 
 # 6. Extract message and write to file (avoids shell null stripping)
-python3 "$SCRIPT_DIR/extract.py" "$OUT/modified.bin" > "$OUT/recovered.txt"
+# python3 "$SCRIPT_DIR/extract.py" "$OUT/modified.bin" > "$OUT/recovered.txt"
+
+python3 "$SCRIPT_DIR/embed.py" \
+    "$OUT/original.bin" \
+    "$OUT/modified.bin" \
+    "$MESSAGE"
+
 cp "$OUT/recovered.txt" "$SCRIPT_DIR/recovered.txt"
 
 echo "Expected: $MESSAGE"

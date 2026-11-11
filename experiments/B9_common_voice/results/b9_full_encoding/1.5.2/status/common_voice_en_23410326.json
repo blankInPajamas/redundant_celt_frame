@@ -1,0 +1,17 @@
+{
+  "recording": "common_voice_en_23410326",
+  "version": "1.5.2",
+  "input_sha256": "4bd8e0157b2c6918c13098eeff9014a75bd7785854444ae99d0dbe558f7a3f81",
+  "encoder_sha256": "e1d2041039b8c318595e83a4ed04b8dbfec6afc7ba280c9ddf59c16d7496ba1b",
+  "output_sha256": "5f14824661a1dcbccecb8fa81a70fb18a17fa8a2dbc4981203c1a9f1520e291a",
+  "log_sha256": "ceb2fef1d8fc7b6b0c0e5a3a481ffea615050c04d36cfff2f5a3157246ca5936",
+  "frames": 320,
+  "packets": 320,
+  "config": {
+    "mode": "audio",
+    "bitrate": 32000,
+    "complexity": 10,
+    "fec": 0,
+    "loss_pct": 0
+  }
+}
