@@ -1,467 +1,361 @@
-# Redundant CELT Frame Steganography in Opus — Research Log
+Redundant CELT Frame Steganography in Opus
+Research status: Experimental research prototype
+Codec versions studied: Opus 1.5.2 and Opus 1.6.1
+Primary focus: Redundant CELT-frame structure, payload embedding and
+recovery, steganalysis, cross-version behaviour, cross-domain
+evaluation, and robustness.
+Research-use notice: This repository contains experimental code
+and evidence for studying a potential covert channel in Opus. It is
+not a production-ready steganography system. Results are conditional
+on the tested codec versions, configurations, data, and evaluation
+procedures. Do not interpret them as proof of universal
+undetectability or reliability.
 
-**Author:** ishu  
-**Date started:** 2026-09-29  
-**Repository:** /home/ishu/research/redundant_celt_frame  
-**Status:** Negative result — redundant CELT frame is not a viable covert channel under standard operating conditions
+1. Overview
+Opus supports mode transitions between SILK, CELT, and Hybrid coding.
+During certain transitions, the encoder may include a redundant CELT
+frame in the bitstream. This project investigates whether the structure
+and unused trailing bytes associated with these redundancy events can
+support a steganographic payload.
 
----
+The work combines codec instrumentation, packet-level analysis,
+controlled embedding and extraction tests, independent event audits,
+steganalysis, cross-version experiments, cross-domain evaluation, and
+robustness tests.
 
-## 1. Research Question
+The principal research question is:
+Can redundant CELT-frame structure in Opus provide a usable payload
+carrier, and how reliably can the carrier and embedded payload be
+identified, recovered, and decoded under the tested conditions?
 
-Opus is the de facto standard codec for VoIP and WebRTC, yet steganographic research on Opus has focused almost exclusively on the SILK pulse domain. The CELT transform layer — and specifically the **redundant CELT frame** used for mode transitions — has never been empirically characterized as an embedding space.
+The project examines Opus 1.5.2 and 1.6.1. It distinguishes several
+questions that must not be conflated:
+1. Event occurrence: Does a qualifying redundancy event occur?
+2. Relocation/persistence: Does the expected redundant structure
+   appear in the final packet?
+3. Physical capacity: Are there unused bytes in the relevant packet
+   region?
+4. Payload recovery: Can the embedded payload be extracted exactly?
+5. Audio decoding: Does the modified bitstream decode, and is
+   decoded PCM unchanged?
+6. Detectability: Can a detector distinguish modified from
+   unmodified material?
+7. Robustness: What happens after packet or payload
+   transformations?
+A positive result for one question does not automatically establish a
+positive result for the others.
+2. Main findings
+The findings are mixed. The experiments establish that qualifying
+redundancy events and relocations occur in the tested material, and
+controlled tests demonstrate payload recovery in specific conditions.
+They also show important limits in cross-domain detection and in the
+behaviour of malformed or reordered packets.
+2.1 Independent event and relocation audit (B9)
+The B9 independent audit examined 5,000 paired recordings across the two
+codec versions.
 
-This project asks:
+  Measure                                 Opus 1.5.2   Opus 1.6.1
+  Redundancy-event records                     6,060        5,951
+CELT-to-SILK events                          5,050        4,929
+Successful relocations                       5,050        4,929
+Recordings with CELT-to-SILK events          4,467        4,357
 
-> **Can the redundant CELT frame in Opus be used as a covert channel for steganographic communication, and does it survive packetization reliably enough to be viable?**
+Across the 5,000 paired recordings, the audit found 4,848 shared
+CELT-to-SILK events, 202 events present only in the 1.5.2 results, and
+81 present only in the 1.6.1 results. The independent audit reported no
+frame-validation, redundancy-count, orphan-record, event-consistency, or
+relocation failures in either version.
 
-The redundant frame is a 5 ms CELT-only frame transmitted in-band during mode transitions (SILK↔CELT, SILK↔Hybrid). It operates with an isolated entropy coder state and always starts and ends on byte boundaries — structurally attractive for embedding.
+These results characterize the observed event and relocation behaviour
+in the audited corpus. They do not, by themselves, demonstrate payload
+capacity or successful payload recovery.
+2.2 Capacity and controlled payload tests
+The packet preflight identified redundancy records of 38 bytes. In
+qualifying candidate packets, the observed trailing-zero region was 36
+bytes. The independent capacity audit confirmed 36 available zero-tail
+bytes in its tested cases and rejected a 37-byte attempt.
 
----
+Controlled zero-tail payload tests reported:
+- 20/20 successful decodes;
+- 20/20 payload recoveries;
+- 20/20 bit-identical PCM comparisons; and
+- 40/40 successful cross-decoder checks.
+These are controlled-test results, not a claim that every naturally
+occurring redundancy event can carry a payload.
 
-## 2. Motivation
+The natural-music audit reported 999 clean covers and zero false
+positives per encoder version, alongside 10/10 positive payload
+recoveries and 10/10 correct localizations. The positive set was small
+(10 recordings per version), so these figures should be interpreted as a
+limited positive-control result rather than a broad estimate of
+real-world detector performance.
+2.3 Steganalysis and feature analysis
+The B6 corrected audit reported that one target packet was modified in
+20/20 tested cases and that four evaluated detectors achieved 100%
+true-positive rate and 0% false-positive rate in that controlled
+evaluation.
 
-- All existing Opus steganography operates in the SILK pulse domain (Ren et al. 2020; Tian et al. 2025).
-- The CELT transform domain — PVQ indices, energy envelope, raw bits — remains unexplored.
-- The redundant CELT frame appeared to be the lowest-risk entry point because of its isolated entropy state and byte alignment.
-- Opus 1.6.1 is the current reference implementation, used in production worldwide.
+B13 examined tail-rule behaviour and ROC performance. B14 evaluated
+feature importance and feature ablation. B16 examined cross-version
+transfer. These experiments provide complementary evidence, but their
+metrics are tied to their respective datasets, sampling procedures,
+features, and thresholds.
+2.4 Cross-domain evaluation (B17)
+B17 trained on Common Voice speech and evaluated on GTZAN music. Music
+recordings were not used for training or tuning. The primary condition
+used 36-byte training payloads; a 32-byte condition was included for
+size sensitivity.
 
----
+Primary 36-byte results:
 
-## 3. Project Structure
+  Encoder   Model                      AUC   False-positive rate at threshold 0.5
+  1.5.2     Logistic regression     0.2804                                  0.989
+1.6.1     Logistic regression     0.2341                                  0.989
+1.5.2     Random forest           0.5783                                  0.999
+1.6.1     Random forest           0.4250                                  0.999
 
-```text
-redundant_celt_frame/
-├── opus/                          # libopus 1.6.1-68 source (instrumented)
-│   ├── src/opus_encoder.c         # Instrumented with REDUNDANCY and FINAL packet logging
-│   ├── celt/celt_encoder.c
-│   ├── silk/
-│   └── .libs/libopus.so           # Built shared library
-├── data/
-│   ├── raw/                       # Mozilla Spontaneous Speech MP3 files
-│   ├── pcm/                       # Converted raw PCM (48kHz mono s16le)
-│   │   ├── spontaneous-speech-en-1.pcm ... en-19.pcm
-│   │   ├── silence.pcm
-│   │   ├── noise.pcm
-│   │   ├── tone.pcm
-│   │   ├── transition_test.pcm
-│   │   ├── celt_to_silk.pcm
-│   │   └── strong_transition.pcm
-│   ├── bitstreams/
-│   │   ├── encoded/               # Raw packets from encode_raw
-│   │   └── modified/              # Modified packets for steg test
-│   └── output/                    # Decoded PCM/WAV for comparison
+These results do not demonstrate effective generalization from
+speech to music. The AUC values are weak and the false-positive rates at
+the fixed 0.5 threshold are extremely high. The small positive music
+sample (10 recordings per encoder) also limits precision. The B17 result
+is therefore reported as a negative or weak cross-domain transfer
+finding, not as evidence of a reliable universal detector.
+
+The supplementary hip-hop-only analysis also produced AUC values close
+to chance for the evaluated models. See the B17 reports and confidence
+intervals for the complete results.
+2.5 Robustness evaluation (B18)
+B18 tested payload and packet transformations. Results distinguish
+recovery at the original carrier index from recovery anywhere in the
+transformed packet sequence.
+
+  Transformation                        Recovery at original index   Recovery anywhere
+  Payload bit flip                                           0/100               0/100
+Target-marker bit flip                                   100/100             100/100
+Non-carrier packet bit flip                              100/100             100/100
+Drop carrier packet                                        0/100               0/100
+Drop preceding packet                                      0/100             100/100
+Swap carrier with adjacent packet                          0/100             100/100
+Truncate carrier packet                                    0/100               0/100
+Malformed target length                                    0/100               0/100
+
+The distinction matters: after dropping a preceding packet or swapping
+adjacent packets, the payload was found elsewhere in the sequence, but
+not at its original index. This is not equivalent to preserving packet
+alignment.
+2.6 Independent evidence audit and malformed-length diagnostics (B19)
+The B19 independent audit reported 22/22 checks passed. Its
+malformed-length follow-up recorded 0/40 tests as complete under the
+original full-frame-count criterion.
+
+Further diagnostics showed that all 40 custom-decoder invocations
+returned code 0 and created PCM output, but decoding stopped after 1, 2,
+or 5 frames when the wrapper encountered a zero packet-length field. The
+wrapper checks the four-byte packet-length prefix before calling the
+Opus decoding function. Consequently, this test demonstrates early
+termination by the custom packet reader; it must not be described as an
+Opus library crash or as a completed full-stream decode.
+3. Experiment index
+The repository contains a sequence of experiments and audits. The
+following index reflects the experiment names and outputs established
+during the project; consult each experiment directory for its exact
+protocol and run configuration.
+  Experiment                          Focus
+  B0                                  Decisive redundancy/relocation
+instrumentation
+
+  B0b                                 Silence measurement
+
+  B1                                  Multi-transition analysis
+
+  B2                                  One-shot sweep
+
+  B3                                  Tail scaling
+
+  B4                                  Payload embedding and extraction
+
+  B6                                  Steganalysis and detector
+evaluation
+
+  B7                                  Music tests, zero-tail payload
+controls, and natural-cover audit
+
+  B8                                  LibriSpeech and cross-decoder audit
+
+  B9                                  Independent event-level and
+cross-version audit
+
+  B10                                 Blind receiver evaluation
+
+  B11--B12                            Payload reliability, capacity, and
+manifest-based validation
+
+  B13                                 Tail-rule steganalysis and ROC
+analysis
+
+  B14                                 Feature attribution and ablation
+
+  B15                                 Natural-cover audit
+
+  B16                                 Cross-version transfer
+
+  B17                                 Common Voice-to-GTZAN cross-domain
+detection
+
+  B18                                 Packet-transformation robustness
+B19                                 Independent evidence and
+reproducibility audit
+Experiment numbering is historical and is not necessarily continuous.
+Use the scripts, configuration files, reports, and checksum manifests
+within each directory as the authoritative record for a particular run.
+4. Repository layout
+The repository is organized around experiment-specific code and
+evidence. The local working tree may contain additional untracked
+material that has not yet been approved for public release.
+redundant_celt_frame_steganography/
+├── experiments/
+│   ├── B0_decisive/
+│   ├── B0b_silence_measurement/
+│   ├── B1_multitransition/
+│   ├── B2_oneshot_sweep/
+│   ├── B3_tail_scaling/
+│   ├── B4_payload/
+│   ├── B6_steganalysis/
+│   ├── B7_music/
+│   ├── B8_librispeech/
+│   ├── B9_common_voice/
+│   ├── B10_blind_receiver/
+│   ├── B17_cross_domain/
+│   ├── B18_robustness/
+│   └── B19_reproducibility/
+├── figures/
+├── manuscript/
+├── results/
 ├── scripts/
-│   ├── encode_raw.c               # Opus API encoder
-│   ├── decode_raw.c               # Opus API decoder
-│   ├── encode_raw                 # Compiled binary
-│   ├── decode_raw                 # Compiled binary
-│   ├── parse_packets.py           # Bitstream packet parser
-│   ├── modify_packet.py           # Byte-overwrite harness
-│   └── automate.py                # Cross-check redundancy survival
-├── logs/                          # Encoder logs
-│   ├── encode_test01_audio32k.log
-│   ├── encode_test01_audio64k.log
-│   ├── encode_test01_voip24k.log
-│   ├── encode_celt_to_silk.log
-│   ├── encode_noise_speech.log
-│   ├── encode_transition.log
-│   ├── redundancy_12k.log
-│   ├── redundancy_16k.log
-│   ├── redundancy_celt_force.log
-│   ├── redundancy_celt_to_silk.log
-│   ├── redundancy_hybrid.log
-│   └── redundancy_test01.log
-└── README.md
-```
-
----
-
-## 4. Tools and Setup
-
-### 4.1 libopus Build
-
-```bash
-git clone https://gitlab.xiph.org/xiph/opus.git
-cd opus
-./autogen.sh
-./configure
-make
-```
-
-Result: `libopus 1.6.1-68-g503d81b1` built with `opus_demo` and shared library at `opus/.libs/libopus.so`.
-
-### 4.2 Dataset
-
-Mozilla Spontaneous Speech 5.0 (English) from the Mozilla Data Collective, MP3 format. Converted to raw PCM:
-
-```bash
-for f in data/raw/*.mp3; do
-    base=$(basename "$f" .mp3)
-    ffmpeg -i "$f" -f s16le -acodec pcm_s16le -ar 48000 -ac 1 "data/pcm/${base}.pcm"
-done
-```
-
-### 4.3 Synthetic Test Signals
-
-```bash
-# 2 seconds of silence
-ffmpeg -f lavfi -i anullsrc=r=48000:cl=mono -t 2 -f s16le -acodec pcm_s16le data/pcm/silence.pcm
-
-# 3 seconds of white noise
-ffmpeg -f lavfi -i anoisesrc=r=48000:amplitude=0.5 -t 3 -f s16le -acodec pcm_s16le data/pcm/noise.pcm
-
-# 2 seconds of 1 kHz tone
-ffmpeg -f lavfi -i "sine=frequency=1000:duration=2" -f s16le -acodec pcm_s16le -ar 48000 -ac 1 data/pcm/tone.pcm
-
-# Concatenations for transition testing
-cat data/pcm/noise.pcm data/pcm/spontaneous-speech-en-1.pcm > data/pcm/celt_to_silk.pcm
-cat data/pcm/tone.pcm data/pcm/spontaneous-speech-en-1.pcm > data/pcm/strong_transition.pcm
-cat data/pcm/spontaneous-speech-en-1.pcm data/pcm/silence.pcm data/pcm/spontaneous-speech-en-5.pcm > data/pcm/transition_test.pcm
-```
-
----
-
-## 5. Instrumentation of libopus
-
-### 5.1 Redundancy Logging
-
-Added `fprintf` statements in `opus/src/opus_encoder.c` at the redundancy decision points (around lines 2353–2376 and 2434/2538):
-
-```c
-static int dbg_frame_counter = 0;
-dbg_frame_counter++;
-fprintf(stderr, "REDUNDANCY: frame=%d mode=%d celt_to_silk=%d bytes=%d\n",
-        dbg_frame_counter, st->mode, celt_to_silk, redundancy_bytes);
-```
-
-And when the redundant frame is written:
-
-```c
-fprintf(stderr, "  -> redundant frame written at offset %d, size %d\n",
-        nb_compr_bytes, redundancy_bytes);
-```
-
-### 5.2 Final Packet Logging
-
-Added at the end of `opus_encode_frame_native` (around line 2663):
-
-```c
-fprintf(stderr, "  -> FINAL packet: ret=%d, mode=%d\n", ret, st->mode);
-return ret;
-```
-
-### 5.3 Rebuild
-
-```bash
-cd opus && make && cd ..
-```
-
-### 5.4 Note on `stderr`
-
-Added `#include <stdio.h>` to `opus_encoder.c` to declare `stderr`.
-
----
-
-## 6. Custom Encoder/Decoder Pipeline
-
-### 6.1 `scripts/encode_raw.c`
-
-A minimal C program using the public Opus API directly. Writes output in a simple format:
-
-```text
-[4-byte little-endian packet length][packet payload]  (repeated)
-```
-
-This format is trivial to parse in Python, unlike `opus_demo`'s internal framing.
-
-Usage:
-
-```bash
-./scripts/encode_raw <input.pcm> <output.bin> <mode> <bitrate>
-# mode: voip | audio | lowdelay
-```
-
-### 6.2 `scripts/decode_raw.c`
-
-Matching decoder that reads the `[len][packet]` format and writes raw PCM.
-
-### 6.3 Compilation
-
-```bash
-export LD_LIBRARY_PATH=$PWD/opus/.libs:$LD_LIBRARY_PATH
-
-gcc -O2 -o scripts/encode_raw scripts/encode_raw.c \
-    -I opus/include -L opus/.libs -lopus -lm
-
-gcc -O2 -o scripts/decode_raw scripts/decode_raw.c \
-    -I opus/include -L opus/.libs -lopus -lm
-```
-
-### 6.4 Why Not `opus_demo`
-
-`opus_demo` uses an internal framing format that interleaves length, range coder state, and payload in an undocumented way. Empirical attempts to parse it produced contradictory packet sizes (e.g., `pkt_len=3` vs. log offset `1237`). Switching to the Opus API gave exact, reproducible packet bytes.
-
----
-
-## 7. Experiments and Results
-
-### 7.1 Initial Encode — VoIP Mode, 24 kbps
-
-```bash
-./opus/opus_demo -e voip 48000 1 24000 \
-    data/pcm/spontaneous-speech-en-1.pcm \
-    data/bitstreams/test01_voip.bit \
-    2> logs/redundancy_test01.log
-```
-
-Result: **0 redundancy decisions**. Encoder stayed in SILK mode throughout.
-
-### 7.2 Bitrate Sweep — VoIP Mode
-
-| Bitrate | Redundancy decisions |
-|:---|:---|
-| 24 kbps | 0 |
-| 16 kbps | 0 |
-| 12 kbps | 0 |
-
-### 7.3 Transition Test — Speech + Silence + Speech
-
-```bash
-cat data/pcm/spontaneous-speech-en-1.pcm data/pcm/silence.pcm \
-    data/pcm/spontaneous-speech-en-5.pcm > data/pcm/transition_test.pcm
-
-./opus/opus_demo -e voip 48000 1 16000 \
-    data/pcm/transition_test.pcm \
-    data/bitstreams/transition_test.bit \
-    2> logs/redundancy_transition.log
-```
-
-Result: **0 redundancy decisions**. Silence gap too short to force a mode switch.
-
-### 7.4 Forced CELT Mode
-
-```bash
-./opus/opus_demo -e restricted-lowdelay 48000 1 96000 \
-    data/pcm/spontaneous-speech-en-1.pcm \
-    data/bitstreams/celt_force.bit \
-    2> logs/redundancy_celt_force.log
-```
-
-Result: **0 redundancy decisions**.
-
-### 7.5 Audio Mode, 32 kbps — First Redundancy Decision
-
-```bash
-./scripts/encode_raw data/pcm/spontaneous-speech-en-1.pcm \
-    data/bitstreams/encoded/test01_audio32k.bin audio 32000 \
-    2> logs/encode_test01_audio32k.log
-```
-
-Log output:
-
-```text
-FRAME 0: len=3
-FRAME 1: len=3
-FRAME 2: len=3
-REDUNDANCY: frame=1 mode=1001 celt_to_silk=1 bytes=38
-  -> redundant frame written at offset 1237, size 38
-FRAME 3: len=84
-...
-```
-
-**Key observation:** `REDUNDANCY` logged at frame 1 (mode 1001 = MODE_CELT_ONLY), but the final packet for frame 1 was only **3 bytes**. A 3-byte packet cannot contain 38 bytes of redundant data.
-
-### 7.6 Parser Validation
-
-`scripts/parse_packets.py` output for the same file:
-
-```text
-Frame 0: pkt_len=3, pkt_offset=4, first_bytes=f8fffe
-Frame 1: pkt_len=3, pkt_offset=11, first_bytes=f8fffe
-Frame 2: pkt_len=3, pkt_offset=18, first_bytes=f8fffe
-Frame 3: pkt_len=84, pkt_offset=25, first_bytes=780be4c136ecc74f
-...
-Total packets: 502
-```
-
-The `FINAL packet: ret=N` log entries matched the parser's `pkt_len=N` exactly. This validated the instrumentation.
-
-### 7.7 Redundancy Survival Cross-Check
-
-`scripts/automate.py` correlates `REDUNDANCY` decisions with `FINAL packet` sizes:
-
-```text
-Frame 1: redundancy_bytes=38, final_packet=3, survived=False, mode=1002
-```
-
-**Result: the redundant frame did NOT survive packetization.**
-
-### 7.8 Additional Encoder Configurations
-
-| Configuration | Redundancy decisions | Survived |
-|:---|:---|:---|
-| audio 32 kbps | 1 | No |
-| audio 64 kbps | 0 | — |
-| voip 24 kbps | 0 | — |
-| voip 16 kbps (FEC enabled) | 0 | — |
-| noise → speech 32 kbps | 0 | — |
-| transition test 16 kbps | 0 | — |
-
-### 7.9 Byte-Overwrite Test
-
-Flipped byte 0 of frame 1 (`0xf8` → `0x07`) in `test01_audio32k.bin`:
-
-```bash
-python3 scripts/modify_packet.py \
-    data/bitstreams/encoded/test01_audio32k.bin \
-    data/bitstreams/modified/test01_modified.bin \
-    1 0
-```
-
-Decode result:
-
-```text
-Decoded 1 frames
-opus_decode failed at frame 1: corrupted stream
-```
-
-**Result: modifying the ToC byte of a 3-byte packet causes immediate decoder desynchronization.** The packet structure is not freely modifiable.
-
----
-
-## 8. Key Findings
-
-1. **Redundancy decisions in Opus 1.6.1 are opportunistic, not guaranteed.** The encoder logs the intent to include a redundant frame before checking whether the packet has sufficient bit budget.
-
-2. **At 32 kbps `audio` mode on spontaneous speech, exactly one redundancy decision occurred (38 bytes, frame 1, mode 1002) and it did not survive into the final 3-byte packet.**
-
-3. **At 64 kbps, 24 kbps VoIP, 16 kbps VoIP with FEC, and on transition-heavy content, no redundancy decision was logged at all.**
-
-4. **`FINAL packet: ret=N` logging reliably matches `pkt_len=N` in the parsed bitstream**, validating the API-level instrumentation approach.
-
-5. **Blind byte-overwrite in the ToC region causes `corrupted stream`**, confirming that the packet structure is not freely modifiable and that any embedding scheme must respect the range coder state and ToC layout.
-
-6. **FEC/LBRR does not help in CELT mode.** The Opus specification disables FEC in CELT-only mode, and the redundant frame mechanism is separate from LBRR.
-
-7. **The redundant CELT frame is not a reliable covert channel under standard operating conditions.** It is budget-dependent, content-dependent, and rarely survives packetization.
-
----
-
-## 9. Interpretation
-
-The redundant CELT frame was hypothesized to be an attractive embedding target because of its isolated entropy coder state and byte alignment. Empirically, however:
-
-- The encoder decides to include redundancy only during **specific mode transitions**.
-- Even when the decision is made, the final packet may be too small to hold the redundant frame.
-- The packetization stage silently discards the redundant frame rather than expanding the packet.
-- There is no configuration tested that reliably produces a surviving redundant frame on real speech content.
-
-This closes off the redundant CELT frame as a practical steganographic channel and motivates investigation of the **CELT transform domain** (PVQ indices, energy envelope, raw bits), which is not subject to the same budget-dependent drop.
-
----
-
-## 10. Commands Reference
-
-### Encode
-
-```bash
-export LD_LIBRARY_PATH=$PWD/opus/.libs:$LD_LIBRARY_PATH
-
-./scripts/encode_raw \
-    data/pcm/spontaneous-speech-en-1.pcm \
-    data/bitstreams/encoded/test01_audio32k.bin \
-    audio 32000 \
-    2> logs/encode_test01_audio32k.log
-```
-
-### Parse
-
-```bash
-python3 scripts/parse_packets.py data/bitstreams/encoded/test01_audio32k.bin
-```
-
-### Cross-Check
-
-```bash
-python3 automate.py logs/encode_test01_audio32k.log
-```
-
-### Modify
-
-```bash
-python3 scripts/modify_packet.py \
-    data/bitstreams/encoded/test01_audio32k.bin \
-    data/bitstreams/modified/test01_modified.bin \
-    <frame_idx> <byte_offset>
-```
-
-### Decode
-
-```bash
-./scripts/decode_raw data/bitstreams/encoded/test01_audio32k.bin \
-    data/output/test01_orig.pcm
-
-./scripts/decode_raw data/bitstreams/modified/test01_modified.bin \
-    data/output/test01_mod.pcm
-```
-
-### Compare
-
-```bash
-ffmpeg -f s16le -ar 48000 -ac 1 -i data/output/test01_orig.pcm \
-    data/output/test01_orig.wav -y
-
-ffmpeg -f s16le -ar 48000 -ac 1 -i data/output/test01_mod.pcm \
-    data/output/test01_mod.wav -y
-```
-
----
-
-## 11. Negative Result — Paper Framing
-
-**Proposed title:**  
-*An Empirical Characterization of Redundant Frame Persistence in Opus CELT Mode: Implications for Steganographic Embedding*
-
-**Contribution:**
-- First instrumentation of Opus 1.6.1 redundancy decisions at the API level.
-- Empirical finding that redundancy decisions are discarded before packetization under standard operating conditions.
-- Demonstration that ToC byte modification causes decoder desynchronization.
-- Recommendation that Opus steganography research target the CELT transform domain instead.
-
-**Target venue:**  
-IH&MMSec (ACM Workshop on Information Hiding and Multimedia Security) — short paper (4–6 pages). Best scope match. Next deadline likely February 2027.
-
-**Backup venue:**  
-IEEE Signal Processing Letters (stretch — requires stronger contribution).
-
----
-
-## 12. Next Steps
-
-1. Document this negative result for the paper.
-2. Pivot to CELT transform-domain steganography:
-   - Characterize embedding capacity of PVQ indices.
-   - Characterize energy envelope modification tolerance.
-   - Investigate raw bits at the end of the packet (isolated from range coder).
-3. Use the negative result as motivation in the CELT paper's introduction.
-4. Retain the instrumentation and API pipeline as reusable infrastructure.
-
----
-
-## 13. References
-
-- RFC 6716: Definition of the Opus Audio Codec
-- RFC 8251: Updates to the Opus Audio Codec
-- Tian et al. (2025): Deep reinforcement learning for Opus steganography
-- Ren et al. (2020): Pulse-domain steganography in Opus
-- Xiph Opus documentation: https://opus-codec.org/
-- Mozilla Data Collective: Spontaneous Speech 5.0 — English
-
----
-
-## 14. Acknowledgments
-
-This work was conducted as an independent research project. The instrumentation, pipeline, and negative result form the empirical foundation for subsequent CELT transform-domain steganography research.
-
----
+├── opus/                  # Instrumented/upstream codec source, if included
+├── docs/                  # Research and reproduction documentation
+├── README.md
+└── .gitignore
+This is a conceptual map, not a guarantee that every listed directory is
+currently tracked in the public GitHub branch. Check the repository tree
+and release manifest for the files actually published.
+5. Software and datasets
+Software
+The experiments use instrumented Opus encoder/decoder builds for
+versions 1.5.2 and 1.6.1, together with C and Python utilities for
+encoding, decoding, packet inspection, embedding, extraction, analysis,
+and auditing.
+
+Some experiment scripts also rely on common scientific Python packages
+and external audio utilities. A consolidated, verified dependency lock
+file and one-command installation procedure should be added only after
+the dependencies of the published scripts have been audited.
+
+Do not upload locally compiled executables as substitutes for source
+code. Publish the relevant source, exact build instructions, codec
+version information, and patches needed to reproduce the instrumented
+builds.
+Datasets
+The project uses speech and music material in different experiments,
+including Common Voice, LibriSpeech, and GTZAN. Dataset files are not
+included in this repository by default. Users should obtain them from
+their official sources and follow the relevant dataset terms and
+licenses.
+
+The repository should publish dataset preparation instructions, version
+or release identifiers, file manifests where permitted, and checksums
+where useful. Do not redistribute audio or metadata unless the
+applicable terms explicitly permit it.
+6. Reproducing experiments
+Reproduction is experiment-specific. The B17, B18, and B19 scripts
+depend on earlier frozen inputs, codec builds, manifests, or results.
+Running a script without those prerequisites may fail or produce results
+that are not comparable with the recorded run.
+
+Examples of the principal experiment entry points are:
+python3 experiments/B17_cross_domain/run_b17_music_cross_domain.py
+python3 experiments/B18_robustness/run_b18_robustness.py
+python3 experiments/B19_reproducibility/run_b19_independent_audit.py
+Before running an experiment:
+1. Read its README or report, if present.
+2. Check the configuration and input paths.
+3. Verify the required codec version and executable.
+4. Obtain the permitted dataset inputs.
+5. Confirm that the referenced earlier experiment outputs are
+   available.
+6. Preserve the original run directory and checksum manifest.
+7. Record the command, environment, and resulting output path.
+The commands above are entry-point examples, not a claim that the
+current public repository is already self-contained. A complete
+reproduction guide should specify all prerequisites and expected outputs
+for each experiment.
+7. Integrity and provenance
+Where available, experiment outputs include SHA-256 checksum manifests.
+These should be retained alongside the corresponding frozen run
+directories.
+
+To verify a manifest, run the command from the directory containing the
+manifest, using the paths recorded inside it:
+sha256sum -c <checksum-manifest.sha256>
+A successful checksum audit establishes file integrity relative to that
+manifest. It does not independently establish that an experiment is
+scientifically valid or that the reported interpretation is correct.
+
+Do not overwrite frozen results when rerunning an experiment. Create a
+new timestamped run directory and retain the original output.
+8. Limitations
+The current evidence has important limitations:
+- Redundancy-event occurrence, relocation, physical capacity, payload
+  recovery, audio decoding, and detectability are separate properties.
+- Capacity findings apply to qualifying packets and tested
+  configurations; they do not imply that every transition provides the
+  same capacity.
+- Some positive payload-recovery results come from controlled tests or
+  small positive-control sets.
+- The B17 speech-to-music evaluation shows poor cross-domain
+  discrimination and very high false-positive rates at the fixed
+  threshold.
+- Packet deletion and reordering can change carrier alignment even
+  when a payload remains detectable elsewhere.
+- The malformed-length B19 follow-up is limited by the custom decoder
+  wrapper's packet-length validation and early termination.
+- Results should not be generalized beyond the tested codec versions,
+  datasets, configurations, and evaluation protocols without further
+  experiments.
+9. Responsible use
+This is an academic study of codec structure, payload recoverability,
+and steganalysis. Use the code only for authorized research, controlled
+experiments, and defensive evaluation. Do not use it to conceal
+unauthorized communications, evade monitoring, or interfere with systems
+or networks.
+
+Before public release, the maintainers should document responsible
+disclosure considerations, confirm the licensing of upstream code and
+datasets, and ensure that no private recordings, credentials, personal
+data, or restricted research material are included.
+10. Citation and licensing
+Citation metadata and the final project license are being prepared.
+Until the repository contains a verified CITATION.cff and LICENSE,
+do not assume that the code is available under an open-source license or
+that reuse is unrestricted.
+
+If you use this work, cite the associated research manuscript once its
+bibliographic details and publication status are finalized. Also cite
+Opus and each dataset according to their official citation requirements.
+11. Project status
+The project is an active research artifact. Experimental evidence has
+been collected across event characterization, payload tests,
+steganalysis, cross-version transfer, cross-domain evaluation,
+robustness, and independent integrity audits.
+
+The public repository is being organized to separate:
+- source code and patches needed to reproduce the work;
+- experiment configurations and scripts;
+- selected, validated result tables and figures;
+- frozen reports and checksum manifests; and
+- local datasets, generated binaries, temporary files, and private
+  working material that should not be published.
+The contents of the public GitHub repository may lag behind the local
+research workspace. Consult the published commit and release notes to
+determine exactly which experiments and artifacts are available in a
+given version.
